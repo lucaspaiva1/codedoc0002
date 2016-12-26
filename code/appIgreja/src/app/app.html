@@ -1,0 +1,25 @@
+<ion-menu [content]="content">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>Pages</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <button ion-item (click)="openPage(perfil)">
+                <ion-avatar item-left>
+                    <img src="http://kleberaquino.com.br/wp-content/uploads/2016/02/anonimo.png">
+                </ion-avatar>
+                <h2>Cleybson</h2>
+                <p>Meu Perfil</p>
+            </button>
+
+            <button ion-item (click)="openPage(login)" >
+                Sair
+            </button>
+
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

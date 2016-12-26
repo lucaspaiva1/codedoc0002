@@ -1,0 +1,44 @@
+<!--
+  Generated template for the Login page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <ion-item>
+    <ion-label floating>Username</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
+
+  <ion-item>
+
+    <button ion-button large full (click)="logar('conta')">ENTRAR</button>
+
+    <ion-row full>
+      <button ion-button color="danger" large icon-left (click)="logar('google')"><ion-icon ios="logo-google" md="logo-google"></ion-icon> Google</button>
+      <button ion-button large icon-left><ion-icon ios="logo-facebook" md="logo-facebook" (click)="logar('facebook')"></ion-icon>  FaceBook</button>
+    </ion-row>
+  </ion-item>
+  
+  <ion-item>
+    <button ion-button outline color="danger" large full (click)="esqueciSenha()" >ESQUECI SENHA</button>
+  </ion-item>
+
+
+</ion-content>
