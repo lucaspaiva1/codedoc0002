@@ -4,6 +4,9 @@ import { TelaPrincipalPage } from '../../tela-principal/tela-principal';
 import { LoginEmailPage } from '../login-email/login-email';
 import { CadastrarNovoUsuarioPage } from '../cadastrar-novo-usuario/cadastrar-novo-usuario';
 
+//providers
+import { FacebookService } from '../../../providers/facebook-service';
+
 /*
   Generated class for the Login page.
 
@@ -19,7 +22,12 @@ export class LoginPage {
   loginEmail= LoginEmailPage;
   cadastrarNovoUser = CadastrarNovoUsuarioPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,menu:MenuController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    menu: MenuController,
+    public facebookservice: FacebookService
+  ) {
     menu.enable(false);
   }
 
@@ -27,15 +35,14 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  logar(tipo){ //verifica a modalidade de login escolhida
-    if(tipo == "facebook"){// login com facebook
-
-    }else if(tipo == "google"){// login com google
-
+  logar(tipo) { //verifica a modalidade de login escolhida
+    if (tipo == "facebook") {// login com facebook
+      if(this.facebookservice.login()){
+        this.navCtrl.setRoot(TelaPrincipalPage);
+      }
+    } else if (tipo == "google") {// login com google
     }
   }
 
-  cadastrar(){ // abre a tela para cadastrar novo usuário
 
-  }
 }
