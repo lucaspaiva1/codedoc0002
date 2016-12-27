@@ -3,6 +3,9 @@ import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { TelaPrincipalPage } from '../../tela-principal/tela-principal';
 import { LoginEmailPage } from '../login-email/login-email';
 
+//providers
+import { FacebookService } from '../../../providers/facebook-service';
+
 /*
   Generated class for the Login page.
 
@@ -15,9 +18,14 @@ import { LoginEmailPage } from '../login-email/login-email';
 })
 export class LoginPage {
 
-  loginEmail= LoginEmailPage;
+  loginEmail = LoginEmailPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,menu:MenuController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    menu: MenuController,
+    public facebookservice: FacebookService
+  ) {
     menu.enable(false);
   }
 
@@ -25,15 +33,18 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  logar(tipo){ //verifica a modalidade de login escolhida
-    if(tipo == "facebook"){// login com facebook
-
-    }else if(tipo == "google"){// login com google
-
+  logar(tipo) { //verifica a modalidade de login escolhida
+    if (tipo == "facebook") {// login com facebook
+      if(this.facebookservice.login()){
+        this.navCtrl.setRoot(TelaPrincipalPage);
+      }
+    } else if (tipo == "google") {// login com google
     }
   }
 
-  cadastrar(){ // abre a tela para cadastrar novo usuário
+  cadastrar() { // abre a tela para cadastrar novo usuário
 
   }
+
+
 }
