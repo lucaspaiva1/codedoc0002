@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, } from 'ionic-angular';
-import {Validators, FormBuilder} from '@angular/forms';
+import { NavController, NavParams, AlertController} from 'ionic-angular';
+import { Validators, FormBuilder } from '@angular/forms';
+import { EsqueciSenhaPage } from '../esqueci-senha/esqueci-senha'
 
 @Component({
   selector: 'page-login-email',
@@ -11,8 +12,9 @@ export class LoginEmailPage {
   email: string;
   senha: string;
   user;
+  esqueciSenha = EsqueciSenhaPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
     //Configurando objeto user com campos para validação
     this.user = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
@@ -33,15 +35,7 @@ export class LoginEmailPage {
     let errorMsg = '';
 
     // validate each field
-    let control = this.user.controls['email'];
-    if (!control.valid) {
-      if (control.errors['required']) {
-        errorMsg = 'Informe um email';
-      } else if (control.errors['minlength']) {
-        errorMsg = 'Informe um email válido';
-      }
-    }
-    control = this.user.controls['senha'];
+    let control = this.user.controls['senha'];
     if (!control.valid) {
       if (control.errors['required']) {
         errorMsg = 'Informe a senha';
@@ -49,11 +43,29 @@ export class LoginEmailPage {
         errorMsg = 'Infome uma senha válida';
       }
     }
+    control = this.user.controls['email'];
+    if (!control.valid) {
+      if (control.errors['required']) {
+        errorMsg = 'Informe um email';
+      } else if (control.errors['minlength']) {
+        errorMsg = 'Informe um email válido';
+      }
+    }
+
+    let alert = this.alertCtrl.create({
+      title: 'Erro!',
+      subTitle: errorMsg || 'Empty error message!',
+      buttons: ['OK']
+    });
+    alert.present();
+
     return false;
   }
 
   login(){
-
+    if (this.validate()) {
+      // process the data
+    }
   }
 
 }

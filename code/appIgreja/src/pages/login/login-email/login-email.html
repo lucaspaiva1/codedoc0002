@@ -16,6 +16,7 @@
       <ion-label floating>Senha</ion-label>
       <ion-input type="password" formControlName="senha"></ion-input>
     </ion-item>
-    <button ion-button type="submit" block class="submit-button" [disabled]="!user.valid">Entrar</button>
+    <p class="esqueci-senha" [navPush]="esqueciSenha">Esqueci minha senha</p>
+    <button ion-button type="submit" block class="submit-button">Entrar</button>
   </form>
 </ion-content>
