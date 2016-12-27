@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
-import { EsqueciSenhaPage } from '../esqueci-senha/esqueci-senha';
 import { TelaPrincipalPage } from '../../tela-principal/tela-principal';
+import { LoginEmailPage } from '../login-email/login-email';
+
 /*
   Generated class for the Login page.
 
@@ -14,6 +15,8 @@ import { TelaPrincipalPage } from '../../tela-principal/tela-principal';
 })
 export class LoginPage {
 
+  loginEmail= LoginEmailPage;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,menu:MenuController) {
     menu.enable(false);
   }
@@ -22,14 +25,15 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  esqueciSenha(){
-    this.navCtrl.push(EsqueciSenhaPage);
-  }
+  logar(tipo){ //verifica a modalidade de login escolhida
+    if(tipo == "facebook"){// login com facebook
 
-  logar(tipo){
-    if(tipo=="conta"){
-      this.navCtrl.setRoot(TelaPrincipalPage);
+    }else if(tipo == "google"){// login com google
+
     }
   }
 
+  cadastrar(){ // abre a tela para cadastrar novo usuário
+
+  }
 }

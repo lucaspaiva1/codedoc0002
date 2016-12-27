@@ -1,0 +1,21 @@
+<!--Cabeçalho da página-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login com Email</ion-title>
+  </ion-navbar>
+</ion-header>
+<!--Conteudo da página-->
+<ion-content padding>
+  <!--Campos de preenchimento para cadastro-->
+  <form [formGroup]="user" (ngSubmit)="login()">
+    <ion-item>
+      <ion-label floating >Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Senha</ion-label>
+      <ion-input type="password" formControlName="senha"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" block class="submit-button">Entrar</button>
+  </form>
+</ion-content>

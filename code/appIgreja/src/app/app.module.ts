@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 //Login
 import { LoginPage } from '../pages/login/login/login';
 import { EsqueciSenhaPage } from '../pages/login/esqueci-senha/esqueci-senha';
+import { LoginEmailPage } from '../pages/login/login-email/login-email';
 
 //telas telacionadas após logar
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -18,7 +19,8 @@ import { TelaPrincipalPage } from '../pages/tela-principal/tela-principal';
     PerfilPage,
     TelaPrincipalPage,
     LoginPage,
-    EsqueciSenhaPage
+    EsqueciSenhaPage,
+    LoginEmailPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -29,7 +31,8 @@ import { TelaPrincipalPage } from '../pages/tela-principal/tela-principal';
     PerfilPage,
     TelaPrincipalPage,
     LoginPage,
-    EsqueciSenhaPage
+    EsqueciSenhaPage,
+    LoginEmailPage
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
 })

@@ -1,44 +1,28 @@
-<!--
-  Generated template for the Login page.
+<!--Conteudo da tela com logo-->
+<ion-content class="background">
+  <h2 class="logo">LOGO</h2>
+  <p class="logo">Texto de boas vindas</p>
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+  <!--Footer para manter o campo de login na parte inferior da tela-->
+  <ion-footer class="footer-login">
 
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
+    <div class="login-button-div">
+      <!--Botão para login com Facebook-->
+      <button ion-button icon-left full text-capitalize class="facebook-button" (click)="logar('facebook')">
+        <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon> Entre com Facebook
+      </button>
 
-</ion-header>
+      <!--Botão para login com Google +-->
+      <button ion-button icon-left full text-capitalize class="google-button" (click)="logar('google')">
+        <ion-icon ios="logo-google" md="logo-google"></ion-icon> Entre com Google+
+      </button>
+    </div>
 
-
-<ion-content padding>
-
-
-  <ion-item>
-    <ion-label floating>Username</ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating>Password</ion-label>
-    <ion-input type="password"></ion-input>
-  </ion-item>
-
-  <ion-item>
-
-    <button ion-button large full (click)="logar('conta')">ENTRAR</button>
-
-    <ion-row full>
-      <button ion-button color="danger" large icon-left (click)="logar('google')"><ion-icon ios="logo-google" md="logo-google"></ion-icon> Google</button>
-      <button ion-button large icon-left><ion-icon ios="logo-facebook" md="logo-facebook" (click)="logar('facebook')"></ion-icon>  FaceBook</button>
-    </ion-row>
-  </ion-item>
-  
-  <ion-item>
-    <button ion-button outline color="danger" large full (click)="esqueciSenha()" >ESQUECI SENHA</button>
-  </ion-item>
-
-
+    <div>
+      <ion-row>
+        <button ion-button clear block text-capitalize class="aux-button" [navPush]="loginEmail" >Entrar com Email</button>
+        <button ion-button clear block text-capitalize class="aux-button" (click)="cadastrar">Cadastrar</button>
+      </ion-row>
+    </div>
+  </ion-footer>
 </ion-content>
