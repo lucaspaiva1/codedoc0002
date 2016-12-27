@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController} from 'ionic-angular';
 import { Validators, FormBuilder } from '@angular/forms';
 import { EsqueciSenhaPage } from '../esqueci-senha/esqueci-senha'
+import { TelaPrincipalPage } from '../../tela-principal/tela-principal';
 
 @Component({
   selector: 'page-login-email',
@@ -65,6 +66,7 @@ export class LoginEmailPage {
   login(){
     if (this.validate()) {
       // process the data
+      this.navCtrl.setRoot(TelaPrincipalPage);
     }
   }
 

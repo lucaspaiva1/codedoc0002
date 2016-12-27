@@ -12,10 +12,12 @@ import { PerfilPage } from '../pages/perfil/perfil';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  private login: any = LoginPage;
-  private perfil: any = PerfilPage;
-
+  private login = LoginPage;
+  private perfil = PerfilPage;
+  
   rootPage = LoginPage;
+
+  nome: string = 'Nome do Usuários';
 
   constructor(platform: Platform, public menu: MenuController) {
     platform.ready().then(() => {
@@ -29,6 +31,6 @@ export class MyApp {
   openPage(page) {
 
     this.menu.close();
-    this.nav.setRoot(page);
+    this.nav.push(page);
   }
 }

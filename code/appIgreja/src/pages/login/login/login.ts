@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { TelaPrincipalPage } from '../../tela-principal/tela-principal';
 import { LoginEmailPage } from '../login-email/login-email';
+import { CadastrarNovoUsuarioPage } from '../cadastrar-novo-usuario/cadastrar-novo-usuario';
 
 /*
   Generated class for the Login page.
@@ -16,6 +17,7 @@ import { LoginEmailPage } from '../login-email/login-email';
 export class LoginPage {
 
   loginEmail= LoginEmailPage;
+  cadastrarNovoUser = CadastrarNovoUsuarioPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,menu:MenuController) {
     menu.enable(false);

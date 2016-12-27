@@ -63,6 +63,7 @@ export class EsqueciSenhaPage {
         duration: 2000
       });
       toast.present();
+      this.navCtrl.pop();
     }
   }
 }
