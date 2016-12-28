@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Contato</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div>
+    <ion-row>
+      <!--Botão para login com Facebook-->
+      <button ion-button icon-left block class="facebook-button" (click)="logar('facebook')">
+        <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>Facebook
+      </button>
+
+      <!--Botão para login com Google +-->
+      <button ion-button icon-left block class="google-button" (click)="logar('google')">
+        <ion-icon ios="logo-google" md="logo-google"></ion-icon>Google+
+      </button>
+    </ion-row>
+  </div>
+  <div class="">
+    <!--loop para listar administardores-->
+
+    <!--ion-card *ngFor="let administrador of administradores"-->
+    <ion-card>
+      <ion-card-header>
+        <ion-item>
+          <ion-avatar item-left>
+            <!--<img src={{administrador.imageURL}}-->
+            <img src="http://kleberaquino.com.br/wp-content/uploads/2016/02/anonimo.png">
+          </ion-avatar>
+          <!--<h2>{{administrador.nome}}</h2>-->
+          <h2>nome</h2>
+        </ion-item>
+      </ion-card-header>
+      <ion-card-content>
+        <!--{{administrador.email}}-->
+        email
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

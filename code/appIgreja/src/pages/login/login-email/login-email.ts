@@ -64,10 +64,10 @@ export class LoginEmailPage {
   }
 
   login(){
-    if (this.validate()) {
+    //if (this.validate()) {
       // process the data
       this.navCtrl.setRoot(TelaPrincipalPage);
-    }
+    //}
   }
 
 }

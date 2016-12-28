@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { NgCalendarModule  } from 'ionic2-calendar';
 
 /*
   Generated class for the Calendario page.
@@ -12,8 +13,14 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'calendario.html'
 })
 export class CalendarioPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  calendar;
+  constructor( public calendarMd: NgCalendarModule, public navCtrl: NavController, public navParams: NavParams) {
+    this.calendar = {
+      mode: 'month',
+      currentDate: new Date()
+    };
+    
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CalendarioPage');
