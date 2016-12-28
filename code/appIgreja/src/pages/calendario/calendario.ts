@@ -14,16 +14,24 @@ import { NgCalendarModule  } from 'ionic2-calendar';
 })
 export class CalendarioPage {
   calendar;
+  mes: string = 'Dezembro';
   constructor( public calendarMd: NgCalendarModule, public navCtrl: NavController, public navParams: NavParams) {
     this.calendar = {
       mode: 'month',
       currentDate: new Date()
     };
-    
+
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CalendarioPage');
   }
-
+  onCurrentDateChanged($event){}
+  reloadSource(startTime, endTime){}
+  onEventSelected($event){}
+  onViewTitleChanged = (title: string) => {
+    this.mes = title;
+  };
+  onTimeSelected($event){}
 }

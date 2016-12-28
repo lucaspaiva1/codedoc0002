@@ -14,6 +14,9 @@
 
 
 <ion-content padding>
+  <ion-toolbar color="primary">
+      <ion-title>{{mes}}</ion-title>
+  </ion-toolbar>
   <calendar [eventSource]="eventSource"
         [calendarMode]="calendar.mode"
         [currentDate]="calendar.currentDate"
