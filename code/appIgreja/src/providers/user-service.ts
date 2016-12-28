@@ -10,9 +10,7 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class UserService {
-  private user = {
-    
-  }
+  
 
   constructor() {
   }

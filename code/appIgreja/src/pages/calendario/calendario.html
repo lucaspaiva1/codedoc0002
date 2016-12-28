@@ -7,16 +7,18 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>calendario</ion-title>
+    <ion-title>Calendario</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-toolbar color="primary">
+  <!--Barra superior do calendário-->
+  <ion-toolbar class="calendarToolbar">
       <ion-title>{{mes}}</ion-title>
   </ion-toolbar>
+
   <calendar [eventSource]="eventSource"
         [calendarMode]="calendar.mode"
         [currentDate]="calendar.currentDate"
