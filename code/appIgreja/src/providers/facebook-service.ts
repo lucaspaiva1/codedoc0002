@@ -16,14 +16,14 @@ export class FacebookService {
   constructor(public http: Http) {
   }
 
-   login():Boolean {
-    Facebook.login(['email']).then(response => {
-      alert("Logado com Sucesso");
-      return true;
-    }, (erro) => {
-      alert(erro);
-    });
-    return false;
+  login() {
+      Facebook.login(['email']).then(response => {
+        alert("Logado com Sucesso");
+        return true;
+      }, (erro) => {
+        alert(erro);
+        return false;
+      });
   }
 
   getdetails() {
@@ -41,6 +41,16 @@ export class FacebookService {
       }
     })
 
+  }
+
+  logadoFace(): Boolean {
+    Facebook.getLoginStatus().then((response) => {
+      return response.status == "connected";
+    }, (erro) => {
+      alert(erro);
+      return false;
+    });
+    return false;
   }
 
   logout() {

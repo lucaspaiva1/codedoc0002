@@ -19,7 +19,7 @@ import { FacebookService } from '../../../providers/facebook-service';
 })
 export class LoginPage {
 
-  loginEmail= LoginEmailPage;
+  loginEmail = LoginEmailPage;
   cadastrarNovoUser = CadastrarNovoUsuarioPage;
 
   constructor(
@@ -29,17 +29,26 @@ export class LoginPage {
     public facebookservice: FacebookService
   ) {
     menu.enable(false);
+    this.redirecionar();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+
+  }
+
+  redirecionar() {
+    if (this.facebookservice.logadoFace()) {
+      this.navCtrl.setRoot(TelaPrincipalPage);
+    }
   }
 
   logar(tipo) { //verifica a modalidade de login escolhida
     if (tipo == "facebook") {// login com facebook
-      if(this.facebookservice.login()){
-        this.navCtrl.setRoot(TelaPrincipalPage);
-      }
+      this.facebookservice.login()
+      this.facebookservice.getdetails();
+      this.navCtrl.setRoot(TelaPrincipalPage);
+
     } else if (tipo == "google") {// login com google
     }
   }
