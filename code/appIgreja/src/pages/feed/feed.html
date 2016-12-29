@@ -7,12 +7,29 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>feed</ion-title>
+    <ion-title>Feed de Notícias</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-card *ngFor="let publicacao of publicacoes">
+  <img *ngIf="publicacao.modelo != 2" src="{{publicacao.imagem}}">
+  <ion-card-content>
+    <ion-card-title>{{publicacao.titulo}}</ion-card-title>
+    <p *ngIf="!publicacao.modelo != '3'">{{publicacao.texto}}</p>
+  </ion-card-content>
+  <ion-row *ngIf="publicacao.comentario">
+    <ion-col>
+      <button ion-button icon-left clear small>
+        <ion-icon name="text"></ion-icon>
+        <div>Comentar</div>
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-card>
+<ion-fab right bottom >
+    <button ion-fab class="floating-button-add"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>
