@@ -6,23 +6,23 @@
     </ion-header>
     <ion-content>
         <ion-list>
-            <button ion-item (click)="openPage(perfil)">
+            <button ion-item (click)="openPage('perfil')">
                 <ion-avatar item-left>
                     <img src="http://kleberaquino.com.br/wp-content/uploads/2016/02/anonimo.png">
                 </ion-avatar>
                 <h2>{{nome}}</h2>
                 <p>Meu Perfil</p>
             </button>
-            <button ion-item (click)="openPage(contato)" >
+            <button ion-item (click)="openPage('contato')" >
                 Contato
             </button>
-            <button ion-item (click)="openPage(estrutura)" >
+            <button ion-item (click)="openPage('estrutura')" >
                 Estrutura
             </button>
-            <button ion-item (click)="openPage(sobre)" >
+            <button ion-item (click)="openPage('sobre')" >
                 Sobre
             </button>
-            <button ion-item (click)="openPage(login)" >
+            <button ion-item (click)="openPage('sair')" >
                 Sair
             </button>
 
