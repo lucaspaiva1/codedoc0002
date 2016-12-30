@@ -7,7 +7,7 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { ContatoPage } from '../pages/contato/contato';
 import { EstruturaPage } from '../pages/estrutura/estrutura';
 import { SobrePage } from '../pages/sobre/sobre';
-
+import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,6 +20,7 @@ export class MyApp {
   private sobre = SobrePage;
   private login = LoginPage;
   private perfil = PerfilPage;
+  private buscar = BuscarUsuariosPage;
 
   rootPage = LoginPage;
 
@@ -47,6 +48,8 @@ export class MyApp {
       this.nav.push(this.sobre);
     }else if(page == 'sair'){
       this.nav.setRoot(this.login);
+    }else if(page == 'buscar'){
+      this.nav.push(this.buscar);
     }
   }
 }
