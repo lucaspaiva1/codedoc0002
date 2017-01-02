@@ -9,26 +9,26 @@
   <form [formGroup]="user" (ngSubmit)="cadastrar()">
     <ion-item>
       <ion-label floating >Nome Completo</ion-label>
-      <ion-input type="text" formControlName="nome"></ion-input>
+      <ion-input type="text" formControlName="nome" [(ngModel)]="userNovo.nome"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating >Data de Nascimento</ion-label>
-      <ion-datetime displayFormat="DD/MMM/YYYY" formControlName="nascimento"></ion-datetime>
+      <ion-datetime displayFormat="DD/MMM/YYYY" formControlName="nascimento" [(ngModel)]="userNovo.nascimento"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label floating>Gênero</ion-label>
-      <ion-select formControlName="genero">
-        <ion-option value="masculino">Masculino</ion-option>
-        <ion-option value="feminino">Feminino</ion-option>
+      <ion-select formControlName="genero" [(ngModel)]="userNovo.genero">
+        <ion-option value="Masculino">Masculino</ion-option>
+        <ion-option value="Feminino">Feminino</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label floating>Email</ion-label>
-      <ion-input type="email" formControlName="email"></ion-input>
+      <ion-input type="email" formControlName="email" [(ngModel)]="userNovo.email"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Senha</ion-label>
-      <ion-input type="password" formControlName="senha"></ion-input>
+      <ion-input type="password" formControlName="senha" [(ngModel)]="userNovo.senha"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Repetir Senha</ion-label>

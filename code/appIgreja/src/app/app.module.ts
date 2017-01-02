@@ -5,7 +5,6 @@ import { NgCalendarModule  } from 'ionic2-calendar';
 
 //providers
 import { Facebook } from 'ionic-native';
-import { FacebookService } from '../providers/facebook-service';
 import { UserService } from '../providers/user-service';
 
 //Login
@@ -28,6 +27,15 @@ import { SobrePage } from '../pages/sobre/sobre';
 import { GerenciarUsuariosPage } from '../pages/gerenciar-usuarios/gerenciar-usuarios'
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios'
 
+
+import firebase from 'firebase';
+const firebaseConfig = {
+    apiKey: "AIzaSyBU9-E8RRGg2tUJ4iJGUSnX2ujxX6_4pCc",
+    authDomain: "appigreja-388ee.firebaseapp.com",
+    databaseURL: "https://appigreja-388ee.firebaseio.com",
+    storageBucket: "appigreja-388ee.appspot.com",
+    messagingSenderId: "621540314068"
+  };
 
 
 @NgModule({
@@ -71,6 +79,10 @@ import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios'
     GerenciarUsuariosPage,
     BuscarUsuariosPage
   ],
-  providers: [Facebook, FacebookService, UserService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
+  providers: [Facebook, UserService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(){
+    firebase.initializeApp(firebaseConfig);
+  }
+}

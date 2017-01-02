@@ -8,9 +8,9 @@ import { ContatoPage } from '../pages/contato/contato';
 import { EstruturaPage } from '../pages/estrutura/estrutura';
 import { SobrePage } from '../pages/sobre/sobre';
 
-import { FacebookService } from '../providers/facebook-service';
 
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -29,7 +29,7 @@ export class MyApp {
 
   nome: string = 'Nome do Usuários';
 
-  constructor(platform: Platform, public menu: MenuController, public facebook:FacebookService) {
+  constructor(platform: Platform, public menu: MenuController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -40,7 +40,6 @@ export class MyApp {
 
   openPage(page) {
     if(page == this.login){
-      this.facebook.logout();
     }
 
     this.menu.close();

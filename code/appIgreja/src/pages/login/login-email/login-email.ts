@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController} from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder } from '@angular/forms';
 import { EsqueciSenhaPage } from '../esqueci-senha/esqueci-senha'
 import { TelaPrincipalPage } from '../../tela-principal/tela-principal';
+import { UserService } from '../../../providers/user-service';
 
 @Component({
   selector: 'page-login-email',
@@ -15,7 +16,14 @@ export class LoginEmailPage {
   user;
   esqueciSenha = EsqueciSenhaPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private formBuilder: FormBuilder,
+    public alertCtrl: AlertController,
+    public userService: UserService,
+
+  ) {
     //Configurando objeto user com campos para validação
     this.user = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
@@ -63,10 +71,11 @@ export class LoginEmailPage {
     return false;
   }
 
-  login(){
+  login() {
     //if (this.validate()) {
-      // process the data
-      this.navCtrl.setRoot(TelaPrincipalPage);
+    // process the data
+    //this.userService.loginComConta();
+    this.navCtrl.setRoot(TelaPrincipalPage);
     //}
   }
 

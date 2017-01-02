@@ -4,8 +4,9 @@ import { TelaPrincipalPage } from '../../tela-principal/tela-principal';
 import { LoginEmailPage } from '../login-email/login-email';
 import { CadastrarNovoUsuarioPage } from '../cadastrar-novo-usuario/cadastrar-novo-usuario';
 
+
 //providers
-import { FacebookService } from '../../../providers/facebook-service';
+import { UserService } from '../../../providers/user-service';
 
 /*
   Generated class for the Login page.
@@ -26,30 +27,27 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     menu: MenuController,
-    public facebookservice: FacebookService
+    public userService: UserService,
   ) {
     menu.enable(false);
-    this.redirecionar();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    this.userService.loginSucessoEventEmitter.subscribe(
+      user=>console.log(user),
+    );
+    this.userService.loginFalhaEventEmitter.subscribe(
+      error=>console.log(error)
+    );
 
-  }
-
-  redirecionar() {
-    if (this.facebookservice.logadoFace()) {
-      this.navCtrl.setRoot(TelaPrincipalPage);
-    }
   }
 
   logar(tipo) { //verifica a modalidade de login escolhida
     if (tipo == "facebook") {// login com facebook
-      this.facebookservice.login()
-      this.facebookservice.getdetails();
-      this.navCtrl.setRoot(TelaPrincipalPage);
+      this.userService.loginComFacebook();
 
     } else if (tipo == "google") {// login com google
+      this.userService.loginComGoogle();
     }
   }
 
