@@ -17,13 +17,19 @@ export class FacebookService {
   }
 
   login() {
-      Facebook.login(['email']).then(response => {
+      Facebook.login(["public_profile"]).then(response => {
         alert("Logado com Sucesso");
         return true;
       }, (erro) => {
         alert(erro);
         return false;
       });
+  }
+
+  teste(){
+    Facebook.getAccessToken().then((response)=>{
+
+    })
   }
 
   getdetails() {

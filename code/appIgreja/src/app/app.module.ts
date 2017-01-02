@@ -25,6 +25,8 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { ContatoPage } from '../pages/contato/contato';
 import { EstruturaPage } from '../pages/estrutura/estrutura';
 import { SobrePage } from '../pages/sobre/sobre';
+import { GerenciarUsuariosPage } from '../pages/gerenciar-usuarios/gerenciar-usuarios'
+import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios'
 
 
 
@@ -43,7 +45,9 @@ import { SobrePage } from '../pages/sobre/sobre';
     CadastrarNovoUsuarioPage,
     ContatoPage,
     EstruturaPage,
-    SobrePage
+    SobrePage,
+    GerenciarUsuariosPage,
+    BuscarUsuariosPage
   ],
   imports: [
     NgCalendarModule,
@@ -63,7 +67,9 @@ import { SobrePage } from '../pages/sobre/sobre';
     CadastrarNovoUsuarioPage,
     ContatoPage,
     EstruturaPage,
-    SobrePage
+    SobrePage,
+    GerenciarUsuariosPage,
+    BuscarUsuariosPage
   ],
   providers: [Facebook, FacebookService, UserService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
 })

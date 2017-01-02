@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ToastController} from 'ionic-angular';
+import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder } from '@angular/forms';
+import { UserService } from '../../../providers/user-service';
 
 /*
   Generated class for the CadastarNovoUsuario page.
@@ -15,7 +16,14 @@ import { Validators, FormBuilder } from '@angular/forms';
 export class CadastrarNovoUsuarioPage {
   user;
 
-  constructor(private toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
+  constructor(
+    private toastCtrl: ToastController,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private formBuilder: FormBuilder,
+    public alertCtrl: AlertController,
+    public UserService
+  ) {
     //Configurando objeto user com campos para validação
     this.user = this.formBuilder.group({
       nome: ['', Validators.compose([Validators.required])],
@@ -93,7 +101,7 @@ export class CadastrarNovoUsuarioPage {
     return false;
   }
 
-  cadastrar(){
+  cadastrar() {
     if (this.validate()) {
       // process the data
       let toast = this.toastCtrl.create({
