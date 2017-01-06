@@ -15,10 +15,10 @@
 
 <ion-content padding>
   <ion-card *ngFor="let publicacao of publicacoes">
-  <img *ngIf="publicacao.modelo != 2" src="{{publicacao.imagem}}">
+  <img *ngIf="publicacao.imagem != null" src="{{publicacao.imagem}}">
   <ion-card-content>
     <ion-card-title>{{publicacao.titulo}}</ion-card-title>
-    <p *ngIf="!publicacao.modelo != '3'">{{publicacao.texto}}</p>
+    <p *ngIf="publicacao.texto != null">{{publicacao.texto}}</p>
   </ion-card-content>
   <ion-row *ngIf="publicacao.comentario">
     <ion-col>
