@@ -84,10 +84,11 @@ DROP TABLE IF EXISTS `publicacao`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publicacao` (
   `IDPublicacao` int(11) NOT NULL AUTO_INCREMENT,
+  `DataPublicacao` timestamp NULL DEFAULT NULL,
   `TempoPermanencia` date NOT NULL,
-  `Tipo` tinyint(4) NOT NULL,
   `Comentario` enum('s','n') NOT NULL,
   `LinkImagem` longtext,
+  `Titulo` varchar(100) DEFAULT NULL,
   `Texto` longtext,
   `Usuario_IDUsuario` int(11) NOT NULL,
   PRIMARY KEY (`IDPublicacao`),
@@ -143,4 +144,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-06 11:52:03
+-- Dump completed on 2017-01-06 15:10:08
