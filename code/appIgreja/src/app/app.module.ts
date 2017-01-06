@@ -6,6 +6,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
 //providers
 import { Facebook } from 'ionic-native';
 import { UserService } from '../providers/user-service';
+import { PublicacaoService } from '../providers/publicacao-service';
 
 //Login
 import { LoginPage } from '../pages/login/login/login';
@@ -82,7 +83,7 @@ const firebaseConfig = {
     BuscarUsuariosPage,
     AddPostPage
   ],
-  providers: [Facebook, UserService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
+  providers: [Facebook, UserService, PublicacaoService,{ provide: ErrorHandler, useClass: IonicErrorHandler }],
 })
 export class AppModule {
   constructor(){

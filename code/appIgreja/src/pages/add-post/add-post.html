@@ -18,19 +18,19 @@
   <ion-list>
     <ion-item>
       <ion-label floating >Título</ion-label>
-      <ion-input type="text" [(ngModel)]="titulo"></ion-input>
+      <ion-input type="text" [(ngModel)]="publicacao.Titulo"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating >Texto</ion-label>
-      <ion-input type="text" [(ngModel)]="texto"></ion-input>
+      <ion-input type="text" [(ngModel)]="publicacao.Texto"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating >Data Limite</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="dataLimite"></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="publicacao.TempoPermanencia"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Permitir comentários</ion-label>
-      <ion-toggle disabled checked="false"></ion-toggle>
+      <ion-toggle [(ngModel)]="publicacao.Comentario"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-row>
