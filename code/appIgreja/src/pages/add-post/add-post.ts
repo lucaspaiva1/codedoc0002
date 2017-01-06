@@ -22,4 +22,7 @@ export class AddPostPage {
     console.log('ionViewDidLoad AddPostPage');
   }
 
+  adicionar(){
+    this.navCtrl.pop();
+  }
 }

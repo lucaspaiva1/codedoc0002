@@ -30,9 +30,11 @@
     </ion-item>
     <ion-item>
       <ion-row>
-        <button ion-button block>Importar</button>
-        <button ion-button block>Tirar Foto</button>
+        <button ion-button block class="botao-duplo-l">Importar</button>
+        <button ion-button block class="botao-duplo-r">Tirar Foto</button>
       </ion-row>
     </ion-item>
   </ion-list>
+  <!--Botão para adicionar publicação-->
+  <button ion-button block (click)="adicionar()">Adicionar</button>
 </ion-content>
