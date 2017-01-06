@@ -53,11 +53,13 @@ DROP TABLE IF EXISTS `evento`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `evento` (
   `IDEvento` int(11) NOT NULL AUTO_INCREMENT,
-  `Data` date NOT NULL,
+  `DataIncio` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `DataTermino` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Titulo` varchar(100) NOT NULL,
   `Descricao` longtext,
-  `Local` varchar(100) DEFAULT NULL,
+  `Local` varchar(100) NOT NULL,
   `Usuario_IDUsuario` int(11) NOT NULL,
+  `EventoDiario` tinyint(4) NOT NULL,
   PRIMARY KEY (`IDEvento`),
   KEY `fk_Evento_Usuario_idx` (`Usuario_IDUsuario`),
   CONSTRAINT `fk_Evento_Usuario` FOREIGN KEY (`Usuario_IDUsuario`) REFERENCES `usuario` (`IDUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -117,6 +119,8 @@ CREATE TABLE `usuario` (
   `Email` varchar(50) NOT NULL,
   `Sexo` enum('m','f') NOT NULL,
   `Tipo` enum('a','c') NOT NULL,
+  `Facebook` tinyint(4) DEFAULT NULL,
+  `GooglePlus` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`IDUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -139,4 +143,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-06 11:23:14
+-- Dump completed on 2017-01-06 11:52:03
