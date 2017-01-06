@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { AddPostPage } from '../add-post/add-post';
+
 /*
   Generated class for the Feed page.
 
@@ -13,6 +15,7 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class FeedPage {
   publicacoes = [];
+  addPost = AddPostPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //apenas para teste
@@ -45,6 +48,10 @@ export class FeedPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FeedPage');
+  }
+
+  adicionarPost(){
+    this.navCtrl.push(this.addPost);
   }
 
 }

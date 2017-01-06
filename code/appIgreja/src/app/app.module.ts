@@ -18,6 +18,7 @@ import { TelaPrincipalPage } from '../pages/tela-principal/tela-principal';
 import { FeedPage } from '../pages/feed/feed';
 import { CalendarioPage } from '../pages/calendario/calendario';
 import { BuscaPage } from '../pages/busca/busca';
+import { AddPostPage } from '../pages/add-post/add-post';
 
 //telas do nav menu
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -55,7 +56,8 @@ const firebaseConfig = {
     EstruturaPage,
     SobrePage,
     GerenciarUsuariosPage,
-    BuscarUsuariosPage
+    BuscarUsuariosPage,
+    AddPostPage
   ],
   imports: [
     NgCalendarModule,
@@ -77,11 +79,12 @@ const firebaseConfig = {
     EstruturaPage,
     SobrePage,
     GerenciarUsuariosPage,
-    BuscarUsuariosPage
+    BuscarUsuariosPage,
+    AddPostPage
   ],
   providers: [Facebook, UserService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
 })
-export class AppModule { 
+export class AppModule {
   constructor(){
     firebase.initializeApp(firebaseConfig);
   }
