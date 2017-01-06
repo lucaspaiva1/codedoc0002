@@ -12,8 +12,26 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'busca.html'
 })
 export class BuscaPage {
+  grupos = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.grupos.push({
+      nome: 'Grupo Jovem'
+    });
+    this.grupos.push({
+      nome: 'Renovação Carismática'
+    });
+    this.grupos.push({
+      nome: 'Encontro de Casais'
+    });
+    this.grupos.push({
+      nome: 'Crisma'
+    });
+    this.grupos.push({
+      nome: 'Ministros da Eucaristia'
+    });
+  }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  itemSelected(){}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BuscaPage');

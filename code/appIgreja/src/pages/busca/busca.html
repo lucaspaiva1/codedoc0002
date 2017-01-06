@@ -14,7 +14,11 @@
 
 
 <ion-content padding>
-
+  <ion-list no-lines>
+  <button ion-item *ngFor="let grupo of grupos" (click)="itemSelected()">
+    {{ grupo.nome }}
+  </button>
+</ion-list>
   <ion-fab right bottom >
     <button ion-fab class="floating-button-adm"><ion-icon name="add"></ion-icon></button>
   </ion-fab>

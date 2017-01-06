@@ -1,0 +1,44 @@
+<!--
+  Generated template for the AddPost page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Criar Publicação</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <!--Campos de preenchimento para criação de uma publicação (
+        -> apenas o titulo é obrigatório
+  )-->
+  <ion-list>
+    <ion-item>
+      <ion-label floating >Título</ion-label>
+      <ion-input type="text" [(ngModel)]="titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Texto</ion-label>
+      <ion-input type="text" [(ngModel)]="texto"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Data Limite</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="dataLimite"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Permitir comentários</ion-label>
+      <ion-toggle disabled checked="false"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-row>
+        <button ion-button block class="botao-duplo-l">Importar</button>
+        <button ion-button block class="botao-duplo-r">Tirar Foto</button>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+  <!--Botão para adicionar publicação-->
+  <button ion-button block (click)="adicionar()">Adicionar</button>
+</ion-content>
