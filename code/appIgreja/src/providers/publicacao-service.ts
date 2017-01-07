@@ -18,7 +18,7 @@ export class PublicacaoService {
   }
 
   getPublicacoes(): Promise<any>{
-    return this.http.get('http://localhost/igrejaApi/listaPublicacao.php?id')
+    return this.http.get('http://dsoutlet.com.br/igrejaApi/listaPublicacao.php?id')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
@@ -26,7 +26,7 @@ export class PublicacaoService {
 
   novaPublicacao(publicacao: Publicacao): Promise<any> {
     return this.http
-      .post('http://localhost/igrejaApi/addPublicacao.php', JSON.stringify(publicacao), { headers: this.headers })
+      .post('http://dsoutlet.com.br/igrejaApi/addPublicacao.php', JSON.stringify(publicacao), { headers: this.headers })
       .toPromise()
       .then(res => this.extractNewData(res))
       .catch(this.handleErrorMessage);
