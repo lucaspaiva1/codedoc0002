@@ -20,27 +20,30 @@ export class AddPostPage {
   }
 
   adicionar() {
-    console.log(this.publicacao);
-    this.postService.novaFicha(this.publicacao).then(res=>{
-      if(res.type == true){
-        console.log(res.message);
-        this.navCtrl.pop();
-      }else{
-        console.log(res.message);
-      }
-    });
+    if (this.publicacao.TempoPermanencia == null) {
+      console.log("insira a data limite");
+    } else {
+      this.postService.novaPublicacao(this.publicacao).then(res => {
+        if (res.type == true) {
+          console.log(res.message);
+          this.navCtrl.pop();
+        } else {
+          console.log(res.message);
+        }
+      });
+    }
   }
 
-  importarFoto(){
+  importarFoto() {
     let options;
     ImagePicker.getPictures(options).then((results) => {
       for (var i = 0; i < results.length; i++) {
-      console.log('Image URI: ' + results[i]);
-    }
-  }, (err) => { });
+        console.log('Image URI: ' + results[i]);
+      }
+    }, (err) => { });
   }
 
-  tirarFoto(){
+  tirarFoto() {
     let options;
     Camera.getPicture(options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI

@@ -16,16 +16,18 @@
 <ion-content>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let publicacao of publicacoes">
+    <ion-item-sliding *ngFor="let publicacao of posts">
       <!--item-->
       <ion-item>
         <ion-card>
-          <img *ngIf="publicacao.imagem != null" src="{{publicacao.imagem}}">
+          <div class="">
+            <img *ngIf="publicacao.LinkImagem != ''" src="{{publicacao.LinkImagem}}">
+          </div>
           <ion-card-content>
-            <ion-card-title>{{publicacao.titulo}}</ion-card-title>
-            <p *ngIf="publicacao.texto != null">{{publicacao.texto}}</p>
+            <ion-card-title *ngIf="publicacao.Titulo != ''">{{publicacao.Titulo}}</ion-card-title>
+            <p *ngIf="publicacao.Texto != ''">{{publicacao.Texto}}</p>
           </ion-card-content>
-          <ion-row *ngIf="publicacao.comentario">
+          <ion-row *ngIf="publicacao.Comentario == 'true'">
             <ion-col>
               <button ion-button icon-left clear small>
                 <ion-icon name="text"></ion-icon>

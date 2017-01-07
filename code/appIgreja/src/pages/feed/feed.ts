@@ -1,25 +1,24 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
 import { AddPostPage } from '../add-post/add-post';
 import { EditarPostPage } from '../editar-post/editar-post';
+import { PublicacaoService } from '../../providers/publicacao-service';
+import { Publicacao } from '../../model/publicacao';
 
-/*
-  Generated class for the Feed page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-feed',
   templateUrl: 'feed.html'
 })
 export class FeedPage {
+
+  private posts: Publicacao[] = [];
+
   publicacoes = [];
   addPost = AddPostPage;
   editarPost = EditarPostPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public postService: PublicacaoService) {
     //apenas para teste
     /*Modelo
       1-titulo, texto, imagem
@@ -48,7 +47,14 @@ export class FeedPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FeedPage');
+    this.postService.getPublicacoes().then(res=>{
+      if(res.type == true){
+        console.log(res.data);
+        this.posts = res.data;
+      }else{
+        console.log("error");
+      }
+    });
   }
 
   adicionarPost(){
