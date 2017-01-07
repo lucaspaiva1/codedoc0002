@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { AddPostPage } from '../add-post/add-post';
+import { EditarPostPage } from '../editar-post/editar-post';
 
 /*
   Generated class for the Feed page.
@@ -16,6 +17,7 @@ import { AddPostPage } from '../add-post/add-post';
 export class FeedPage {
   publicacoes = [];
   addPost = AddPostPage;
+  editarPost = EditarPostPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //apenas para teste
@@ -51,6 +53,10 @@ export class FeedPage {
 
   adicionarPost(){
     this.navCtrl.push(this.addPost);
+  }
+
+  editar(){
+    this.navCtrl.push(this.editarPost);
   }
 
 }
