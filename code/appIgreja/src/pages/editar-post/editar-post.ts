@@ -17,6 +17,13 @@ export class EditarPostPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
+  publicacao = [{
+    Titulo: '',
+    Texto: '',
+    TempoPermanencia: null,
+    Comentario: true
+  }];
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditarPostPage');
   }
