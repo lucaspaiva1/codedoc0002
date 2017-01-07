@@ -7,12 +7,40 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>editar-post</ion-title>
+    <ion-title>Editar post</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <!--Campos de preenchimento para criação de uma publicação (
+        -> apenas o titulo é obrigatório
+  )-->
+  <ion-list>
+    <ion-item>
+      <ion-label floating >Título</ion-label>
+      <ion-input type="text" [(ngModel)]="publicacao.Titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Texto</ion-label>
+      <ion-input type="text" [(ngModel)]="publicacao.Texto"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Data Limite</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="publicacao.TempoPermanencia"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Permitir comentários</ion-label>
+      <ion-toggle [(ngModel)]="publicacao.Comentario"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-row>
+        <button ion-button block class="botao-duplo-l" (click)="importarFoto()">Importar</button>
+        <button ion-button block class="botao-duplo-r" (click)="tirarFoto()">Tirar Foto</button>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+  <!--Botão para adicionar publicação-->
+  <button ion-button block (click)="salvar()">Salvar</button>
 </ion-content>
