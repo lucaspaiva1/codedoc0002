@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: igreja
+-- Host: localhost    Database: igreja
 -- ------------------------------------------------------
 -- Server version	5.7.16-log
 
@@ -32,7 +32,7 @@ CREATE TABLE `comentario` (
   KEY `fk_Comentario_Publicacao1_idx` (`Publicacao_IDPublicacao`),
   CONSTRAINT `fk_Comentario_Publicacao1` FOREIGN KEY (`Publicacao_IDPublicacao`) REFERENCES `publicacao` (`IDPublicacao`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Comentario_Usuario1` FOREIGN KEY (`Usuario_IDUsuario`) REFERENCES `usuario` (`IDUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +94,7 @@ CREATE TABLE `publicacao` (
   PRIMARY KEY (`IDPublicacao`),
   KEY `fk_Publicacao_Usuario1_idx` (`Usuario_IDUsuario`),
   CONSTRAINT `fk_Publicacao_Usuario1` FOREIGN KEY (`Usuario_IDUsuario`) REFERENCES `usuario` (`IDUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,6 +103,7 @@ CREATE TABLE `publicacao` (
 
 LOCK TABLES `publicacao` WRITE;
 /*!40000 ALTER TABLE `publicacao` DISABLE KEYS */;
+INSERT INTO `publicacao` VALUES (14,'2017-01-07 01:54:34','2017-12-07','s','http://www.dsoutlet.com.br/imagens/tenis.jpg','Card Imagem','Este é um exemplo de card com imagem e comentario habilitado.',1),(15,'2017-01-07 02:06:05','2017-10-02','n','','Card Somente Título','',1),(16,'2017-01-07 02:07:36','2017-08-02','s','','Titulo e Comentarios','',1),(17,'2017-01-07 02:09:32','2017-07-04','n','','','Exemplo de card apenas com legenda',1),(18,'2017-01-07 02:11:48','2017-05-02','s','http://dsoutlet.com.br/imagens/prop-masc-gd.jpg','','Homem nú',1),(23,'2017-01-07 02:28:41','2017-02-01','s','','Teste','',1);
 /*!40000 ALTER TABLE `publicacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,7 +124,7 @@ CREATE TABLE `usuario` (
   `Facebook` tinyint(4) DEFAULT NULL,
   `GooglePlus` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`IDUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,6 +133,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'teste','2007-01-01','teste','m','a',0,0);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -144,4 +146,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-06 15:10:08
+-- Dump completed on 2017-01-06 23:29:08
