@@ -28,6 +28,7 @@ import { EstruturaPage } from '../pages/estrutura/estrutura';
 import { SobrePage } from '../pages/sobre/sobre';
 import { GerenciarUsuariosPage } from '../pages/gerenciar-usuarios/gerenciar-usuarios'
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios'
+import { EditarPostPage } from '../pages/editar-post/editar-post';
 
 import firebase from 'firebase';
 
@@ -58,7 +59,8 @@ const firebaseConfig = {
     SobrePage,
     GerenciarUsuariosPage,
     BuscarUsuariosPage,
-    AddPostPage
+    AddPostPage,
+    EditarPostPage
   ],
   imports: [
     NgCalendarModule,
@@ -81,7 +83,8 @@ const firebaseConfig = {
     SobrePage,
     GerenciarUsuariosPage,
     BuscarUsuariosPage,
-    AddPostPage
+    AddPostPage,
+    EditarPostPage
   ],
   providers: [Facebook, UserService, PublicacaoService,{ provide: ErrorHandler, useClass: IonicErrorHandler }],
 })
