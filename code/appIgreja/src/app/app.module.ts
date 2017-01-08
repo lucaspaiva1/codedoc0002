@@ -29,14 +29,14 @@ import { SobrePage } from '../pages/sobre/sobre';
 import { GerenciarUsuariosPage } from '../pages/gerenciar-usuarios/gerenciar-usuarios'
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios'
 
-
 import firebase from 'firebase';
+
 const firebaseConfig = {
-    apiKey: "AIzaSyBU9-E8RRGg2tUJ4iJGUSnX2ujxX6_4pCc",
-    authDomain: "appigreja-388ee.firebaseapp.com",
-    databaseURL: "https://appigreja-388ee.firebaseio.com",
-    storageBucket: "appigreja-388ee.appspot.com",
-    messagingSenderId: "621540314068"
+    apiKey: "AIzaSyBMvaE0TDDAathAv3yXElfb4sj89UAvtBY",
+    authDomain: "testelogin-3de4c.firebaseapp.com",
+    databaseURL: "https://testelogin-3de4c.firebaseio.com",
+    storageBucket: "testelogin-3de4c.appspot.com",
+    messagingSenderId: "145120077276"
   };
 
 

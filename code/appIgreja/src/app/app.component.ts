@@ -10,6 +10,7 @@ import { SobrePage } from '../pages/sobre/sobre';
 
 
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios';
+import { UserService } from '../providers/user-service';
 
 
 @Component({
@@ -29,7 +30,11 @@ export class MyApp {
 
   nome: string = 'Nome do Usuários';
 
-  constructor(platform: Platform, public menu: MenuController) {
+  constructor(
+    platform: Platform, 
+    public menu: MenuController,
+    public userservice:UserService
+    ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -40,6 +45,7 @@ export class MyApp {
 
   openPage(page) {
     if(page == this.login){
+      this.userservice.logout();
     }
 
     this.menu.close();
