@@ -25,7 +25,7 @@ export class EditarPostPage {
     this.postService.getPublicacao(id).then(res=>{
       if(res.type == true){
         this.publicacao = res.data;
-        console.log(this.publicacao);
+        console.log(res.message);
       }else{
         console.log(res.message);
         this.navCtrl.pop();

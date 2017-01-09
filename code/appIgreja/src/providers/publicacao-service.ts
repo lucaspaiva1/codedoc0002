@@ -18,7 +18,6 @@ export class PublicacaoService {
   }
 
   deletePublicacao(id: number): Promise<any>{
-    console.log(id);
     return this.http
       .post('http://dsoutlet.com.br/igrejaApi/deletePublicacao.php', JSON.stringify({id: id}), { headers: this.headers })
       .toPromise()
@@ -59,7 +58,6 @@ export class PublicacaoService {
   private extractDelData(res: Response) {
     let retorno = { type: false, message: '' };
     let data = res.json();
-    console.log(res);
     if (data === true) {
       retorno.type = true;
       retorno.message = 'Publicação Apagada';
@@ -97,7 +95,6 @@ export class PublicacaoService {
   private extractEditData(res: Response) {
     let retorno = { type: false, message: '' };
     let data = res.json();
-    console.log(res);
     if (data === true) {
       retorno.type = true;
       retorno.message = 'Publicação Editada';
