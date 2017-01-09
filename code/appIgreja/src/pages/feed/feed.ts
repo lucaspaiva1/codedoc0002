@@ -39,11 +39,22 @@ export class FeedPage {
     });
   }
 
-  adicionarPost(){
+  private adicionarPost(){
     this.navCtrl.push(this.addPost);
   }
 
-  editar(id: number){
+  private deletar(id: number){
+    this.postService.deletePublicacao(id).then(res=>{
+      if(res.type == true){
+        console.log(res.message);
+        this.carregarFeed();
+      }else{
+        console.log(res.message);
+      }
+    });
+  }
+
+  private editar(id: number){
     this.navCtrl.push(this.editarPost, {
       id: id
     });

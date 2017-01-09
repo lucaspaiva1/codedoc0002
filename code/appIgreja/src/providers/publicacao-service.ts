@@ -17,8 +17,16 @@ export class PublicacaoService {
 
   }
 
+  deletePublicacao(id: number): Promise<any>{
+    console.log(id);
+    return this.http
+      .post('http://dsoutlet.com.br/igrejaApi/deletePublicacao.php', JSON.stringify({id: id}), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractDelData(res))
+      .catch(this.handleErrorMessage);
+  }
+
   editPublicacao(publicacao: Publicacao): Promise<any>{
-    console.log(publicacao);
     return this.http
       .post('http://dsoutlet.com.br/igrejaApi/editPublicacao.php', JSON.stringify(publicacao), { headers: this.headers })
       .toPromise()
@@ -46,6 +54,19 @@ export class PublicacaoService {
       .toPromise()
       .then(res => this.extractNewData(res))
       .catch(this.handleErrorMessage);
+  }
+
+  private extractDelData(res: Response) {
+    let retorno = { type: false, message: '' };
+    let data = res.json();
+    console.log(res);
+    if (data === true) {
+      retorno.type = true;
+      retorno.message = 'Publicação Apagada';
+    } else {
+      retorno.message = 'Ocorreu um erro!';
+    }
+    return retorno;
   }
 
   private extractGetData2(res: Response) {
