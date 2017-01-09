@@ -23,10 +23,16 @@
 				$id = $_GET["id"];
 				$sql = "SELECT * FROM publicacao WHERE IDPublicacao = '$id'";
 				$result = $con->query($sql);
-				while($row=$result->fetch_assoc()){
-					$vetor[] = $row;
+				
+				$row = $result->fetch_assoc();
+				
+				if($row['Comentario'] == 'n'){
+					$row['Comentario'] = false;
+				}else {
+					$row['Comentario'] = true;
 				}
-				echo json_encode($vetor);	
+				
+				echo json_encode($row);	
 			}
 		} 	
 ?>

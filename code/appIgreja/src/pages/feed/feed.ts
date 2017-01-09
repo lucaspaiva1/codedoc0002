@@ -43,8 +43,10 @@ export class FeedPage {
     this.navCtrl.push(this.addPost);
   }
 
-  editar(){
-    this.navCtrl.push(this.editarPost);
+  editar(id: number){
+    this.navCtrl.push(this.editarPost, {
+      id: id
+    });
   }
 
 }
