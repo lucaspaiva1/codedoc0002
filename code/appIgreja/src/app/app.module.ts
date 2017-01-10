@@ -20,6 +20,7 @@ import { FeedPage } from '../pages/feed/feed';
 import { CalendarioPage } from '../pages/calendario/calendario';
 import { BuscaPage } from '../pages/busca/busca';
 import { AddPostPage } from '../pages/add-post/add-post';
+import { ComentariosPage } from '../pages/comentarios/comentarios';
 
 //telas do nav menu
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -60,7 +61,8 @@ const firebaseConfig = {
     GerenciarUsuariosPage,
     BuscarUsuariosPage,
     AddPostPage,
-    EditarPostPage
+    EditarPostPage,
+    ComentariosPage
   ],
   imports: [
     NgCalendarModule,
@@ -84,7 +86,8 @@ const firebaseConfig = {
     GerenciarUsuariosPage,
     BuscarUsuariosPage,
     AddPostPage,
-    EditarPostPage
+    EditarPostPage,
+    ComentariosPage
   ],
   providers: [Facebook, UserService, PublicacaoService,{ provide: ErrorHandler, useClass: IonicErrorHandler }],
 })

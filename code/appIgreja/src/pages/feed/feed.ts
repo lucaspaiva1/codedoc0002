@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AddPostPage } from '../add-post/add-post';
 import { EditarPostPage } from '../editar-post/editar-post';
+import { ComentariosPage } from '../comentarios/comentarios';
 import { PublicacaoService } from '../../providers/publicacao-service';
 import { Publicacao } from '../../model/publicacao';
 
@@ -16,6 +17,7 @@ export class FeedPage {
 
   addPost = AddPostPage;
   editarPost = EditarPostPage;
+  comentarios = ComentariosPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public postService: PublicacaoService) {
 
@@ -60,4 +62,9 @@ export class FeedPage {
     });
   }
 
+  private abrirComentarios(id: number){
+    this.navCtrl.push(this.comentarios, {
+      id: id
+    })
+  }
 }

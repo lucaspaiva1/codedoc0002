@@ -29,7 +29,7 @@
           </ion-card-content>
           <ion-row *ngIf="publicacao.Comentario == true">
             <ion-col>
-              <button ion-button icon-left clear small>
+              <button ion-button icon-left clear small (click)="abrirComentarios(publicacao.IDPublicacao)">
                 <ion-icon name="text"></ion-icon>
                 <div>Comentar</div>
               </button>
