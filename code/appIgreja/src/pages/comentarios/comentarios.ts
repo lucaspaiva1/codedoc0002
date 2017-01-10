@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { Publicacao } from '../../model/publicacao';
+import { ComentarioService } from '../../providers/comentario-service';
+import { Comentario } from '../../model/comentario';
 
 /*
   Generated class for the Comentarios page.
@@ -15,28 +16,39 @@ import { Publicacao } from '../../model/publicacao';
 })
 export class ComentariosPage {
 
-  private publicacao: Publicacao = new Publicacao();
-  comentarios = [];
-  novoComentario: string = '';
+  private postID: number;
+  private comentarios: Comentario[] = [];
+  private novoComentario: Comentario = new Comentario();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    let id = navParams.get('id');
-    this.comentarios.push({
-      texto: 'Cometario de teste'
-    });
-    this.comentarios.push({
-      texto: 'Cometario exemplo'
-    });
-    this.comentarios.push({
-      texto: 'Cometario longo para texte, este comentário possui mais de uma linha e é utilizado para exemplificar como é a exibição de comentários longos'
+  constructor(public navCtrl: NavController, public navParams: NavParams, public comentService: ComentarioService) {
+    this.postID = navParams.get('id');
+    this.carregarComentarios();
+
+  }
+
+  private carregarComentarios(){
+    this.comentService.getComentarios(this.postID).then(res=>{
+      if(res.type == true){
+        this.comentarios = res.data;
+      }else{
+        console.log("error");
+      }
     });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ComentariosPage');
-  }
 
-  comentar(){
-    
+  private comentar(){
+    this.novoComentario.Publicacao_IDPublicacao = this.postID;
+    console.log(this.novoComentario);
+    this.comentService.addComentario(this.novoComentario).then(res=>{
+      if(res.type == true){
+        console.log(res.message);
+        this.novoComentario = new Comentario();
+        this.carregarComentarios();
+      }else{
+        console.log(res.message);
+      }
+    });
+
   }
 }

@@ -17,14 +17,14 @@
       <ion-avatar item-left>
         <img src="http://kleberaquino.com.br/wp-content/uploads/2016/02/anonimo.png">
       </ion-avatar>
-      {{comentario.texto}}
+      {{ comentario.Texto }}
     </ion-item>
   </ion-card>
 
   <ion-row>
     <ion-col width-80>
       <ion-item>
-        <ion-input type="text" placeholder="Cometário" [(ngModel)]="novoComentario"></ion-input>
+        <ion-input type="text" placeholder="Comentar" [(ngModel)]="novoComentario.Texto"></ion-input>
       </ion-item>
     </ion-col>
 

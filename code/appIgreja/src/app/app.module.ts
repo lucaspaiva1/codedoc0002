@@ -7,6 +7,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
 import { Facebook } from 'ionic-native';
 import { UserService } from '../providers/user-service';
 import { PublicacaoService } from '../providers/publicacao-service';
+import { ComentarioService } from '../providers/comentario-service';
 
 //Login
 import { LoginPage } from '../pages/login/login/login';
@@ -89,7 +90,7 @@ const firebaseConfig = {
     EditarPostPage,
     ComentariosPage
   ],
-  providers: [Facebook, UserService, PublicacaoService,{ provide: ErrorHandler, useClass: IonicErrorHandler }],
+  providers: [Facebook, UserService, PublicacaoService, ComentarioService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
 })
 export class AppModule {
   constructor(){
