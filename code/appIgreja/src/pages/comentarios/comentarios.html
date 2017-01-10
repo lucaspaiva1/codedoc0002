@@ -14,12 +14,17 @@
   <!--Card referente ao comentário-->
   <ion-card *ngFor="let comentario of comentarios">
     <ion-item>
-      <ion-avatar item-left>
-        <img src="http://kleberaquino.com.br/wp-content/uploads/2016/02/anonimo.png">
-      </ion-avatar>
-      {{ comentario.Texto }}
-    </ion-item>
+    <ion-avatar item-left>
+      <img src="http://kleberaquino.com.br/wp-content/uploads/2016/02/anonimo.png">
+    </ion-avatar>
+    <h2>Usuario</h2>
+  </ion-item>
+  <ion-card-content>
+   <p>{{ comentario.Texto }}</p>
+ </ion-card-content>
   </ion-card>
+
+
 
   <ion-row>
     <ion-col width-80>
