@@ -27,10 +27,6 @@ export class FeedPage {
     this.carregarFeed();
   }
 
-  ionViewDidLoad() {
-    this.carregarFeed();
-  }
-
   private carregarFeed(){
     this.postService.getPublicacoes().then(res=>{
       if(res.type == true){

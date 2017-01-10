@@ -107,24 +107,6 @@ LOCK TABLES `publicacao` WRITE;
 INSERT INTO `publicacao` VALUES (14,'2017-01-07 01:54:34','2017-12-07','s','http://www.dsoutlet.com.br/imagens/tenis.jpg','Card Imagem','Este é um exemplo de card com imagem e comentario habilitado.',1),(15,'2017-01-07 02:06:05','2017-10-02','n','','Card Somente Título','',1),(16,'2017-01-07 02:07:36','2017-08-02','s','','Titulo e Comentarios','',1),(17,'2017-01-07 02:09:32','2017-07-04','n','','','Exemplo de card apenas com legenda',1),(18,'2017-01-07 02:11:48','2017-05-02','s','http://dsoutlet.com.br/imagens/prop-masc-gd.jpg','','Homem nú',1),(23,'2017-01-07 02:28:41','2017-02-01','s','','Teste','',1);
 /*!40000 ALTER TABLE `publicacao` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `igreja`.`publicacao_BEFORE_DELETE` BEFORE DELETE ON `publicacao` FOR EACH ROW
-BEGIN
-	delete from comentario where comentario.Publicacao_IDPublicacao = OLD.IDPublicacao;
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `usuario`
@@ -165,4 +147,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-10 15:16:32
+-- Dump completed on 2017-01-10 15:28:19
