@@ -2,11 +2,13 @@ import { NgModule, ErrorHandler} from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { NgCalendarModule  } from 'ionic2-calendar';
+import { Elastic } from 'angular2-elastic';
 
 //providers
 import { Facebook } from 'ionic-native';
 import { UserService } from '../providers/user-service';
 import { PublicacaoService } from '../providers/publicacao-service';
+import { ComentarioService } from '../providers/comentario-service';
 
 //Login
 import { LoginPage } from '../pages/login/login/login';
@@ -20,6 +22,7 @@ import { FeedPage } from '../pages/feed/feed';
 import { CalendarioPage } from '../pages/calendario/calendario';
 import { BuscaPage } from '../pages/busca/busca';
 import { AddPostPage } from '../pages/add-post/add-post';
+import { ComentariosPage } from '../pages/comentarios/comentarios';
 
 //telas do nav menu
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -60,10 +63,12 @@ const firebaseConfig = {
     GerenciarUsuariosPage,
     BuscarUsuariosPage,
     AddPostPage,
-    EditarPostPage
+    EditarPostPage,
+    ComentariosPage,
   ],
   imports: [
     NgCalendarModule,
+    Elastic,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -84,9 +89,10 @@ const firebaseConfig = {
     GerenciarUsuariosPage,
     BuscarUsuariosPage,
     AddPostPage,
-    EditarPostPage
+    EditarPostPage,
+    ComentariosPage,
   ],
-  providers: [Facebook, UserService, PublicacaoService,{ provide: ErrorHandler, useClass: IonicErrorHandler }],
+  providers: [Facebook, UserService, PublicacaoService, ComentarioService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
 })
 export class AppModule {
   constructor(){

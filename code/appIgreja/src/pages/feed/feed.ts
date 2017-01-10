@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AddPostPage } from '../add-post/add-post';
 import { EditarPostPage } from '../editar-post/editar-post';
+import { ComentariosPage } from '../comentarios/comentarios';
 import { PublicacaoService } from '../../providers/publicacao-service';
 import { Publicacao } from '../../model/publicacao';
 
@@ -16,16 +17,13 @@ export class FeedPage {
 
   addPost = AddPostPage;
   editarPost = EditarPostPage;
+  comentarios = ComentariosPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public postService: PublicacaoService) {
 
   }
 
   ionViewWillEnter(){
-    this.carregarFeed();
-  }
-
-  ionViewDidLoad() {
     this.carregarFeed();
   }
 
@@ -39,12 +37,30 @@ export class FeedPage {
     });
   }
 
-  adicionarPost(){
+  private adicionarPost(){
     this.navCtrl.push(this.addPost);
   }
 
-  editar(){
-    this.navCtrl.push(this.editarPost);
+  private deletar(id: number){
+    this.postService.deletePublicacao(id).then(res=>{
+      if(res.type == true){
+        console.log(res.message);
+        this.carregarFeed();
+      }else{
+        console.log(res.message);
+      }
+    });
   }
 
+  private editar(id: number){
+    this.navCtrl.push(this.editarPost, {
+      id: id
+    });
+  }
+
+  private abrirComentarios(id: number){
+    this.navCtrl.push(this.comentarios, {
+      id: id
+    })
+  }
 }

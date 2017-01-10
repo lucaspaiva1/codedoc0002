@@ -3,6 +3,9 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ImagePicker } from 'ionic-native';
 import { Camera } from 'ionic-native';
 
+import { Publicacao } from '../../model/publicacao';
+import { PublicacaoService } from '../../providers/publicacao-service';
+
 /*
   Generated class for the EditarPost page.
 
@@ -15,17 +18,19 @@ import { Camera } from 'ionic-native';
 })
 export class EditarPostPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  private publicacao: Publicacao = new Publicacao();
 
-  publicacao = [{
-    Titulo: '',
-    Texto: '',
-    TempoPermanencia: null,
-    Comentario: true
-  }];
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EditarPostPage');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public postService: PublicacaoService) {
+    let id = navParams.get('id');
+    this.postService.getPublicacao(id).then(res=>{
+      if(res.type == true){
+        this.publicacao = res.data;
+        console.log(res.message);
+      }else{
+        console.log(res.message);
+        this.navCtrl.pop();
+      }
+    });
   }
 
   importarFoto(){
@@ -49,6 +54,13 @@ export class EditarPostPage {
   }
 
   salvar(){
-    this.navCtrl.pop();
+    this.postService.editPublicacao(this.publicacao).then(res=>{
+      if(res.type == true){
+        this.navCtrl.pop();
+        console.log(res.message);
+      }else{
+        console.log(res.message);
+      }
+    });
   }
 }

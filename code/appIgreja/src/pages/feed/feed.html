@@ -25,11 +25,13 @@
           </div>
           <ion-card-content>
             <ion-card-title *ngIf="publicacao.Titulo != ''">{{publicacao.Titulo}}</ion-card-title>
-            <p *ngIf="publicacao.Texto != ''">{{publicacao.Texto}}</p>
+            <ion-item *ngIf="publicacao.Texto != ''" >
+              <ion-textarea fz-elastic value={{publicacao.Texto}} disabled ></ion-textarea>
+            </ion-item>
           </ion-card-content>
           <ion-row *ngIf="publicacao.Comentario == true">
             <ion-col>
-              <button ion-button icon-left clear small>
+              <button ion-button icon-left clear small (click)="abrirComentarios(publicacao.IDPublicacao)">
                 <ion-icon name="text"></ion-icon>
                 <div>Comentar</div>
               </button>
@@ -39,8 +41,8 @@
       </ion-item>
       <!--sliding options-->
       <ion-item-options side="right">
-        <button ion-button icon-left (click)="editar()"><ion-icon name="trash"></ion-icon>Editar</button>
-        <button ion-button icon-left color="danger" (click)="deletar()"><ion-icon name="create"></ion-icon>Deletar</button>
+        <button ion-button icon-left (click)="editar(publicacao.IDPublicacao)"><ion-icon name="trash"></ion-icon>Editar</button>
+        <button ion-button icon-left color="danger" (click)="deletar(publicacao.IDPublicacao)"><ion-icon name="create"></ion-icon>Deletar</button>
       </ion-item-options>
 
     </ion-item-sliding>
