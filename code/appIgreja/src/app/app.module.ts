@@ -2,7 +2,7 @@ import { NgModule, ErrorHandler} from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { NgCalendarModule  } from 'ionic2-calendar';
-import { Autosize } from 'ionic2-autosize';
+import { Elastic } from 'angular2-elastic';
 
 //providers
 import { Facebook } from 'ionic-native';
@@ -65,11 +65,10 @@ const firebaseConfig = {
     AddPostPage,
     EditarPostPage,
     ComentariosPage,
-    Autosize
   ],
   imports: [
     NgCalendarModule,
-    Autosize,
+    Elastic,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -92,7 +91,6 @@ const firebaseConfig = {
     AddPostPage,
     EditarPostPage,
     ComentariosPage,
-    Autosize
   ],
   providers: [Facebook, UserService, PublicacaoService, ComentarioService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
 })

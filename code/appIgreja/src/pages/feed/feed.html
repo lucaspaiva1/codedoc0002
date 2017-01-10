@@ -26,7 +26,7 @@
           <ion-card-content>
             <ion-card-title *ngIf="publicacao.Titulo != ''">{{publicacao.Titulo}}</ion-card-title>
             <ion-item *ngIf="publicacao.Texto != ''" >
-              <ion-textarea class="texto" value={{publicacao.Texto}} disabled color="dark" ></ion-textarea>
+              <ion-textarea fz-elastic value={{publicacao.Texto}} disabled ></ion-textarea>
             </ion-item>
           </ion-card-content>
           <ion-row *ngIf="publicacao.Comentario == true">
