@@ -17,6 +17,7 @@ export class ComentariosPage {
 
   private publicacao: Publicacao = new Publicacao();
   comentarios = [];
+  novoComentario: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     let id = navParams.get('id');
@@ -35,4 +36,7 @@ export class ComentariosPage {
     console.log('ionViewDidLoad ComentariosPage');
   }
 
+  comentar(){
+    
+  }
 }

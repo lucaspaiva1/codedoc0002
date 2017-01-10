@@ -24,12 +24,12 @@
   <ion-row>
     <ion-col width-80>
       <ion-item>
-        <ion-input type="text" placeholder="Cometário"></ion-input>
+        <ion-input type="text" placeholder="Cometário" [(ngModel)]="novoComentario"></ion-input>
       </ion-item>
     </ion-col>
 
     <ion-col width-20>
-      <button ion-button icon-only clear><ion-icon name="send"></ion-icon></button>
+      <button ion-button icon-only clear (click)="comentar()"><ion-icon name="send"></ion-icon></button>
     </ion-col>
   </ion-row>
 
