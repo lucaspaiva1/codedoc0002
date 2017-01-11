@@ -16,34 +16,34 @@
   <ion-list>
     <ion-item>
       <ion-label floating >Título</ion-label>
-      <ion-input type="text" [(ngModel)]="evento.Titulo"></ion-input>
+      <ion-input type="text" [(ngModel)]="Titulo"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating >Descrição</ion-label>
-      <ion-input type="text" [(ngModel)]="evento.Descricao"></ion-input>
+      <ion-input type="text" [(ngModel)]="Descricao"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating >Início</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="evento.DataInicio"></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="DataInicio"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label floating >Término</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="evento.DataFim"></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="DataFim"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Dia Inteiro</ion-label>
-      <ion-toggle [(ngModel)]="evento.Allday"></ion-toggle>
+      <ion-toggle [(ngModel)]="Allday"></ion-toggle>
     </ion-item>
     <!--Caso não seja dia inteiro, escolher horários-->
-    <ion-item>
+    <ion-item *ngIf="!Allday">
       <ion-label floating >Horário de início</ion-label>
-      <ion-datetime displayFormat="HH/mm" [(ngModel)]="evento.HoraInicio"></ion-datetime>
+      <ion-datetime displayFormat="HH/mm" [(ngModel)]="HoraInicio"></ion-datetime>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="!Allday">
       <ion-label floating >Horário de término</ion-label>
-      <ion-datetime displayFormat="HH/mm" [(ngModel)]="evento.HoraFim"></ion-datetime>
+      <ion-datetime displayFormat="HH/mm" [(ngModel)]="HoraFim"></ion-datetime>
     </ion-item>
   </ion-list>
   <!--Botão para adicionar evento-->
-  <button ion-button block (click)="adicionar()">Adicionar</button>
+  <button ion-button block (click)="adicionar()">Adicionar Evento</button>
 </ion-content>

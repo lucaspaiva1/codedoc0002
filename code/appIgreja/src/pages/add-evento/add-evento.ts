@@ -12,15 +12,15 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'add-evento.html'
 })
 export class AddEventoPage {
-  eventos = ({
-    Titulo: '',
-    Descricao: '',
-    DataInicio: null,
-    DataFim: null,
-    Allday: false,
-    HoraInicio: null,
-    HoraFim: null
-  });
+
+  Titulo: string ='';
+  Descricao: string = '';
+  DataInicio = null;
+  DataFim = null;
+  Allday: boolean = false;
+  HoraInicio = null;
+  HoraFim = null;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
