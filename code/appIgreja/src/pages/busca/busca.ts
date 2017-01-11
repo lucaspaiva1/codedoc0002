@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import { AddGrupoPage } from '../add-grupo/add-grupo';
+import { EditarGrupoPage } from '../editar-grupo/editar-grupo';
 /*
   Generated class for the Busca page.
 
@@ -13,6 +14,8 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class BuscaPage {
   grupos = [];
+  editarGrupo = EditarGrupoPage;
+  addGrupo = AddGrupoPage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.grupos.push({
       nome: 'Grupo Jovem'
@@ -37,4 +40,15 @@ export class BuscaPage {
     console.log('ionViewDidLoad BuscaPage');
   }
 
+  adicionarGupo(){
+    this.navCtrl.push(this.addGrupo);
+  }
+
+  editar(){
+    this.navCtrl.push(this.editarGrupo);
+  }
+
+  deletar(){
+
+  }
 }

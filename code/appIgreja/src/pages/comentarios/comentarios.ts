@@ -51,4 +51,8 @@ export class ComentariosPage {
     });
 
   }
+
+  private editar(id: number){}
+
+  private deletar(id: number){}
 }

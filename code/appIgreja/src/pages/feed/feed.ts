@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AddPostPage } from '../add-post/add-post';
 import { EditarPostPage } from '../editar-post/editar-post';
 import { ComentariosPage } from '../comentarios/comentarios';
@@ -14,17 +14,21 @@ import { Publicacao } from '../../model/publicacao';
 export class FeedPage {
 
   private publicacoes: Publicacao[] = [];
-
   addPost = AddPostPage;
   editarPost = EditarPostPage;
   comentarios = ComentariosPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public postService: PublicacaoService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public postService: PublicacaoService, public loadingController: LoadingController) {
 
   }
 
   ionViewWillEnter(){
+    let loader = this.loadingController.create({
+      content: "your message"
+    });
+    loader.present();
     this.carregarFeed();
+    loader.dismiss();
   }
 
   private carregarFeed(){

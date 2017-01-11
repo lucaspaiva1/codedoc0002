@@ -14,5 +14,37 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      <ion-label floating >Título</ion-label>
+      <ion-input type="text" [(ngModel)]="Titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Descrição</ion-label>
+      <ion-input type="text" [(ngModel)]="Descricao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Início</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="DataInicio"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Término</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="DataFim"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Dia Inteiro</ion-label>
+      <ion-toggle [(ngModel)]="Allday"></ion-toggle>
+    </ion-item>
+    <!--Caso não seja dia inteiro, escolher horários-->
+    <ion-item *ngIf="!Allday">
+      <ion-label floating >Horário de início</ion-label>
+      <ion-datetime displayFormat="HH/mm" [(ngModel)]="HoraInicio"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="!Allday">
+      <ion-label floating >Horário de término</ion-label>
+      <ion-datetime displayFormat="HH/mm" [(ngModel)]="HoraFim"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <!--Botão para adicionar evento-->
+  <button ion-button block (click)="salvar()">Salvar Evento</button>
 </ion-content>

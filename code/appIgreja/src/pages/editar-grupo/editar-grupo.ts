@@ -12,11 +12,48 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'editar-grupo.html'
 })
 export class EditarGrupoPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  private users = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.initializeUsers();
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditarGrupoPage');
   }
 
+  initializeUsers(){
+    var aux = [];
+    this.users = aux;
+    this.users.push({
+      nome: 'Fulano',
+      email: 'fulano@gmail.com'
+    });
+    this.users.push({
+      nome: 'Gabriel',
+      email: 'gabriel@gmail.com'
+    });
+    this.users.push({
+      nome: 'Ricardo',
+      email: 'Ricardo@gmail.com'
+    });
+    this.users.push({
+      nome: 'Lucas',
+      email: 'lucas@gmail.com'
+    });
+  }
+
+  getItems(ev: any) {
+    // Reset items back to all of the items
+    this.initializeUsers();
+
+    // set val to the value of the searchbar
+    let val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.users = this.users.filter((item) => {
+        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
 }

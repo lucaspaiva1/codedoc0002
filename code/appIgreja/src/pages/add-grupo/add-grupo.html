@@ -7,12 +7,43 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>add-grupo</ion-title>
+    <ion-title>Adicionar Grupo</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="nome"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <!--Botão para adicionar evento-->
+  <button class="margem-botton" ion-button block (click)="salvar()">Salvar Evento</button>
+
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+    <ion-list-header>
+      Selecione os representantes:
+    </ion-list-header>
+
+    <ion-item *ngFor="let user of users">
+
+    <ion-label>
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="http://kleberaquino.com.br/wp-content/uploads/2016/02/anonimo.png">
+        </ion-avatar>
+        <h2>{{user.nome}}</h2>
+        <p>{{user.email}}</p>
+      </ion-item>
+    </ion-label>
+
+    <ion-toggle></ion-toggle>
+  </ion-item>
+  </ion-list>
 
 </ion-content>

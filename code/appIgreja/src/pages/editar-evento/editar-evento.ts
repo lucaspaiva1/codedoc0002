@@ -13,6 +13,14 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class EditarEventoPage {
 
+  Titulo: string ='';
+  Descricao: string = '';
+  DataInicio = null;
+  DataFim = null;
+  Allday: boolean = false;
+  HoraInicio = null;
+  HoraFim = null;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
