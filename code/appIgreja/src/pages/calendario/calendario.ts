@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { NgCalendarModule  } from 'ionic2-calendar';
+import { AddEventoPage } from '../add-evento/add-evento';
 
 /*
   Generated class for the Calendario page.
@@ -13,6 +14,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
   templateUrl: 'calendario.html'
 })
 export class CalendarioPage {
+  addEvento = AddEventoPage;
   calendar;
   eventSource;
   isToday:boolean;
@@ -70,4 +72,7 @@ export class CalendarioPage {
     return events;
   }
 
+  adicionar(){
+    this.navCtrl.push(this.addEvento);
+  }
 }

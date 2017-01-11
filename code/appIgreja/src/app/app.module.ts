@@ -23,6 +23,11 @@ import { CalendarioPage } from '../pages/calendario/calendario';
 import { BuscaPage } from '../pages/busca/busca';
 import { AddPostPage } from '../pages/add-post/add-post';
 import { ComentariosPage } from '../pages/comentarios/comentarios';
+import { EditarPostPage } from '../pages/editar-post/editar-post';
+import { AddEventoPage } from '../pages/add-evento/add-evento';
+import { AddGrupoPage } from '../pages/add-grupo/add-grupo';
+import { EditarEventoPage } from '../pages/editar-evento/editar-evento';
+import { EditarGrupoPage } from '../pages/editar-grupo/editar-grupo';
 
 //telas do nav menu
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -31,7 +36,7 @@ import { EstruturaPage } from '../pages/estrutura/estrutura';
 import { SobrePage } from '../pages/sobre/sobre';
 import { GerenciarUsuariosPage } from '../pages/gerenciar-usuarios/gerenciar-usuarios'
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios'
-import { EditarPostPage } from '../pages/editar-post/editar-post';
+
 
 
 import firebase from 'firebase';
@@ -65,6 +70,10 @@ const firebaseConfig = {
     AddPostPage,
     EditarPostPage,
     ComentariosPage,
+    AddEventoPage,
+    AddGrupoPage,
+    EditarEventoPage,
+    EditarGrupoPage
   ],
   imports: [
     NgCalendarModule,
@@ -91,6 +100,10 @@ const firebaseConfig = {
     AddPostPage,
     EditarPostPage,
     ComentariosPage,
+    AddEventoPage,
+    AddGrupoPage,
+    EditarEventoPage,
+    EditarGrupoPage
   ],
   providers: [Facebook, UserService, PublicacaoService, ComentarioService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
 })
