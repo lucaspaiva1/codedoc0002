@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ActionSheetController } from 'ionic-angular';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { AddEventoPage } from '../add-evento/add-evento';
+import { EditarEventoPage } from '../editar-evento/editar-evento';
+import { BuscaEventosPage } from '../busca-eventos/busca-eventos';
 import { EventoService } from '../../providers/evento-service';
 import { Evento } from '../../model/evento';
 
@@ -19,13 +21,15 @@ export class CalendarioPage {
 
   private eventos: Evento[] = [];
 
+  editarEvento = EditarEventoPage;
   addEvento = AddEventoPage;
+  buscaEventos = BuscaEventosPage;
   calendar;
   eventSource;
   isToday: boolean;
   mes: string = 'Dezembro'; //titulo
 
-  constructor(public calendarMd: NgCalendarModule, public navCtrl: NavController, public navParams: NavParams, public eventoService: EventoService) {
+  constructor(public actionSheetCtrl: ActionSheetController, public loadingController: LoadingController, public calendarMd: NgCalendarModule, public navCtrl: NavController, public navParams: NavParams, public eventoService: EventoService) {
     this.calendar = {
       mode: 'month',
       currentDate: new Date()
@@ -33,7 +37,12 @@ export class CalendarioPage {
   }
 
   ionViewWillEnter() {
+    let loader = this.loadingController.create({
+      content: "Carregando eventos"
+    });
+    loader.present();
     this.getEventos();
+    loader.dismiss();
   }
 
   // funções do calendario
@@ -44,8 +53,8 @@ export class CalendarioPage {
 
   }
 
-  onEventSelected(event) {
-    //criar alerta se necessário
+  onEventSelected(event) { // evento diparado quando um evendo é selecionado na lista
+    this.navCtrl.push(this.editarEvento);
   }
 
   onViewTitleChanged = (title: string) => {
@@ -85,5 +94,9 @@ export class CalendarioPage {
 
   private adicionar() {
     this.navCtrl.push(this.addEvento);
+  }
+
+  buscar(){
+    this.navCtrl.push(this.buscaEventos);
   }
 }

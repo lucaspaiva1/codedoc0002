@@ -29,6 +29,7 @@ import { AddEventoPage } from '../pages/add-evento/add-evento';
 import { AddGrupoPage } from '../pages/add-grupo/add-grupo';
 import { EditarEventoPage } from '../pages/editar-evento/editar-evento';
 import { EditarGrupoPage } from '../pages/editar-grupo/editar-grupo';
+import { BuscaEventosPage } from '../pages/busca-eventos/busca-eventos';
 
 //telas do nav menu
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -74,7 +75,8 @@ const firebaseConfig = {
     AddEventoPage,
     AddGrupoPage,
     EditarEventoPage,
-    EditarGrupoPage
+    EditarGrupoPage,
+    BuscaEventosPage
   ],
   imports: [
     NgCalendarModule,
@@ -104,7 +106,8 @@ const firebaseConfig = {
     AddEventoPage,
     AddGrupoPage,
     EditarEventoPage,
-    EditarGrupoPage
+    EditarGrupoPage,
+    BuscaEventosPage
   ],
   providers: [Facebook, UserService, PublicacaoService, ComentarioService, EventoService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
 })

@@ -20,6 +20,7 @@ export class EditarEventoPage {
   Allday: boolean = false;
   HoraInicio = null;
   HoraFim = null;
+  editar = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
@@ -27,4 +28,16 @@ export class EditarEventoPage {
     console.log('ionViewDidLoad EditarEventoPage');
   }
 
+  habEditar(){
+    this.editar == true;
+  }
+  salvar(){
+
+  }
+  cancelar(){
+
+  }
+  excluir(){
+    
+  }
 }

@@ -24,7 +24,7 @@ export class FeedPage {
 
   ionViewWillEnter(){
     let loader = this.loadingController.create({
-      content: "your message"
+      content: "Carregando Publicações"
     });
     loader.present();
     this.carregarFeed();
