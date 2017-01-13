@@ -3,7 +3,6 @@ import { Permissao } from './permissao';
 
 export class User {
     public id: number;
-    public uid:number;//codigo do firebase
     public nome: string;
     public ultimoNome: string;
     public genero: Generos;
@@ -13,6 +12,7 @@ export class User {
     public permissao: Permissao;
     public foto:string;
     public nascimento:Date;
+    public connected:boolean=false;
 
 
     constructor() {

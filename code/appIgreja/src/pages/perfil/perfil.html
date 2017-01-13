@@ -39,12 +39,16 @@
       <ion-input type="email" formControlName="email" [disabled]="!editar"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Senha</ion-label>
+      <ion-label floating>Senha Atual</ion-label>
       <ion-input type="text" formControlName="senha" [disabled]="!editar"></ion-input>
     </ion-item>
     <ion-item>
+      <ion-label floating>Nova Senha</ion-label>
+      <ion-input type="text" formControlName="senha" [disabled]="user.senhaatual==''"></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label floating>Repetir Senha</ion-label>
-      <ion-input type="password" formControlName="repSenha" [disabled]="!editar" [hidden]="!editar"></ion-input>
+      <ion-input type="password" formControlName="repSenha" [disabled]="!editar" [hidden]="user.senhaatual==''"></ion-input>
     </ion-item>
   </form>
   <div class="login-button-div">

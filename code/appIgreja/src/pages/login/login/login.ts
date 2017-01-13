@@ -7,6 +7,9 @@ import { CadastrarNovoUsuarioPage } from '../cadastrar-novo-usuario/cadastrar-no
 
 //providers
 import { FacebookService } from '../../../providers/facebook-service';
+import { UserService } from '../../../providers/user-service';
+
+import { User } from '../../../model/User';
 
 /*
   Generated class for the Login page.
@@ -23,30 +26,37 @@ export class LoginPage {
   loginEmail = LoginEmailPage;
   cadastrarNovoUser = CadastrarNovoUsuarioPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, menu: MenuController, public facebookService: FacebookService) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    menu: MenuController,
+    public facebookService: FacebookService,
+    public userService: UserService
+  ) {
     menu.enable(false);
 
-  }
-
-  ionViewDidLoad() {
-    //this.facebookService.status().then(response => {
-    //  if (response == 'connected') {
-    //    this.navCtrl.setRoot(TelaPrincipalPage);
-    //  }
-    //});
+    //verifica ser a pessoa esta conectada
+    this.userService.get().then(response => {
+      if (response.connected) {
+        this.navCtrl.setRoot(TelaPrincipalPage);
+      }
+    }
+    );
   }
 
   logar(tipo) { //verifica a modalidade de login escolhida
     if (tipo == "facebook") {// login com facebook
+      let userteste = new User();
+      userteste.connected = true;
+      this.userService.set(userteste);
       this.facebookService.logar().then(response => {
-        if (response) {
+        if (response.connected) {
           this.navCtrl.setRoot(TelaPrincipalPage);
         } else {
           alert("erro");
         }
       });
     } else if (tipo == "google") {// login com google
-      this.facebookService.status().then(response => alert(response))
     }
   }
 
