@@ -8,9 +8,10 @@ import { ContatoPage } from '../pages/contato/contato';
 import { EstruturaPage } from '../pages/estrutura/estrutura';
 import { SobrePage } from '../pages/sobre/sobre';
 
+import { FacebookService } from '../providers/facebook-service';
+
 
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios';
-import { UserService } from '../providers/user-service';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class MyApp {
   constructor(
     platform: Platform, 
     public menu: MenuController,
-    public userservice:UserService
+    public facebookService: FacebookService
     ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -44,8 +45,8 @@ export class MyApp {
   }
 
   openPage(page) {
-    if(page == this.login){
-      this.userservice.logout();
+    if(page == 'sair'){
+      this.facebookService.logout();
     }
 
     this.menu.close();

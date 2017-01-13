@@ -6,7 +6,7 @@ import { Elastic } from 'angular2-elastic';
 
 //providers
 import { Facebook } from 'ionic-native';
-import { UserService } from '../providers/user-service';
+import { FacebookService } from '../providers/facebook-service';
 import { PublicacaoService } from '../providers/publicacao-service';
 import { ComentarioService } from '../providers/comentario-service';
 
@@ -32,17 +32,6 @@ import { SobrePage } from '../pages/sobre/sobre';
 import { GerenciarUsuariosPage } from '../pages/gerenciar-usuarios/gerenciar-usuarios'
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios'
 import { EditarPostPage } from '../pages/editar-post/editar-post';
-
-import firebase from 'firebase';
-
-const firebaseConfig = {
-    apiKey: "AIzaSyBMvaE0TDDAathAv3yXElfb4sj89UAvtBY",
-    authDomain: "testelogin-3de4c.firebaseapp.com",
-    databaseURL: "https://testelogin-3de4c.firebaseio.com",
-    storageBucket: "testelogin-3de4c.appspot.com",
-    messagingSenderId: "145120077276"
-  };
-
 
 @NgModule({
 
@@ -92,10 +81,6 @@ const firebaseConfig = {
     EditarPostPage,
     ComentariosPage,
   ],
-  providers: [Facebook, UserService, PublicacaoService, ComentarioService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
+  providers: [Facebook, FacebookService, PublicacaoService, ComentarioService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
 })
-export class AppModule {
-  constructor(){
-    firebase.initializeApp(firebaseConfig);
-  }
-}
+export class AppModule {}

@@ -3,7 +3,6 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder } from '@angular/forms';
 import { EsqueciSenhaPage } from '../esqueci-senha/esqueci-senha'
 import { TelaPrincipalPage } from '../../tela-principal/tela-principal';
-import { UserService } from '../../../providers/user-service';
 
 @Component({
   selector: 'page-login-email',
@@ -20,8 +19,7 @@ export class LoginEmailPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    public alertCtrl: AlertController,
-    public userService: UserService,
+    public alertCtrl: AlertController
 
   ) {
     //Configurando objeto user com campos para validação
