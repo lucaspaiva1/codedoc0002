@@ -8,6 +8,8 @@ import { ContatoPage } from '../pages/contato/contato';
 import { EstruturaPage } from '../pages/estrutura/estrutura';
 import { SobrePage } from '../pages/sobre/sobre';
 
+import { FacebookService } from '../providers/facebook-service';
+
 
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios';
 
@@ -29,7 +31,11 @@ export class MyApp {
 
   nome: string = 'Nome do Usuários';
 
-  constructor(platform: Platform, public menu: MenuController) {
+  constructor(
+    platform: Platform, 
+    public menu: MenuController,
+    public facebookService: FacebookService
+    ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -39,7 +45,8 @@ export class MyApp {
   }
 
   openPage(page) {
-    if(page == this.login){
+    if(page == 'sair'){
+      this.facebookService.logout();
     }
 
     this.menu.close();
