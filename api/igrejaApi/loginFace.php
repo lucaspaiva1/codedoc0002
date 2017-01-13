@@ -27,14 +27,28 @@
 		if($numrow == 1){
 			$dados = $result->fetch_assoc();
 				
-				if ($dados['Sexo'] == 'm')
-					$dados['Sexo'] = "male";
-				else if ($dados['Sexo'] == 'f')
-					$dados['Sexo'] = "female";
+			if ($dados['Sexo'] == 'm')
+				$dados['Sexo'] = "Masculino";
+			else if ($dados['Sexo'] == 'f')
+				$dados['Sexo'] = "Feminino";
 				
-				$dados['connected'] = true;
+			if ($dados['Tipo'] == 'a')
+				$dados['Tipo'] = "Administrador";
+			else if ($dados['Tipo'] == 'c')
+				$dados['Tipo'] = "Comum";
+			
+			$vetor = array();
 				
-				echo json_encode($dados);
+			$vetor['nome'] = $dados['Nome'];
+			$vetor['nascimento'] = $dados['Nascimento'];
+			$vetor['email'] = $dados['Email'];
+			$vetor['genero'] = $dados['Sexo'];
+			$vetor['foto'] = $dados['URLFoto'];
+			$vetor['permissao'] = $dados['Tipo'];
+			$vetor['facebook'] = $dados['Facebook'];
+			$vetor['connected'] = true;
+				
+			echo json_encode($vetor);
 		}else{
 			
 			if($sexo == "male"){
@@ -55,13 +69,27 @@
 				$dados = $result->fetch_assoc();
 				
 				if ($dados['Sexo'] == 'm')
-					$dados['Sexo'] = "male";
+					$dados['Sexo'] = "Masculino";
 				else if ($dados['Sexo'] == 'f')
-					$dados['Sexo'] = "female";
+					$dados['Sexo'] = "Feminino";
+					
+				if ($dados['Tipo'] == 'a')
+					$dados['Tipo'] = "Administrador";
+				else if ($dados['Tipo'] == 'c')
+					$dados['Tipo'] = "Comum";
 				
-				$dados['connected'] = true;
-				
-				echo json_encode($dados);
+				$vetor = array();
+					
+				$vetor['nome'] = $dados['Nome'];
+				$vetor['nascimento'] = $dados['Nascimento'];
+				$vetor['email'] = $dados['Email'];
+				$vetor['genero'] = $dados['Sexo'];
+				$vetor['foto'] = $dados['URLFoto'];
+				$vetor['permissao'] = $dados['Tipo'];
+				$vetor['facebook'] = $dados['Facebook'];
+				$vetor['connected'] = true;
+					
+				echo json_encode($vetor);
 			}else{
 				echo json_encode(false);
 			}
