@@ -54,7 +54,7 @@ export class CalendarioPage {
   }
 
   onEventSelected(event) { // evento diparado quando um evendo é selecionado na lista
-    this.navCtrl.push(this.editarEvento);
+    this.navCtrl.push(this.editarEvento, {id: event.id });
   }
 
   onViewTitleChanged = (title: string) => {
@@ -62,7 +62,7 @@ export class CalendarioPage {
   };
 
   onTimeSelected(ev) {
-    console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' + (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
+    //console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' + (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
   }
 
   private getEventos() {
@@ -75,6 +75,7 @@ export class CalendarioPage {
         for (let evento of this.eventos) {
 
           events.push({
+            id: evento.IDEvento,
             title: evento.Titulo,
             startTime: new Date(evento.DataInicio),
             endTime: new Date(evento.DataTermino),
