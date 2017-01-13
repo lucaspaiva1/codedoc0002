@@ -50,6 +50,8 @@
 				else if ($dados['Sexo'] == 'f')
 					$dados['Sexo'] = "female";
 				
+				$dados['connected'] = true;
+				
 				echo json_encode($dados);
 			}else{
 				echo json_encode(false);
