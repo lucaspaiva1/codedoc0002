@@ -23,24 +23,17 @@ export class LoginPage {
   loginEmail = LoginEmailPage;
   cadastrarNovoUser = CadastrarNovoUsuarioPage;
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    menu: MenuController,
-    public facebookService: FacebookService,
-  ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, menu: MenuController, public facebookService: FacebookService) {
     menu.enable(false);
 
   }
 
   ionViewDidLoad() {
-    this.facebookService.status().then(response => {
-      if (response == 'connected') {
-        this.navCtrl.setRoot(TelaPrincipalPage);
-      }
-    })
-
-
+    //this.facebookService.status().then(response => {
+    //  if (response == 'connected') {
+    //    this.navCtrl.setRoot(TelaPrincipalPage);
+    //  }
+    //});
   }
 
   logar(tipo) { //verifica a modalidade de login escolhida
