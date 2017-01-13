@@ -43,7 +43,16 @@
 			$numrow = $result->num_rows;
 			
 			if($numrow == 1){
-				echo json_encode(true);
+				$dados = $result->fetch_assoc();
+				
+				if ($dados['Sexo'] == 'm')
+					$dados['Sexo'] = "male";
+				else if ($dados['Sexo'] == 'f')
+					$dados['Sexo'] = "female";
+				
+				$dados['connected'] = true;
+				
+				echo json_encode($dados);
 			}else{
 				echo json_encode(false);
 			}
