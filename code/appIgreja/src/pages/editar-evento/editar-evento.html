@@ -46,11 +46,11 @@
     </ion-item>
   </ion-list>
   <!--Botão para adicionar evento-->
-  <button *ngIf="editar" ion-button block (click)="salvar()">Salvar Edição</button>
+  <button *ngIf="!editar" ion-button block (click)="salvar()">Salvar Edição</button>
   <!--Botão para Cancelar evento-->
-  <button *ngIf="editar" ion-button block (click)="cancelar()">Cancelar Edição</button>
+  <button *ngIf="!editar" ion-button block (click)="cancelar()">Cancelar Edição</button>
   <!--Botão para Excluir evento-->
-  <button *ngIf="editar" ion-button block color="danger" (click)="excluir()">Deletar Evento</button>
+  <button *ngIf="!editar" ion-button block color="danger" (click)="excluir()">Deletar Evento</button>
 
   <ion-fab class="floating-button-adm" right bottom>
    <button ion-fab (click)="habEditar()">

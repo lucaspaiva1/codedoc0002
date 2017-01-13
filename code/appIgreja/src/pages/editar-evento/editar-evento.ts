@@ -29,7 +29,9 @@ export class EditarEventoPage {
   }
 
   habEditar(){
-    this.editar == true;
+    if(this.editar == false){
+      this.editar = true;
+    }
   }
   salvar(){
 
@@ -38,6 +40,6 @@ export class EditarEventoPage {
 
   }
   excluir(){
-    
+
   }
 }
