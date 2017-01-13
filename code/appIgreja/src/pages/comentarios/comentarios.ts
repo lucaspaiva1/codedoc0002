@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 
 import { ComentarioService } from '../../providers/comentario-service';
 import { Comentario } from '../../model/comentario';
@@ -20,9 +20,14 @@ export class ComentariosPage {
   private comentarios: Comentario[] = [];
   private novoComentario: Comentario = new Comentario();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public comentService: ComentarioService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public comentService: ComentarioService, public loadingController: LoadingController) {
+    let loader = this.loadingController.create({
+      content: "your message"
+    });
+    loader.present();
     this.postID = navParams.get('id');
     this.carregarComentarios();
+    loader.dismiss();
 
   }
 
@@ -51,4 +56,8 @@ export class ComentariosPage {
     });
 
   }
+
+  private editar(id: number){}
+
+  private deletar(id: number){}
 }

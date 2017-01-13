@@ -9,6 +9,7 @@ import { Facebook } from 'ionic-native';
 import { FacebookService } from '../providers/facebook-service';
 import { PublicacaoService } from '../providers/publicacao-service';
 import { ComentarioService } from '../providers/comentario-service';
+import { EventoService } from '../providers/evento-service';
 
 //Login
 import { LoginPage } from '../pages/login/login/login';
@@ -23,6 +24,12 @@ import { CalendarioPage } from '../pages/calendario/calendario';
 import { BuscaPage } from '../pages/busca/busca';
 import { AddPostPage } from '../pages/add-post/add-post';
 import { ComentariosPage } from '../pages/comentarios/comentarios';
+import { EditarPostPage } from '../pages/editar-post/editar-post';
+import { AddEventoPage } from '../pages/add-evento/add-evento';
+import { AddGrupoPage } from '../pages/add-grupo/add-grupo';
+import { EditarEventoPage } from '../pages/editar-evento/editar-evento';
+import { EditarGrupoPage } from '../pages/editar-grupo/editar-grupo';
+import { BuscaEventosPage } from '../pages/busca-eventos/busca-eventos';
 
 //telas do nav menu
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -31,7 +38,7 @@ import { EstruturaPage } from '../pages/estrutura/estrutura';
 import { SobrePage } from '../pages/sobre/sobre';
 import { GerenciarUsuariosPage } from '../pages/gerenciar-usuarios/gerenciar-usuarios'
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios'
-import { EditarPostPage } from '../pages/editar-post/editar-post';
+
 
 @NgModule({
 
@@ -54,6 +61,11 @@ import { EditarPostPage } from '../pages/editar-post/editar-post';
     AddPostPage,
     EditarPostPage,
     ComentariosPage,
+    AddEventoPage,
+    AddGrupoPage,
+    EditarEventoPage,
+    EditarGrupoPage,
+    BuscaEventosPage
   ],
   imports: [
     NgCalendarModule,
@@ -80,7 +92,14 @@ import { EditarPostPage } from '../pages/editar-post/editar-post';
     AddPostPage,
     EditarPostPage,
     ComentariosPage,
+    AddEventoPage,
+    AddGrupoPage,
+    EditarEventoPage,
+    EditarGrupoPage,
+    BuscaEventosPage
   ],
-  providers: [Facebook, FacebookService, PublicacaoService, ComentarioService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
+
+  providers: [Facebook, FacebookService, PublicacaoService, ComentarioService, EventoService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
+
 })
 export class AppModule {}
