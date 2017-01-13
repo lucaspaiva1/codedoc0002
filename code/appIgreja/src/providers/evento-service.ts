@@ -17,6 +17,14 @@ export class EventoService {
 
   }
 
+  delEvento(id: number): Promise<any> {
+    return this.http
+      .post('http://dsoutlet.com.br/igrejaApi/deleteEvento.php', JSON.stringify({id: id}), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractDelData(res))
+      .catch(this.handleErrorMessage);
+  }
+
   addEvento(evento: Evento): Promise<any> {
     return this.http
       .post('http://dsoutlet.com.br/igrejaApi/addEvento.php', JSON.stringify(evento), { headers: this.headers })
@@ -59,6 +67,18 @@ export class EventoService {
     } else {
       retorno.type = true;
       retorno.data = data;
+    }
+    return retorno;
+  }
+
+  private extractDelData(res: Response) {
+    let retorno = { type: false, message: '' };
+    let data = res.json();
+    if (data == true) {
+      retorno.type = true;
+      retorno.message = "deletado com sucesso";
+    } else {
+      retorno.message = "nao foi possivel excluir";
     }
     return retorno;
   }
