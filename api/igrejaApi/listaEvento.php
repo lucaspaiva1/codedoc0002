@@ -34,14 +34,30 @@
 			$numrow = $result->num_rows;
 
 			if($numrow !== 0){
+				
+				$inicio = explode(" ", $row['DataInicio']);
+				$inicio[0]; //DataInicio
+				$inicio[1]; //HoraInicio
+				
+				$row['DataInicio'] = $inicio[0];
+				$row['HoraInicio'] = $inicio[1];
+				
+				$termino = explode(" ", $row['DataTermino']);
+				$termino[0]; //DataTermino
+				$termino[1]; //HoraTermino
+				
+				$row['DataTermino'] = $termino[0];
+				$row['HoraTermino'] = $termino[1];
+				
 				if($row['EventoDiario'] == 0){
-				$row['EventoDiario'] = false;
+					$row['EventoDiario'] = false;
 				}else{
 					$row['EventoDiario'] = true;
 				}
 			}		
 				
-			echo json_encode($row);	
+			echo json_encode($row);
+			
 		}
 	} 	
 ?>

@@ -14,7 +14,7 @@
   <ion-card *ngFor="let comentario of comentarios">
     <ion-item>
       <ion-avatar item-left>
-        <img src="http://kleberaquino.com.br/wp-content/uploads/2016/02/anonimo.png">
+        <img src="{{ comentario.URLFoto }}">
       </ion-avatar>
       <h2>{{ comentario.username }}</h2>
     </ion-item>

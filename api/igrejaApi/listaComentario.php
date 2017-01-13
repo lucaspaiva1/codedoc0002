@@ -20,8 +20,10 @@
 				$row2 = $result2->fetch_assoc();
 					
 				$nome = $row2['Nome'];
+				$fotoPerfil = $row2['URLFoto'];
 					
 				$row['username'] = $nome;
+				$row['URLFoto'] = $fotoPerfil;
 					
 				$vetor[] = $row;
 			}
