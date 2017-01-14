@@ -45,10 +45,12 @@
 			if($numrow == 1){
 				$dados = $result->fetch_assoc();
 				
-				if ($dados['Sexo'] == 'm')
+				if($dados['Sexo'] == 'm') {
 					$dados['Sexo'] = "male";
-				else if ($dados['Sexo'] == 'f')
+				}
+				else {
 					$dados['Sexo'] = "female";
+				}
 				
 				$dados['connected'] = true;
 				

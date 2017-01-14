@@ -17,6 +17,14 @@ export class EventoService {
 
   }
 
+  editEvento(evento: Evento): Promise<any> {
+    return this.http
+      .post('http://dsoutlet.com.br/igrejaApi/editEvento.php', JSON.stringify(evento), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractEditData(res))
+      .catch(this.handleErrorMessage);
+  }
+
   delEvento(id: number): Promise<any> {
     return this.http
       .post('http://dsoutlet.com.br/igrejaApi/deleteEvento.php', JSON.stringify({id: id}), { headers: this.headers })
@@ -53,6 +61,18 @@ export class EventoService {
     if (data === true) {
       retorno.type = true;
       retorno.message = 'Evento Adicionado';
+    } else {
+      retorno.message = 'Ocorreu um erro!';
+    }
+    return retorno;
+  }
+
+  private extractEditData(res: Response) {
+    let retorno = { type: false, message: '' };
+    let data = res.json();
+    if (data === true) {
+      retorno.type = true;
+      retorno.message = 'Evento Editado';
     } else {
       retorno.message = 'Ocorreu um erro!';
     }

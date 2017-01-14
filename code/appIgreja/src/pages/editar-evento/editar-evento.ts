@@ -36,11 +36,20 @@ export class EditarEventoPage {
   }
 
   private salvar(){
-
+    this.eventoService.editEvento(this.evento).then(res=>{
+      if(res.type == true){
+        console.log(res.message);
+        this.navCtrl.pop();
+      }else{
+        console.log(res.message);
+      }
+    });
   }
+
   private cancelar(){
-
+    this.navCtrl.pop();
   }
+
   private excluir(){
     this.eventoService.delEvento(this.evento.IDEvento).then(res=>{
       if(res.type == true){
