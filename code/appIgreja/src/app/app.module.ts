@@ -10,6 +10,8 @@ import { FacebookService } from '../providers/facebook-service';
 import { PublicacaoService } from '../providers/publicacao-service';
 import { ComentarioService } from '../providers/comentario-service';
 import { EventoService } from '../providers/evento-service';
+import { UserService } from '../providers/user-service';
+
 
 //Login
 import { LoginPage } from '../pages/login/login/login';
@@ -99,7 +101,7 @@ import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios'
     BuscaEventosPage
   ],
 
-  providers: [Facebook, FacebookService, PublicacaoService, ComentarioService, EventoService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
+  providers: [Facebook, FacebookService, UserService, PublicacaoService, ComentarioService, EventoService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
 
 })
 export class AppModule {}

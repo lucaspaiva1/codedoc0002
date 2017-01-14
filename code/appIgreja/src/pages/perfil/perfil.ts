@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder } from '@angular/forms';
+import { User } from '../../model/User';
+import { UserService } from '../../providers/user-service';
 
 @Component({
   selector: 'page-perfil',
@@ -9,17 +11,35 @@ import { Validators, FormBuilder } from '@angular/forms';
 export class PerfilPage {
   private user;
   private editar: boolean = false;
+  private userAtual:User= new User();
+  private loading:boolean = false;
 
-  constructor(private toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
-    //Configurando objeto user com campos para validação
-    this.user = this.formBuilder.group({
-      nome: ['', Validators.compose([Validators.required])],
-      nascimento: ['', Validators.compose([Validators.required])],
-      genero: ['', Validators.compose([Validators.required])],
-      email: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-      senha: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-      repSenha: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
-    });
+  constructor(
+    private toastCtrl: ToastController,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private formBuilder: FormBuilder,
+    public alertCtrl: AlertController,
+    public userService: UserService
+  ) {
+
+   this.userService.get().then(response=>{
+     this.userAtual = response;
+      //Configurando objeto user com campos para validação
+      this.user = this.formBuilder.group({
+        nome: [this.userAtual.nome, Validators.compose([Validators.required])],
+        nascimento: [this.userAtual.nascimento, Validators.compose([Validators.required])],
+        genero: [this.userAtual.genero, Validators.compose([Validators.required])],
+        email: [this.userAtual.email, Validators.compose([Validators.required, Validators.minLength(5)])],
+        senhaatual: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+        senha: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+        repSenha: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
+      });
+      this.loading=true;
+   });
+  
+
+
   }
 
   ionViewDidLoad() {
@@ -88,46 +108,47 @@ export class PerfilPage {
     return false;
   }
 
-  salvar(){
-    if(this.validate()){
+  salvar() {
+    if (this.validate()) {
       //Logica
+      alert(this.user.nome);
     }
   }
 
-  editarAction(){
-    if(this.editar == false){
+  editarAction() {
+    if (this.editar == false) {
       this.editar = true;
-    }else if(this.editar == true){
+    } else if (this.editar == true) {
       this.editar = false;
       //verificação se dejesa cancelar ou salvar
       let confirm = this.alertCtrl.create({
         title: 'Salvar',
         message: 'Deseja salvar as modificações feitas?',
         buttons: [
-        {
-          text: 'Descartar',
-          handler: () => {
-            // LOGICA PARA CANCELAR
-            let toast = this.toastCtrl.create({
-              message: 'Modificações descartadas',
-              duration: 3000
-            });
-            toast.present();
-          }
-        },
-        {
-          text: 'Salvar',
-          handler: () => {
-            //LOGICA PARA SALVAR ALTERAÇÕES
-            let toast = this.toastCtrl.create({
-              message: 'Modificações salvas',
-              duration: 3000
-            });
-            toast.present();
-          }
-        }]
+          {
+            text: 'Descartar',
+            handler: () => {
+              // LOGICA PARA CANCELAR
+              let toast = this.toastCtrl.create({
+                message: 'Modificações descartadas',
+                duration: 3000
+              });
+              toast.present();
+            }
+          },
+          {
+            text: 'Salvar',
+            handler: () => {
+              //LOGICA PARA SALVAR ALTERAÇÕES
+              let toast = this.toastCtrl.create({
+                message: 'Modificações salvas',
+                duration: 3000
+              });
+              toast.present();
+            }
+          }]
       });
-    confirm.present();
+      confirm.present();
     }
   }
 

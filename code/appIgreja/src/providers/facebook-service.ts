@@ -3,6 +3,7 @@ import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Facebook } from 'ionic-native';
+import { User } from '../model/User';
 
 /*
   Generated class for the FacebookService provider.
@@ -21,7 +22,7 @@ export class FacebookService {
     Facebook.browserInit(1817976801823786, "v2.8");
   }
 
-  logar(): Promise<boolean> {
+  logar(): Promise<User> {
     return Facebook.login(["public_profile"]).then(response => 
       this.api(response)).catch(this.erro);
   }
@@ -30,7 +31,7 @@ export class FacebookService {
     alert("erro ao tentar se conectar com o servidor");
   }
 
-  api(response): Promise<boolean> {
+  api(response): Promise<User> {
     let userID = response.authResponse.userID;
     return Facebook.api('/' + response.authResponse.userID + '?fields=id,name,gender,birthday,email,picture', []).then(result =>
         this.http.post(this.linkLogin, JSON.stringify({userID,result}), { headers: this.headers })
@@ -45,7 +46,7 @@ export class FacebookService {
   }
 
   logout(): Promise<any>{
-    return Facebook.logout().then(response=>alert(response));
+    return Facebook.logout().then(response=>alert("deslogado com Sucesso"));
   }
 
 }
