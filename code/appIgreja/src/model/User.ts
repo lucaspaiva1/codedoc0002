@@ -10,7 +10,7 @@ export class User {
     public email: string;
     public facebook: string;
     public permissao: Permissao;
-    public URLFoto: string = "http://kleberaquino.com.br/wp-content/uploads/2016/02/anonimo.png";
+    public foto: string = "http://kleberaquino.com.br/wp-content/uploads/2016/02/anonimo.png";
     public nascimento:Date;
     public connected:boolean=false;
 

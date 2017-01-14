@@ -46,10 +46,6 @@ export class MyApp {
     });
   }
 
-  ionViewWillEnter(){
-    alert("funciona");
-  }
-
   openPage(page) {
     if (page == 'sair') {
       this.facebookService.logout();

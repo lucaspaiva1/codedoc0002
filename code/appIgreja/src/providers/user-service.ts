@@ -40,7 +40,7 @@ export class UserService {
       );
   }
 
-  deslogar():Promise<any> {
+  deslogar() {
    return NativeStorage.remove('usuarioAtual').then(response=>{
       console.log("deslogado");
     });

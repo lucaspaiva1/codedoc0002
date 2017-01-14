@@ -11,6 +11,8 @@ import { UserService } from '../../providers/user-service';
 export class PerfilPage {
   private user;
   private editar: boolean = false;
+  private userAtual:User= new User();
+  private loading:boolean = false;
 
   constructor(
     private toastCtrl: ToastController,
@@ -21,19 +23,21 @@ export class PerfilPage {
     public userService: UserService
   ) {
 
-    this.userService.get().then(userAtual => {
-
+   this.userService.get().then(response=>{
+     this.userAtual = response;
       //Configurando objeto user com campos para validação
       this.user = this.formBuilder.group({
-        nome: [userAtual.nome, Validators.compose([Validators.required])],
-        nascimento: [userAtual.nascimento, Validators.compose([Validators.required])],
-        genero: [userAtual.genero, Validators.compose([Validators.required])],
-        email: [userAtual.email, Validators.compose([Validators.required, Validators.minLength(5)])],
+        nome: [this.userAtual.nome, Validators.compose([Validators.required])],
+        nascimento: [this.userAtual.nascimento, Validators.compose([Validators.required])],
+        genero: [this.userAtual.genero, Validators.compose([Validators.required])],
+        email: [this.userAtual.email, Validators.compose([Validators.required, Validators.minLength(5)])],
         senhaatual: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
         senha: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
         repSenha: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
       });
-    });
+      this.loading=true;
+   });
+  
 
 
   }

@@ -46,11 +46,9 @@ export class LoginPage {
 
   logar(tipo) { //verifica a modalidade de login escolhida
     if (tipo == "facebook") {// login com facebook
-      let userteste = new User();
-      userteste.connected = true;
-      this.userService.set(userteste);
       this.facebookService.logar().then(response => {
         if (response.connected) {
+          this.userService.set(response);          
           this.navCtrl.setRoot(TelaPrincipalPage);
         } else {
           alert("erro");
