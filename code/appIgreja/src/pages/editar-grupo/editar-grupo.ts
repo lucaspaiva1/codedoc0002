@@ -13,6 +13,8 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class EditarGrupoPage {
   private users = [];
+  private editar = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.initializeUsers();
   }
@@ -54,6 +56,12 @@ export class EditarGrupoPage {
       this.users = this.users.filter((item) => {
         return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
+    }
+  }
+
+  habEditar(){
+    if(this.editar == false){
+      this.editar = true;
     }
   }
 }

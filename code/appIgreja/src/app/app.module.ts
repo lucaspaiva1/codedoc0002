@@ -32,6 +32,7 @@ import { AddGrupoPage } from '../pages/add-grupo/add-grupo';
 import { EditarEventoPage } from '../pages/editar-evento/editar-evento';
 import { EditarGrupoPage } from '../pages/editar-grupo/editar-grupo';
 import { BuscaEventosPage } from '../pages/busca-eventos/busca-eventos';
+import { MapaPage } from '../pages/mapa/mapa';
 
 //telas do nav menu
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -67,7 +68,8 @@ import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios'
     AddGrupoPage,
     EditarEventoPage,
     EditarGrupoPage,
-    BuscaEventosPage
+    BuscaEventosPage,
+    MapaPage
   ],
   imports: [
     NgCalendarModule,
@@ -98,7 +100,8 @@ import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios'
     AddGrupoPage,
     EditarEventoPage,
     EditarGrupoPage,
-    BuscaEventosPage
+    BuscaEventosPage,
+    MapaPage
   ],
 
   providers: [Facebook, FacebookService, UserService, PublicacaoService, ComentarioService, EventoService, { provide: ErrorHandler, useClass: IonicErrorHandler }],

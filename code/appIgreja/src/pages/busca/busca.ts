@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AddGrupoPage } from '../add-grupo/add-grupo';
 import { EditarGrupoPage } from '../editar-grupo/editar-grupo';
+import { MapaPage } from '../mapa/mapa';
 /*
   Generated class for the Busca page.
 
@@ -14,6 +15,7 @@ import { EditarGrupoPage } from '../editar-grupo/editar-grupo';
 })
 export class BuscaPage {
   grupos = [];
+  mapsPage = MapaPage;
   editarGrupo = EditarGrupoPage;
   addGrupo = AddGrupoPage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -44,11 +46,15 @@ export class BuscaPage {
     this.navCtrl.push(this.addGrupo);
   }
 
-  editar(){
+  abrirGrupo(){
     this.navCtrl.push(this.editarGrupo);
   }
 
   deletar(){
 
+  }
+
+  mapa(){
+    this.navCtrl.push(this.mapsPage);
   }
 }
