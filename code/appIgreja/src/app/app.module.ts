@@ -2,7 +2,7 @@ import { NgModule, ErrorHandler} from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { NgCalendarModule  } from 'ionic2-calendar';
-import { Elastic } from 'angular2-elastic';
+import { ElasticModule  } from 'angular2-elastic';
 
 //providers
 import { Facebook } from 'ionic-native';
@@ -73,7 +73,7 @@ import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios'
   ],
   imports: [
     NgCalendarModule,
-    Elastic,
+    ElasticModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
