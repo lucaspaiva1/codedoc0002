@@ -12,4 +12,4 @@ ocultar botao 'facebook' do perfil caso o usuario ja estejam logado
 
 
 //relacionado a publicacao
-pegar a foto do album
+pegar a foto do album e postar foto
