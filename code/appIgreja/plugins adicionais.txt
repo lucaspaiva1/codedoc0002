@@ -1,0 +1,3 @@
+//exeutar os seguintes comandos:
+
+ionic plugin add cordova-plugin-facebook4 --variable APP_ID="1817976801823786" --variable APP_NAME="appigreja"
