@@ -17,52 +17,52 @@ export class FeedPage {
   addPost = AddPostPage;
   editarPost = EditarPostPage;
   comentarios = ComentariosPage;
+  loader: any = this.loadingController.create({
+    content: "Carregando Publicações"
+  });
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public postService: PublicacaoService, public loadingController: LoadingController) {
-
+    this.loader.present();
   }
 
-  ionViewWillEnter(){
-    let loader = this.loadingController.create({
-      content: "Carregando Publicações"
-    });
-    loader.present();
+  ionViewWillEnter() {
+    this.loader.present();
     this.carregarFeed();
-    loader.dismiss();
   }
 
-  private carregarFeed(){
-    this.postService.getPublicacoes().then(res=>{
-      if(res.type == true){
+  private carregarFeed() {
+    this.postService.getPublicacoes().then(res => {
+      if (res.type == true) {
         this.publicacoes = res.data;
-      }else{
+      } else {
         console.log("error");
       }
+      this.loader.dismiss();
     });
   }
 
-  private adicionarPost(){
+  private adicionarPost() {
     this.navCtrl.push(this.addPost);
   }
 
-  private deletar(id: number){
-    this.postService.deletePublicacao(id).then(res=>{
-      if(res.type == true){
+  private deletar(id: number) {
+    this.postService.deletePublicacao(id).then(res => {
+      if (res.type == true) {
         console.log(res.message);
         this.carregarFeed();
-      }else{
+      } else {
         console.log(res.message);
       }
     });
   }
 
-  private editar(id: number){
+  private editar(id: number) {
     this.navCtrl.push(this.editarPost, {
       id: id
     });
   }
 
-  private abrirComentarios(id: number){
+  private abrirComentarios(id: number) {
     this.navCtrl.push(this.comentarios, {
       id: id
     })
