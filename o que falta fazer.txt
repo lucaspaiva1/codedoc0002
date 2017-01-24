@@ -15,3 +15,4 @@ ocultar botao 'facebook' do perfil caso o usuario ja estejam logado
 pegar a foto do album e postar foto - feito
 atualizar foto da publicacao
 apagar a foto do servidor quando a publicacao for apagada
+apagar a foto do servidor quando a foto da publicacao for editada
