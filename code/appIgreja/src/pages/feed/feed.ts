@@ -26,7 +26,6 @@ export class FeedPage {
   }
 
   ionViewWillEnter() {
-    this.loader.present();
     this.carregarFeed();
   }
 
