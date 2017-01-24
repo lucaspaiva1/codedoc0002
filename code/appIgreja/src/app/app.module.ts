@@ -11,6 +11,7 @@ import { PublicacaoService } from '../providers/publicacao-service';
 import { ComentarioService } from '../providers/comentario-service';
 import { EventoService } from '../providers/evento-service';
 import { UserService } from '../providers/user-service';
+import { ContaService } from '../providers/conta-service';
 
 
 //Login
@@ -104,7 +105,7 @@ import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios'
     MapaPage
   ],
 
-  providers: [Facebook, FacebookService, UserService, PublicacaoService, ComentarioService, EventoService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
+  providers: [Facebook, ContaService, FacebookService, UserService, PublicacaoService, ComentarioService, EventoService, { provide: ErrorHandler, useClass: IonicErrorHandler }],
 
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Facebook } from 'ionic-native';
@@ -22,31 +22,47 @@ export class FacebookService {
     Facebook.browserInit(1817976801823786, "v2.8");
   }
 
-  logar(): Promise<User> {
-    return Facebook.login(["public_profile"]).then(response => 
-      this.api(response)).catch(this.erro);
+  logar(): Promise<any> {
+    return Facebook.login(["public_profile"]).then(response =>
+      this.api(response, "logar")).catch(this.erro);
   }
 
-  erro(){
+  vincular(id: number): Promise<User> {
+    return Facebook.login(["public_profile"]).then(response =>
+      this.apiVincular(response, "vincular", id)).catch(this.erro);
+  }
+
+  erro() {
     alert("erro ao tentar se conectar com o servidor");
   }
 
-  api(response): Promise<User> {
+  api(response, type): Promise<any> {
     let userID = response.authResponse.userID;
     return Facebook.api('/' + response.authResponse.userID + '?fields=id,name,gender,birthday,email,picture', []).then(result =>
-        this.http.post(this.linkLogin, JSON.stringify({userID,result}), { headers: this.headers })
-          .toPromise()
-          .then(res => res.json()
-          )
+
+      this.http.post(this.linkLogin, JSON.stringify({ type, userID, result }), { headers: this.headers })
+        .toPromise()
+        .then(res => res.json()
+        )
     );
   }
 
-  status(): Promise<any>{
-    return Facebook.getLoginStatus().then(response=>response.status);
+  apiVincular(response, type, id): Promise<User> {
+    let userID = response.authResponse.userID;
+    return Facebook.api('/' + response.authResponse.userID + '?fields=id,name,gender,birthday,email,picture', []).then(result =>
+      this.http.post(this.linkLogin, JSON.stringify({ type, id, userID, result }), { headers: this.headers })
+        .toPromise()
+        .then(res => res.json()
+        )
+    );
   }
 
-  logout(): Promise<any>{
-    return Facebook.logout().then(response=>alert("deslogado com Sucesso"));
+  status(): Promise<any> {
+    return Facebook.getLoginStatus().then(response => response.status);
+  }
+
+  logout(): Promise<any> {
+    return Facebook.logout().then(response => alert("deslogado com Sucesso"));
   }
 
 }

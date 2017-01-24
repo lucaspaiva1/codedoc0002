@@ -47,7 +47,9 @@ export class LoginPage {
   logar(tipo) { //verifica a modalidade de login escolhida
     if (tipo == "facebook") {// login com facebook
       this.facebookService.logar().then(response => {
-        if (response.connected) {
+        if(response=="inativa"){
+          alert("Sua conta está bloqueada ou banida");
+        } else if (response.connected) {
           this.userService.set(response);          
           this.navCtrl.setRoot(TelaPrincipalPage);
         } else {

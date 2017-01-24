@@ -57,7 +57,7 @@
     </form>
     <div class="login-button-div">
       <!--Botão para login com Facebook-->
-      <button ion-button icon-left full text-capitalize class="facebook-button">
+      <button *ngIf="user.facebook==''" ion-button icon-left full text-capitalize class="facebook-button" (click)="conectarFace()">
       <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon> Entre com Facebook
     </button>
 
