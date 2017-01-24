@@ -3,6 +3,9 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder } from '@angular/forms';
 import { EsqueciSenhaPage } from '../esqueci-senha/esqueci-senha'
 import { TelaPrincipalPage } from '../../tela-principal/tela-principal';
+import { ContaService } from '../../../providers/conta-service';
+import { UserService } from '../../../providers/user-service';
+
 
 @Component({
   selector: 'page-login-email',
@@ -19,7 +22,9 @@ export class LoginEmailPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public contaService: ContaService,
+    public userService: UserService
 
   ) {
     //Configurando objeto user com campos para validação
@@ -70,11 +75,25 @@ export class LoginEmailPage {
   }
 
   login() {
-    //if (this.validate()) {
-    // process the data
-    //this.userService.loginComConta();
-    this.navCtrl.setRoot(TelaPrincipalPage);
-    //}
+    if (this.validate()) {
+      this.contaService.logar("logar", this.email, this.senha).then(response => {
+        if (response == "inativa") {
+          alert("Sua conta está bloqueada ou banida");
+        } else if (response == "tentativa") {
+          alert("Você errou a senha");
+        } else if (response == "inexistente") {
+          alert("Conta não cadastrada no sistema");
+        } else {
+          if (response.connected) {
+            this.userService.set(response);
+            this.navCtrl.setRoot(TelaPrincipalPage);
+          } else {
+            alert("erro");
+          }
+        }
+
+      });
+    }
   }
 
 }

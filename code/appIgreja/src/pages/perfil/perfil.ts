@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder } from '@angular/forms';
 import { User } from '../../model/User';
+import { FacebookService } from '../../providers/facebook-service';
 import { UserService } from '../../providers/user-service';
 
 @Component({
@@ -20,7 +21,8 @@ export class PerfilPage {
     public navParams: NavParams,
     private formBuilder: FormBuilder,
     public alertCtrl: AlertController,
-    public userService: UserService
+    public userService: UserService,
+    public facebookService:FacebookService
   ) {
 
    this.userService.get().then(response=>{
@@ -35,6 +37,7 @@ export class PerfilPage {
         senha: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
         repSenha: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
       });
+      this.user.facebook=this.userAtual.facebook;
       this.loading=true;
    });
   
@@ -108,14 +111,26 @@ export class PerfilPage {
     return false;
   }
 
+  conectarFace(){
+    this.facebookService.vincular(this.userAtual.id).then(response => {
+        if (response.connected) {
+          this.userService.set(response);          
+          alert("Conta do Facebook vinculada com Sucesso")
+        } else {
+          alert("erro");
+        }
+      });
+  }
+
   salvar() {
     if (this.validate()) {
       //Logica
-      alert(this.user.nome);
+      alert(this.user.facebook);
     }
   }
 
   editarAction() {
+    alert(this.user.facebook);
     if (this.editar == false) {
       this.editar = true;
     } else if (this.editar == true) {
