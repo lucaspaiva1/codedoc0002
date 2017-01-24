@@ -29,7 +29,7 @@ export class AddPostPage {
     //se houver imagem no post
     if(this.urlImage !== null){
       //diretorio da imagem importada
-      this.publicacao.LinkImagem = 'http://www.dsoutlet.com.br/uploads/uploads/' + this.lastImage;
+      this.publicacao.LinkImagem = 'http://www.dsoutlet.com.br/igrejaApi/uploads/' + this.lastImage;
     }
 
     //obrigatorio preencher data limite da publicacao
@@ -77,7 +77,6 @@ export class AddPostPage {
             let currentName = filePath.substr(imagePath.lastIndexOf('/') + 1);
             let correctPath = filePath.substr(0, imagePath.lastIndexOf('/') + 1);
             this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
-            alert(imagePath);
             this.urlImage = filePath;
           });
       } else {
@@ -119,7 +118,7 @@ export class AddPostPage {
   //responsável por upload da imagem
   private uploadImage() {
     // Destination URL
-    let url = "http://www.dsoutlet.com.br/uploads/upload.php";
+    let url = "http://www.dsoutlet.com.br/igrejaApi/upload.php";
 
     // File for Upload
     //let targetPath = this.pathForImage(this.lastImage);
@@ -148,7 +147,8 @@ export class AddPostPage {
       this.presentToast('Postagem Criada com Sucesso!');
       this.navCtrl.pop();
     }, err => {
-      this.loading.dismissAll()
+      alert(JSON.stringify(err));
+      this.loading.dismissAll();
       this.presentToast('Erro no envio da imagem.');
     });
   }

@@ -1,6 +1,7 @@
 <?php
 	include 'mySQL.php';
 	require 'mySQL.php';
+	include 'apagaImagem.php';
 ?>
 
 <?php
@@ -41,8 +42,20 @@
 			echo json_encode(false);
 		}else{
 			//se inserir, as publicacoes antigas sao apagadas
+			$sql = "SELECT * from publicacao where TempoPermanencia <= CURRENT_DATE";
+			$result = $con->query($sql);
+			
+			$numrow = $result->num_rows;
+			if($numrow > 0){
+				//apagando todas imagens antigas
+				while($row=$result->fetch_assoc()){
+					apagarImagem($row['LinkImagem']);
+				}
+			}
+			//apagando no banco de dados
 			$sql = "delete from publicacao where TempoPermanencia <= CURRENT_DATE;";
-			$con->query($sql);
+			$result = $con->query($sql);
+			
 			echo json_encode(true);
 		}
 				

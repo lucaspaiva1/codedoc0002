@@ -17,7 +17,7 @@ declare var cordova: any;
 export class EditarPostPage {
 
   private publicacao: Publicacao = new Publicacao();
-  private lastImage: string = null;
+  private novaImagem: string = null;
   private urlImage: string = null;
   private loading: Loading;
 
@@ -38,12 +38,13 @@ export class EditarPostPage {
   salvar() {
     let equals: boolean;
     if(this.urlImage == this.publicacao.LinkImagem){
+      this.publicacao.linkAntigo = '';
       equals = true;
     }else{
-      this.publicacao.LinkImagem = this.urlImage;
+      this.publicacao.linkAntigo = this.publicacao.LinkImagem;
+      this.publicacao.LinkImagem = 'http://www.dsoutlet.com.br/igrejaApi/uploads/' + this.novaImagem;
       equals = false;
     }
-    alert('imagens iguais? ' + equals);
     this.postService.editPublicacao(this.publicacao).then(res => {
       if (res.type == true) {
         if(equals == false){
@@ -86,7 +87,6 @@ export class EditarPostPage {
             let currentName = filePath.substr(imagePath.lastIndexOf('/') + 1);
             let correctPath = filePath.substr(0, imagePath.lastIndexOf('/') + 1);
             this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
-            alert(imagePath);
             this.urlImage = filePath;
           });
       } else {
@@ -109,7 +109,7 @@ export class EditarPostPage {
   // Copy the image to a local folder
   private copyFileToLocalDir(namePath, currentName, newFileName) {
     File.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
-      this.lastImage = newFileName;
+      this.novaImagem = newFileName;
     }, error => {
       this.presentToast('Erro ao arquivar imagem.');
     });
@@ -128,13 +128,13 @@ export class EditarPostPage {
   //responsável por upload da imagem
   private uploadImage() {
     // Destination URL
-    let url = "http://www.dsoutlet.com.br/uploads/upload.php";
+    let url = "http://www.dsoutlet.com.br/igrejaApi/upload.php";
 
     // File for Upload
-    //let targetPath = this.pathForImage(this.lastImage);
+    //let targetPath = this.pathForImage(this.novaImagem);
 
     // File name only
-    let filename = this.lastImage;
+    let filename = this.novaImagem;
 
     let options = {
       fileKey: "file",
