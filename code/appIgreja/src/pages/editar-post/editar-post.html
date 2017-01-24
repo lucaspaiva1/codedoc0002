@@ -35,6 +35,9 @@
       <ion-toggle [(ngModel)]="publicacao.Comentario"></ion-toggle>
     </ion-item>
     <ion-item>
+      <img *ngIf="urlImage !== null" [src]="urlImage" style="width: 100%;"/>
+    </ion-item>
+    <ion-item>
       <ion-row>
         <button ion-button block class="botao-duplo-l" (click)="importarFoto()">Importar</button>
         <button ion-button block class="botao-duplo-r" (click)="tirarFoto()">Tirar Foto</button>
