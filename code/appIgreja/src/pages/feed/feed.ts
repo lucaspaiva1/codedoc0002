@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Events } from 'ionic-angular';
 import { AddPostPage } from '../add-post/add-post';
 import { EditarPostPage } from '../editar-post/editar-post';
 import { ComentariosPage } from '../comentarios/comentarios';
 import { PublicacaoService } from '../../providers/publicacao-service';
 import { Publicacao } from '../../model/publicacao';
+import { UserService } from '../../providers/user-service';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class FeedPage {
     content: "Carregando Publicações"
   });
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public postService: PublicacaoService, public loadingController: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public postService: PublicacaoService, public loadingController: LoadingController, public userService: UserService, public events: Events) {
+    this.evento();
     this.loader.present();
   }
 
@@ -65,5 +67,11 @@ export class FeedPage {
     this.navCtrl.push(this.comentarios, {
       id: id
     })
+  }
+
+  private evento(){
+    this.userService.get().then(res=>{
+      this.events.publish('user:changed', res);
+    });
   }
 }

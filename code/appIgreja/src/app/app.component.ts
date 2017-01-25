@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, MenuController, Nav } from 'ionic-angular';
+import { Platform, MenuController, Nav, Events } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { LoginPage } from '../pages/login/login/login';
@@ -7,12 +7,11 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { ContatoPage } from '../pages/contato/contato';
 import { EstruturaPage } from '../pages/estrutura/estrutura';
 import { SobrePage } from '../pages/sobre/sobre';
-
 import { FacebookService } from '../providers/facebook-service';
 import { UserService } from '../providers/user-service';
-
-
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios';
+
+
 
 
 @Component({
@@ -30,14 +29,18 @@ export class MyApp {
 
   rootPage = LoginPage;
 
-  nome: string = 'Nome do Usuários';
+  private nome: string = 'Nome do Usuários';
+  private foto: string = '';
 
-  constructor(
-    platform: Platform,
-    public menu: MenuController,
-    public facebookService: FacebookService,
-    public userService: UserService
-  ) {
+  constructor(platform: Platform, public menu: MenuController, public facebookService: FacebookService, public userService: UserService, public events: Events) {
+
+    events.subscribe('user:changed', user => {
+      if(user !== undefined && user !== null){
+        this.nome = user.nome;
+        this.foto = user.foto;
+      }
+   })
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
