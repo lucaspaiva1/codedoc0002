@@ -6,13 +6,13 @@
 
 
 <ion-content padding>
-  <div *ngIf="loading">
     <ion-fab class="floating-button" top right edge>
       <button ion-fab (click)="editarAction()">
      <ion-icon name="create"></ion-icon>
    </button>
     </ion-fab>
 
+  <div *ngIf="loading">
     <!--Imagem do usuario-->
     <div class="perfil-pic">
       <div><img src="{{userAtual.foto}}" alt="foto perfil" height="200" width="200"></div>
@@ -48,11 +48,11 @@
       </ion-item>
       <ion-item>
         <ion-label floating>Nova Senha</ion-label>
-        <ion-input type="text" formControlName="senha" [disabled]="user.senhaatual==''"></ion-input>
+        <ion-input type="text" formControlName="senha" [disabled]="!editar"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Repetir Senha</ion-label>
-        <ion-input type="password" formControlName="repSenha" [disabled]="!editar" [hidden]="user.senhaatual==''"></ion-input>
+        <ion-input type="password" formControlName="repSenha" [disabled]="!editar" ></ion-input>
       </ion-item>
     </form>
     <div class="login-button-div">

@@ -5,13 +5,16 @@ import { User } from '../../model/User';
 import { FacebookService } from '../../providers/facebook-service';
 import { UserService } from '../../providers/user-service';
 
+import { ContaService } from '../../providers/conta-service';
+
+
 @Component({
   selector: 'page-perfil',
   templateUrl: 'perfil.html'
 })
 export class PerfilPage {
   private user;
-  private editar: boolean = false;
+  private editar: boolean;
   private userAtual:User= new User();
   private loading:boolean = false;
 
@@ -22,11 +25,13 @@ export class PerfilPage {
     private formBuilder: FormBuilder,
     public alertCtrl: AlertController,
     public userService: UserService,
-    public facebookService:FacebookService
+    public facebookService:FacebookService,
+    public contaService:ContaService
   ) {
 
    this.userService.get().then(response=>{
      this.userAtual = response;
+     this.editar=false;
       //Configurando objeto user com campos para validação
       this.user = this.formBuilder.group({
         nome: [this.userAtual.nome, Validators.compose([Validators.required])],
@@ -34,8 +39,8 @@ export class PerfilPage {
         genero: [this.userAtual.genero, Validators.compose([Validators.required])],
         email: [this.userAtual.email, Validators.compose([Validators.required, Validators.minLength(5)])],
         senhaatual: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-        senha: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-        repSenha: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
+        senha: [''],
+        repSenha: ['']
       });
       this.user.facebook=this.userAtual.facebook;
       this.loading=true;
@@ -124,13 +129,14 @@ export class PerfilPage {
 
   salvar() {
     if (this.validate()) {
-      //Logica
-      alert(this.user.facebook);
+      let userAtualizado = this.contaService.editar('editar',this.user);
+      if(userAtualizado.connected){
+        this.userService.set(userAtualizado);
+      }
     }
   }
 
   editarAction() {
-    alert(this.user.facebook);
     if (this.editar == false) {
       this.editar = true;
     } else if (this.editar == true) {
@@ -154,6 +160,7 @@ export class PerfilPage {
           {
             text: 'Salvar',
             handler: () => {
+              this.salvar();
               //LOGICA PARA SALVAR ALTERAÇÕES
               let toast = this.toastCtrl.create({
                 message: 'Modificações salvas',
@@ -166,6 +173,7 @@ export class PerfilPage {
       confirm.present();
     }
   }
+
 
 
 }

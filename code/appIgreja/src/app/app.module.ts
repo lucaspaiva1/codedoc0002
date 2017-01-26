@@ -40,8 +40,8 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { ContatoPage } from '../pages/contato/contato';
 import { EstruturaPage } from '../pages/estrutura/estrutura';
 import { SobrePage } from '../pages/sobre/sobre';
-import { GerenciarUsuariosPage } from '../pages/gerenciar-usuarios/gerenciar-usuarios'
-import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios'
+import { GerenciarUsuariosPage } from '../pages/gerenciar-usuarios/gerenciar-usuarios';
+import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios';
 
 
 @NgModule({

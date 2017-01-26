@@ -23,11 +23,16 @@ export class ContaService {
 
 
   logar(type,email, senha): Promise<any> {
-        alert( email + " valor " + senha)
 
     return this.http.post(this.linkLogin, JSON.stringify({ type, email, senha }), { headers: this.headers })
       .toPromise()
       .then(res => res.json(),error=>alert("Erro ao tentar se conectar com servidor"));
+  }
+
+  editar(type:string,edicao:User):Promise<User>{
+    return this.http.post(this.linkLogin, JSON.stringify({type, edicao}), { headers: this.headers })
+    .toPromise()
+    .then(res=>res.json(),error=>alert("erro ao editar dados"));
   }
 
 }
