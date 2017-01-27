@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '../../model/User';
 import { FacebookService } from '../../providers/facebook-service';
 import { UserService } from '../../providers/user-service';
@@ -13,10 +13,10 @@ import { ContaService } from '../../providers/conta-service';
   templateUrl: 'perfil.html'
 })
 export class PerfilPage {
-  private user;
+  private user:FormGroup;
   private editar: boolean;
-  private userAtual:User= new User();
-  private loading:boolean = false;
+  private userAtual: User = new User();
+  private loading: boolean = false;
 
   constructor(
     private toastCtrl: ToastController,
@@ -25,27 +25,38 @@ export class PerfilPage {
     private formBuilder: FormBuilder,
     public alertCtrl: AlertController,
     public userService: UserService,
-    public facebookService:FacebookService,
-    public contaService:ContaService
+    public facebookService: FacebookService,
+    public contaService: ContaService
   ) {
 
-   this.userService.get().then(response=>{
-     this.userAtual = response;
-     this.editar=false;
+    this.userService.get().then(response => {
+      this.userAtual = response;
+      this.editar = false;
+
+          this.userAtual.nome = "Cleybson Cardoso";
+          this.userAtual.connected = true;
+          this.userAtual.email = "aaaa@a";
+          this.userAtual.senha= "123456";
+          this.userAtual.facebook = "1547554931938642";
+          this.userAtual.id = 6;
+          this.userAtual.foto = "https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/15036592_1477985475562255_7170420236271870875_n.jpg?oh=736778d890a0f3b9c1aeb7404b951e85&oe=59107F62";
       //Configurando objeto user com campos para validação
       this.user = this.formBuilder.group({
         nome: [this.userAtual.nome, Validators.compose([Validators.required])],
         nascimento: [this.userAtual.nascimento, Validators.compose([Validators.required])],
         genero: [this.userAtual.genero, Validators.compose([Validators.required])],
         email: [this.userAtual.email, Validators.compose([Validators.required, Validators.minLength(5)])],
-        senhaatual: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-        senha: [''],
-        repSenha: ['']
+        senhaatual: this.userAtual.senha,
+        senha: '',
+        repSenha: '',
+        facebook:this.userAtual.facebook,
+        id:this.userAtual.id,
+        foto:this.userAtual.foto,
+        permissao:this.userAtual.permissao
       });
-      this.user.facebook=this.userAtual.facebook;
-      this.loading=true;
-   });
-  
+      this.loading = true;
+    });
+
 
 
   }
@@ -116,23 +127,30 @@ export class PerfilPage {
     return false;
   }
 
-  conectarFace(){
+  conectarFace() {
     this.facebookService.vincular(this.userAtual.id).then(response => {
-        if (response.connected) {
-          this.userService.set(response);          
-          alert("Conta do Facebook vinculada com Sucesso")
-        } else {
-          alert("erro");
-        }
-      });
+      if (response.connected) {
+        this.userService.set(response);
+        alert("Conta do Facebook vinculada com Sucesso")
+      } else {
+        alert("erro");
+      }
+    });
   }
 
   salvar() {
     if (this.validate()) {
-      let userAtualizado = this.contaService.editar('editar',this.user);
-      if(userAtualizado.connected){
-        this.userService.set(userAtualizado);
-      }
+      let atualizacao = this.contaService.editar('editar', this.user);
+      atualizacao.then(response => {
+        if (response) {
+          let userAtualizado = new User();
+          console.log(response);
+          this.userService.set(userAtualizado);
+        }else{
+          alert("Alterações não foram salvas")
+        }
+      });
+
     }
   }
 
@@ -160,13 +178,13 @@ export class PerfilPage {
           {
             text: 'Salvar',
             handler: () => {
-              this.salvar();
               //LOGICA PARA SALVAR ALTERAÇÕES
               let toast = this.toastCtrl.create({
                 message: 'Modificações salvas',
                 duration: 3000
               });
               toast.present();
+              this.salvar();              
             }
           }]
       });

@@ -4,7 +4,6 @@ import { Permissao } from './permissao';
 export class User {
     public id: number;
     public nome: string;
-    public ultimoNome: string;
     public genero: Generos;
     public senha: string;
     public email: string;
