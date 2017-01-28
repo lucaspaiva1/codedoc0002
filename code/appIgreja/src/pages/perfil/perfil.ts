@@ -4,7 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '../../model/User';
 import { FacebookService } from '../../providers/facebook-service';
 import { UserService } from '../../providers/user-service';
-
+import { ActionSheetController } from 'ionic-angular';
 import { ContaService } from '../../providers/conta-service';
 
 
@@ -13,7 +13,7 @@ import { ContaService } from '../../providers/conta-service';
   templateUrl: 'perfil.html'
 })
 export class PerfilPage {
-  private user:FormGroup;
+  private user: FormGroup;
   private editar: boolean;
   private userAtual: User = new User();
   private loading: boolean = false;
@@ -26,33 +26,25 @@ export class PerfilPage {
     public alertCtrl: AlertController,
     public userService: UserService,
     public facebookService: FacebookService,
-    public contaService: ContaService
+    public contaService: ContaService,
+    public actionSheetCtrl: ActionSheetController
   ) {
 
     this.userService.get().then(response => {
       this.userAtual = response;
-      this.editar = false;
-
-          this.userAtual.nome = "Cleybson Cardoso";
-          this.userAtual.connected = true;
-          this.userAtual.email = "aaaa@a";
-          this.userAtual.senha= "123456";
-          this.userAtual.facebook = "1547554931938642";
-          this.userAtual.id = 6;
-          this.userAtual.foto = "https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/15036592_1477985475562255_7170420236271870875_n.jpg?oh=736778d890a0f3b9c1aeb7404b951e85&oe=59107F62";
       //Configurando objeto user com campos para validação
       this.user = this.formBuilder.group({
         nome: [this.userAtual.nome, Validators.compose([Validators.required])],
         nascimento: [this.userAtual.nascimento, Validators.compose([Validators.required])],
         genero: [this.userAtual.genero, Validators.compose([Validators.required])],
         email: [this.userAtual.email, Validators.compose([Validators.required, Validators.minLength(5)])],
-        senhaatual: this.userAtual.senha,
+        senhaatual: '',
         senha: '',
         repSenha: '',
-        facebook:this.userAtual.facebook,
-        id:this.userAtual.id,
-        foto:this.userAtual.foto,
-        permissao:this.userAtual.permissao
+        facebook: this.userAtual.facebook,
+        id: this.userAtual.id,
+        foto: this.userAtual.foto,
+        permissao: this.userAtual.permissao
       });
       this.loading = true;
     });
@@ -63,6 +55,8 @@ export class PerfilPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerfilPage');
+    this.editar = false;
+    
   }
 
   validate(): boolean {
@@ -74,23 +68,7 @@ export class PerfilPage {
     let errorMsg = '';
 
     // validate each field
-    let control = this.user.controls['repSenha'];
-    if (!control.valid) {
-      if (control.errors['required']) {
-        errorMsg = 'Repita a senha';
-      } else if (control.errors['minlength']) {
-        errorMsg = 'Senhas não conferem';
-      }
-    }
-    control = this.user.controls['senha'];
-    if (!control.valid) {
-      if (control.errors['required']) {
-        errorMsg = 'Informe a senha';
-      } else if (control.errors['minlength']) {
-        errorMsg = 'Infome uma senha válida';
-      }
-    }
-    control = this.user.controls['email'];
+    let control = this.user.controls['email'];
     if (!control.valid) {
       if (control.errors['required']) {
         errorMsg = 'Informe um email';
@@ -138,15 +116,53 @@ export class PerfilPage {
     });
   }
 
+  alterarSenha(): boolean {
+
+    if (this.user.get('senhaatual').value == '' || this.user.get('senhaatual').value == this.userAtual.senha && this.user.get('senha').value.length > 5 && this.user.get('senha').value == this.user.get('repSenha').value && this.user.get('senha').value != '') {
+      return true;
+    } else {
+      if (this.user.get('senhaatual').value != this.userAtual.senha) {
+        alert("Digite sua Senha atual Correta");
+      } else if (this.user.get('senha').value == '') {
+        alert("Digite a nova senha");
+      } else if (this.user.get('senha').value.length < 5) {
+        alert("Digite uma senha mais segura");
+      } else {
+        alert("As novas senhas não são iguais");
+      }
+      return false;
+    }
+
+  }
+
   salvar() {
-    if (this.validate()) {
+    if (this.validate() && this.alterarSenha()) {
       let atualizacao = this.contaService.editar('editar', this.user);
       atualizacao.then(response => {
         if (response) {
           let userAtualizado = new User();
-          console.log(response);
+          userAtualizado.connected = true;
+          userAtualizado.nome = this.user.get('nome').value;
+          userAtualizado.nascimento = this.user.get('nascimento').value;
+          userAtualizado.genero = this.user.get('genero').value;
+          userAtualizado.email = this.user.get('email').value;
+          userAtualizado.senha = this.user.get('repSenha').value;
+          userAtualizado.facebook = this.user.get('facebook').value;
+          userAtualizado.id = this.user.get('id').value;
+          userAtualizado.foto = this.user.get('foto').value;
+          userAtualizado.permissao = this.user.get('permissao').value;
+
+          this.user.get('repSenha').value = "";
+          this.user.get('senha').value = "";
+          this.user.get('senhaatual').value = "";
+          //LOGICA PARA SALVAR ALTERAÇÕES
+          let toast = this.toastCtrl.create({
+            message: 'Modificações salvas',
+            duration: 3000
+          });
+          toast.present();
           this.userService.set(userAtualizado);
-        }else{
+        } else {
           alert("Alterações não foram salvas")
         }
       });
@@ -178,18 +194,17 @@ export class PerfilPage {
           {
             text: 'Salvar',
             handler: () => {
-              //LOGICA PARA SALVAR ALTERAÇÕES
-              let toast = this.toastCtrl.create({
-                message: 'Modificações salvas',
-                duration: 3000
-              });
-              toast.present();
-              this.salvar();              
+
+              this.salvar();
             }
           }]
       });
       confirm.present();
     }
+  }
+
+  alterarFoto(){
+
   }
 
 

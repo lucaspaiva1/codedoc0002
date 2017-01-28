@@ -42,9 +42,7 @@ export class ContaService {
     let foto = edicao.get('foto').value;
     let permissao = edicao.get('permissao').value;
     let nome = edicao.get('nome').value;
-
-    console.log(type + nome + " / " + email + " / " + genero + " / " + senhaatual+ " / " + repSenha + " / " + nascimento + " / " + facebook + " / " + id + " / " +  foto+ " / " +  permissao);
-
+    
     return this.http.post(this.linkLogin, JSON.stringify({ type, email, genero, senhaatual, repSenha, nascimento, facebook, id, foto, permissao, nome }), { headers: this.headers })
       .toPromise()
       .then(res => res.json(), error => alert("erro ao editar dados"));
