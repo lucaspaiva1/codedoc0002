@@ -1,5 +1,4 @@
 import { Generos } from './genero';
-import { Permissao } from './permissao';
 
 export class User {
     public id: number;
@@ -8,7 +7,7 @@ export class User {
     public senha: string;
     public email: string;
     public facebook: string = "";
-    public permissao: Permissao;
+    public permissao: string;
     public foto: string = "";
     public nascimento:Date;
     public connected:boolean=false;

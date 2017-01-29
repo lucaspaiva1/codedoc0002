@@ -48,6 +48,7 @@
 					$vetor['nascimento'] = $dados['Nascimento'];
 					$vetor['email'] = $dados['Email'];
 					$vetor['genero'] = $dados['Sexo'];
+					$vetor['senha'] = $dados['Senha'];
 					$vetor['foto'] = $dados['URLFoto'];
 					$vetor['permissao'] = $dados['Tipo'];
 					$vetor['facebook'] = $dados['Facebook'];
@@ -92,6 +93,7 @@
 						$vetor['nome'] = $dados['Nome'];
 						$vetor['nascimento'] = $dados['Nascimento'];
 						$vetor['email'] = $dados['Email'];
+						$vetor['senha'] = $dados['Senha'];
 						$vetor['genero'] = $dados['Sexo'];
 						$vetor['foto'] = $dados['URLFoto'];
 						$vetor['permissao'] = $dados['Tipo'];
@@ -131,6 +133,7 @@
 			$vetor['id'] = $dados['IDUsuario'];	
 			$vetor['nome'] = $dados['Nome'];
 			$vetor['nascimento'] = $dados['Nascimento'];
+			$vetor['senha'] = $dados['Senha'];
 			$vetor['email'] = $dados['Email'];
 			$vetor['genero'] = $dados['Sexo'];
 			$vetor['foto'] = $dados['URLFoto'];

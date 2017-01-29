@@ -35,13 +35,13 @@ export class UserService {
       .then(
       data => data,
       error => {
-        return new User()  
+        return new User()
       }
       );
   }
 
   deslogar() {
-   return NativeStorage.remove('usuarioAtual').then(response=>{
+    return NativeStorage.remove('usuarioAtual').then(response => {
       console.log("deslogado");
     });
   }

@@ -80,6 +80,41 @@
 			}else{
                 echo json_encode("inativa");
             }	
-		}		
+		}else if($type == 'editar'){
+            $id = $request->id;
+            $senha = $request->senhaatual;
+
+            $sql = "SELECT * FROM usuario WHERE IDUsuario = '$id'";
+            $result = $con->query($sql);
+            $numrow = $result->num_rows;
+
+            if($numrow == 1){
+                $email = $request->email;
+                $nome = $request->nome;
+                $repSenha = $request->repSenha;
+                $genero = $request->genero;
+                $foto = $request->foto;
+                $nascimento = $request->nascimento;
+				
+                if ($genero=='Masculino'){
+                    $genero='m';
+                }else {
+                    $genero='f';
+                }
+				
+				if ($senha == ""){
+					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
+				
+				} else {
+					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Senha = '$repSenha', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
+				}
+				
+                $con->query($sql);
+				echo json_encode(true);
+            }else{
+                echo json_encode(false);
+            }
+
+        }		
 	}
 ?>

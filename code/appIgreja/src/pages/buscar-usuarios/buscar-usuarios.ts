@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { GerenciarUsuariosPage } from '../gerenciar-usuarios/gerenciar-usuarios';
 
+import { BuscaService } from '../../providers/busca-service';
+import { User } from '../../model/User';
+
 /*
   Generated class for the BuscarUsuarios page.
 
@@ -13,35 +16,28 @@ import { GerenciarUsuariosPage } from '../gerenciar-usuarios/gerenciar-usuarios'
   templateUrl: 'buscar-usuarios.html'
 })
 export class BuscarUsuariosPage {
-  private users = [];
-  private gerenciarUser = GerenciarUsuariosPage;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.initializeUsers();
+
+  private users: User[] = [];
+  private auxUsers:User[] = [];
+
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public buscaService: BuscaService
+  ) {
+    this.buscaService.usersAll().then(response => {
+      this.users = response;
+      this.auxUsers = response;
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BuscarUsuariosPage');
   }
 
-  initializeUsers(){
-    var aux = [];
-    this.users = aux;
-    this.users.push({
-      nome: 'Fulano',
-      email: 'fulano@gmail.com'
-    });
-    this.users.push({
-      nome: 'Gabriel',
-      email: 'gabriel@gmail.com'
-    });
-    this.users.push({
-      nome: 'Ricardo',
-      email: 'Ricardo@gmail.com'
-    });
-    this.users.push({
-      nome: 'Lucas',
-      email: 'lucas@gmail.com'
-    });
+  initializeUsers() {
+    this.users = this.auxUsers;
   }
 
   getItems(ev: any) {
@@ -54,11 +50,12 @@ export class BuscarUsuariosPage {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.users = this.users.filter((item) => {
-        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.email.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
-  abrirUsuario(nome: String){
-    this.navCtrl.push(this.gerenciarUser);
+
+  abrirUsuario(user: User) {
+    this.navCtrl.push(GerenciarUsuariosPage, { usuarioSelecionado: user });
   }
 }
