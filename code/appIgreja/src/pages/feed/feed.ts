@@ -46,6 +46,13 @@ export class FeedPage {
     this.navCtrl.push(this.addPost);
   }
 
+  doRefresh(refresher) {
+      this.carregarFeed();
+    setTimeout(() => {
+      refresher.complete();
+    }, 2000);
+  }
+
   private deletar(id: number) {
     this.postService.deletePublicacao(id).then(res => {
       if (res.type == true) {
