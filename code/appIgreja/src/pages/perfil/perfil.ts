@@ -13,8 +13,9 @@ import { ContaService } from '../../providers/conta-service';
   templateUrl: 'perfil.html'
 })
 export class PerfilPage {
+
   private user: FormGroup;
-  private editar: boolean;
+  private editar: boolean = false;
   private userAtual: User = new User();
   private loading: boolean = false;
 
@@ -51,12 +52,6 @@ export class PerfilPage {
 
 
 
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PerfilPage');
-    this.editar = false;
-    
   }
 
   validate(): boolean {
@@ -175,6 +170,7 @@ export class PerfilPage {
       this.editar = true;
     } else if (this.editar == true) {
       this.editar = false;
+      /*
       //verificação se dejesa cancelar ou salvar
       let confirm = this.alertCtrl.create({
         title: 'Salvar',
@@ -200,12 +196,34 @@ export class PerfilPage {
           }]
       });
       confirm.present();
+      */
     }
   }
 
-  alterarFoto(){
+  alterarFoto() {
+   let confirm = this.alertCtrl.create({
+     subTitle: 'Importar imagem da:',
+     buttons: [
+       {
+         text: 'Galeria',
+         handler: () => {
+           console.log('Disagree clicked');
+         }
+       },
+       {
+         text: 'Câmera',
+         handler: () => {
+           console.log('Agree clicked');
+         }
+       }
+     ]
+   });
+   confirm.present();
+ }
 
-  }
+
+
+
 
 
 
