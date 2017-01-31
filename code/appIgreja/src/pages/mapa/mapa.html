@@ -13,9 +13,13 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content padding>
 
   <!--tela apenas com google maps e configuração do mesmo no .TS-->
   <div #map id="map" class="mapa"></div>
-  
+
+  <ion-fab left bottom >
+    <button ion-fab class="floating-button" (click)="lista()"><ion-icon name="map"></ion-icon></button>
+  </ion-fab>
+
 </ion-content>
