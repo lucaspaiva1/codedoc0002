@@ -5,41 +5,43 @@
 </ion-header>
 
 <ion-content padding>
+
   <ion-fab class="floating-button" bottom right>
     <button ion-fab (click)="editarAction()">
-     <ion-icon *ngIf="!editar" name="create"></ion-icon>
-     <ion-icon *ngIf="editar" name="done-all"></ion-icon>
-   </button>
+      <ion-icon *ngIf="!editar" name="create"></ion-icon>
+      <ion-icon *ngIf="editar" name="done-all"></ion-icon>
+    </button>
   </ion-fab>
 
-  <div *ngIf="loading">
+  <div *ngIf="loaded">
     <!--Imagem do usuario-->
-    <div class="perfil-pic" (click)="alterarFoto()">
-      <div>
-        <img src="{{userAtual.foto}}" alt="foto perfil" height="200" width="200">
-      </div>
+    <div (click)="alterarFoto()">
+      <img [src]="urlImage" alt="foto perfil" width="100%" style="padding-left: 25px; padding-right: 25px">
     </div>
 
     <!--Campos de dados do usuário -->
-    <form [formGroup]="user">
+    <form>
+
       <ion-list no-lines>
+
         <ion-item *ngIf="!editar">
           <div style="font-size: 13px; color: LightGray; padding-top: 1px; padding-bottom: 9px">Nome Completo</div>
-          <h2 style="color: gray">{{userAtual.nome}}</h2>
+          <h2 style="color: gray">{{user.nome}}</h2>
         </ion-item>
 
         <ion-item *ngIf="editar">
           <ion-label floating>Nome Completo</ion-label>
-          <ion-input type="text" formControlName="nome"></ion-input>
+          <ion-input type="text" name="nome" [(ngModel)]="user.nome"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label floating>Data de Nascimento</ion-label>
-          <ion-datetime displayFormat="DD/MMM/YYYY" formControlName="nascimento" [disabled]="!editar"></ion-datetime>
+          <ion-datetime displayFormat="DD/MMM/YYYY" [disabled]="!editar" name="nascimento" [(ngModel)]="user.nascimento"></ion-datetime>
         </ion-item>
+
         <ion-item>
           <ion-label floating>Gênero</ion-label>
-          <ion-select formControlName="genero" [disabled]="!editar">
+          <ion-select [disabled]="!editar" name="genero" [(ngModel)]="user.genero">
             <ion-option value="Masculino">Masculino</ion-option>
             <ion-option value="Feminino">Feminino</ion-option>
           </ion-select>
@@ -47,27 +49,27 @@
 
         <ion-item *ngIf="!editar">
           <div style="font-size: 13px; color: LightGray; padding-top: 1px; padding-bottom: 9px">Email</div>
-          <h2 style="color: gray">{{userAtual.email}}</h2>
+          <h2 style="color: gray">{{user.email}}</h2>
         </ion-item>
 
         <ion-item *ngIf="editar">
           <ion-label floating>Email</ion-label>
-          <ion-input type="email" formControlName="email"></ion-input>
+          <ion-input type="email" name="email" [(ngModel)]="user.email"></ion-input>
         </ion-item>
 
         <ion-item *ngIf="editar">
           <ion-label floating>Senha Atual</ion-label>
-          <ion-input type="password" formControlName="senhaatual"></ion-input>
+          <ion-input type="password" name="senha" [(ngModel)]="senhaAtual"></ion-input>
         </ion-item>
 
         <ion-item *ngIf="editar">
           <ion-label floating>Nova Senha</ion-label>
-          <ion-input type="password" formControlName="senha"></ion-input>
+          <ion-input type="password" name="senha1" [(ngModel)]="confSenha1"></ion-input>
         </ion-item>
 
         <ion-item *ngIf="editar" style="border-bottom-color: transparent">
           <ion-label floating>Repetir Senha</ion-label>
-          <ion-input type="password" formControlName="repSenha"></ion-input>
+          <ion-input type="password" name="senha2" [(ngModel)]="confSenha2"></ion-input>
         </ion-item>
 
       </ion-list>

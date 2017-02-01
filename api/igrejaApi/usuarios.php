@@ -81,33 +81,21 @@
                 echo json_encode("inativa");
             }	
 		}else if($type == 'editar'){
-            $usuario = $request->usuario;
-			$id = $usuario->id;
-            
+            $id = $request->id;
+            $senha = $request->senhaatual;
 
             $sql = "SELECT * FROM usuario WHERE IDUsuario = '$id'";
             $result = $con->query($sql);
             $numrow = $result->num_rows;
 
             if($numrow == 1){
-				$senha = $usuario->senhaatual;
-                $email = $usuario->email;
-                $nome = $usuario->nome;
-                $repSenha = $usuario->repSenha;
-                $genero = $usuario->genero;
-                $foto = $usuario->foto;
-                $nascimento = $usuario->nascimento;
-				$linkAntigo = $request->linkAntigo;
-				
-				//Apaga a imagem antiga
-				if(!empty($linkAntigo)){
-					$nomeImagem = after_last('/', $linkAntigo);
-					$diretorio = 'perfil/'.$nomeImagem;
-					if(file_exists($diretorio)){		
-						unlink($diretorio);
-					}
-				}
-				
+                $email = $request->email;
+                $nome = $request->nome;
+                $repSenha = $request->repSenha;
+                $genero = $request->genero;
+                $foto = $request->foto;
+                $nascimento = $request->nascimento;
+								
                 if ($genero=='Masculino'){
                     $genero='m';
                 }else {
@@ -125,6 +113,49 @@
 				echo json_encode(true);
             }else{
                 echo json_encode(false);
+            } else if ($type == 'delete'){
+                $id = $request->id;
+                $idUsuario = $request->idUsuario;
+                $senha = $request->senha;
+            
+                $sql = "SELECT * FROM usuario WHERE IDUsuario = '$id' AND Senha = 'senha'";
+                $result = $con->query($sql);
+                $numrow = $result->num_rows;
+
+                if($numrow == 1){
+                    $sql = "DELETE FROM `usuario` WHERE IDUsuario = '$idUsuario'";
+                    $result = $con->query($sql);
+				    echo json_encode(true);
+                }else{
+                    echo json_encode(false);
+                }
+            } else if ($type == 'delete'){
+                $id = $request->id;
+                $idUsuario = $request->idUsuario;
+                $senha = $request->senha;
+            
+                $sql = "SELECT * FROM usuario WHERE IDUsuario = '$id' AND Senha = 'senha'";
+                $result = $con->query($sql);
+                $numrow = $result->num_rows;
+
+                if($numrow == 1){
+
+                    $sql = "SELECT * FROM usuario WHERE IDUsuario = '$idUsuario'";
+                    $result = $con->query($sql);
+                    $dados = $result->fetch_assoc();
+
+                    if($dados['Tipo']=='c'){
+                        $sql = "UPDATE `usuario` SET Tipo = 'a' WHERE IDUsuario = '$idUsuario'";
+                    }else{
+
+                        $sql = "UPDATE `usuario` SET Tipo = 'c' WHERE IDUsuario = '$idUsuario'";
+                    }
+                    
+                    $result = $con->query($sql);
+				    echo json_encode(true);
+                }else{
+                    echo json_encode(false);
+                }
             }
 
         }		

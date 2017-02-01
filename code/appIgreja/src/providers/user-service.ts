@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
-
-import { User } from '../model/User';
-
 import { NativeStorage } from 'ionic-native';
+import { Injectable } from '@angular/core';
+import { Events } from 'ionic-angular';
+import { Http } from '@angular/http';
+import { User } from '../model/User';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 
 /*
@@ -18,11 +17,12 @@ import { NativeStorage } from 'ionic-native';
 export class UserService {
 
 
-  constructor(public http: Http) {
+  constructor(public http: Http, public events: Events) {
     console.log('Hello UserService Provider');
   }
 
   set(user: User) {
+    this.events.publish('user:changed', user);
     NativeStorage.setItem('usuarioAtual', user)
       .then(
       () => console.log('Stored item!'),
