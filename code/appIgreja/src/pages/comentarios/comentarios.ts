@@ -3,13 +3,8 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 
 import { ComentarioService } from '../../providers/comentario-service';
 import { Comentario } from '../../model/comentario';
+import { UserService } from '../../providers/user-service';
 
-/*
-  Generated class for the Comentarios page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-comentarios',
   templateUrl: 'comentarios.html'
@@ -19,8 +14,9 @@ export class ComentariosPage {
   private postID: number;
   private comentarios: Comentario[] = [];
   private novoComentario: Comentario = new Comentario();
+  private userID: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public comentService: ComentarioService, public loadingController: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public comentService: ComentarioService, public loadingController: LoadingController, public userService: UserService) {
     let loader = this.loadingController.create({
       content: "your message"
     });
@@ -28,6 +24,10 @@ export class ComentariosPage {
     this.postID = navParams.get('id');
     this.carregarComentarios();
     loader.dismiss();
+    userService.get().then(res=>{
+      this.userID = res.id;
+    });
+
 
   }
 
@@ -44,6 +44,7 @@ export class ComentariosPage {
 
   private comentar(){
     this.novoComentario.Publicacao_IDPublicacao = this.postID;
+    this.novoComentario.Usuario_IDUsuario = this.userID;
     console.log(this.novoComentario);
     this.comentService.addComentario(this.novoComentario).then(res=>{
       if(res.type == true){

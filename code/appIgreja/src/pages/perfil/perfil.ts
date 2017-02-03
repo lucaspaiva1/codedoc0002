@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ActionSheetController, NavParams, AlertController, Platform, ToastController, LoadingController, Loading } from 'ionic-angular';
+import { Events } from 'ionic-angular';
 import { ImagePicker, Camera, File, Transfer, FilePath } from 'ionic-native';
 import { User } from '../../model/User';
 import { FacebookService } from '../../providers/facebook-service';
@@ -36,7 +37,8 @@ export class PerfilPage {
     public userService: UserService,
     public facebookService: FacebookService,
     public contaService: ContaService,
-    public actionSheetCtrl: ActionSheetController
+    public actionSheetCtrl: ActionSheetController,
+    public events: Events
   ) {
 
     this.userService.get().then(response => {
@@ -45,7 +47,6 @@ export class PerfilPage {
       this.loaded = true;
     });
   }
-
 
   private conectarFace() {
     this.facebookService.vincular(this.user.id).then(response => {
@@ -76,13 +77,13 @@ export class PerfilPage {
       return false;
 
     } else {
+      this.user.senha = this.confSenha1;
       return true;
     }
   }
 
   private salvar() {
     if (this.validate() && this.alterarSenha()) {
-
       let equals: boolean;
       if (this.urlImage == this.user.foto) {
         this.user.linkAntigo = '';
@@ -93,8 +94,7 @@ export class PerfilPage {
         this.user.foto = 'http://www.dsoutlet.com.br/igrejaApi/perfil/' + this.novaImagem;
         equals = false;
       }
-
-      this.contaService.editar('editar', this.user).then(response => {
+      this.contaService.editar(this.user).then(response => {
         if (response) {
           if(equals == false){
             this.uploadImage();
@@ -267,7 +267,7 @@ export class PerfilPage {
     // Use the FileTransfer to upload the image
     fileTransfer.upload(this.urlImage, url, options).then(data => {
       this.loading.dismissAll();
-      this.presentToast('Postagem Criada com Sucesso!');
+      this.presentToast('Edição Concluida!');
       this.navCtrl.pop();
     }, err => {
       this.loading.dismissAll()

@@ -1,7 +1,4 @@
 //relacionados ao usuario
-criar api para enviar foto do perfil ao servidor
-pegar o id do usuario pra fazer comentarios
 data de nascimento do usuario facebook
 foto perfil maior usuario facebook
 se a foto for anonima e vincular com face, trocar a foto
-adicionar foto de perfil

@@ -29,9 +29,9 @@ export class ContaService {
       .then(res => res.json(), error => alert("Erro ao tentar se conectar com servidor"));
   }
 
-  editar(type: string, usuario: User): Promise<boolean> {
+  editar(usuario: User): Promise<boolean> {
 
-    return this.http.post(this.linkLogin, JSON.stringify({usuario: usuario, type: type}), this.headers)
+    return this.http.post('http://dsoutlet.com.br/igrejaApi/editarPerfil.php', JSON.stringify(usuario), this.headers)
       .toPromise()
       .then(res => res.json(), error => alert("erro ao editar dados"))
       .catch(err=>{
