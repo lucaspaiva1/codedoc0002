@@ -15,6 +15,22 @@
 		}
 	};
 	
+	function apagarFotoPerfil($link){
+	//Apaga a imagem antiga
+		if(!empty($link)){
+			$nomeImagem = after_last('/', $link);
+			$diretorio = 'perfil/'.$nomeImagem;
+			if(file_exists($diretorio)){		
+				unlink($diretorio);
+				//echo 'apagou';
+			}else{
+				//echo 'nao existe';
+			}
+		}else{
+			//echo 'sem diretorio';
+		}
+	};
+	
 	function after_last ($this, $inthat)
     {
         if (!is_bool(strrevpos($inthat, $this)))

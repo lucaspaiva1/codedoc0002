@@ -3,9 +3,7 @@
 	require 'mySQL.php';
 ?>
 <?php 
-
 	$the_request = &$_POST;
-
 	$postdata = file_get_contents("php://input");
 	
 	if (isset($postdata)){
@@ -14,10 +12,8 @@
 		$type         = $request->type;
 		
 		if($type == 'logar'){
-
             $email = $request->email;
             $senha = $request->senha;
-
 			$sql = "SELECT * FROM usuario WHERE Email = '$email' AND Senha = '$senha'";
 			$result = $con->query($sql);
             $numrow = $result->num_rows;
@@ -48,23 +44,17 @@
                     $vetor['permissao'] = $dados['Tipo'];
                     $vetor['facebook'] = $dados['Facebook'];
                     $vetor['connected'] = true;
-
-
                     $sql = "UPDATE usuario SET Tentativas = 0 WHERE Email = '$email'";
                     $result = $con->query($sql);
                         
                     echo json_encode($vetor);
                 } else {
-
                     $sql = "SELECT * FROM usuario WHERE Email = '$email'";
                     $result = $con->query($sql);
-
                     $numrow = $result->num_rows;
-
                     if($numrow == 1){
                         $dados = $result->fetch_assoc();
                         $tentativas = $dados['Tentativas'] + 1;
-
                         if($tentativas==3){
                             $sql = "UPDATE usuario SET Tentativas = '$tentativas' , Bloqueada = 1 WHERE Email = '$email'";
                             $result = $con->query($sql);
@@ -83,11 +73,9 @@
 		}else if($type == 'editar'){
             $id = $request->id;
             $senha = $request->senhaatual;
-
             $sql = "SELECT * FROM usuario WHERE IDUsuario = '$id'";
             $result = $con->query($sql);
             $numrow = $result->num_rows;
-
             if($numrow == 1){
                 $email = $request->email;
                 $nome = $request->nome;
@@ -95,7 +83,7 @@
                 $genero = $request->genero;
                 $foto = $request->foto;
                 $nascimento = $request->nascimento;
-				
+								
                 if ($genero=='Masculino'){
                     $genero='m';
                 }else {
@@ -121,7 +109,6 @@
                 $sql = "SELECT * FROM usuario WHERE IDUsuario = '$id' AND Senha = 'senha'";
                 $result = $con->query($sql);
                 $numrow = $result->num_rows;
-
                 if($numrow == 1){
                     $sql = "DELETE FROM `usuario` WHERE IDUsuario = '$idUsuario'";
                     $result = $con->query($sql);
@@ -137,17 +124,13 @@
                 $sql = "SELECT * FROM usuario WHERE IDUsuario = '$id' AND Senha = 'senha'";
                 $result = $con->query($sql);
                 $numrow = $result->num_rows;
-
                 if($numrow == 1){
-
                     $sql = "SELECT * FROM usuario WHERE IDUsuario = '$idUsuario'";
                     $result = $con->query($sql);
                     $dados = $result->fetch_assoc();
-
                     if($dados['Tipo']=='c'){
                         $sql = "UPDATE `usuario` SET Tipo = 'a' WHERE IDUsuario = '$idUsuario'";
                     }else{
-
                         $sql = "UPDATE `usuario` SET Tipo = 'c' WHERE IDUsuario = '$idUsuario'";
                     }
                     
@@ -157,7 +140,6 @@
                     echo json_encode(false);
                 }
             }
-
         }		
 	}
 ?>

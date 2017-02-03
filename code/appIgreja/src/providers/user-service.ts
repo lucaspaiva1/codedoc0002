@@ -1,31 +1,26 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
-
-import { User } from '../model/User';
-
 import { NativeStorage } from 'ionic-native';
+import { Injectable } from '@angular/core';
+import { Events } from 'ionic-angular';
+import { Http } from '@angular/http';
+import { User } from '../model/User';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 
-/*
-  Generated class for the UserService provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class UserService {
 
 
-  constructor(public http: Http) {
-    console.log('Hello UserService Provider');
+  constructor(public http: Http, public events: Events) {
   }
 
   set(user: User) {
+    this.events.publish('user:changed', user);
     NativeStorage.setItem('usuarioAtual', user)
       .then(
-      () => console.log('Stored item!'),
+      () => {
+        this.events.publish('user:changed', user);
+      },
       error => alert('Erro ao carregar dados')
       );
   }

@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
 import { Publicacao } from '../../model/publicacao';
 import { PublicacaoService } from '../../providers/publicacao-service';
-//import { NavController } from 'ionic-angular';
 import { ImagePicker } from 'ionic-native';
-//import { Camera } from 'ionic-native';
-//import { Transfer } from 'ionic-native';
 import { Camera, File, Transfer, FilePath } from 'ionic-native';
 
 declare var cordova: any;

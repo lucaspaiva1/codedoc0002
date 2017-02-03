@@ -81,20 +81,32 @@
                 echo json_encode("inativa");
             }	
 		}else if($type == 'editar'){
-            $id = $request->id;
-            $senha = $request->senhaatual;
+            $usuario = $request->usuario;
+			$id = $usuario->id;
+            
 
             $sql = "SELECT * FROM usuario WHERE IDUsuario = '$id'";
             $result = $con->query($sql);
             $numrow = $result->num_rows;
 
             if($numrow == 1){
-                $email = $request->email;
-                $nome = $request->nome;
-                $repSenha = $request->repSenha;
-                $genero = $request->genero;
-                $foto = $request->foto;
-                $nascimento = $request->nascimento;
+				$senha = $usuario->senhaatual;
+                $email = $usuario->email;
+                $nome = $usuario->nome;
+                $repSenha = $usuario->repSenha;
+                $genero = $usuario->genero;
+                $foto = $usuario->foto;
+                $nascimento = $usuario->nascimento;
+				$linkAntigo = $request->linkAntigo;
+				
+				//Apaga a imagem antiga
+				if(!empty($linkAntigo)){
+					$nomeImagem = after_last('/', $linkAntigo);
+					$diretorio = 'perfil/'.$nomeImagem;
+					if(file_exists($diretorio)){		
+						unlink($diretorio);
+					}
+				}
 				
                 if ($genero=='Masculino'){
                     $genero='m';
@@ -117,4 +129,19 @@
 
         }		
 	}
+	
+	function after_last ($this, $inthat)
+    {
+        if (!is_bool(strrevpos($inthat, $this)))
+        return substr($inthat, strrevpos($inthat, $this)+strlen($this));
+    };
+	
+	function strrevpos($instr, $needle)
+	{
+		$rev_pos = strpos (strrev($instr), strrev($needle));
+		if ($rev_pos===false) return false;
+		else return strlen($instr) - $rev_pos - strlen($needle);
+	};
+	
+	
 ?>

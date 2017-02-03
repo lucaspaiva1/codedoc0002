@@ -41,6 +41,7 @@ export class EditarPostPage {
       this.publicacao.linkAntigo = '';
       equals = true;
     }else{
+      //link antigo usado para apagar a foto de perfil nao-utilizada
       this.publicacao.linkAntigo = this.publicacao.LinkImagem;
       this.publicacao.LinkImagem = 'http://www.dsoutlet.com.br/igrejaApi/uploads/' + this.novaImagem;
       equals = false;

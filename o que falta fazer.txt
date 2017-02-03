@@ -1,19 +1,9 @@
 //relacionados ao usuario
-fazer login com usuario normal
-guardar os dados do usuario normal
-logar automaticamente com usuario normal
-criar api para enviar foto do perfil ao servidor
-pegar o id do usuario pra fazer comentarios
 data de nascimento do usuario facebook
 foto perfil maior usuario facebook
-mostrar nome e foto do usuario no menu lateral
-editar perfil do usuario
-ocultar botao 'facebook' do perfil caso o usuario ja estejam logado
+se a foto for anonima e vincular com face, trocar a foto
+gerenciar usuario (deletar e tornar administrador)
 
-
-//relacionado a publicacao
-pegar a foto do album e postar foto - feito
-atualizar foto da publicacao - feito
-apagar a foto do servidor quando a publicacao for apagada - feito
-apagar a foto do servidor quando a publicacao for apagada automaticamente - feito
-apagar a foto do servidor quando a foto da publicacao for editada - feito
+//relacionados a publicacao
+postar no face
+mostrar feed de 10 em 10
