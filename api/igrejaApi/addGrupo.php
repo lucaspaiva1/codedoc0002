@@ -12,8 +12,11 @@
 	if (isset($postdata)){
 		$request = json_decode($postdata);
 		
-		$nome    = $request->nome;
-		$usersID = $request->ids;
+		$grupo   = $request->grupo;
+		
+		$nome    = $grupo->nome;
+		$usersID = $grupo->ids;
+		
 		$sql = "SELECT * FROM grupo WHERE nome = '$nome'";
 		
 		$result = $con->query($sql);
