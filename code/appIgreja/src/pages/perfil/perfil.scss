@@ -32,3 +32,11 @@ page-perfil {
   font-family: 'Roboto';
   margin-bottom: 10px;
 }
+
+.item-input::after {
+  border-bottom-color: transparent !important;
+}
+
+.item-input.ng-valid.input-has-value::after{
+  border-bottom-color: transparent;
+}

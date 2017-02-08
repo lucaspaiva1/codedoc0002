@@ -17,34 +17,50 @@
   <ion-list>
     <ion-item>
       <ion-label floating >Título</ion-label>
-      <ion-input type="text" [(ngModel)]="Titulo"></ion-input>
+      <ion-input type="text" [(ngModel)]="evento.Titulo" disabled="{{ !editar }}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating >Descrição</ion-label>
-      <ion-input type="text" [(ngModel)]="Descricao"></ion-input>
+      <ion-input type="text" [(ngModel)]="evento.Descricao" disabled="{{ !editar }}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating >Início</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="DataInicio"></ion-datetime>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="evento.DataInicio" disabled="{{ !editar }}"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label floating >Término</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="DataFim"></ion-datetime>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="evento.DataTermino" disabled="{{ !editar }}"></ion-datetime>
     </ion-item>
-    <ion-item>
+
+    <ion-item *ngIf="evento.EventoDiario && !editar">
       <ion-label>Dia Inteiro</ion-label>
-      <ion-toggle [(ngModel)]="Allday"></ion-toggle>
     </ion-item>
+
+    <ion-item *ngIf="editar">
+      <ion-label>Dia Inteiro</ion-label>
+      <ion-toggle [checked]="evento.EventoDiario" [(ngModel)]="evento.EventoDiario" disabled="{{ !editar }}"></ion-toggle>
+    </ion-item>
+
     <!--Caso não seja dia inteiro, escolher horários-->
-    <ion-item *ngIf="!Allday">
+    <ion-item *ngIf="!Allday && !evento.EventoDiario">
       <ion-label floating >Horário de início</ion-label>
-      <ion-datetime displayFormat="HH/mm" [(ngModel)]="HoraInicio"></ion-datetime>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="evento.HoraInicio" disabled="{{ !editar }}"></ion-datetime>
     </ion-item>
-    <ion-item *ngIf="!Allday">
+    <ion-item *ngIf="!Allday && !evento.EventoDiario">
       <ion-label floating >Horário de término</ion-label>
-      <ion-datetime displayFormat="HH/mm" [(ngModel)]="HoraFim"></ion-datetime>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="evento.HoraTermino" disabled="{{ !editar }}"></ion-datetime>
     </ion-item>
   </ion-list>
   <!--Botão para adicionar evento-->
-  <button ion-button block (click)="salvar()">Salvar Evento</button>
+  <button *ngIf="editar" ion-button block (click)="salvar()">Salvar Edição</button>
+  <!--Botão para Cancelar evento-->
+  <button *ngIf="editar" ion-button block (click)="cancelar()">Cancelar Edição</button>
+  <!--Botão para Excluir evento-->
+  <button *ngIf="editar" ion-button block color="danger" (click)="excluir()">Deletar Evento</button>
+
+  <ion-fab *ngIf="!editar" class="floating-button-adm" right bottom>
+   <button ion-fab (click)="habEditar()">
+     <ion-icon name="create"></ion-icon>
+   </button>
+ </ion-fab>
 </ion-content>

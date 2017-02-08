@@ -18,13 +18,12 @@
   <ion-list no-lines>
 
   <ion-item-sliding *ngFor="let grupo of grupos" (click)="itemSelected()">
-    <button ion-item>
+    <button ion-item (click)="abrirGrupo()">
       {{ grupo.nome }}
     </button>
 
     <!--sliding options-->
     <ion-item-options side="right">
-      <button ion-button icon-left (click)="editar()"><ion-icon name="create"></ion-icon>Editar</button>
       <button ion-button icon-left color="danger" (click)="deletar()"><ion-icon name="trash"></ion-icon>Deletar</button>
     </ion-item-options>
   </ion-item-sliding>
@@ -34,6 +33,6 @@
     <button ion-fab class="floating-button-adm" (click)="adicionarGupo()" ><ion-icon name="add"></ion-icon></button>
   </ion-fab>
   <ion-fab left bottom >
-    <button ion-fab class="floating-button"><ion-icon name="map"></ion-icon></button>
+    <button ion-fab class="floating-button" (click)="mapa()"><ion-icon name="map"></ion-icon></button>
   </ion-fab>
 </ion-content>

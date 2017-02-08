@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder } from '@angular/forms';
-import { UserService } from '../../../providers/user-service';
 import { User } from '../../../model/User';
 
 /*
@@ -23,8 +22,7 @@ export class CadastrarNovoUsuarioPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    public alertCtrl: AlertController,
-    public userService:UserService
+    public alertCtrl: AlertController
   ) {
     //Configurando objeto user com campos para validação
     this.user = this.formBuilder.group({
@@ -111,7 +109,6 @@ export class CadastrarNovoUsuarioPage {
         duration: 3000
       });
       toast.present();
-      this.userService.registrar(this.userNovo);
       this.navCtrl.pop();
     }
   }

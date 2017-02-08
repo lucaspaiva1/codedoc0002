@@ -1,135 +1,284 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
-import { Validators, FormBuilder } from '@angular/forms';
+import { NavController, ActionSheetController, NavParams, AlertController, Platform, ToastController, LoadingController, Loading } from 'ionic-angular';
+import { Events } from 'ionic-angular';
+import { ImagePicker, Camera, File, Transfer, FilePath } from 'ionic-native';
+import { User } from '../../model/User';
+import { FacebookService } from '../../providers/facebook-service';
+import { UserService } from '../../providers/user-service';
+import { ContaService } from '../../providers/conta-service';
+
+declare var cordova: any;
+
 
 @Component({
   selector: 'page-perfil',
   templateUrl: 'perfil.html'
 })
 export class PerfilPage {
-  private user;
-  private editar: boolean = false;
 
-  constructor(private toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
-    //Configurando objeto user com campos para validação
-    this.user = this.formBuilder.group({
-      nome: ['', Validators.compose([Validators.required])],
-      nascimento: ['', Validators.compose([Validators.required])],
-      genero: ['', Validators.compose([Validators.required])],
-      email: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-      senha: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-      repSenha: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
+  private editar: boolean = false;
+  private user: User = new User();
+  private novaImagem: string = null;
+  private urlImage: string = null;
+  private loading: Loading;
+  private loaded: boolean = false;
+  private senhaAtual: string = '';
+  private confSenha1: string = '';
+  private confSenha2: string = '';
+
+
+  constructor(
+    private toastCtrl: ToastController,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public platform: Platform,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
+    public userService: UserService,
+    public facebookService: FacebookService,
+    public contaService: ContaService,
+    public actionSheetCtrl: ActionSheetController,
+    public events: Events
+  ) {
+
+    this.userService.get().then(response => {
+      this.user = response;
+      this.urlImage = this.user.foto;
+      this.loaded = true;
     });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PerfilPage');
+  private conectarFace() {
+    this.facebookService.vincular(this.user.id).then(response => {
+      if (response.connected) {
+        this.userService.set(response);
+        alert("Conta do Facebook vinculada com Sucesso")
+      } else {
+        alert("erro");
+      }
+    });
   }
 
-  validate(): boolean {
-    if (this.user.valid) {
+  private validate(): boolean {
+    if (this.user.nome.trim() == '') {
+      this.presentToast('Nome incorreto');
+      return false;
+    } if (this.user.email.trim() == '' || !this.user.email.includes('@')) {
+      this.presentToast('Email incorreto');
+      return false;
+    } else {
       return true;
     }
+  }
 
-    // figure out the error message
-    let errorMsg = '';
+  private alterarSenha(): boolean {
+    if(this.senhaAtual !== ''){
+      if (this.user.senha.trim() !== this.senhaAtual) {
+        this.presentToast('Senha Atual Inválida');
+        return false;
 
-    // validate each field
-    let control = this.user.controls['repSenha'];
-    if (!control.valid) {
-      if (control.errors['required']) {
-        errorMsg = 'Repita a senha';
-      } else if (control.errors['minlength']) {
-        errorMsg = 'Senhas não conferem';
-      }
-    }
-    control = this.user.controls['senha'];
-    if (!control.valid) {
-      if (control.errors['required']) {
-        errorMsg = 'Informe a senha';
-      } else if (control.errors['minlength']) {
-        errorMsg = 'Infome uma senha válida';
-      }
-    }
-    control = this.user.controls['email'];
-    if (!control.valid) {
-      if (control.errors['required']) {
-        errorMsg = 'Informe um email';
-      } else if (control.errors['minlength']) {
-        errorMsg = 'Informe um email válido';
-      }
-    }
-    control = this.user.controls['nome'];
-    if (!control.valid) {
-      if (control.errors['required']) {
-        errorMsg = 'Informe seu nome';
-      }
-    }
-    control = this.user.controls['nascimento'];
-    if (!control.valid) {
-      if (control.errors['required']) {
-        errorMsg = 'Informe sua data de nascimento';
-      }
-    }
-    control = this.user.controls['genero'];
-    if (!control.valid) {
-      if (control.errors['required']) {
-        errorMsg = 'Informe seu gênero';
-      }
-    }
+      } else if (this.confSenha1 !== this.confSenha2) {
+        this.presentToast('Senhas não Correspondem');
+        return false;
 
-    let alert = this.alertCtrl.create({
-      title: 'Erro!',
-      subTitle: errorMsg || 'Empty error message!',
-      buttons: ['OK']
+      } else {
+        this.user.senha = this.confSenha1;
+        return true;
+      }
+    }else{
+      return true;
+    }
+  }
+
+  private salvar() {
+    if (this.validate() && this.alterarSenha()) {
+      let equals: boolean;
+      if (this.urlImage == this.user.foto) {
+        this.user.linkAntigo = '';
+        equals = true;
+      } else {
+        //link antigo usado para apagar a foto de perfil nao-utilizada
+        this.user.linkAntigo = this.user.foto;
+        this.user.foto = 'http://www.dsoutlet.com.br/igrejaApi/perfil/' + this.novaImagem;
+        equals = false;
+      }
+      this.contaService.editar(this.user).then(response => {
+        if (response) {
+          if (equals == false) {
+            this.uploadImage();
+          }
+          this.userService.set(this.user);
+          this.presentToast('Modificações Salvas');
+          this.editar = false;
+        } else {
+          this.descartar();
+          this.presentToast('Alterações não foram salvas');
+        }
+      });
+    }
+  }
+
+  private descartar() {
+    this.userService.get().then(res => {
+      this.user = res;
+      this.senhaAtual = '';
+      this.confSenha1 = '';
+      this.confSenha2 = '';
     });
-    alert.present();
 
-    return false;
+    this.presentToast('Modificações descartadas');
+
   }
 
-  salvar(){
-    if(this.validate()){
-      //Logica
-    }
-  }
-
-  editarAction(){
-    if(this.editar == false){
+  private editarAction() {
+    if (this.editar == false) {
       this.editar = true;
-    }else if(this.editar == true){
-      this.editar = false;
+    } else if (this.editar == true) {
+
       //verificação se dejesa cancelar ou salvar
       let confirm = this.alertCtrl.create({
         title: 'Salvar',
         message: 'Deseja salvar as modificações feitas?',
         buttons: [
-        {
-          text: 'Descartar',
-          handler: () => {
-            // LOGICA PARA CANCELAR
-            let toast = this.toastCtrl.create({
-              message: 'Modificações descartadas',
-              duration: 3000
-            });
-            toast.present();
-          }
-        },
-        {
-          text: 'Salvar',
-          handler: () => {
-            //LOGICA PARA SALVAR ALTERAÇÕES
-            let toast = this.toastCtrl.create({
-              message: 'Modificações salvas',
-              duration: 3000
-            });
-            toast.present();
-          }
-        }]
+          {
+            text: 'Descartar',
+            handler: () => {
+              this.descartar();
+            }
+          },
+          {
+            text: 'Salvar',
+            handler: () => {
+              this.salvar();
+            }
+          }]
       });
-    confirm.present();
+      confirm.present();
+
     }
   }
 
+  private alterarFoto() {
+    if (this.editar) {
+      let confirm = this.alertCtrl.create({
+        subTitle: 'Importar imagem da:',
+        buttons: [
+          {
+            text: 'Galeria',
+            handler: () => {
+              this.importarFoto();
+            }
+          },
+          {
+            text: 'Câmera',
+            handler: () => {
+              this.tirarFoto();
+            }
+          }
+        ]
+      });
+      confirm.present();
+    }
+  }
+
+  private importarFoto() {
+    this.takePicture(Camera.PictureSourceType.PHOTOLIBRARY);
+  }
+
+  private tirarFoto() {
+    this.takePicture(Camera.PictureSourceType.CAMERA);
+  }
+
+  private takePicture(sourceType) {
+    // Create options for the Camera Dialog
+    let options = {
+      quality: 100,
+      sourceType: sourceType,
+      saveToPhotoAlbum: false,
+      correctOrientation: true
+    };
+
+    // Get the data of an image
+    Camera.getPicture(options).then((imagePath) => {
+      // Special handling for Android library
+      if (this.platform.is('android') && sourceType === Camera.PictureSourceType.PHOTOLIBRARY) {
+        FilePath.resolveNativePath(imagePath)
+          .then(filePath => {
+            let currentName = filePath.substr(imagePath.lastIndexOf('/') + 1);
+            let correctPath = filePath.substr(0, imagePath.lastIndexOf('/') + 1);
+            this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+            this.urlImage = filePath;
+          });
+      } else {
+        let currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+        let correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+        this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+        this.urlImage = imagePath;
+      }
+    }, (err) => {
+      this.presentToast('Erro ao selecionar imagem.');
+    });
+  }
+
+  // Create a new name for the image
+  private createFileName() {
+    let time = new Date();
+    return (time.getTime() + ".jpg");
+  }
+
+  // Copy the image to a local folder
+  private copyFileToLocalDir(namePath, currentName, newFileName) {
+    File.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
+      this.novaImagem = newFileName;
+    }, error => {
+      this.presentToast('Erro ao arquivar imagem.');
+    });
+  }
+
+  //exibe toast
+  private presentToast(text) {
+    let toast = this.toastCtrl.create({
+      message: text,
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
+  }
+
+  //responsável por upload da imagem
+  private uploadImage() {
+    // Destination URL
+    let url = "http://www.dsoutlet.com.br/igrejaApi/uploadPerfil.php";
+
+    // File for Upload
+    //let targetPath = this.pathForImage(this.novaImagem);
+
+    // File name only
+    let filename = this.novaImagem;
+
+    let options = {
+      fileKey: "file",
+      fileName: filename,
+      chunkedMode: false,
+      mimeType: "multipart/form-data",
+      params: { 'fileName': filename }
+    };
+
+    const fileTransfer = new Transfer();
+
+    this.loading = this.loadingCtrl.create({
+      content: 'Carregando...',
+    });
+    this.loading.present();
+
+    // Use the FileTransfer to upload the image
+    fileTransfer.upload(this.urlImage, url, options).then(data => {
+      this.loading.dismissAll();
+      this.presentToast('Edição Concluida!');
+    }, err => {
+      this.loading.dismissAll()
+      this.presentToast('Erro no envio da imagem.');
+    });
+  }
 
 }

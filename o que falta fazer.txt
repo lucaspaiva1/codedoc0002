@@ -1,0 +1,15 @@
+//relacionados ao usuario
+data de nascimento do usuario facebook
+foto perfil maior usuario facebook
+se a foto for anonima e vincular com face, trocar a foto
+gerenciar usuario (deletar e tornar administrador)
+
+//relacionados a publicacao
+postar no face
+mostrar feed de 10 em 10
+
+//relacionado a comentario
+apagar comentarios (apenas adm)
+
+//
+alert de tentar novamente quando perder conexao

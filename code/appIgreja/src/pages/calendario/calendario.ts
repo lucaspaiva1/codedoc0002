@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ActionSheetController } from 'ionic-angular';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { AddEventoPage } from '../add-evento/add-evento';
+import { EditarEventoPage } from '../editar-evento/editar-evento';
+import { BuscaEventosPage } from '../busca-eventos/busca-eventos';
+import { EventoService } from '../../providers/evento-service';
+import { Evento } from '../../model/evento';
 
 /*
   Generated class for the Calendario page.
@@ -14,65 +18,86 @@ import { AddEventoPage } from '../add-evento/add-evento';
   templateUrl: 'calendario.html'
 })
 export class CalendarioPage {
+
+  private eventos: Evento[] = [];
+
+  editarEvento = EditarEventoPage;
   addEvento = AddEventoPage;
+  buscaEventos = BuscaEventosPage;
   calendar;
   eventSource;
-  isToday:boolean;
+  isToday: boolean;
   mes: string = 'Dezembro'; //titulo
 
-  constructor( public calendarMd: NgCalendarModule, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public actionSheetCtrl: ActionSheetController, public loadingController: LoadingController, public calendarMd: NgCalendarModule, public navCtrl: NavController, public navParams: NavParams, public eventoService: EventoService) {
     this.calendar = {
       mode: 'month',
       currentDate: new Date()
     };
-
   }
 
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CalendarioPage');
-    this.eventSource = this.carregarEventos();
+  ionViewWillEnter() {
+    let loader = this.loadingController.create({
+      content: "Carregando eventos"
+    });
+    loader.present();
+    this.getEventos();
+    loader.dismiss();
   }
+
   // funções do calendario
-  onCurrentDateChanged(event:Date){
+  onCurrentDateChanged(event: Date) {
   }
-  reloadSource(startTime, endTime){}
-  onEventSelected(event){
-    //criar alerta se necessário
+
+  reloadSource(startTime, endTime) {
+
   }
+
+  onEventSelected(event) { // evento diparado quando um evendo é selecionado na lista
+    this.navCtrl.push(this.editarEvento, {id: event.id });
+  }
+
   onViewTitleChanged = (title: string) => {
     this.mes = title; // atualiza o título
   };
-  onTimeSelected(ev){
-    console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' +
-        (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
+
+  onTimeSelected(ev) {
+    //console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' + (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
   }
 
-  carregarEventos(){
-    var events = [];
-    var date = new Date();
-    events.push({
-      title: 'envento  all day teste 1',
-      startTime: new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + 1)),
-      endTime: new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + 2)),
-      allDay: true
+  private getEventos() {
+    this.eventoService.getEventos().then(res => {
+      if (res.type == true) {
+        this.eventos = res.data;
+
+        let events = [];
+
+        for (let evento of this.eventos) {
+
+          events.push({
+            id: evento.IDEvento,
+            title: evento.Titulo,
+            startTime: new Date(evento.DataInicio),
+            endTime: new Date(evento.DataTermino),
+            allDay: evento.EventoDiario
+          });
+        }
+
+        this.eventSource = events;
+
+      }
+      else {
+        console.log("error");
+      }
     });
-    events.push({
-      title: 'envento comum teste 1',
-      startTime: new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() - 5, 0, date.getMinutes() + 10)),
-      endTime: new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() - 5, 0, date.getMinutes() + 10)),
-      allDay: true
-    });
-    events.push({
-      title: 'envento comum teste 2',
-      startTime: new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + 7, 0, date.getMinutes() + 10)),
-      endTime: new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + 7, 0, date.getMinutes() + 20)),
-      allDay: true
-    });
-    return events;
+
   }
 
-  adicionar(){
+  private adicionar() {
     this.navCtrl.push(this.addEvento);
+  }
+
+  buscar(){
+    this.navCtrl.push(this.buscaEventos);
   }
 }

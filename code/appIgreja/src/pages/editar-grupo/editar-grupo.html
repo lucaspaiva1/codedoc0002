@@ -18,12 +18,17 @@
   <ion-list>
     <ion-item>
       <ion-label floating>Nome</ion-label>
-      <ion-input type="text" [(ngModel)]="nome"></ion-input>
+      <ion-input type="text" [(ngModel)]="nome" disabled="{{ !editar }}" ></ion-input>
     </ion-item>
   </ion-list>
 
   <!--Botão para adicionar evento-->
-  <button class="margem-botton" ion-button block (click)="salvar()">Salvar Evento</button>
+  <button *ngIf="!editar" ion-button block (click)="salvar()">Salvar Edição</button>
+  <!--Botão para Cancelar evento-->
+  <button *ngIf="!editar" ion-button block (click)="cancelar()">Cancelar Edição</button>
+  <!--Botão para Excluir evento-->
+  <button *ngIf="!editar" ion-button block color="danger" (click)="excluir()">Deletar Evento</button>
+
 
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
@@ -43,9 +48,14 @@
       </ion-item>
     </ion-label>
 
-    <ion-toggle></ion-toggle>
+    <ion-toggle disabled="{{ !editar }}"></ion-toggle>
   </ion-item>
   </ion-list>
 
+  <ion-fab  *ngIf="editar" class="floating-button-adm" right bottom>
+   <button ion-fab (click)="habEditar()">
+     <ion-icon name="create"></ion-icon>
+   </button>
+ </ion-fab>
 
 </ion-content>

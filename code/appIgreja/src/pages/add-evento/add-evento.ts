@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { EventoService } from '../../providers/evento-service';
+import { Evento } from '../../model/evento';
 
 /*
   Generated class for the AddEvento page.
@@ -13,6 +15,8 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class AddEventoPage {
 
+  private evento: Evento = new Evento();
+
   Titulo: string ='';
   Descricao: string = '';
   DataInicio = null;
@@ -20,12 +24,19 @@ export class AddEventoPage {
   Allday: boolean = false;
   HoraInicio = null;
   HoraFim = null;
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public eventoService: EventoService) {
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddEventoPage');
+  adicionar(){
+    this.eventoService.addEvento(this.evento).then(res=>{
+      if(res.type == true){
+        this.navCtrl.pop();
+      }else{
+        console.log(res.message);
+      }
+    });
   }
 
 }

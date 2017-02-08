@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import { EventoService } from '../../providers/evento-service';
+import { Evento } from '../../model/evento';
 /*
   Generated class for the EditarEvento page.
 
@@ -13,18 +14,50 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class EditarEventoPage {
 
-  Titulo: string ='';
-  Descricao: string = '';
-  DataInicio = null;
-  DataFim = null;
-  Allday: boolean = false;
-  HoraInicio = null;
-  HoraFim = null;
+  private evento: Evento = new Evento();
+  teste: boolean = true;
+  private editar: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public eventoService: EventoService) {
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EditarEventoPage');
+    let id = navParams.get('id');
+    this.eventoService.getEvento(id).then(res=>{
+      if(res.type == true){
+        this.evento = res.data;
+      }else{
+        this.navCtrl.pop();
+      }
+    });
+
   }
 
+  private habEditar(){
+    this.editar = !(this.editar);
+  }
+
+  private salvar(){
+    this.eventoService.editEvento(this.evento).then(res=>{
+      if(res.type == true){
+        console.log(res.message);
+        this.navCtrl.pop();
+      }else{
+        console.log(res.message);
+      }
+    });
+  }
+
+  private cancelar(){
+    this.navCtrl.pop();
+  }
+
+  private excluir(){
+    this.eventoService.delEvento(this.evento.IDEvento).then(res=>{
+      if(res.type == true){
+        console.log(res.message);
+        this.navCtrl.pop();
+      }else{
+        console.log(res.message);
+      }
+    });
+  }
 }

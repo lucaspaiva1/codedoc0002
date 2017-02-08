@@ -4,6 +4,7 @@ export class Publicacao {
   public TempoPermanencia: Date;
   public Comentario: boolean = false;
   public LinkImagem: string  = "";
+  public linkAntigo: string  = null;
   public Titulo: string = "";
   public Texto: string = "";
   public Usuario_IDUsuario: number = 1;

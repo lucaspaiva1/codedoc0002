@@ -11,15 +11,22 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let comentario of comentarios">
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor="let comentario of comentarios" (press)="presentActionSheet(comentario)">
     <ion-item>
       <ion-avatar item-left>
-        <img src="http://kleberaquino.com.br/wp-content/uploads/2016/02/anonimo.png">
+        <img src="{{ comentario.URLFoto }}">
       </ion-avatar>
       <h2>{{ comentario.username }}</h2>
     </ion-item>
     <ion-card-content>
-      <ion-textarea fz-elastic value="{{ comentario.Texto }}" disabled></ion-textarea>
+      <p> {{ comentario.Texto }} </p>
     </ion-card-content>
   </ion-card>
 

@@ -1,7 +1,7 @@
 export class Comentario{
   public IDComentario: number;
   public Texto: string = '';
-  public Usuario_IDUsuario: number = 1;
+  public Usuario_IDUsuario: number;
   public Publicacao_IDPublicacao: number;
 
   constructor(){

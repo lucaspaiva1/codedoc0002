@@ -19,7 +19,7 @@ export class PublicacaoService {
 
   deletePublicacao(id: number): Promise<any>{
     return this.http
-      .post('http://dsoutlet.com.br/igrejaApi/deletePublicacao.php', JSON.stringify({id: id}), { headers: this.headers })
+      .post('http://www.dsoutlet.com.br/igrejaApi/deletePublicacao.php', JSON.stringify({id: id}), { headers: this.headers })
       .toPromise()
       .then(res => this.extractDelData(res))
       .catch(this.handleErrorMessage);
@@ -27,21 +27,21 @@ export class PublicacaoService {
 
   editPublicacao(publicacao: Publicacao): Promise<any>{
     return this.http
-      .post('http://dsoutlet.com.br/igrejaApi/editPublicacao.php', JSON.stringify(publicacao), { headers: this.headers })
+      .post('http://www.dsoutlet.com.br/igrejaApi/editPublicacao.php', JSON.stringify(publicacao), { headers: this.headers })
       .toPromise()
       .then(res => this.extractEditData(res))
       .catch(this.handleErrorMessage);
   }
 
   getPublicacao(id: number): Promise<any>{
-    return this.http.get('http://dsoutlet.com.br/igrejaApi/listaPublicacao.php?id='+id)
+    return this.http.get('http://www.dsoutlet.com.br/igrejaApi/listaPublicacao.php?id='+id)
       .toPromise()
       .then(response => this.extractGetData2(response))
       .catch(this.handleErrorMessage);
   }
 
   getPublicacoes(): Promise<any>{
-    return this.http.get('http://dsoutlet.com.br/igrejaApi/listaPublicacao.php?id')
+    return this.http.get('http://www.dsoutlet.com.br/igrejaApi/listaPublicacao.php?id')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
@@ -49,7 +49,7 @@ export class PublicacaoService {
 
   novaPublicacao(publicacao: Publicacao): Promise<any> {
     return this.http
-      .post('http://dsoutlet.com.br/igrejaApi/addPublicacao.php', JSON.stringify(publicacao), { headers: this.headers })
+      .post('http://www.dsoutlet.com.br/igrejaApi/addPublicacao.php', JSON.stringify(publicacao), { headers: this.headers })
       .toPromise()
       .then(res => this.extractNewData(res))
       .catch(this.handleErrorMessage);

@@ -15,15 +15,15 @@
 
 <ion-content padding>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <ion-list>
 
-    <button ion-item *ngFor="let user of users" (click)="abrirUsuario()">
+    <ion-list [virtualScroll]="users" >
+      <ion-item *virtualItem="let user" (click)="abrirUsuario(user)">
       <ion-avatar item-left>
-        <img src="http://kleberaquino.com.br/wp-content/uploads/2016/02/anonimo.png">
+        <img [src]="user.foto">
       </ion-avatar>
         <h2>{{user.nome}}</h2>
         <p>{{user.email}}</p>
-    </button>
+      </ion-item>
+    </ion-list>
 
-  </ion-list>
 </ion-content>
