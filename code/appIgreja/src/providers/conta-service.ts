@@ -3,15 +3,9 @@ import { Headers, Http } from '@angular/http';
 import { FormGroup } from '@angular/forms';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-
 import { User } from '../model/User';
 
-/*
-  Generated class for the ContaEmailService provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class ContaService {
 

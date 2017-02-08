@@ -15,6 +15,7 @@ export class ComentariosPage {
   private comentarios: Comentario[] = [];
   private novoComentario: Comentario = new Comentario();
   private userID: number;
+  private userPerm: string;
   private delID: number;
   private editID: number;
 
@@ -36,6 +37,7 @@ export class ComentariosPage {
     loader.dismiss();
     userService.get().then(res => {
       this.userID = res.id;
+      this.userPerm = res.permissao;
     });
   }
 
@@ -49,41 +51,29 @@ export class ComentariosPage {
     });
   }
 
-
   private comentar() {
     if (this.novoComentario.Texto != '') {
       this.novoComentario.Publicacao_IDPublicacao = this.postID;
       this.novoComentario.Usuario_IDUsuario = this.userID;
       this.comentService.addComentario(this.novoComentario).then(res => {
         if (res.type == true) {
-          console.log(res.message);
           this.novoComentario = new Comentario();
           this.carregarComentarios();
         } else {
-          console.log(res.message);
+          this.showConfirm(1, res.message);
         }
       });
     }
   }
 
-  private editar(id: number) {
-    this.editID = id;
-    this.comentService.deleteComentario(id).then(res=>{
-      if(!res.error){
-        this.presentToast(res.message);
-      }else{
-        this.showConfirm(2, res.message);
-      }
-    });
-  }
-
   private deletar(id: number) {
     this.delID = id;
-    this.comentService.deleteComentario(id).then(res=>{
-      if(!res.error){
+    this.comentService.deleteComentario(id).then(res => {
+      if (!res.error) {
         this.presentToast(res.message);
-      }else{
-        this.showConfirm(1, res.message);
+        this.carregarComentarios();
+      } else {
+        this.showConfirm(2, res.message);
       }
     });
   }
@@ -96,16 +86,10 @@ export class ComentariosPage {
   }
 
   private presentActionSheet(comentario: Comentario) {
-    if (this.userID == comentario.Usuario_IDUsuario) {
+    if (this.userID == comentario.Usuario_IDUsuario || this.userPerm === 'Administrador') {
       let actionSheet = this.actionSheetCtrl.create({
-        title: comentario.Usuario_IDUsuario.toString(),
         buttons: [
           {
-            text: 'Editar',
-            handler: () => {
-              this.editar(comentario.IDComentario);
-            }
-          },{
             text: 'Excluir',
             role: 'destructive',
             handler: () => {
@@ -140,10 +124,10 @@ export class ComentariosPage {
         {
           text: 'Ok',
           handler: () => {
-            if(type === 1){
+            if (type === 1) {
+              this.comentar();
+            } else {
               this.deletar(this.delID);
-            }else{
-              this.editar(this.editID);
             }
           }
         }

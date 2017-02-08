@@ -60,7 +60,11 @@ export class PerfilPage {
   }
 
   private validate(): boolean {
-    if (this.user.nome.trim() == '' || this.user.email.trim() == '' || !this.user.email.includes('@')) {
+    if (this.user.nome.trim() == '') {
+      this.presentToast('Nome incorreto');
+      return false;
+    } if (this.user.email.trim() == '' || !this.user.email.includes('@')) {
+      this.presentToast('Email incorreto');
       return false;
     } else {
       return true;
@@ -68,16 +72,20 @@ export class PerfilPage {
   }
 
   private alterarSenha(): boolean {
-    if (this.user.senha.trim() !== this.senhaAtual) {
-      this.presentToast('Senha Inválida');
-      return false;
+    if(this.senhaAtual !== ''){
+      if (this.user.senha.trim() !== this.senhaAtual) {
+        this.presentToast('Senha Atual Inválida');
+        return false;
 
-    } else if (this.confSenha1 !== this.confSenha2) {
-      this.presentToast('Senhas não Correspondem');
-      return false;
+      } else if (this.confSenha1 !== this.confSenha2) {
+        this.presentToast('Senhas não Correspondem');
+        return false;
 
-    } else {
-      this.user.senha = this.confSenha1;
+      } else {
+        this.user.senha = this.confSenha1;
+        return true;
+      }
+    }else{
       return true;
     }
   }
@@ -96,7 +104,7 @@ export class PerfilPage {
       }
       this.contaService.editar(this.user).then(response => {
         if (response) {
-          if(equals == false){
+          if (equals == false) {
             this.uploadImage();
           }
           this.userService.set(this.user);
@@ -107,7 +115,6 @@ export class PerfilPage {
           this.presentToast('Alterações não foram salvas');
         }
       });
-
     }
   }
 
@@ -268,7 +275,6 @@ export class PerfilPage {
     fileTransfer.upload(this.urlImage, url, options).then(data => {
       this.loading.dismissAll();
       this.presentToast('Edição Concluida!');
-      this.navCtrl.pop();
     }, err => {
       this.loading.dismissAll()
       this.presentToast('Erro no envio da imagem.');
