@@ -46,7 +46,6 @@ export class GrupoService {
   private extractGetGrupos(res: Response) {
     let retorno = { error: false, type: false, data: [] };
     let data = res.json();
-    alert(JSON.stringify(data));
     if (data == null) {
       retorno.data = [];
     } else {
@@ -56,12 +55,24 @@ export class GrupoService {
     return retorno;
   }
 
-  novaGrupo(Grupo: Grupo): Promise<any> {
+  novoGrupo(Grupo: Grupo): Promise<any> {
     return this.http
       .post('http://www.dsoutlet.com.br/igrejaApi/addGrupo.php', JSON.stringify(Grupo), { headers: this.headers })
       .toPromise()
-      .then(res => this.extractNewData(res))
+      .then(res => this.extractNovoGrupo(res))
       .catch(this.handleErrorMessage);
+  }
+
+  private extractNovoGrupo(res: Response) {
+    let retorno = { error: false, type: false, message: '' };
+    let data = res.json();
+    if (data === true) {
+      retorno.type = true;
+      retorno.message = 'Grupo Criado';
+    } else {
+      retorno.message = 'Operação cancelada';
+    }
+    return retorno;
   }
 
   private extractDelData(res: Response) {
@@ -101,17 +112,7 @@ export class GrupoService {
     return retorno;
   }
 
-  private extractNewData(res: Response) {
-    let retorno = { type: false, message: '' };
-    let data = res.json();
-    if (data === true) {
-      retorno.type = true;
-      retorno.message = 'Publicação Realizada';
-    } else {
-      retorno.message = 'Ocorreu um erro!';
-    }
-    return retorno;
-  }
+
 
   private handleErrorMessage(error: any) {
     let retorno = { error: true, type: false, message: 'Falha na conexão' };

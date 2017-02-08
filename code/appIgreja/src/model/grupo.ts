@@ -1,7 +1,8 @@
 export class Grupo{
 
-  private id: number;
-  private nome: string;
+  public id: number;
+  public nome: string = '';
+  public ids: any[];
 
   constructor(){}
 }

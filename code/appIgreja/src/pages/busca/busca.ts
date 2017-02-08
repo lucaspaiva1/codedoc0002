@@ -3,8 +3,8 @@ import { NavController, NavParams, LoadingController, ToastController, AlertCont
 import { AddGrupoPage } from '../add-grupo/add-grupo';
 import { EditarGrupoPage } from '../editar-grupo/editar-grupo';
 import { GrupoService } from '../../providers/grupo-service';
-import { MapaPage } from '../mapa/mapa';
 import { Grupo } from '../../model/grupo';
+import { MapaPage } from '../mapa/mapa';
 
 
 @Component({
@@ -44,6 +44,7 @@ export class BuscaPage {
   }
 
   adicionarGupo() {
+    this.navCtrl.push(AddGrupoPage);
   }
 
   abrirGrupo() {

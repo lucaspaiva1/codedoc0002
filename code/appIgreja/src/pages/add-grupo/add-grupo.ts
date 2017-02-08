@@ -1,48 +1,61 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { BuscaService } from '../../providers/busca-service';
+import { GrupoService } from '../../providers/grupo-service';
+import { Grupo } from '../../model/grupo';
+import { User } from '../../model/user';
 
-/*
-  Generated class for the AddGrupo page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-add-grupo',
   templateUrl: 'add-grupo.html'
 })
 export class AddGrupoPage {
-  private users = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.initializeUsers();
+
+  private users: User[] = [];
+  private auxUsers: User[] = [];
+  private selecionados: number[] = [];
+  private grupo: Grupo = new Grupo();
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public buscaService: BuscaService,
+    public grupoService: GrupoService) {
+
+    this.carregarUsuarios();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddGrupoPage');
+  private carregarUsuarios() {
+    this.buscaService.usersAll().then(response => {
+      this.users = response;
+      this.auxUsers = response;
+    });
   }
 
-  initializeUsers(){
-    var aux = [];
-    this.users = aux;
-    this.users.push({
-      nome: 'Fulano',
-      email: 'fulano@gmail.com'
-    });
-    this.users.push({
-      nome: 'Gabriel',
-      email: 'gabriel@gmail.com'
-    });
-    this.users.push({
-      nome: 'Ricardo',
-      email: 'Ricardo@gmail.com'
-    });
-    this.users.push({
-      nome: 'Lucas',
-      email: 'lucas@gmail.com'
-    });
+  private adicionarUser(id: number) {
+    console.log(this.selecionados.indexOf(id));
+    let index = this.selecionados.indexOf(id);
+    if(index >= 0){
+      this.selecionados.splice(index, 1);
+    }else{
+      this.selecionados.push(id);
+    }
   }
-  
-  getItems(ev: any) {
+
+  salvar(){
+    if(this.grupo.nome !== ''){
+      this.grupo.ids = this.selecionados;
+      this.grupoService.novoGrupo(this.grupo).then(res=>{
+        alert(res.message);
+      });
+    }
+  }
+
+  private initializeUsers() {
+    this.users = this.auxUsers;
+  }
+
+  private getItems(ev: any) {
     // Reset items back to all of the items
     this.initializeUsers();
 
@@ -52,7 +65,7 @@ export class AddGrupoPage {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.users = this.users.filter((item) => {
-        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.email.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
