@@ -12,19 +12,15 @@
 	if (isset($postdata)){
 		$request = json_decode($postdata);
 		
-		$grupo   = $request->grupo;
-		
-		$nome    = $grupo->nome;
-		$usersID = $grupo->ids;
+		$nome    = $request->nome;
+		$usersID = $request->ids;
 		
 		$sql = "SELECT * FROM grupo WHERE nome = '$nome'";
 		
 		$result = $con->query($sql);
 		$numrow = $result->num_rows;
 		
-		if ($numrow == 1){
-			echo json_encode(false);
-		} else {
+		if ($numrow !== 1 && $nome != ''){
 			$sql = "INSERT INTO grupo (nome) VALUES ('$nome')";
 			$con->query($sql);
 			
@@ -35,12 +31,15 @@
 			
 			$grupoID = $dado['ID'];
 			
-			for ($usersID as $u){
+			foreach ($usersID as $u){
 				$sql = "INSERT INTO representagrupo (grupo_ID, usuario_IDUsuario) VALUES ('$grupoID','$u')";
 				$con->query($sql);
 			}
 			
 			echo json_encode(true);
+			
+		} else {
+			echo json_encode(false);
 		}
 		
 		$con->close();	

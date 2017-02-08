@@ -33,7 +33,6 @@ export class AddGrupoPage {
   }
 
   private adicionarUser(id: number) {
-    console.log(this.selecionados.indexOf(id));
     let index = this.selecionados.indexOf(id);
     if(index >= 0){
       this.selecionados.splice(index, 1);

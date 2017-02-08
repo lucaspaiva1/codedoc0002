@@ -23,7 +23,7 @@ export class GrupoService {
 
   editGrupo(grupo: Grupo): Promise<any>{
     return this.http
-      .post('http://www.dsoutlet.com.br/igrejaApi/editGrupo.php', JSON.stringify(Grupo), { headers: this.headers })
+      .post('http://www.dsoutlet.com.br/igrejaApi/editGrupo.php', JSON.stringify(grupo), { headers: this.headers })
       .toPromise()
       .then(res => this.extractEditData(res))
       .catch(this.handleErrorMessage);
@@ -55,9 +55,9 @@ export class GrupoService {
     return retorno;
   }
 
-  novoGrupo(Grupo: Grupo): Promise<any> {
+  novoGrupo(grupo: Grupo): Promise<any> {
     return this.http
-      .post('http://www.dsoutlet.com.br/igrejaApi/addGrupo.php', JSON.stringify(Grupo), { headers: this.headers })
+      .post('http://www.dsoutlet.com.br/igrejaApi/addGrupo.php', JSON.stringify(grupo), { headers: this.headers })
       .toPromise()
       .then(res => this.extractNovoGrupo(res))
       .catch(this.handleErrorMessage);
@@ -115,6 +115,7 @@ export class GrupoService {
 
 
   private handleErrorMessage(error: any) {
+    console.log(error);
     let retorno = { error: true, type: false, message: 'Falha na conexão' };
     return retorno;
   }
