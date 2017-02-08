@@ -46,7 +46,7 @@ export class FeedPage {
   private showConfirm() {
     let confirm = this.alertCtrl.create({
       title: 'Falha na conexão',
-      message: 'tentar novamente ?',
+      message: 'Tentar Novamente ?',
       buttons: [
         {
           text: 'Cancelar'
@@ -66,7 +66,7 @@ export class FeedPage {
     this.navCtrl.push(this.addPost);
   }
 
-  doRefresh(refresher) {
+  private doRefresh(refresher) {
       this.carregarFeed();
     setTimeout(() => {
       refresher.complete();

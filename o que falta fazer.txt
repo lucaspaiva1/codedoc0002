@@ -7,3 +7,6 @@ gerenciar usuario (deletar e tornar administrador)
 //relacionados a publicacao
 postar no face
 mostrar feed de 10 em 10
+
+//
+alert de tentar novamente quando perder conexao
