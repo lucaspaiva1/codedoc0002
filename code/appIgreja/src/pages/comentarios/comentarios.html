@@ -18,7 +18,7 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-card *ngFor="let comentario of comentarios">
+  <ion-card *ngFor="let comentario of comentarios" (press)="presentActionSheet(comentario)">
     <ion-item>
       <ion-avatar item-left>
         <img src="{{ comentario.URLFoto }}">
