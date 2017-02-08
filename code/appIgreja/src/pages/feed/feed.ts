@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, Events } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Events, AlertController } from 'ionic-angular';
 import { AddPostPage } from '../add-post/add-post';
 import { EditarPostPage } from '../editar-post/editar-post';
 import { ComentariosPage } from '../comentarios/comentarios';
@@ -22,7 +22,7 @@ export class FeedPage {
     content: "Carregando Publicações"
   });
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public postService: PublicacaoService, public loadingController: LoadingController, public userService: UserService, public events: Events) {
+  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public postService: PublicacaoService, public loadingController: LoadingController, public userService: UserService, public events: Events) {
     this.evento();
     this.loader.present();
   }
@@ -37,9 +37,29 @@ export class FeedPage {
         this.publicacoes = res.data;
       } else {
         console.log("error");
+        this.showConfirm();
       }
       this.loader.dismiss();
     });
+  }
+
+  private showConfirm() {
+    let confirm = this.alertCtrl.create({
+      title: 'Falha na conexão',
+      message: 'tentar novamente ?',
+      buttons: [
+        {
+          text: 'Cancelar'
+        },
+        {
+          text: 'Ok',
+          handler: () => {
+            this.carregarFeed();
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
   private adicionarPost() {
