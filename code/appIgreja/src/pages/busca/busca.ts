@@ -1,60 +1,82 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { AddGrupoPage } from '../add-grupo/add-grupo';
 import { EditarGrupoPage } from '../editar-grupo/editar-grupo';
+import { GrupoService } from '../../providers/grupo-service';
 import { MapaPage } from '../mapa/mapa';
-/*
-  Generated class for the Busca page.
+import { Grupo } from '../../model/grupo';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
 @Component({
   selector: 'page-busca',
   templateUrl: 'busca.html'
 })
 export class BuscaPage {
-  grupos = [];
-  mapsPage = MapaPage;
-  editarGrupo = EditarGrupoPage;
-  addGrupo = AddGrupoPage;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.grupos.push({
-      nome: 'Grupo Jovem'
-    });
-    this.grupos.push({
-      nome: 'Renovação Carismática'
-    });
-    this.grupos.push({
-      nome: 'Encontro de Casais'
-    });
-    this.grupos.push({
-      nome: 'Crisma'
-    });
-    this.grupos.push({
-      nome: 'Ministros da Eucaristia'
+
+  private grupos: Grupo[] = [];
+  private mapsPage = MapaPage;
+  loader: any = this.loadingController.create({
+    content: "Carregando Publicações"
+  });
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public grupoService: GrupoService,
+    public loadingController: LoadingController,
+    public toastCtrl: ToastController,
+    public alertCtrl: AlertController) {
+    this.loader.present();
+  }
+
+  ionViewWillEnter() {
+    this.carregarGrupos();
+  }
+
+  private carregarGrupos() {
+    this.grupoService.getGrupos().then(res => {
+      this.loader.dismiss();
+      if (res.error) {
+        this.showConfirm(1, res.message);
+      } else {
+        this.grupos = res.data;
+      }
     });
   }
 
-  itemSelected(){}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BuscaPage');
+  adicionarGupo() {
   }
 
-  adicionarGupo(){
-    this.navCtrl.push(this.addGrupo);
+  abrirGrupo() {
   }
 
-  abrirGrupo(){
-    this.navCtrl.push(this.editarGrupo);
-  }
-
-  deletar(){
+  deletar() {
 
   }
 
-  mapa(){
+  mapa() {
     this.navCtrl.push(this.mapsPage);
+  }
+
+  private showConfirm(type: number, message: string) {
+    let confirm = this.alertCtrl.create({
+      title: 'Falha na conexão',
+      message: 'Tentar Novamente ?',
+      buttons: [
+        {
+          text: 'Cancelar'
+        },
+        {
+          text: 'Ok',
+          handler: () => {
+            if (type === 1) {
+              this.carregarGrupos();
+            } else if (type === 2) {
+
+            }
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 }

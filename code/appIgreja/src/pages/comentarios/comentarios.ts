@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, ActionSheetController, ToastController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ActionSheetController, ToastController, AlertController, Platform } from 'ionic-angular';
 
 import { ComentarioService } from '../../providers/comentario-service';
 import { Comentario } from '../../model/comentario';
@@ -20,6 +20,7 @@ export class ComentariosPage {
   private editID: number;
 
   constructor(public actionSheetCtrl: ActionSheetController,
+    public platform: Platform,
     public navCtrl: NavController,
     public navParams: NavParams,
     public comentService: ComentarioService,
@@ -92,12 +93,14 @@ export class ComentariosPage {
           {
             text: 'Excluir',
             role: 'destructive',
+            icon: !this.platform.is('ios') ? 'trash' : null,
             handler: () => {
               this.deletar(comentario.IDComentario);
             }
           }, {
             text: 'Cancel',
-            role: 'cancel'
+            role: 'cancel',
+            icon: !this.platform.is('ios') ? 'close' : null
           }
         ]
       });

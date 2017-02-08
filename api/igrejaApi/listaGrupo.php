@@ -11,7 +11,7 @@
 			$sql = "SELECT * FROM grupo";
 			$result = $con->query($sql);
 			
-			for ($row=$result->fetch_assoc()){
+			while ($row=$result->fetch_assoc()){
 				$vetor[] = $row;
 			}
 			echo json_encode($vetor);
