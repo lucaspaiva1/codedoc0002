@@ -24,41 +24,46 @@ export class ComentariosPage {
     this.postID = navParams.get('id');
     this.carregarComentarios();
     loader.dismiss();
-    userService.get().then(res=>{
+    userService.get().then(res => {
       this.userID = res.id;
     });
-
-
   }
 
-  private carregarComentarios(){
-    this.comentService.getComentarios(this.postID).then(res=>{
-      if(res.type == true){
+  private carregarComentarios() {
+    this.comentService.getComentarios(this.postID).then(res => {
+      if (res.type == true) {
         this.comentarios = res.data;
-      }else{
+      } else {
         console.log("error");
       }
     });
   }
 
 
-  private comentar(){
-    this.novoComentario.Publicacao_IDPublicacao = this.postID;
-    this.novoComentario.Usuario_IDUsuario = this.userID;
-    console.log(this.novoComentario);
-    this.comentService.addComentario(this.novoComentario).then(res=>{
-      if(res.type == true){
-        console.log(res.message);
-        this.novoComentario = new Comentario();
-        this.carregarComentarios();
-      }else{
-        console.log(res.message);
-      }
-    });
-
+  private comentar() {
+    if (this.novoComentario.Texto != '') {
+      this.novoComentario.Publicacao_IDPublicacao = this.postID;
+      this.novoComentario.Usuario_IDUsuario = this.userID;
+      this.comentService.addComentario(this.novoComentario).then(res => {
+        if (res.type == true) {
+          console.log(res.message);
+          this.novoComentario = new Comentario();
+          this.carregarComentarios();
+        } else {
+          console.log(res.message);
+        }
+      });
+    }
   }
 
-  private editar(id: number){}
+  private editar(id: number) { }
 
-  private deletar(id: number){}
+  private deletar(id: number) { }
+
+  private doRefresh(refresher) {
+      this.carregarComentarios();
+    setTimeout(() => {
+      refresher.complete();
+    }, 2000);
+  }
 }

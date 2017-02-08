@@ -8,5 +8,8 @@ gerenciar usuario (deletar e tornar administrador)
 postar no face
 mostrar feed de 10 em 10
 
+//relacionado a comentario
+apagar comentarios (apenas adm)
+
 //
 alert de tentar novamente quando perder conexao

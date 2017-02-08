@@ -16,13 +16,13 @@
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
-      pullingText="Pull to refresh"
+      pullingText="atualizar"
       refreshingSpinner="circles"
-      refreshingText="Refreshing...">
+      refreshingText="Carregando...">
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-list no-lines [virtualScroll]="publicacoes"> 
+  <ion-list no-lines [virtualScroll]="publicacoes">
     <ion-item-sliding *virtualItem="let publicacao">
       <!--item-->
       <ion-item>
