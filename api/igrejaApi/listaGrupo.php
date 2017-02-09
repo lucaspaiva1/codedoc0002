@@ -15,6 +15,15 @@
 				$vetor[] = $row;
 			}
 			echo json_encode($vetor);
+		}else{
+			$id = $_GET["id"];
+			$sql = "SELECT usuario_IDUsuario from representagrupo where grupo_ID = '$id'";
+			$result = $con->query($sql);
+			
+			while ($row=$result->fetch_assoc()){
+				$vetor[] = $row['usuario_IDUsuario'];
+			}
+			echo json_encode($vetor);
 		}
 	}
 	

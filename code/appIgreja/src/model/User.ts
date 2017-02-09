@@ -1,9 +1,9 @@
-import { Generos } from './genero';
+//import { Generos } from './genero';
 
 export class User {
   public id: number;
   public nome: string;
-  public genero: Generos;
+  public genero: string;
   public senha: string;
   public email: string;
   public facebook: string = "";
@@ -12,6 +12,7 @@ export class User {
   public nascimento: Date;
   public connected: boolean = false;
   public linkAntigo: string = '';
+  public selecionado: boolean = false;
 
   constructor() {
   }

@@ -1,6 +1,6 @@
 export class Grupo{
 
-  public id: number;
+  public ID: number;
   public nome: string = '';
   public ids: any[];
 

@@ -1,50 +1,78 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { BuscaService } from '../../providers/busca-service';
+import { GrupoService } from '../../providers/grupo-service';
+import { Grupo } from '../../model/grupo';
+import { User } from '../../model/User';
 
-/*
-  Generated class for the EditarGrupo page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-editar-grupo',
   templateUrl: 'editar-grupo.html'
 })
 export class EditarGrupoPage {
-  private users = [];
+  private grupo: Grupo = new Grupo();
   private editar = false;
+  private users: any[] = [];
+  private auxUsers: User[] = [];
+  private selecionados: number[] = [];
+  private selecionadosAux: number[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.initializeUsers();
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public buscaService: BuscaService,
+    public grupoService: GrupoService,
+    public alertCtrl: AlertController) {
+    this.grupo = navParams.get('grupo');
+    this.carregarSelecionados();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EditarGrupoPage');
+  private carregarSelecionados() {
+    this.grupoService.getGrupo(this.grupo.ID).then(res => {
+      if(res.type == true){
+        this.selecionados = res.data;
+        this.selecionadosAux.concat(res.data);
+        this.carregarUsuarios();
+      }
+
+    }).catch(() => this.showConfirm(1));
   }
 
-  initializeUsers(){
-    var aux = [];
-    this.users = aux;
-    this.users.push({
-      nome: 'Fulano',
-      email: 'fulano@gmail.com'
-    });
-    this.users.push({
-      nome: 'Gabriel',
-      email: 'gabriel@gmail.com'
-    });
-    this.users.push({
-      nome: 'Ricardo',
-      email: 'Ricardo@gmail.com'
-    });
-    this.users.push({
-      nome: 'Lucas',
-      email: 'lucas@gmail.com'
-    });
+  private carregarUsuarios() {
+    this.buscaService.usersAll().then(response => {
+      this.users = response;
+      this.auxUsers = response;
+      for (let usuario of this.users) {
+        for(let id of this.selecionados){
+          if(usuario.id == id){
+            usuario.selecionado = true;
+            let index = this.selecionadosAux.indexOf(usuario.id);
+            this.selecionadosAux.splice(index, 1);
+          }
+        }
+      }
+    }).catch(() => this.showConfirm(1));
   }
 
-  getItems(ev: any) {
+  private adicionarUser(usuario: User) {
+    if (typeof usuario.selecionado == "undefined") {
+      usuario.selecionado = true;
+    } else {
+      usuario.selecionado = !usuario.selecionado;
+    }
+    let index = this.selecionados.indexOf(usuario.id);
+    if (index >= 0) {
+      this.selecionados.splice(index, 1);
+    } else {
+      this.selecionados.push(usuario.id);
+    }
+  }
+
+  private initializeUsers() {
+    this.users = this.auxUsers;
+  }
+
+  private getItems(ev: any) {
     // Reset items back to all of the items
     this.initializeUsers();
 
@@ -54,14 +82,49 @@ export class EditarGrupoPage {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.users = this.users.filter((item) => {
-        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.email.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.selecionado);
       })
     }
   }
 
-  habEditar(){
-    if(this.editar == false){
-      this.editar = true;
-    }
+  private toggleEditar() {
+    this.editar = !this.editar;
+  }
+
+  salvar() {
+    this.grupo.ids = this.selecionados;
+    this.grupoService.editGrupo(this.grupo);
+    this.toggleEditar();
+  }
+
+  cancelar() {
+    this.toggleEditar();
+  }
+
+  excluir() {
+
+  }
+
+  private showConfirm(type: number) {
+    let confirm = this.alertCtrl.create({
+      title: 'Falha na conexão',
+      message: 'Tentar Novamente ?',
+      buttons: [
+        {
+          text: 'Cancelar'
+        },
+        {
+          text: 'Ok',
+          handler: () => {
+            if (type == 1) {
+              this.carregarSelecionados();
+            } else if (type == 2) {
+              this.salvar();
+            }
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 }

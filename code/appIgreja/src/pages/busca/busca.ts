@@ -47,7 +47,8 @@ export class BuscaPage {
     this.navCtrl.push(AddGrupoPage);
   }
 
-  abrirGrupo() {
+  abrirGrupo(grupo: Grupo) {
+    this.navCtrl.push(EditarGrupoPage, {grupo: grupo});
   }
 
   deletar() {

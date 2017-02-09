@@ -21,12 +21,25 @@ export class GrupoService {
       .catch(this.handleErrorMessage);
   }
 
-  editGrupo(grupo: Grupo): Promise<any>{
-    return this.http
+  editGrupo(grupo: Grupo)/*: Promise<any>*/{
+    console.log(grupo);
+    /*return this.http
       .post('http://www.dsoutlet.com.br/igrejaApi/editGrupo.php', JSON.stringify(grupo), { headers: this.headers })
       .toPromise()
-      .then(res => this.extractEditData(res))
-      .catch(this.handleErrorMessage);
+      .then(res => this.extractEditGrupo(res))
+      .catch(this.handleErrorMessage);*/
+  }
+
+  private extractEditGrupo(res: Response) {
+    let retorno = { type: false, message: '' };
+    let data = res.json();
+    if (data === true) {
+      retorno.type = true;
+      retorno.message = 'Edição concluída';
+    } else {
+      retorno.message = 'Não foi possível editar';
+    }
+    return retorno;
   }
 
   getGrupo(id: number): Promise<any>{
@@ -34,6 +47,20 @@ export class GrupoService {
       .toPromise()
       .then(response => this.extractGetGrupo(response))
       .catch(this.handleErrorMessage);
+  }
+
+  private extractGetGrupo(res: Response) {
+    let retorno = { type: false, data: {}, message: '' };
+    let data = res.json();
+    console.log(data);
+    if (data == null) {
+      retorno.data = {};
+      retorno.message = 'Grupo não existente';
+    } else {
+      retorno.type = true;
+      retorno.data = data;
+    }
+    return retorno;
   }
 
   getGrupos(): Promise<any>{
@@ -86,33 +113,6 @@ export class GrupoService {
     }
     return retorno;
   }
-
-  private extractGetGrupo(res: Response) {
-    let retorno = { type: false, data: {}, message: '' };
-    let data = res.json();
-    if (data == null) {
-      retorno.data = {};
-      retorno.message = 'Grupo não existente';
-    } else {
-      retorno.type = true;
-      retorno.data = data;
-    }
-    return retorno;
-  }
-
-  private extractEditData(res: Response) {
-    let retorno = { type: false, message: '' };
-    let data = res.json();
-    if (data === true) {
-      retorno.type = true;
-      retorno.message = 'Publicação Editada';
-    } else {
-      retorno.message = 'Ocorreu um erro!';
-    }
-    return retorno;
-  }
-
-
 
   private handleErrorMessage(error: any) {
     console.log(error);
