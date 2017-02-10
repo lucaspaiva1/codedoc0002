@@ -75,12 +75,14 @@ export class AddPostPage {
             let correctPath = filePath.substr(0, imagePath.lastIndexOf('/') + 1);
             this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
             this.urlImage = filePath;
+            alert(filePath);
           });
       } else {
         let currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
         let correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
         this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
         this.urlImage = imagePath;
+        alert(imagePath);
       }
     }, (err) => {
       this.presentToast('Erro ao selecionar imagem.');
@@ -106,7 +108,7 @@ export class AddPostPage {
   private presentToast(text) {
     let toast = this.toastCtrl.create({
       message: text,
-      duration: 3500,
+      duration: 10000,
       position: 'top'
     });
     toast.present();
@@ -114,6 +116,7 @@ export class AddPostPage {
 
   //responsável por upload da imagem
   private uploadImage() {
+    alert('uploading');
     // Destination URL
     let url = "http://www.dsoutlet.com.br/igrejaApi/upload.php";
 
@@ -140,6 +143,7 @@ export class AddPostPage {
 
     // Use the FileTransfer to upload the image
     fileTransfer.upload(this.urlImage, url, options).then(data => {
+      alert(JSON.stringify(data));
       this.loading.dismissAll();
       this.presentToast('Postagem Criada com Sucesso!');
       this.navCtrl.pop();
