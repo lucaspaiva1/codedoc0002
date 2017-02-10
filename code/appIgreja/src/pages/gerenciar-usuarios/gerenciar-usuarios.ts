@@ -32,7 +32,7 @@ export class GerenciarUsuariosPage {
   }
 
   escolherOpcoes(){
-    if(this.userSelecionado.permissao=='a'){
+    if(this.userSelecionado.Tipo=='a'){
       this.mensage = "Retirar status Administrador";
     }else{
       this.mensage = "Tornar Administrador";

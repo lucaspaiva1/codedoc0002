@@ -47,4 +47,8 @@
     <plugin name="cordova-plugin-file" spec="~4.3.1" />
     <plugin name="cordova-plugin-file-transfer" spec="~1.6.1" />
     <plugin name="cordova-plugin-filepath" spec="~1.0.2" />
+    <plugin name="cordova-plugin-facebook4" spec="~1.7.4">
+        <variable name="APP_ID" value="1817976801823786" />
+        <variable name="APP_NAME" value="appigreja" />
+    </plugin>
 </widget>

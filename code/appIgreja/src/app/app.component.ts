@@ -36,8 +36,8 @@ export class MyApp {
 
     events.subscribe('user:changed', user => {
       if(user !== undefined && user !== null){
-        this.nome = user.nome;
-        this.foto = user.foto;
+        this.nome = user.Nome;
+        this.foto = user.URLFoto;
       }
    })
 

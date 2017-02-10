@@ -37,8 +37,8 @@ export class ComentariosPage {
     this.carregarComentarios();
     loader.dismiss();
     userService.get().then(res => {
-      this.userID = res.id;
-      this.userPerm = res.permissao;
+      this.userID = res.IDUsuario;
+      this.userPerm = res.Tipo;
     });
   }
 

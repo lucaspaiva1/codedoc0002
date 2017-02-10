@@ -43,13 +43,13 @@ export class PerfilPage {
 
     this.userService.get().then(response => {
       this.user = response;
-      this.urlImage = this.user.foto;
+      this.urlImage = this.user.URLFoto;
       this.loaded = true;
     });
   }
 
   private conectarFace() {
-    this.facebookService.vincular(this.user.id).then(response => {
+    this.facebookService.vincular(this.user.IDUsuario).then(response => {
       if (response.connected) {
         this.userService.set(response);
         alert("Conta do Facebook vinculada com Sucesso")
@@ -60,10 +60,10 @@ export class PerfilPage {
   }
 
   private validate(): boolean {
-    if (this.user.nome.trim() == '') {
+    if (this.user.Nome.trim() == '') {
       this.presentToast('Nome incorreto');
       return false;
-    } if (this.user.email.trim() == '' || !this.user.email.includes('@')) {
+    } if (this.user.Email.trim() == '' || !this.user.Email.includes('@')) {
       this.presentToast('Email incorreto');
       return false;
     } else {
@@ -73,7 +73,7 @@ export class PerfilPage {
 
   private alterarSenha(): boolean {
     if(this.senhaAtual !== ''){
-      if (this.user.senha.trim() !== this.senhaAtual) {
+      if (this.user.Senha.trim() !== this.senhaAtual) {
         this.presentToast('Senha Atual Inválida');
         return false;
 
@@ -82,7 +82,7 @@ export class PerfilPage {
         return false;
 
       } else {
-        this.user.senha = this.confSenha1;
+        this.user.Senha = this.confSenha1;
         return true;
       }
     }else{
@@ -93,13 +93,13 @@ export class PerfilPage {
   private salvar() {
     if (this.validate() && this.alterarSenha()) {
       let equals: boolean;
-      if (this.urlImage == this.user.foto) {
+      if (this.urlImage == this.user.URLFoto) {
         this.user.linkAntigo = '';
         equals = true;
       } else {
         //link antigo usado para apagar a foto de perfil nao-utilizada
-        this.user.linkAntigo = this.user.foto;
-        this.user.foto = 'http://www.dsoutlet.com.br/igrejaApi/perfil/' + this.novaImagem;
+        this.user.linkAntigo = this.user.URLFoto;
+        this.user.URLFoto = 'http://www.dsoutlet.com.br/igrejaApi/perfil/' + this.novaImagem;
         equals = false;
       }
       this.contaService.editar(this.user).then(response => {
