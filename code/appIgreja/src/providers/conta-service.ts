@@ -33,4 +33,14 @@ export class ContaService {
       });
   }
 
+  cadastrar(type:String, Nome:String, Nasciemto, Genero:String, Email:String, Senha:String): Promise<boolean>{
+    alert(type + " / " +  Nome + " / " + Nasciemto + " / " + Genero + " / " + Email + " / " + Senha)
+    return this.http.post(this.linkLogin, JSON.stringify({type, Nome, Nasciemto, Genero, Email, Senha}), this.headers)
+    .toPromise()
+    .then(res=>res.json(), error => alert("erro no cadastro"))
+    .catch(err=>{
+        alert("Erro ao se comunicar com servidor, tente novamente mais tarde");
+      });
+  }
+
 }

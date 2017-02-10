@@ -60,11 +60,11 @@ export class EditarGrupoPage {
     } else {
       usuario.selecionado = !usuario.selecionado;
     }
-    let index = this.selecionados.indexOf(usuario.id);
+    let index = this.selecionados.indexOf(usuario.IDUsuario);
     if (index >= 0) {
       this.selecionados.splice(index, 1);
     } else {
-      this.selecionados.push(usuario.id);
+      this.selecionados.push(usuario.IDUsuario);
     }
   }
 

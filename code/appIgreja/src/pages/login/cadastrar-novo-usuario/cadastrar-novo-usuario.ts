@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '../../../model/User';
+import { ContaService } from '../../../providers/conta-service';
 
 /*
   Generated class for the CadastarNovoUsuario page.
@@ -14,7 +15,7 @@ import { User } from '../../../model/User';
   templateUrl: 'cadastrar-novo-usuario.html'
 })
 export class CadastrarNovoUsuarioPage {
-  user;
+  private user: FormGroup;
   private userNovo: User = new User();
 
   constructor(
@@ -22,7 +23,8 @@ export class CadastrarNovoUsuarioPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    private contaService: ContaService
   ) {
     //Configurando objeto user com campos para validação
     this.user = this.formBuilder.group({
@@ -103,13 +105,26 @@ export class CadastrarNovoUsuarioPage {
 
   cadastrar() {
     if (this.validate()) {
+
       // process the data
-      let toast = this.toastCtrl.create({
-        message: 'Usuário cadastrado',
-        duration: 3000
-      });
-      toast.present();
-      this.navCtrl.pop();
+      this.contaService.cadastrar("cadastro", this.user.get('nome').value, this.user.get('genero').value, this.user.get('nascimento').value, this.user.get('email').value, this.user.get('senha').value)
+        .then(res => {
+          if (res) {
+            let toast = this.toastCtrl.create({
+              message: 'Usuário cadastrado',
+              duration: 3000
+            });
+            toast.present();
+            this.navCtrl.pop();
+          } else {
+            let toast = this.toastCtrl.create({
+              message: 'Cadastro não efetuado',
+              duration: 3000
+            });
+            toast.present();
+          }
+        });
+
     }
   }
 

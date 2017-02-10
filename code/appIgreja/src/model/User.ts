@@ -1,15 +1,15 @@
 //import { Generos } from './genero';
 
 export class User {
-  public id: number;
-  public nome: string;
-  public genero: string;
-  public senha: string;
-  public email: string;
-  public facebook: string = "";
-  public permissao: string;
-  public foto: string = "";
-  public nascimento: Date;
+  public IDUsuario: number;
+  public Nome: string;
+  public Sexo: string;
+  public Senha: string;
+  public Email: string;
+  public Facebook: string = "";
+  public Tipo: string;
+  public URLFoto: string = "";
+  public Nascimento: Date;
   public connected: boolean = false;
   public linkAntigo: string = '';
   public selecionado: boolean = false;
