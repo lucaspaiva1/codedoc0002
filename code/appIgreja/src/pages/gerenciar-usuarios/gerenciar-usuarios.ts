@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController, ToastController } from 'ionic-angular';
 import { UsuariosService } from '../../providers/usuarios-service';
 import { User } from '../../model/User';
 /*
@@ -22,7 +22,8 @@ export class GerenciarUsuariosPage {
     public actionSheetCtrl: ActionSheetController,
     public navCtrl: NavController,
     public navParams: NavParams,
-    private usuariosService: UsuariosService
+    private usuariosService: UsuariosService,
+    public toastCtrl: ToastController,
   ) {
     this.userSelecionado = navParams.get('usuarioSelecionado');
     console.log(this.userSelecionado);
@@ -59,7 +60,8 @@ export class GerenciarUsuariosPage {
             this.usuariosService.operacao(this.userSelecionado.id, "banir").then(res => {
               if (res[1]) {
                 this.userSelecionado.banida=res[0];
-                alert("Operação realizada com sucesso");
+                this.presentToast("Operação realizada com sucesso");
+            
               }
             });
           }
@@ -68,10 +70,9 @@ export class GerenciarUsuariosPage {
           text: this.mensage,
           handler: () => {
             this.usuariosService.operacao(this.userSelecionado.id, "alterar").then(res => {
-              console.log(this.userSelecionado.id);
               if (res) {
                 this.userSelecionado.permissao=res[0];
-                alert("Operação realizada com sucesso");
+                this.presentToast("Operação realizada com sucesso");
               }
             });
           }
@@ -87,6 +88,15 @@ export class GerenciarUsuariosPage {
     });
 
     actionSheet.present();
+  }
+
+  private presentToast(text) {
+    let toast = this.toastCtrl.create({
+      message: text,
+      duration: 10000,
+      position: 'top'
+    });
+    toast.present();
   }
 
   deletar() {

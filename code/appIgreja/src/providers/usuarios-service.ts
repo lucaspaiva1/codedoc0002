@@ -31,8 +31,7 @@ export class UsuariosService {
   }
 
   private handleErrorMessage(error: any) {
-    let retorno = { type: false, message: 'Ocorreu um erro!' };
-    return retorno;
+    alert("não se conectou com o servidor");
   }
 
 }

@@ -27,7 +27,7 @@ export class MyApp {
   private perfil = PerfilPage;
   private buscar = BuscarUsuariosPage;
 
-  rootPage = BuscarUsuariosPage;
+  rootPage = LoginPage;
 
   private nome: string = 'Nome do Usuários';
   private foto: string = '';
