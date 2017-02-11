@@ -103,12 +103,23 @@ export class CadastrarNovoUsuarioPage {
     return false;
   }
 
+  senhas():boolean{
+    if(this.user.get('senha').value == this.user.get('repSenha').value){
+      return true;
+    } else {
+      alert("Senhas estão diferentes");
+      return false;
+    }
+
+  }
+
   cadastrar() {
-    if (this.validate()) {
+    if (this.validate() && this.senhas()) {
 
       // process the data
-      this.contaService.cadastrar("cadastro", this.user.get('nome').value, this.user.get('genero').value, this.user.get('nascimento').value, this.user.get('email').value, this.user.get('senha').value)
+      this.contaService.cadastrar("cadastro", this.user.get('nome').value, this.user.get('nascimento').value, this.user.get('genero').value, this.user.get('email').value, this.user.get('senha').value)
         .then(res => {
+          console.log(res);
           if (res) {
             let toast = this.toastCtrl.create({
               message: 'Usuário cadastrado',

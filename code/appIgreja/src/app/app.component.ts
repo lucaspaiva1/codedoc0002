@@ -27,10 +27,11 @@ export class MyApp {
   private perfil = PerfilPage;
   private buscar = BuscarUsuariosPage;
 
-  rootPage = LoginPage;
+  rootPage = BuscarUsuariosPage;
 
   private nome: string = 'Nome do Usuários';
   private foto: string = '';
+  private permissao:string = "";
 
   constructor(platform: Platform, public menu: MenuController, public facebookService: FacebookService, public userService: UserService, public events: Events) {
 
@@ -38,6 +39,7 @@ export class MyApp {
       if(user !== undefined && user !== null){
         this.nome = user.Nome;
         this.foto = user.URLFoto;
+        this.permissao = user.Tipo;
       }
    })
 

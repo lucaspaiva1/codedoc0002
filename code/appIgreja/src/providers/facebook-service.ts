@@ -38,7 +38,7 @@ export class FacebookService {
 
   api(response, type): Promise<any> {
     let userID = response.authResponse.userID;
-    return Facebook.api('/' + response.authResponse.userID + '?fields=id,name,gender,birthday,email,picture', []).then(result =>
+    return Facebook.api('/' + response.authResponse.userID + '?fields=id,name,gender,email,picture', []).then(result =>
 
       this.http.post(this.linkLogin, JSON.stringify({ type, userID, result }), { headers: this.headers })
         .toPromise()
@@ -49,7 +49,7 @@ export class FacebookService {
 
   apiVincular(response, type, id): Promise<User> {
     let userID = response.authResponse.userID;
-    return Facebook.api('/' + response.authResponse.userID + '?fields=id,name,gender,birthday,email,picture', []).then(result =>
+    return Facebook.api('/' + response.authResponse.userID + '?fields=id,name,gender,email,picture', []).then(result =>
       this.http.post(this.linkLogin, JSON.stringify({ type, id, userID, result }), { headers: this.headers })
         .toPromise()
         .then(res => res.json()

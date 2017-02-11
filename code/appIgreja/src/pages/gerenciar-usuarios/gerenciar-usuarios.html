@@ -29,9 +29,14 @@
   <ion-list>
     
     <ion-item >
-      <h3>Status: </h3>
+      <h3>Permissao: </h3>
       <h2 *ngIf="userSelecionado.permissao == 'a'">Administrador</h2>
       <h2 *ngIf="userSelecionado.permissao == 'c'">Usuario</h2>
+    </ion-item>
+    <ion-item >
+      <h3>Status: </h3>
+      <h2 *ngIf="userSelecionado.banida == '0'">Ativa</h2>
+      <h2 *ngIf="userSelecionado.banida == '1'">Banida</h2>
     </ion-item>
     
     <ion-item >

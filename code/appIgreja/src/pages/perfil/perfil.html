@@ -26,35 +26,35 @@
 
         <ion-item *ngIf="!editar">
           <div style="font-size: 13px; color: LightGray; padding-top: 1px; padding-bottom: 9px">Nome Completo</div>
-          <h2 style="color: gray">{{user.nome}}</h2>
+          <h2 style="color: gray">{{user.Nome}}</h2>
         </ion-item>
 
         <ion-item *ngIf="editar">
           <ion-label floating>Nome Completo</ion-label>
-          <ion-input type="text" name="nome" [(ngModel)]="user.nome"></ion-input>
+          <ion-input type="text" name="nome" [(ngModel)]="user.Nome"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label floating>Data de Nascimento</ion-label>
-          <ion-datetime displayFormat="DD/MMM/YYYY" [disabled]="!editar" name="nascimento" [(ngModel)]="user.nascimento"></ion-datetime>
+          <ion-datetime displayFormat="DD/MMM/YYYY" [disabled]="!editar" name="nascimento" [(ngModel)]="user.Nascimento"></ion-datetime>
         </ion-item>
 
         <ion-item>
           <ion-label floating>Gênero</ion-label>
-          <ion-select [disabled]="!editar" name="genero" [(ngModel)]="user.genero">
-            <ion-option value="Masculino">Masculino</ion-option>
-            <ion-option value="Feminino">Feminino</ion-option>
+          <ion-select [disabled]="!editar" name="genero" [(ngModel)]="user.Sexo">
+            <ion-option value="m">Masculino</ion-option>
+            <ion-option value="f">Feminino</ion-option>
           </ion-select>
         </ion-item>
 
         <ion-item *ngIf="!editar">
           <div style="font-size: 13px; color: LightGray; padding-top: 1px; padding-bottom: 9px">Email</div>
-          <h2 style="color: gray">{{user.email}}</h2>
+          <h2 style="color: gray">{{user.Email}}</h2>
         </ion-item>
 
         <ion-item *ngIf="editar">
           <ion-label floating>Email</ion-label>
-          <ion-input type="email" name="email" [(ngModel)]="user.email"></ion-input>
+          <ion-input type="email" name="email" [(ngModel)]="user.Email"></ion-input>
         </ion-item>
 
         <ion-item *ngIf="editar">
@@ -76,7 +76,7 @@
 
     </form>
 
-    <div *ngIf="user.facebook==''" class="login-button-div">
+    <div *ngIf="user.Facebook==''" class="login-button-div">
       <!--Botão para login com Facebook-->
       <button ion-button icon-left full text-capitalize class="facebook-button" (click)="conectarFace()">
         <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon> Entre com Facebook

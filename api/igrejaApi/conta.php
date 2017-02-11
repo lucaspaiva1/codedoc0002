@@ -23,112 +23,75 @@
             $numrow = $result->num_rows;
 			$dados = $result->fetch_assoc();
                 
-            if($dados['Bloqueada']==0 && $dados['Banida']==0){
-			
-			    
-                if($numrow == 1){
-                    if ($dados['Sexo'] == 'm')
-                        $dados['Sexo'] = "Masculino";
-                    else if ($dados['Sexo'] == 'f')
-                        $dados['Sexo'] = "Feminino";
-                    if ($dados['Tipo'] == 'a')
-                        $dados['Tipo'] = "Administrador";
-                    else if ($dados['Tipo'] == 'c')
-                        $dados['Tipo'] = "Comum";
-                    
-                    $vetor = array();
-                        
-                    $vetor['id'] = $dados['IDUsuario'];
-                    $vetor['nome'] = $dados['Nome'];
-                    $vetor['nascimento'] = $dados['Nascimento'];
-                    $vetor['email'] = $dados['Email'];
-                    $vetor['senha'] = $dados['Senha'];
-                    $vetor['genero'] = $dados['Sexo'];
-                    $vetor['foto'] = $dados['URLFoto'];
-                    $vetor['permissao'] = $dados['Tipo'];
-                    $vetor['facebook'] = $dados['Facebook'];
-                    $vetor['connected'] = true;
 
+            if($numrow == 1){
+
+                if($dados['Tentativas'] < 4 && $dados['Banida']==0){
+
+                    $dados['connected'] = true;
 
                     $sql = "UPDATE usuario SET Tentativas = 0 WHERE Email = '$email'";
                     $result = $con->query($sql);
-                        
-                    echo json_encode($vetor);
+
+                    echo json_encode($dados);
+
+                }else{
+                    echo json_encode("inativa");
+                }
+
+
+
                 } else {
 
                     $sql = "SELECT * FROM usuario WHERE Email = '$email'";
                     $result = $con->query($sql);
-
                     $numrow = $result->num_rows;
 
                     if($numrow == 1){
-                        $dados = $result->fetch_assoc();
-                        $tentativas = $dados['Tentativas'] + 1;
 
-                        if($tentativas==3){
-                            $sql = "UPDATE usuario SET Tentativas = '$tentativas' , Bloqueada = 1 WHERE Email = '$email'";
-                            $result = $con->query($sql);
-                        }else{
+                        $dados = $result->fetch_assoc();
+                        if($dados['Tentativas'] < 4 && $dados['Banida']==0){
+
+                            $tentativas = $dados['Tentativas'] + 1;
                             $sql = "UPDATE usuario SET Tentativas = '$tentativas' WHERE Email = '$email'";
                             $result = $con->query($sql);
+
+                            echo json_encode("tentativa");
+
+                        }else{
+                            echo json_encode("inativa");
                         }
-                        echo json_encode("tentativa");
+
                     }else{
                         echo json_encode("inexistente");
                     }
                 }
-			}else{
-                echo json_encode("inativa");
-            }	
-		}else if($type == 'editar'){
-            $usuario = $request->usuario;
-			$id = $usuario->id;
-            
 
-            $sql = "SELECT * FROM usuario WHERE IDUsuario = '$id'";
+		} else if ($type == 'cadastro'){
+
+            $nome 	      = $request->Nome;
+            $nascimento   = $request->Nascimento;
+            $genero    	  = $request->Genero;
+            $email   	  = $request->Email;
+            $senha		  = $request->Senha;
+            $foto         = 'http://dsoutlet.com.br/igrejaApi/imagens/anonimo.png';
+
+            $sql= "INSERT INTO usuario (Nome, Nascimento, Sexo, URLFoto, Tipo, Email, Senha) VALUES ('$nome', '$nascimento', '$genero', '$foto', 'c', '$email', '$senha')";
+            $con->query($sql);
+
+            $sql = "SELECT * FROM usuario WHERE Email = '$email'";
             $result = $con->query($sql);
             $numrow = $result->num_rows;
-
             if($numrow == 1){
-				$senha = $usuario->senhaatual;
-                $email = $usuario->email;
-                $nome = $usuario->nome;
-                $repSenha = $usuario->repSenha;
-                $genero = $usuario->genero;
-                $foto = $usuario->foto;
-                $nascimento = $usuario->nascimento;
-				$linkAntigo = $request->linkAntigo;
-				
-				//Apaga a imagem antiga
-				if(!empty($linkAntigo)){
-					$nomeImagem = after_last('/', $linkAntigo);
-					$diretorio = 'perfil/'.$nomeImagem;
-					if(file_exists($diretorio)){		
-						unlink($diretorio);
-					}
-				}
-				
-                if ($genero=='Masculino'){
-                    $genero='m';
-                }else {
-                    $genero='f';
-                }
-				
-				if ($senha == ""){
-					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
-				
-				} else {
-					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Senha = '$repSenha', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
-				}
-				
-                $con->query($sql);
-				echo json_encode(true);
+                echo json_encode(true);
             }else{
                 echo json_encode(false);
             }
+        }
 
-        }		
-	}
+    }
+	
+	$con->close();
 	
 	function after_last ($this, $inthat)
     {
@@ -142,6 +105,5 @@
 		if ($rev_pos===false) return false;
 		else return strlen($instr) - $rev_pos - strlen($needle);
 	};
-	
 	
 ?>

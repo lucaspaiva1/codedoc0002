@@ -13,138 +13,80 @@
 		
 		$type         = $request->type;
 		$userID 	  = $request->userID;
-		$result 	  = $request->result;
-		$name    	  = $result->name;	
-		$sexo    	  = $result->gender;
-		$birthday 	  = $result->birthday;
-		$email		  = $result->email;
-		$url		  = $result->picture->data->url;
 
 		if($type == 'logar'){
+
 			$sql = "SELECT * FROM usuario WHERE Facebook = '$userID'";
 			$result = $con->query($sql);
 
 			$numrow = $result->num_rows;
-			$dados = $result->fetch_assoc();
-			
-			if($dados['Bloqueada']==0 && $dados['Banida']==0){
 
-				if($numrow == 1){
-						
-					if ($dados['Sexo'] == 'm')
-						$dados['Sexo'] = "Masculino";
-					else if ($dados['Sexo'] == 'f')
-						$dados['Sexo'] = "Feminino";
-						
-					if ($dados['Tipo'] == 'a')
-						$dados['Tipo'] = "Administrador";
-					else if ($dados['Tipo'] == 'c')
-						$dados['Tipo'] = "Comum";
-					
-					$vetor = array();
-						
-					$vetor['id'] = $dados['IDUsuario'];
-					$vetor['nome'] = $dados['Nome'];
-					$vetor['nascimento'] = $dados['Nascimento'];
-					$vetor['email'] = $dados['Email'];
-					$vetor['genero'] = $dados['Sexo'];
-					$vetor['senha'] = $dados['Senha'];
-					$vetor['foto'] = $dados['URLFoto'];
-					$vetor['permissao'] = $dados['Tipo'];
-					$vetor['facebook'] = $dados['Facebook'];
-					$vetor['connected'] = true;
+			if($numrow == 1){
+				$dados = $result->fetch_assoc();
+				if($dados['Tentativas'] < 4 && $dados['Banida']==0){
 
 					$sql = "UPDATE usuario SET Tentativas = 0 WHERE Facebook = '$userID'";
-                    $result = $con->query($sql);
-						
-					echo json_encode($vetor);
-				}else{
-					
-					if($sexo == "male"){
-						$sexo = 'm';
-					}else{
-						$sexo = 'f';
-					}
-					
-					$sql= "INSERT INTO usuario (Nome, Nascimento, Email, Sexo, URLFoto, Tipo, Facebook) VALUES ('$name', '2017-01-01', '$email', '$sexo', '$url', 'c', '$userID')";	
-					$con->query($sql);
-					
-					$sql = "SELECT * FROM usuario WHERE Facebook = '$userID'";
 					$result = $con->query($sql);
+					$dados['connected'] = true;
 
-					$numrow = $result->num_rows;
-					
-					if($numrow == 1){
-						$dados = $result->fetch_assoc();
-						
-						if ($dados['Sexo'] == 'm')
-							$dados['Sexo'] = "Masculino";
-						else if ($dados['Sexo'] == 'f')
-							$dados['Sexo'] = "Feminino";
-							
-						if ($dados['Tipo'] == 'a')
-							$dados['Tipo'] = "Administrador";
-						else if ($dados['Tipo'] == 'c')
-							$dados['Tipo'] = "Comum";
-						
-						$vetor = array();
-							
-						$vetor['id'] = $dados['IDUsuario'];
-						$vetor['nome'] = $dados['Nome'];
-						$vetor['nascimento'] = $dados['Nascimento'];
-						$vetor['email'] = $dados['Email'];
-						$vetor['senha'] = $dados['Senha'];
-						$vetor['genero'] = $dados['Sexo'];
-						$vetor['foto'] = $dados['URLFoto'];
-						$vetor['permissao'] = $dados['Tipo'];
-						$vetor['facebook'] = $dados['Facebook'];
-						$vetor['connected'] = true;
-					
-						echo json_encode($vetor);
-					}else{
-						echo json_encode(false);
-					}
-				}	
+					echo json_encode($dados);
+				}else{
+					echo json_encode("inativa");
+				}
+
+
 			}else{
-            	echo json_encode("inativa");
-            }	
+
+				$result 	  = $request->result;
+				$name    	  = $result->name;
+				$sexo    	  = $result->gender;
+				$url		  = $result->picture->data->url;
+					
+				if($sexo == "male"){
+					$sexo = 'm';
+				}else{
+					$sexo = 'f';
+				}
+					
+				$sql= "INSERT INTO usuario (Nome, Nascimento, Sexo, URLFoto, Tipo, Facebook) VALUES ('$name', '2017-01-01', '$sexo', '$url', 'c', '$userID')";
+				$con->query($sql);
+
+				$sql = "SELECT * FROM usuario WHERE Facebook = '$userID'";
+				$result = $con->query($sql);
+				$numrow = $result->num_rows;
+					
+				if($numrow == 1){
+					$dados = $result->fetch_assoc();
+					$dados['connected'] = true;
+					echo json_encode($dados);
+				}else{
+					echo json_encode(false);
+				}
+			}
+
 		}else if( $type == 'vincular'){
 
 			$sql = "UPDATE usuario SET Facebook = '$userID' WHERE IDUsuario = '$request->id'";
 			$result = $con->query($sql);
 
+
+
 			$sql = "SELECT * FROM usuario WHERE IDUsuario = '$request->id'";
 			$result = $con->query($sql);
-
 			$dados = $result->fetch_assoc();
-					
-			if ($dados['Sexo'] == 'm')
-				$dados['Sexo'] = "Masculino";
-			else if ($dados['Sexo'] == 'f')
-				$dados['Sexo'] = "Feminino";
-				
-			if ($dados['Tipo'] == 'a')
-				$dados['Tipo'] = "Administrador";
-			else if ($dados['Tipo'] == 'c')
-				$dados['Tipo'] = "Comum";
-			
-			$vetor = array();
-			
-			$vetor['id'] = $dados['IDUsuario'];	
-			$vetor['nome'] = $dados['Nome'];
-			$vetor['nascimento'] = $dados['Nascimento'];
-			$vetor['senha'] = $dados['Senha'];
-			$vetor['email'] = $dados['Email'];
-			$vetor['genero'] = $dados['Sexo'];
-			$vetor['foto'] = $dados['URLFoto'];
-			$vetor['permissao'] = $dados['Tipo'];
-			$vetor['facebook'] = $dados['Facebook'];
-			$vetor['connected'] = true;
-				
-			echo json_encode($vetor);
 
-		}
+			if($dados['URLFoto']=='http://dsoutlet.com.br/igrejaApi/imagens/anonimo.png'){
+				$url		  = $request->result->picture->data->url;
+				$sql = "UPDATE usuario SET URLFoto = '$userID' WHERE IDUsuario = '$url'";
+				$result = $con->query($sql);
+			}
+			$dados['URLFoto'] = $url;
+			$dados['connected'] = true;
+				
+			echo json_encode($dados);
 
-					
+		}				
 	}
+	
+	$con->close();
 ?>
