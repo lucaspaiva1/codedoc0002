@@ -12,3 +12,6 @@ mostrar feed de 10 em 10
 
 //
 alert de tentar novamente quando perder conexao
+
+verificar se conta a ser criada ja existe
+alterar conta, verificar se o email existe depois de alterado
