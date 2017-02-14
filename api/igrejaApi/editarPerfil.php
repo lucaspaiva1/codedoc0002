@@ -12,41 +12,72 @@
 	if (isset($postdata)){
 		$request = json_decode($postdata);
 		
-		$id = $request->id;
-		
-        $sql = "SELECT * FROM usuario WHERE IDUsuario = '$id'";
-        $result = $con->query($sql);
-        $numrow = $result->num_rows;
-        if($numrow == 1){
-			$senha = $request->senha;
-            $email = $request->email;
-            $nome = $request->nome;
-            $genero = $request->genero;
-            $foto = $request->foto;
-            $nascimento = $request->nascimento;
-			$linkAntigo = $request->linkAntigo;
-							
-			//Apaga a imagem antiga
-			apagarFotoPerfil($linkAntigo);
-				
-            if ($genero=='Masculino'){
-                $genero='m';
-            }else {
-                $genero='f';
-            }
-				
-			if ($senha == ""){
-				$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
-				
-			} else {
-				$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Senha = '$senha', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
+		$id = $request->IDUsuario;
+		$email = $request->Email;
+
+		$sql = "SELECT * FROM usuario WHERE Email = '$email'";
+		$result = $con->query($sql);
+		$numrow = $result->num_rows;
+		if($numrow == 1){
+			$sql = "SELECT * FROM usuario WHERE IDUsuario = '$id'";
+			$result = $con->query($sql);
+			$numrow = $result->num_rows;
+			if($numrow != 1){//email foi mudado ou email novo
+				$senha = $request->Senha;
+				$nome = $request->Nome;
+				$genero = $request->Sexo;
+				$foto = $request->URLFoto;
+				$nascimento = $request->Nascimento;
+				$linkAntigo = $request->linkAntigo;
+
+				//Apaga a imagem antiga
+				apagarFotoPerfil($linkAntigo);
+
+
+				if ($senha == ""){
+					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
+				} else {
+					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Senha = '$senha', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
+				}
+
+				$con->query($sql);
+				echo json_encode(true);
+			}else{
+				echo json_encode(false);
 			}
-			
-            $con->query($sql);
-			echo json_encode(true);
-        }else{
-			echo json_encode(false);
-        }
+		} else{
+
+			$sql = "SELECT * FROM usuario WHERE IDUsuario = '$id'";
+			$result = $con->query($sql);
+			$numrow = $result->num_rows;
+
+			if($numrow == 1){//email alterado e ja possue um existente
+				$senha = $request->Senha;
+				$nome = $request->Nome;
+				$genero = $request->Sexo;
+				$foto = $request->URLFoto;
+				$nascimento = $request->Nascimento;
+				$linkAntigo = $request->linkAntigo;
+
+				//Apaga a imagem antiga
+				apagarFotoPerfil($linkAntigo);
+
+
+				if ($senha == ""){
+					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
+
+				} else {
+					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Senha = '$senha', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
+				}
+
+				$con->query($sql);
+				echo json_encode(true);
+			}else{
+				echo json_encode(false);
+			}
+		}
+		
+
 	}
 
 ?>

@@ -13,10 +13,10 @@
     <ion-list [virtualScroll]="users" >
       <ion-item *virtualItem="let user" (click)="abrirUsuario(user)">
       <ion-avatar item-left>
-        <img [src]="user.foto">
+        <img [src]="user.URLFoto">
       </ion-avatar>
-        <h2>{{user.nome}}</h2>
-        <p>{{user.email}}</p>
+        <h2>{{user.Nome}}</h2>
+        <p>{{user.Email}}</p>
       </ion-item>
     </ion-list>
 

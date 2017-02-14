@@ -22,7 +22,7 @@
 
   <!--Imagem do usuario-->
   <div class="perfil-pic">
-    <div><img src="{{userSelecionado.foto}}" alt="foto perfil" height="200" width="200"></div>
+    <div><img src="{{userSelecionado.URLFoto}}" alt="foto perfil" height="200" width="200"></div>
   </div>
 
   <!--Campos de dados do usuário -->
@@ -30,33 +30,33 @@
     
     <ion-item >
       <h3>Permissao: </h3>
-      <h2 *ngIf="userSelecionado.permissao == 'a'">Administrador</h2>
-      <h2 *ngIf="userSelecionado.permissao == 'c'">Usuario</h2>
+      <h2 *ngIf="userSelecionado.Tipo == 'a'">Administrador</h2>
+      <h2 *ngIf="userSelecionado.Tipo == 'c'">Usuario</h2>
     </ion-item>
     <ion-item >
       <h3>Status: </h3>
-      <h2 *ngIf="userSelecionado.banida == '0'">Ativa</h2>
-      <h2 *ngIf="userSelecionado.banida == '1'">Banida</h2>
+      <h2 *ngIf="userSelecionado.Banida == '0'">Ativa</h2>
+      <h2 *ngIf="userSelecionado.Banida == '1'">Banida</h2>
     </ion-item>
     
     <ion-item >
       <ion-label floating >Nome Completo</ion-label>
-      <ion-input type="text" disabled [(ngModel)]="userSelecionado.nome"></ion-input>
+      <ion-input type="text" disabled [(ngModel)]="userSelecionado.Nome"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating >Data de Nascimento</ion-label>
-      <ion-datetime displayFormat="DD/MMM/YYYY" disabled [(ngModel)]="userSelecionado.nascimento"></ion-datetime>
+      <ion-datetime displayFormat="DD/MMM/YYYY" disabled [(ngModel)]="userSelecionado.Nascimento"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label floating>Gênero</ion-label>
-      <ion-select disabled [(ngModel)]="userSelecionado.genero">
+      <ion-select disabled [(ngModel)]="userSelecionado.Sexo">
         <ion-option value="m">Masculino</ion-option>
         <ion-option value="f">Feminino</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label floating>Email</ion-label>
-      <ion-input type="email" disabled [(ngModel)]="userSelecionado.email"></ion-input>
+      <ion-input type="email" disabled [(ngModel)]="userSelecionado.Email"></ion-input>
     </ion-item>
   </ion-list>
 </ion-content>

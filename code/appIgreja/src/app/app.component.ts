@@ -31,7 +31,7 @@ export class MyApp {
 
   private nome: string = 'Nome do Usuários';
   private foto: string = '';
-  private permissao:string = "";
+  private permissao:string = "c";
 
   constructor(platform: Platform, public menu: MenuController, public facebookService: FacebookService, public userService: UserService, public events: Events) {
 
