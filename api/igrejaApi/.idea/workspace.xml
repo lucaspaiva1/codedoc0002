@@ -61,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/busca.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" column="66" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="66" />
+              <caret line="9" column="86" selection-start-line="9" selection-start-column="80" selection-end-line="9" selection-end-column="86" />
               <folding>
                 <marker date="1487112944492" expanded="true" signature="159:256" placeholder="SELECT IDUsu... usuario" />
               </folding>
@@ -153,12 +153,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1487110993511</updated>
-      <workItem from="1487110994713" duration="1913000" />
+      <workItem from="1487110994713" duration="2173000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1913000" />
+    <option name="totallyTimeSpent" value="2173000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2391" y="-9" width="1818" height="1093" extended-state="6" />
@@ -225,7 +225,7 @@
     <entry file="file://$PROJECT_DIR$/busca.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="66" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="66" />
+          <caret line="9" column="86" selection-start-line="9" selection-start-column="80" selection-end-line="9" selection-end-column="86" />
           <folding>
             <marker date="1487112944492" expanded="true" signature="159:256" placeholder="SELECT IDUsu... usuario" />
           </folding>

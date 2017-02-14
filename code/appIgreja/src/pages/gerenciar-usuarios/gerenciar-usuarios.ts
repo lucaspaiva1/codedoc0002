@@ -35,13 +35,13 @@ export class GerenciarUsuariosPage {
   }
 
   escolherOpcoes() {
-    if (this.userSelecionado.permissao == 'a') {
+    if (this.userSelecionado.Tipo == 'a') {
       this.mensage = "Retirar status Administrador";
     } else {
       this.mensage = "Tornar Administrador";
     }
 
-    if (this.userSelecionado.banida == '0') {
+    if (this.userSelecionado.Banida == '0') {
       this.mensage2 = "Banir conta";
     } else {
       this.mensage2 = "Ativar conta";
@@ -57,9 +57,9 @@ export class GerenciarUsuariosPage {
           text: this.mensage2,
           role: 'destructive',
           handler: () => {
-            this.usuariosService.operacao(this.userSelecionado.id, "banir").then(res => {
+            this.usuariosService.operacao(this.userSelecionado.IDUsuario, "banir").then(res => {
               if (res[1]) {
-                this.userSelecionado.banida=res[0];
+                this.userSelecionado.Banida = res[0];
                 this.presentToast("Operação realizada com sucesso");
             
               }
@@ -69,9 +69,9 @@ export class GerenciarUsuariosPage {
         {
           text: this.mensage,
           handler: () => {
-            this.usuariosService.operacao(this.userSelecionado.id, "alterar").then(res => {
+            this.usuariosService.operacao(this.userSelecionado.IDUsuario, "alterar").then(res => {
               if (res) {
-                this.userSelecionado.permissao=res[0];
+                this.userSelecionado.Tipo = res[0];
                 this.presentToast("Operação realizada com sucesso");
               }
             });
