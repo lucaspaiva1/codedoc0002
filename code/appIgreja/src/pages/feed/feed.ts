@@ -6,6 +6,9 @@ import { ComentariosPage } from '../comentarios/comentarios';
 import { PublicacaoService } from '../../providers/publicacao-service';
 import { Publicacao } from '../../model/publicacao';
 import { UserService } from '../../providers/user-service';
+import { ContaService } from '../../providers/conta-service';
+import { User } from '../../model/User';
+import { LoginPage } from '../login/login/login';
 
 
 @Component({
@@ -15,28 +18,29 @@ import { UserService } from '../../providers/user-service';
 export class FeedPage {
 
   private publicacoes: Publicacao[] = [];
-  addPost = AddPostPage;
-  editarPost = EditarPostPage;
-  comentarios = ComentariosPage;
-  permissao = "c";
+  private addPost = AddPostPage;
+  private editarPost = EditarPostPage;
+  private comentarios = ComentariosPage;
+  private usuarioLogado:User;
   loader: any = this.loadingController.create({
     content: "Carregando Publicações"
   });
 
   constructor(
-    public alertCtrl: AlertController, 
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public postService: PublicacaoService, 
-    public loadingController: LoadingController, 
-    public userService: UserService, 
+    public alertCtrl: AlertController,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public postService: PublicacaoService,
+    public loadingController: LoadingController,
+    public userService: UserService,
+    public contaService: ContaService,
     public events: Events
 
-    ) {
+  ) {
     this.evento();
     this.loader.present();
-    this.userService.get().then(res=>{
-      this.permissao = res.Tipo;
+    this.userService.get().then(res => {
+      this.usuarioLogado = res;
     });
   }
 
@@ -45,6 +49,7 @@ export class FeedPage {
   }
 
   private carregarFeed() {
+    this.atualizar();
     this.postService.getPublicacoes().then(res => {
       if (res.type == true) {
         this.publicacoes = res.data;
@@ -80,7 +85,7 @@ export class FeedPage {
   }
 
   private doRefresh(refresher) {
-      this.carregarFeed();
+    this.carregarFeed();
     setTimeout(() => {
       refresher.complete();
     }, 2000);
@@ -109,9 +114,18 @@ export class FeedPage {
     })
   }
 
-  private evento(){
-    this.userService.get().then(res=>{
+  private evento() {
+    this.userService.get().then(res => {
       this.events.publish('user:changed', res);
+    });
+  }
+
+  atualizar() {
+    this.contaService.logar("logar", this.usuarioLogado.Email, this.usuarioLogado.Senha).then(response => {
+      if (response == "inativa") {
+        alert("Sua conta está bloqueada ou banida");
+        this.navCtrl.setRoot(LoginPage);
+      } 
     });
   }
 }
