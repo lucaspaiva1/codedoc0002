@@ -18,13 +18,26 @@ export class FeedPage {
   addPost = AddPostPage;
   editarPost = EditarPostPage;
   comentarios = ComentariosPage;
+  permissao = "c";
   loader: any = this.loadingController.create({
     content: "Carregando Publicações"
   });
 
-  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public postService: PublicacaoService, public loadingController: LoadingController, public userService: UserService, public events: Events) {
+  constructor(
+    public alertCtrl: AlertController, 
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public postService: PublicacaoService, 
+    public loadingController: LoadingController, 
+    public userService: UserService, 
+    public events: Events
+
+    ) {
     this.evento();
     this.loader.present();
+    this.userService.get().then(res=>{
+      this.permissao = res.Tipo;
+    });
   }
 
   ionViewWillEnter() {
