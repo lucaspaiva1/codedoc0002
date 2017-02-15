@@ -35,13 +35,13 @@
     <ion-label>
       <ion-item>
         <ion-avatar item-left>
-          <img [src]="usuario.foto">
+          <img [src]="usuario.URLFoto">
         </ion-avatar>
-        <h2>{{usuario.nome}}</h2>
-        <p>{{usuario.email}}</p>
+        <h2>{{usuario.Nome}}</h2>
+        <p>{{usuario.Email}}</p>
       </ion-item>
     </ion-label>
-    <ion-toggle (ionChange)="adicionarUser(usuario.id)"></ion-toggle>
+    <ion-toggle (ionChange)="adicionarUser(usuario.IDUsuario)"></ion-toggle>
   </ion-item>
   </ion-list>
 

@@ -60,8 +60,9 @@ export class BuscaPage {
     this.navCtrl.push(EditarGrupoPage, {grupo: grupo});
   }
 
-  deletar() {
-
+  deletar(grupo) {
+    this.grupos.splice(this.grupos.indexOf(grupo), 1);
+    //salvar no banco
   }
 
   mapa() {
