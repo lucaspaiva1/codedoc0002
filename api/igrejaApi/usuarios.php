@@ -12,7 +12,7 @@
 		$type         = $request->type;
         $id         = $request->id;
 
-        $sql = "SELECT * FROM usuario WHERE WHERE IDUsuario = '$id'";
+        $sql = "SELECT * FROM usuario WHERE IDUsuario = '$id'";
         $result = $con->query($sql);
         $dados = $result->fetch_assoc();
 
@@ -25,12 +25,12 @@
             } else{
                 $sql = "UPDATE usuario SET Banida = 0 WHERE IDUsuario = '$id'";
                 $result = $con->query($sql);
-                $vetor[] = '1';
+                $vetor[] = '0';
 
             }
             $vetor[] =true;
 
-            echo json_encode(true);
+            echo json_encode($vetor);
         } else if($type == 'alterar'){
             $vetor = array();
             if($dados['Tipo'] == 'c'){
@@ -44,7 +44,7 @@
             }
             $vetor[] =true;
 
-            echo json_encode(true);
+            echo json_encode($vetor);
         }
     }
 ?>
