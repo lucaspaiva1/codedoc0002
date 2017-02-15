@@ -67,11 +67,18 @@ export class BuscaPage {
     this.deleteGrupo.deletar(grupo.ID).then(res => {
       if (res == true) {
         this.grupos.splice(this.grupos.indexOf(grupo), 1);
+        let toast = this.toastCtrl.create({
+          message: 'Deletado com sucesso',
+          duration: 2000,
+          position: 'top'
+        });
+
+        toast.present();
       } else {
         alert("não foi possivel remover");
       }
     });
-    //salvar no banco
+    
   }
 
   mapa() {

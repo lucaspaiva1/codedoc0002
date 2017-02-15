@@ -21,19 +21,19 @@
     <favorites_list name="igrejaApi" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="conta.php" pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="conta.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/conta.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="433">
+              <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
               <folding>
-                <marker date="1487108757182" expanded="true" signature="350:415" placeholder="SELECT * FRO... usuario" />
-                <marker date="1487108757182" expanded="true" signature="723:779" placeholder="UPDATE usuar... " />
-                <marker date="1487108757182" expanded="true" signature="1026:1070" placeholder="SELECT * FRO... usuario" />
-                <marker date="1487108757182" expanded="true" signature="1450:1518" placeholder="UPDATE usuar... " />
-                <marker date="1487108757182" expanded="true" signature="2242:2392" placeholder="INSERT INTO usuario... " />
-                <marker date="1487108757182" expanded="true" signature="2447:2491" placeholder="SELECT * FRO... usuario" />
+                <marker date="1487123945339" expanded="true" signature="350:415" placeholder="SELECT * FRO... usuario" />
+                <marker date="1487123945339" expanded="true" signature="723:779" placeholder="UPDATE usuar... " />
+                <marker date="1487123945339" expanded="true" signature="1026:1070" placeholder="SELECT * FRO... usuario" />
+                <marker date="1487123945339" expanded="true" signature="1450:1518" placeholder="UPDATE usuar... " />
+                <marker date="1487123945339" expanded="true" signature="2242:2392" placeholder="INSERT INTO usuario... " />
+                <marker date="1487123945339" expanded="true" signature="2447:2491" placeholder="SELECT * FRO... usuario" />
               </folding>
             </state>
           </provider>
@@ -42,28 +42,20 @@
       <file leaf-file-name="editarPerfil.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/editarPerfil.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="613">
+            <state relative-caret-position="833">
               <caret line="49" column="65" selection-start-line="49" selection-start-column="65" selection-end-line="49" selection-end-column="65" />
-              <folding>
-                <marker date="1487112075934" expanded="true" signature="296:340" placeholder="SELECT * FRO... usuario" />
-                <marker date="1487112075934" expanded="true" signature="436:481" placeholder="SELECT * FRO... usuario" />
-                <marker date="1487112075934" expanded="true" signature="902:1042" placeholder="UPDATE usuar... " />
-                <marker date="1487112075934" expanded="true" signature="1071:1229" placeholder="UPDATE usuar... " />
-                <marker date="1487112075934" expanded="true" signature="1356:1401" placeholder="SELECT * FRO... usuario" />
-                <marker date="1487112075934" expanded="true" signature="1832:1972" placeholder="UPDATE usuar... " />
-                <marker date="1487112075934" expanded="true" signature="2002:2160" placeholder="UPDATE usuar... " />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="busca.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="busca.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/busca.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
               <caret line="9" column="86" selection-start-line="9" selection-start-column="80" selection-end-line="9" selection-end-column="86" />
               <folding>
-                <marker date="1487112944492" expanded="true" signature="159:256" placeholder="SELECT IDUsu... usuario" />
+                <marker date="1487123434624" expanded="true" signature="159:256" placeholder="SELECT IDUsu... usuario" />
               </folding>
             </state>
           </provider>
@@ -136,8 +128,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -154,11 +146,12 @@
       <option name="presentableId" value="Default" />
       <updated>1487110993511</updated>
       <workItem from="1487110994713" duration="2173000" />
+      <workItem from="1487126478030" duration="29000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2173000" />
+    <option name="totallyTimeSpent" value="2202000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2391" y="-9" width="1818" height="1093" extended-state="6" />
@@ -166,19 +159,19 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -196,29 +189,39 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1487108757182" expanded="true" signature="350:415" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487108757182" expanded="true" signature="723:779" placeholder="UPDATE usuar... " />
-            <marker date="1487108757182" expanded="true" signature="1026:1070" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487108757182" expanded="true" signature="1450:1518" placeholder="UPDATE usuar... " />
-            <marker date="1487108757182" expanded="true" signature="2242:2392" placeholder="INSERT INTO usuario... " />
-            <marker date="1487108757182" expanded="true" signature="2447:2491" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487123945339" expanded="true" signature="350:415" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487123945339" expanded="true" signature="723:779" placeholder="UPDATE usuar... " />
+            <marker date="1487123945339" expanded="true" signature="1026:1070" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487123945339" expanded="true" signature="1450:1518" placeholder="UPDATE usuar... " />
+            <marker date="1487123945339" expanded="true" signature="2242:2392" placeholder="INSERT INTO usuario... " />
+            <marker date="1487123945339" expanded="true" signature="2447:2491" placeholder="SELECT * FRO... usuario" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/editarPerfil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
+        <state relative-caret-position="833">
           <caret line="49" column="65" selection-start-line="49" selection-start-column="65" selection-end-line="49" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/busca.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1487112075934" expanded="true" signature="296:340" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487112075934" expanded="true" signature="436:481" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487112075934" expanded="true" signature="902:1042" placeholder="UPDATE usuar... " />
-            <marker date="1487112075934" expanded="true" signature="1071:1229" placeholder="UPDATE usuar... " />
-            <marker date="1487112075934" expanded="true" signature="1356:1401" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487112075934" expanded="true" signature="1832:1972" placeholder="UPDATE usuar... " />
-            <marker date="1487112075934" expanded="true" signature="2002:2160" placeholder="UPDATE usuar... " />
+            <marker date="1487123434624" expanded="true" signature="159:256" placeholder="SELECT IDUsu... usuario" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/editarPerfil.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="49" column="65" selection-start-line="49" selection-start-column="65" selection-end-line="49" selection-end-column="65" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -227,7 +230,22 @@
         <state relative-caret-position="153">
           <caret line="9" column="86" selection-start-line="9" selection-start-column="80" selection-end-line="9" selection-end-column="86" />
           <folding>
-            <marker date="1487112944492" expanded="true" signature="159:256" placeholder="SELECT IDUsu... usuario" />
+            <marker date="1487123434624" expanded="true" signature="159:256" placeholder="SELECT IDUsu... usuario" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conta.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
+          <folding>
+            <marker date="1487123945339" expanded="true" signature="350:415" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487123945339" expanded="true" signature="723:779" placeholder="UPDATE usuar... " />
+            <marker date="1487123945339" expanded="true" signature="1026:1070" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487123945339" expanded="true" signature="1450:1518" placeholder="UPDATE usuar... " />
+            <marker date="1487123945339" expanded="true" signature="2242:2392" placeholder="INSERT INTO usuario... " />
+            <marker date="1487123945339" expanded="true" signature="2447:2491" placeholder="SELECT * FRO... usuario" />
           </folding>
         </state>
       </provider>

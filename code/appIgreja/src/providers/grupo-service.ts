@@ -13,27 +13,26 @@ export class GrupoService {
 
   }
 
-  deleteGrupo(id: number): Promise<any>{
+  deleteGrupo(id: number): Promise<any> {
     return this.http
-      .post('http://www.dsoutlet.com.br/igrejaApi/deleteGrupo.php', JSON.stringify({id: id}), { headers: this.headers })
+      .post('http://www.dsoutlet.com.br/igrejaApi/deleteGrupo.php', JSON.stringify({ id: id }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractDelData(res))
       .catch(this.handleErrorMessage);
   }
 
-  editGrupo(grupo: Grupo)/*: Promise<any>*/{
-    console.log(grupo);
-    /*return this.http
+  editGrupo(grupo: Grupo): Promise<any> {
+    return this.http
       .post('http://www.dsoutlet.com.br/igrejaApi/editGrupo.php', JSON.stringify(grupo), { headers: this.headers })
       .toPromise()
       .then(res => this.extractEditGrupo(res))
-      .catch(this.handleErrorMessage);*/
+      .catch(this.handleErrorMessage);
   }
 
   private extractEditGrupo(res: Response) {
     let retorno = { type: false, message: '' };
     let data = res.json();
-    if (data === true) {
+    if (data == true) {
       retorno.type = true;
       retorno.message = 'Edição concluída';
     } else {
@@ -42,8 +41,8 @@ export class GrupoService {
     return retorno;
   }
 
-  getGrupo(id: number): Promise<any>{
-    return this.http.get('http://www.dsoutlet.com.br/igrejaApi/listaGrupo.php?id='+id)
+  getGrupo(id: number): Promise<any> {
+    return this.http.get('http://www.dsoutlet.com.br/igrejaApi/listaGrupo.php?id=' + id)
       .toPromise()
       .then(response => this.extractGetGrupo(response))
       .catch(this.handleErrorMessage);
@@ -63,7 +62,7 @@ export class GrupoService {
     return retorno;
   }
 
-  getGrupos(): Promise<any>{
+  getGrupos(): Promise<any> {
     return this.http.get('http://www.dsoutlet.com.br/igrejaApi/listaGrupo.php?id')
       .toPromise()
       .then(response => this.extractGetGrupos(response))

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { BuscaService } from '../../providers/busca-service';
 import { GrupoService } from '../../providers/grupo-service';
 import { Grupo } from '../../model/grupo';
 import { User } from '../../model/User';
 import { UserService } from '../../providers/user-service';
+import { DeletarGrupoService } from '../../providers/deletar-grupo-service';
 
 
 @Component({
@@ -26,11 +27,13 @@ export class EditarGrupoPage {
     public buscaService: BuscaService,
     public grupoService: GrupoService,
     public userService: UserService,
-    public alertCtrl: AlertController
-    ) {
+    public toastCtrl: ToastController,
+    public alertCtrl: AlertController,
+    private deleteService: DeletarGrupoService
+  ) {
     this.grupo = navParams.get('grupo');
     this.carregarSelecionados();
-    
+
     this.userService.get().then(res => {
       this.permissao = res.Tipo;
     });
@@ -38,7 +41,7 @@ export class EditarGrupoPage {
 
   private carregarSelecionados() {
     this.grupoService.getGrupo(this.grupo.ID).then(res => {
-      if(res.type == true){
+      if (res.type == true) {
         this.selecionados = res.data;
         this.selecionadosAux.concat(res.data);
         this.carregarUsuarios();
@@ -52,8 +55,8 @@ export class EditarGrupoPage {
       this.users = response;
       this.auxUsers = response;
       for (let usuario of this.users) {
-        for(let id of this.selecionados){
-          if(usuario.id == id){
+        for (let id of this.selecionados) {
+          if (usuario.id == id) {
             usuario.selecionado = true;
             let index = this.selecionadosAux.indexOf(usuario.id);
             this.selecionadosAux.splice(index, 1);
@@ -102,16 +105,43 @@ export class EditarGrupoPage {
 
   salvar() {
     this.grupo.ids = this.selecionados;
-    this.grupoService.editGrupo(this.grupo);
-    this.toggleEditar();
+    let ids = this.grupo.ids;
+    alert(JSON.stringify(ids));
+    this.grupoService.editGrupo(this.grupo).then(res => {
+      if (res.type == true) {
+        this.toggleEditar();
+      }
+      let toast = this.toastCtrl.create({
+        message: res.message,
+        duration: 2000,
+        position: 'top'
+      });
+
+      toast.present();
+    }); 
+
   }
 
   cancelar() {
-    this.toggleEditar();
+    this.navCtrl.popToRoot();
   }
 
   excluir() {
+    this.deleteService.deletar(this.grupo.ID).then(res=>{
+       if (res == true) {
 
+        let toast = this.toastCtrl.create({
+          message: 'Deletado com sucesso',
+          duration: 2000,
+          position: 'top'
+        });
+
+        toast.present();
+        this.navCtrl.popToRoot();
+      } else {
+        alert("não foi possivel remover");
+      }
+    });
   }
 
   private showConfirm(type: number) {
