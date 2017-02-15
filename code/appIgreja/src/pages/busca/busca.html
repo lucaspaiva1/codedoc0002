@@ -17,8 +17,10 @@
     </button>
 
     <!--sliding options-->
-    <ion-item-options side="right">
+    <ion-item-options side="right" *ngIf="permissao == 'a'">
       <button ion-button icon-left color="danger" (click)="deletar(grupo)"><ion-icon name="trash"></ion-icon>Deletar</button>
+    </ion-item-options>
+    <ion-item-options side="right" *ngIf="permissao != 'a'">
     </ion-item-options>
   </ion-item-sliding>
 
