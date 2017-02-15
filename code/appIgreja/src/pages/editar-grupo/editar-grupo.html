@@ -12,7 +12,7 @@
   <ion-list>
     <ion-item>
       <ion-label floating>Nome</ion-label>
-      <ion-input type="text" [(ngModel)]="grupo.nome" disabled="{{ !editar }}"></ion-input>
+      <ion-input type="text" [(ngModel)]="grupo.nome" ></ion-input>
     </ion-item>
   </ion-list>
 
@@ -28,7 +28,7 @@
 
   <ion-list no-lines *ngIf="!editar">
     <ion-list-header>
-      Selecione os representantes:
+      Representantes:
     </ion-list-header>
 
     <div *ngFor="let usuario of users">
@@ -36,14 +36,16 @@
         <ion-label>
           <ion-item>
             <ion-avatar item-left>
-              <img src="{{ usuario.foto }}">
+              <img src="{{ usuario.URLFoto }}">
             </ion-avatar>
-            <h2>{{usuario.nome}}</h2>
-            <p>{{usuario.email}}</p>
+            <h2>{{usuario.Nome}}</h2>
+            <p>{{usuario.Email}}</p>
           </ion-item>
         </ion-label>
-        <ion-toggle *ngIf="!usuario.selecionado && permissao == 'a'" disabled="{{ !editar }}" (ionChange)="adicionarUser(usuario)"></ion-toggle>
-        <ion-toggle *ngIf="usuario.selecionado && permissao == 'a'" disabled="{{ !editar }}" checked="true" (ionChange)="adicionarUser(usuario)"></ion-toggle>
+        <div *ngIf="permissao == 'a'">
+        <ion-toggle *ngIf="!usuario.selecionado" disabled="{{ !editar }}" (ionChange)="adicionarUser(usuario)"></ion-toggle>
+        <ion-toggle *ngIf="usuario.selecionado" disabled="{{ !editar }}" checked="true" (ionChange)="adicionarUser(usuario)"></ion-toggle>
+        </div>
       </ion-item>
     </div>
   </ion-list>
@@ -57,14 +59,16 @@
       <ion-label>
         <ion-item>
           <ion-avatar item-left>
-            <img src="{{ usuario.foto }}">
+            <img src="{{ usuario.URLFoto }}">
           </ion-avatar>
-          <h2>{{usuario.nome}}</h2>
-          <p>{{usuario.email}}</p>
+          <h2>{{usuario.Nome}}</h2>
+          <p>{{usuario.Email}}</p>
         </ion-item>
       </ion-label>
+      <div *ngIf="permissao == 'a'">
       <ion-toggle *ngIf="!usuario.selecionado && permissao == 'a'" disabled="{{ !editar }}" (ionChange)="adicionarUser(usuario)"></ion-toggle>
       <ion-toggle *ngIf="usuario.selecionado && permissao == 'a'" disabled="{{ !editar }}" checked="true" (ionChange)="adicionarUser(usuario)"></ion-toggle>
+      </div>
     </ion-item>
   </ion-list>
 
