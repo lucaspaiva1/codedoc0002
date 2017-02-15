@@ -14,8 +14,9 @@
       <ion-label floating>Nome</ion-label>
       <ion-input type="text" [(ngModel)]="grupo.nome" ></ion-input>
     </ion-item>
+
     <ion-item *ngIf="!editar">
-      <ion-label floating>Nome</ion-label>
+      <ion-label>Nome</ion-label>
       <h6>{{grupo.nome}}</h6>
     </ion-item>
   </ion-list>

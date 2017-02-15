@@ -91,7 +91,7 @@ export class EditarGrupoPage {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.users = this.users.filter((item) => {
-        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.email.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.selecionado);
+        return (item.Nome.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.Email.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.selecionado);
       })
     }
   }
