@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, ActionSheetController } from 'ionic-angular';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { NavController, NavParams, LoadingController, ActionSheetController,  } from 'ionic-angular';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { AddEventoPage } from '../add-evento/add-evento';
 import { EditarEventoPage } from '../editar-evento/editar-evento';
@@ -7,6 +7,11 @@ import { BuscaEventosPage } from '../busca-eventos/busca-eventos';
 import { EventoService } from '../../providers/evento-service';
 import { Evento } from '../../model/evento';
 import { UserService } from '../../providers/user-service';
+import { CalendarComponent } from 'ionic2-calendar/calendar';
+import { MonthViewComponent } from 'ionic2-calendar/monthview';
+import { WeekViewComponent } from 'ionic2-calendar/weekview';
+import { DayViewComponent } from 'ionic2-calendar/dayview';
+
 
 /*
   Generated class for the Calendario page.
@@ -61,6 +66,7 @@ export class CalendarioPage {
 
   // funções do calendario
   onCurrentDateChanged(event: Date) {
+    
   }
 
   reloadSource(startTime, endTime) {
