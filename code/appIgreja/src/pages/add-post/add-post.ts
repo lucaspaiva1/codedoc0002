@@ -14,8 +14,6 @@ declare var cordova: any;
 export class AddPostPage {
 
   private publicacao: Publicacao = new Publicacao();
-  private lastImage: string = null;
-  private urlImage: string = null;
   private loading: Loading;
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, public postService: PublicacaoService) {
@@ -23,24 +21,14 @@ export class AddPostPage {
   }
 
   private adicionar() {
-    //se houver imagem no post
-    if(this.urlImage !== null){
-      //diretorio da imagem importada
-      this.publicacao.LinkImagem = 'http://www.dsoutlet.com.br/igrejaApi/uploads/' + this.lastImage;
-    }
-
     //obrigatorio preencher data limite da publicacao
     if (this.publicacao.TempoPermanencia == null) {
       this.presentToast('Preencha a data limite!');
     } else {
       this.postService.novaPublicacao(this.publicacao).then(res => {
         if (res.type == true) {
-          if(this.urlImage !== null){
-            this.uploadImage();
-          }else{
-            this.presentToast(res.message);
-            this.navCtrl.pop();
-          }
+          this.presentToast(res.message);
+          this.navCtrl.pop();
         } else {
           this.presentToast(res.message);
         }
@@ -49,58 +37,36 @@ export class AddPostPage {
   }
 
   private importarFoto() {
-    this.takePicture(Camera.PictureSourceType.PHOTOLIBRARY);
-  }
-
-  private tirarFoto() {
-    this.takePicture(Camera.PictureSourceType.CAMERA);
-  }
-
-  private takePicture(sourceType) {
-    // Create options for the Camera Dialog
-    let options = {
-      quality: 100,
-      sourceType: sourceType,
-      saveToPhotoAlbum: false,
-      correctOrientation: true
-    };
-
-    // Get the data of an image
-    Camera.getPicture(options).then((imagePath) => {
-      // Special handling for Android library
-      if (this.platform.is('android') && sourceType === Camera.PictureSourceType.PHOTOLIBRARY) {
-        FilePath.resolveNativePath(imagePath)
-          .then(filePath => {
-            let currentName = filePath.substr(imagePath.lastIndexOf('/') + 1);
-            let correctPath = filePath.substr(0, imagePath.lastIndexOf('/') + 1);
-            this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
-            this.urlImage = filePath;
-            alert(filePath);
-          });
-      } else {
-        let currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
-        let correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
-        this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
-        this.urlImage = imagePath;
-        alert(imagePath);
-      }
-    }, (err) => {
-      this.presentToast('Erro ao selecionar imagem.');
+    Camera.getPicture({
+      quality: 50,
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      allowEdit: true,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 300,
+      targetHeight: 300,
+      saveToPhotoAlbum: false
+    }).then(imageData => {
+      this.publicacao.LinkImagem = "data:image/jpeg;base64," + imageData;
+    }, error => {
+      alert("ERROR -> " + JSON.stringify(error));
     });
   }
 
-  // Create a new name for the image
-  private createFileName() {
-    let time = new Date();
-    return (time.getTime() + ".jpg");
-  }
-
-  // Copy the image to a local folder
-  private copyFileToLocalDir(namePath, currentName, newFileName) {
-    File.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
-      this.lastImage = newFileName;
+  private tirarFoto() {
+    Camera.getPicture({
+      quality: 50, //Picture quality in range 0-100. Default is 50
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,
+      allowEdit: true,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 300,
+      targetHeight: 300,
+      saveToPhotoAlbum: true
+    }).then(imageData => {
+      this.publicacao.LinkImagem = "data:image/jpeg;base64," + imageData;
     }, error => {
-      this.presentToast('Erro ao arquivar imagem.');
+      alert("ERROR -> " + JSON.stringify(error));
     });
   }
 
@@ -112,46 +78,6 @@ export class AddPostPage {
       position: 'top'
     });
     toast.present();
-  }
-
-  //responsável por upload da imagem
-  private uploadImage() {
-    alert('uploading');
-    // Destination URL
-    let url = "http://www.dsoutlet.com.br/igrejaApi/upload.php";
-
-    // File for Upload
-    //let targetPath = this.pathForImage(this.lastImage);
-
-    // File name only
-    let filename = this.lastImage;
-
-    let options = {
-      fileKey: "file",
-      fileName: filename,
-      chunkedMode: false,
-      mimeType: "multipart/form-data",
-      params: { 'fileName': filename }
-    };
-
-    const fileTransfer = new Transfer();
-
-    this.loading = this.loadingCtrl.create({
-      content: 'Carregando...',
-    });
-    this.loading.present();
-
-    // Use the FileTransfer to upload the image
-    fileTransfer.upload(this.urlImage, url, options).then(data => {
-      alert(JSON.stringify(data));
-      this.loading.dismissAll();
-      this.presentToast('Postagem Criada com Sucesso!');
-      this.navCtrl.pop();
-    }, err => {
-      alert(JSON.stringify(err));
-      this.loading.dismissAll();
-      this.presentToast('Erro no envio da imagem.');
-    });
   }
 
 }
