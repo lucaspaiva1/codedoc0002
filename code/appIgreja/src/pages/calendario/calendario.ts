@@ -30,11 +30,13 @@ export class CalendarioPage {
   private editarEvento = EditarEventoPage;
   private addEvento = AddEventoPage;
   private buscaEventos = BuscaEventosPage;
-  private calendar;
+  calendar;
   private eventSource;
   private isToday: boolean;
   private permissao = "c";
   private mes: string = 'Dezembro'; //titulo
+  data = new Date();
+  cont: number = 4;
 
   constructor(
     public actionSheetCtrl: ActionSheetController, 
@@ -47,9 +49,8 @@ export class CalendarioPage {
     ) {
     this.calendar = {
       mode: 'month',
-      currentDate: new Date()
+      currentDate: new Date() 
     };
-
     this.userService.get().then(res => {
       this.permissao = res.Tipo;
     });
@@ -63,10 +64,9 @@ export class CalendarioPage {
     this.getEventos();
     loader.dismiss();
   }
-
   // funções do calendario
   onCurrentDateChanged(event: Date) {
-    
+    this.calendar.currentDate = event;
   }
 
   reloadSource(startTime, endTime) {
