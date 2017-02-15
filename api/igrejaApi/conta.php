@@ -75,18 +75,30 @@
             $email   	  = $request->Email;
             $senha		  = $request->Senha;
             $foto         = 'http://dsoutlet.com.br/igrejaApi/imagens/anonimo.png';
+			
+			
+			$sql = "SELECT * FROM usuario WHERE Email = '$email'";
+			$result = $con->query($sql);
+			$numrow = $result->num_rows;
+			
+			
+			if ($num_rows !== 1 && $email != ''){
+			
+				$sql= "INSERT INTO usuario (Nome, Nascimento, Sexo, URLFoto, Tipo, Email, Senha) VALUES ('$nome', '$nascimento', '$genero', '$foto', 'c', '$email', '$senha')";
+				$con->query($sql);
 
-            $sql= "INSERT INTO usuario (Nome, Nascimento, Sexo, URLFoto, Tipo, Email, Senha) VALUES ('$nome', '$nascimento', '$genero', '$foto', 'c', '$email', '$senha')";
-            $con->query($sql);
-
-            $sql = "SELECT * FROM usuario WHERE Email = '$email'";
-            $result = $con->query($sql);
-            $numrow = $result->num_rows;
-            if($numrow == 1){
-                echo json_encode(true);
-            }else{
-                echo json_encode(false);
-            }
+				$sql = "SELECT * FROM usuario WHERE Email = '$email'";
+				$result = $con->query($sql);
+				$numrow = $result->num_rows;
+				
+				if($numrow == 1){
+					echo json_encode(true);
+				}else{
+					echo json_encode(false);
+				}
+			} else {
+				echo json_encode(false);
+			}
         }
 
     }
