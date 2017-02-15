@@ -4,6 +4,7 @@ import { BuscaService } from '../../providers/busca-service';
 import { GrupoService } from '../../providers/grupo-service';
 import { Grupo } from '../../model/grupo';
 import { User } from '../../model/User';
+import { UserService } from '../../providers/user-service';
 
 
 @Component({
@@ -16,15 +17,23 @@ export class EditarGrupoPage {
   private users: any[] = [];
   private auxUsers: User[] = [];
   private selecionados: number[] = [];
+  private permissao = "c";
   private selecionadosAux: number[] = [];
 
-  constructor(public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
     public navParams: NavParams,
     public buscaService: BuscaService,
     public grupoService: GrupoService,
-    public alertCtrl: AlertController) {
+    public userService: UserService,
+    public alertCtrl: AlertController
+    ) {
     this.grupo = navParams.get('grupo');
     this.carregarSelecionados();
+    
+    this.userService.get().then(res => {
+      this.permissao = res.Tipo;
+    });
   }
 
   private carregarSelecionados() {

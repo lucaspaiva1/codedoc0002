@@ -23,7 +23,7 @@
   </ion-item-sliding>
 
 </ion-list>
-  <ion-fab right bottom >
+  <ion-fab right bottom *ngIf="permissao == 'a'" >
     <button ion-fab class="floating-button-adm" (click)="adicionarGupo()" ><ion-icon name="add"></ion-icon></button>
   </ion-fab>
   <ion-fab left bottom >

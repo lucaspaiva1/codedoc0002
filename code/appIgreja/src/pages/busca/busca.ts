@@ -5,6 +5,7 @@ import { EditarGrupoPage } from '../editar-grupo/editar-grupo';
 import { GrupoService } from '../../providers/grupo-service';
 import { Grupo } from '../../model/grupo';
 import { MapaPage } from '../mapa/mapa';
+import { UserService } from '../../providers/user-service';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class BuscaPage {
 
   private grupos: Grupo[] = [];
   private mapsPage = MapaPage;
+  private permissao = "c";
   loader: any = this.loadingController.create({
     content: "Carregando Publicações"
   });
@@ -23,9 +25,16 @@ export class BuscaPage {
     public navParams: NavParams,
     public grupoService: GrupoService,
     public loadingController: LoadingController,
+    public userService: UserService,
     public toastCtrl: ToastController,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController
+    ) {
+
     this.loader.present();
+
+    this.userService.get().then(res => {
+      this.permissao = res.Tipo;
+    });
   }
 
   ionViewWillEnter() {
