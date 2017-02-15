@@ -66,8 +66,8 @@
         </ion-item>
       </ion-label>
       <div *ngIf="permissao == 'a'">
-      <ion-toggle *ngIf="!usuario.selecionado && permissao == 'a'" disabled="{{ !editar }}" (ionChange)="adicionarUser(usuario)"></ion-toggle>
-      <ion-toggle *ngIf="usuario.selecionado && permissao == 'a'" disabled="{{ !editar }}" checked="true" (ionChange)="adicionarUser(usuario)"></ion-toggle>
+      <ion-toggle *ngIf="!usuario.selecionado" disabled="{{ !editar }}" (ionChange)="adicionarUser(usuario)"></ion-toggle>
+      <ion-toggle *ngIf="usuario.selecionado " disabled="{{ !editar }}" checked="true" (ionChange)="adicionarUser(usuario)"></ion-toggle>
       </div>
     </ion-item>
   </ion-list>
