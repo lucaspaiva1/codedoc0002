@@ -1,17 +1,11 @@
-//relacionados ao usuario
-data de nascimento do usuario facebook
-foto perfil maior usuario facebook
-se a foto for anonima e vincular com face, trocar a foto
-gerenciar usuario (deletar e tornar administrador)
-
 //relacionados a publicacao
 postar no face
 mostrar feed de 10 em 10
 
-//testar editar grupo se o usuario selecionado funciona
-
-//
-alert de tentar novamente quando perder conexao
-
-verificar se conta a ser criada ja existe
-alterar conta, verificar se o email existe depois de alterado
+consertar calendario
+testar cadastro com email existente
+publicar no face
+notificação no celular
+telas do menu (estrutura sobre)
+esqueci minha senha
+editar perfil

@@ -1,7 +1,6 @@
 <?php
 	include 'mySQL.php';
 	require 'mySQL.php';
-	include 'apagaImagem.php';
 ?>
 <?php
 	
@@ -19,20 +18,15 @@
 		$result = $con->query($sql);
 		$numrow = $result->num_rows;
 		if($numrow == 1){
-			$sql = "SELECT * FROM usuario WHERE IDUsuario = '$id'";
+			$sql = "SELECT * FROM usuario WHERE IDUsuario = '$id' AND Email  = '$email'";
 			$result = $con->query($sql);
 			$numrow = $result->num_rows;
-			if($numrow != 1){//email foi mudado ou email novo
+			if($numrow == 1){//email foi mudado ou email novo
 				$senha = $request->Senha;
 				$nome = $request->Nome;
 				$genero = $request->Sexo;
 				$foto = $request->URLFoto;
 				$nascimento = $request->Nascimento;
-				$linkAntigo = $request->linkAntigo;
-
-				//Apaga a imagem antiga
-				apagarFotoPerfil($linkAntigo);
-
 
 				if ($senha == ""){
 					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
@@ -57,11 +51,6 @@
 				$genero = $request->Sexo;
 				$foto = $request->URLFoto;
 				$nascimento = $request->Nascimento;
-				$linkAntigo = $request->linkAntigo;
-
-				//Apaga a imagem antiga
-				apagarFotoPerfil($linkAntigo);
-
 
 				if ($senha == ""){
 					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
