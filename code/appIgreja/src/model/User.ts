@@ -11,7 +11,6 @@ export class User {
   public URLFoto: string = "";
   public Nascimento: Date;
   public connected: boolean = false;
-  public linkAntigo: string = '';
   public selecionado: boolean = false;
 
   constructor() {
