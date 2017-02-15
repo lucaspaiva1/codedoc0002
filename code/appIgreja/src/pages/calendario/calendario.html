@@ -29,7 +29,7 @@
         (onTimeSelected)="onTimeSelected($event)"
         step="30">
       </calendar>
-      <ion-fab right bottom >
+      <ion-fab right bottom *ngIf="permissao == 'a'" >
         <button ion-fab class="floating-button-adm" (click)="adicionar()"><ion-icon name="add"></ion-icon></button>
       </ion-fab>
       <ion-fab left bottom >

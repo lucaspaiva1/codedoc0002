@@ -56,4 +56,9 @@ export class BuscaEventosPage {
     }
   }
 
+  abrirEvento(evento){
+    //direcionar para o face
+    
+  }
+
 }

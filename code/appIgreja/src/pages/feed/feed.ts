@@ -6,8 +6,6 @@ import { ComentariosPage } from '../comentarios/comentarios';
 import { PublicacaoService } from '../../providers/publicacao-service';
 import { Publicacao } from '../../model/publicacao';
 import { UserService } from '../../providers/user-service';
-import { ContaService } from '../../providers/conta-service';
-import { User } from '../../model/User';
 
 
 @Component({
@@ -21,7 +19,6 @@ export class FeedPage {
   private editarPost = EditarPostPage;
   private comentarios = ComentariosPage;
   private permissao = "c";
-  private usuarioLogado:User;
   loader: any = this.loadingController.create({
     content: "Carregando Publicações"
   });
@@ -33,12 +30,12 @@ export class FeedPage {
     public postService: PublicacaoService,
     public loadingController: LoadingController,
     public userService: UserService,
-    public contaService: ContaService,
     public events: Events
 
   ) {
     this.evento();
     this.loader.present();
+
     this.userService.get().then(res => {
       this.permissao = res.Tipo;
     });

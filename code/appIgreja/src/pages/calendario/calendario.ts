@@ -6,6 +6,7 @@ import { EditarEventoPage } from '../editar-evento/editar-evento';
 import { BuscaEventosPage } from '../busca-eventos/busca-eventos';
 import { EventoService } from '../../providers/evento-service';
 import { Evento } from '../../model/evento';
+import { UserService } from '../../providers/user-service';
 
 /*
   Generated class for the Calendario page.
@@ -21,19 +22,32 @@ export class CalendarioPage {
 
   private eventos: Evento[] = [];
 
-  editarEvento = EditarEventoPage;
-  addEvento = AddEventoPage;
-  buscaEventos = BuscaEventosPage;
-  calendar;
-  eventSource;
-  isToday: boolean;
-  mes: string = 'Dezembro'; //titulo
+  private editarEvento = EditarEventoPage;
+  private addEvento = AddEventoPage;
+  private buscaEventos = BuscaEventosPage;
+  private calendar;
+  private eventSource;
+  private isToday: boolean;
+  private permissao = "c";
+  private mes: string = 'Dezembro'; //titulo
 
-  constructor(public actionSheetCtrl: ActionSheetController, public loadingController: LoadingController, public calendarMd: NgCalendarModule, public navCtrl: NavController, public navParams: NavParams, public eventoService: EventoService) {
+  constructor(
+    public actionSheetCtrl: ActionSheetController, 
+    public loadingController: LoadingController, 
+    public calendarMd: NgCalendarModule, 
+    public navCtrl: NavController, 
+    public userService: UserService,
+    public navParams: NavParams, 
+    public eventoService: EventoService
+    ) {
     this.calendar = {
       mode: 'month',
       currentDate: new Date()
     };
+
+    this.userService.get().then(res => {
+      this.permissao = res.Tipo;
+    });
   }
 
   ionViewWillEnter() {

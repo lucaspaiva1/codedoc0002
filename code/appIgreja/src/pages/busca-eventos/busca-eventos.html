@@ -22,9 +22,9 @@
         {{evento.Titulo}}
       </ion-card-header>
       <ion-card-content>
-        <ion-textarea fz-elastic value={{evento.Descricao}} disabled></ion-textarea>
+        <h6>{{evento.Descricao}}</h6>
       </ion-card-content>
-      <button ion-button icon-left clear small (click)="abrirEvento()">
+      <button ion-button icon-left clear small (click)="abrirEvento(evento)">
         <ion-icon name="send"></ion-icon>
         <div>Ir para evento</div>
       </button>
