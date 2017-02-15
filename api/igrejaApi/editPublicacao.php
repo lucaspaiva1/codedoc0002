@@ -18,23 +18,12 @@
 		$linkImagem    	  = $request->LinkImagem;
 		$titulo    		  = $request->Titulo;
 		$texto			  = $request->Texto;
-		$linkAntigo		  = $request->linkAntigo;
-		
-		//Apaga a imagem antiga
-		if(!empty($linkAntigo)){
-			$nomeImagem = after_last('/', $linkAntigo);
-			$diretorio = 'uploads/'.$nomeImagem;
-			if(file_exists($diretorio)){		
-				unlink($diretorio);
-			}
-		}
 
 		if($comentario == true){
 			$comentario = 's';
 		}else{
 			$comentario = 'n';
 		}
-		
 		
 		$sql = "SELECT * FROM publicacao WHERE IDPublicacao = '$IDPublicacao'";
 		$result = $con->query($sql);
@@ -49,18 +38,5 @@
 		}
 	}
 	
-	//funcoes para separar string
-	function after_last ($this, $inthat)
-    {
-        if (!is_bool(strrevpos($inthat, $this)))
-        return substr($inthat, strrevpos($inthat, $this)+strlen($this));
-    };
-	
-	function strrevpos($instr, $needle)
-	{
-		$rev_pos = strpos (strrev($instr), strrev($needle));
-		if ($rev_pos===false) return false;
-		else return strlen($instr) - $rev_pos - strlen($needle);
-	};
-	
+	$con->close();	
 ?>

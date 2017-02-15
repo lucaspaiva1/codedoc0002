@@ -7,7 +7,6 @@ export class Publicacao {
   public Titulo: string = "";
   public Texto: string = "";
   public Usuario_IDUsuario: number = 1;
-  public linkAntigo: string = '';
 
   constructor(){
 
