@@ -6,6 +6,7 @@ import { GrupoService } from '../../providers/grupo-service';
 import { Grupo } from '../../model/grupo';
 import { MapaPage } from '../mapa/mapa';
 import { UserService } from '../../providers/user-service';
+import { DeletarGrupoService } from '../../providers/deletar-grupo-service';
 
 
 @Component({
@@ -27,8 +28,9 @@ export class BuscaPage {
     public loadingController: LoadingController,
     public userService: UserService,
     public toastCtrl: ToastController,
-    public alertCtrl: AlertController
-    ) {
+    public alertCtrl: AlertController,
+    private deleteGrupo: DeletarGrupoService
+  ) {
 
     this.loader.present();
 
@@ -57,11 +59,18 @@ export class BuscaPage {
   }
 
   abrirGrupo(grupo: Grupo) {
-    this.navCtrl.push(EditarGrupoPage, {grupo: grupo});
+    this.navCtrl.push(EditarGrupoPage, { grupo: grupo });
   }
 
-  deletar(grupo) {
-    this.grupos.splice(this.grupos.indexOf(grupo), 1);
+  deletar(grupo: Grupo) {
+
+    this.deleteGrupo.deletar(grupo.ID).then(res => {
+      if (res == true) {
+        this.grupos.splice(this.grupos.indexOf(grupo), 1);
+      } else {
+        alert("não foi possivel remover");
+      }
+    });
     //salvar no banco
   }
 
