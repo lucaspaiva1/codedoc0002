@@ -8,7 +8,6 @@ import { Publicacao } from '../../model/publicacao';
 import { UserService } from '../../providers/user-service';
 import { ContaService } from '../../providers/conta-service';
 import { User } from '../../model/User';
-import { LoginPage } from '../login/login/login';
 
 
 @Component({
@@ -21,6 +20,7 @@ export class FeedPage {
   private addPost = AddPostPage;
   private editarPost = EditarPostPage;
   private comentarios = ComentariosPage;
+  private permissao = "c";
   private usuarioLogado:User;
   loader: any = this.loadingController.create({
     content: "Carregando Publicações"
@@ -40,7 +40,7 @@ export class FeedPage {
     this.evento();
     this.loader.present();
     this.userService.get().then(res => {
-      this.usuarioLogado = res;
+      this.permissao = res.Tipo;
     });
   }
 
@@ -49,7 +49,6 @@ export class FeedPage {
   }
 
   private carregarFeed() {
-    this.atualizar();
     this.postService.getPublicacoes().then(res => {
       if (res.type == true) {
         this.publicacoes = res.data;
@@ -120,12 +119,4 @@ export class FeedPage {
     });
   }
 
-  atualizar() {
-    this.contaService.logar("logar", this.usuarioLogado.Email, this.usuarioLogado.Senha).then(response => {
-      if (response == "inativa") {
-        alert("Sua conta está bloqueada ou banida");
-        this.navCtrl.setRoot(LoginPage);
-      } 
-    });
-  }
 }

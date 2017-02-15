@@ -47,18 +47,18 @@
         </ion-card>
       </ion-item>
       <!--sliding options-->
-      <ion-item-options *ngIf="usuarioLogado.Tipo == 'a'" side="right">
+      <ion-item-options *ngIf="permissao == 'a'" side="right">
         <button ion-button icon-left (click)="editar(publicacao.IDPublicacao)"><ion-icon name="create"></ion-icon>Editar</button>
         <button ion-button icon-left color="danger" (click)="deletar(publicacao.IDPublicacao)"><ion-icon name="trash"></ion-icon>Deletar</button>
       </ion-item-options>
 
-      <ion-item-options *ngIf="usuarioLogado.Tipo != 'a'" side="right">
+      <ion-item-options *ngIf="permissao != 'a'" side="right">
       </ion-item-options>
 
     </ion-item-sliding>
   </ion-list>
 
-  <ion-fab right bottom *ngIf="usuarioLogado.Tipo == 'a'">
+  <ion-fab right bottom *ngIf="permissao == 'a'">
     <button ion-fab class="floating-button-adm" (click)="adicionarPost()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 </ion-content>
