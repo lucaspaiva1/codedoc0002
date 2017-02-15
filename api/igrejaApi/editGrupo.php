@@ -12,7 +12,7 @@
 	if (isset($postdata)){
 		$request = json_decode($postdata);
 		
-		$id      = $request->id;
+		$id      = $request->ID;
 		$nome    = $request->nome;
 		$usersID = $request->ids;
 		
