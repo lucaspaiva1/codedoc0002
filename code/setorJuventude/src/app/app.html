@@ -1,0 +1,36 @@
+<ion-menu [content]="content">
+    <ion-header>
+        <ion-toolbar color="laranja">
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <button ion-item (click)="openPage('perfil')">
+                <ion-avatar item-left>
+                    <img [src]="foto">
+                </ion-avatar>
+                <h2>{{nome}}</h2>
+                <p>Meu Perfil</p>
+            </button>
+            <button *ngIf="permissao=='a'" ion-item (click)="openPage(buscar)" >
+                Buscar Usuário
+            </button>
+            <button ion-item (click)="openPage(contato)" >
+                Contato
+            </button>
+            <button ion-item (click)="openPage(estrutura)" >
+                Estrutura
+            </button>
+            <button ion-item (click)="openPage(sobre)" >
+                Sobre
+            </button>
+            <button ion-item (click)="openPage(sair)" >
+                Sair
+            </button>
+
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar color="laranja">
+    <ion-title>Esqueci Senha</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!--Campos de preenchimento para cadastro-->
+  <form [formGroup]="email" (ngSubmit)="enviar()">
+    <ion-item>
+      <ion-label floating >Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <button ion-button color="secondary" type="submit" block class="submit-button">Enviar</button>
+  </form>
+
+
+</ion-content>

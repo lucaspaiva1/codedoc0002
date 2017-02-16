@@ -1,8 +1,0 @@
-//exeutar os seguintes comandos:
-
-ionic plugin add cordova-plugin-camera
-ionic plugin add cordova-plugin-file
-ionic plugin add cordova-plugin-file-transfer
-ionic plugin add cordova-plugin-filepath
-
-ionic plugin add cordova-plugin-facebook4 --variable APP_ID="1817976801823786" --variable APP_NAME="appigreja"

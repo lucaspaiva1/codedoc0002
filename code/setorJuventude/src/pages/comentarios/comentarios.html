@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Comentários</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor="let comentario of comentarios" (press)="presentActionSheet(comentario)">
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="{{ comentario.URLFoto }}">
+      </ion-avatar>
+      <h2>{{ comentario.username }}</h2>
+    </ion-item>
+    <ion-card-content>
+      <p> {{ comentario.Texto }} </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-row>
+    <ion-col width-80>
+      <ion-item>
+        <ion-input type="text" placeholder="Comentar" [(ngModel)]="novoComentario.Texto"></ion-input>
+      </ion-item>
+    </ion-col>
+
+    <ion-col width-20>
+      <button ion-button icon-only clear (click)="comentar()"><ion-icon name="send" color="primary" ></ion-icon></button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

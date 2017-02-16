@@ -1,0 +1,1 @@
+ionic plugin add cordova-plugin-facebook4 --variable APP_ID="655354741315734" --variable APP_NAME="Setor Juventude"
