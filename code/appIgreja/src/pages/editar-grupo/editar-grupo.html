@@ -40,17 +40,19 @@
 
     <div *ngFor="let usuario of users">
       <ion-item *ngIf="usuario.selecionado">
-        <ion-label ion-item >
+        <ion-label>
+          <ion-item>
             <ion-avatar item-left>
               <img src="{{ usuario.URLFoto }}">
             </ion-avatar>
-            <h2 class="colorBlack">{{usuario.Nome}}</h2>
-            <p class="colorBlack">{{usuario.Email}}</p>
+            <h2>{{ usuario.Nome }}</h2>
+            <p>{{ usuario.Email }}</p>
+          </ion-item>
         </ion-label>
-      
+
           <ion-toggle *ngIf="!usuario.selecionado"  disabled="{{ !editar }}" (ionChange)="adicionarUser(usuario)"></ion-toggle>
           <ion-toggle *ngIf="usuario.selecionado"  disabled="{{ !editar }}" checked="true" (ionChange)="adicionarUser(usuario)"></ion-toggle>
-      
+
       </ion-item>
     </div>
   </ion-list>
@@ -66,14 +68,14 @@
           <ion-avatar item-left>
             <img src="{{ usuario.URLFoto }}">
           </ion-avatar>
-          <h2>{{usuario.Nome}}</h2>
-          <p>{{usuario.Email}}</p>
+          <h2>{{ usuario.Nome }}</h2>
+          <p>{{ usuario.Email }}</p>
         </ion-item>
       </ion-label>
-     
+
         <ion-toggle *ngIf="!usuario.selecionado"  disabled="{{ !editar }}" (ionChange)="adicionarUser(usuario)"></ion-toggle>
         <ion-toggle *ngIf="usuario.selecionado "  disabled="{{ !editar }}" checked="true" (ionChange)="adicionarUser(usuario)"></ion-toggle>
-      
+
     </ion-item>
   </ion-list>
 
