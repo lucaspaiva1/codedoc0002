@@ -4,9 +4,12 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header >
 
-  <ion-navbar>
+  <ion-navbar class="zfix-header" color="laranja">
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
     <ion-title>Feed de Notícias</ion-title>
   </ion-navbar>
 
@@ -25,15 +28,19 @@
   <ion-list no-lines [virtualScroll]="publicacoes">
     <ion-item-sliding *virtualItem="let publicacao">
       <!--item-->
-      <ion-item>
+      <ion-item text-wrap>
         <ion-card>
           <div>
             <img *ngIf="publicacao.LinkImagem != ''" src="{{publicacao.LinkImagem}}">
           </div>
           <ion-card-content>
-            <ion-card-title *ngIf="publicacao.Titulo != ''">{{ publicacao.Titulo }}</ion-card-title>
-            <ion-item *ngIf="publicacao.Texto != ''" >
-              <ion-textarea fz-elastic value={{publicacao.Texto}} readonly></ion-textarea>
+            
+              <ion-item *ngIf="publicacao.Titulo != ''" text-wrap>
+                <ion-card-title >{{ publicacao.Titulo }} </ion-card-title>
+              </ion-item>
+           
+            <ion-item text-wrap *ngIf="publicacao.Texto != ''" >
+              {{publicacao.Texto}}
             </ion-item>
           </ion-card-content>
           <ion-row *ngIf="publicacao.Comentario == true">

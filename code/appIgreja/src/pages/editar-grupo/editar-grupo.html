@@ -1,7 +1,7 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>editar-grupo</ion-title>
+  <ion-navbar class="zfix-header" color="laranja">
+    <ion-title>Editar Grupo</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -40,14 +40,12 @@
 
     <div *ngFor="let usuario of users">
       <ion-item *ngIf="usuario.selecionado">
-        <ion-label>
-          <ion-item>
+        <ion-label ion-item >
             <ion-avatar item-left>
               <img src="{{ usuario.URLFoto }}">
             </ion-avatar>
-            <h2>{{usuario.Nome}}</h2>
-            <p>{{usuario.Email}}</p>
-          </ion-item>
+            <h2 class="colorBlack">{{usuario.Nome}}</h2>
+            <p class="colorBlack">{{usuario.Email}}</p>
         </ion-label>
       
           <ion-toggle *ngIf="!usuario.selecionado"  disabled="{{ !editar }}" (ionChange)="adicionarUser(usuario)"></ion-toggle>

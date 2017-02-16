@@ -25,6 +25,9 @@
 ion-navbar, ion-toolbar{
   background-color: #FFA500
 }
+.zfix-header{
+  z-index: 800;
+}
 //Configuração de elementos de uso comum
 .floating-button button{
   //COR DO BOTÃO
