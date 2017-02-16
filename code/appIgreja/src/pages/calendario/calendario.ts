@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { NavController, NavParams, LoadingController, ActionSheetController,  } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ActionSheetController, } from 'ionic-angular';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { AddEventoPage } from '../add-evento/add-evento';
 import { EditarEventoPage } from '../editar-evento/editar-evento';
@@ -37,19 +37,24 @@ export class CalendarioPage {
   private mes: string = 'Dezembro'; //titulo
   data = new Date();
   cont: number = 4;
+  loader = this.loadingController.create({
+    content: "Carregando eventos"
+  });
+
 
   constructor(
-    public actionSheetCtrl: ActionSheetController, 
-    public loadingController: LoadingController, 
-    public calendarMd: NgCalendarModule, 
-    public navCtrl: NavController, 
+    public actionSheetCtrl: ActionSheetController,
+    public loadingController: LoadingController,
+    public calendarMd: NgCalendarModule,
+    public navCtrl: NavController,
     public userService: UserService,
-    public navParams: NavParams, 
+    public navParams: NavParams,
     public eventoService: EventoService
-    ) {
+  ) {
+    this.loader.present();
     this.calendar = {
       mode: 'month',
-      currentDate: new Date() 
+      currentDate: new Date()
     };
     this.userService.get().then(res => {
       this.permissao = res.Tipo;
@@ -57,12 +62,7 @@ export class CalendarioPage {
   }
 
   ionViewWillEnter() {
-    let loader = this.loadingController.create({
-      content: "Carregando eventos"
-    });
-    loader.present();
     this.getEventos();
-    loader.dismiss();
   }
   // funções do calendario
   onCurrentDateChanged(event: Date) {
@@ -74,7 +74,7 @@ export class CalendarioPage {
   }
 
   onEventSelected(event) { // evento diparado quando um evendo é selecionado na lista
-    this.navCtrl.push(this.editarEvento, {id: event.id });
+    this.navCtrl.push(this.editarEvento, { id: event.id });
   }
 
   onViewTitleChanged = (title: string) => {
@@ -87,6 +87,7 @@ export class CalendarioPage {
 
   private getEventos() {
     this.eventoService.getEventos().then(res => {
+
       if (res.type == true) {
         this.eventos = res.data;
 
@@ -109,6 +110,8 @@ export class CalendarioPage {
       else {
         console.log("error");
       }
+      this.loader.dismiss();
+
     });
 
   }
@@ -117,7 +120,7 @@ export class CalendarioPage {
     this.navCtrl.push(this.addEvento);
   }
 
-  buscar(){
+  buscar() {
     this.navCtrl.push(this.buscaEventos);
   }
 }
