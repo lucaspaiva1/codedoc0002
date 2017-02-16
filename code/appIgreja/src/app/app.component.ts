@@ -31,45 +31,41 @@ export class MyApp {
 
   private nome: string = 'Nome do Usuários';
   private foto: string = '';
-  private permissao:string = "c";
+  private permissao: string = "c";
 
   constructor(platform: Platform, public menu: MenuController, public facebookService: FacebookService, public userService: UserService, public events: Events) {
-
-    events.subscribe('user:changed', user => {
-      if(user !== undefined && user !== null){
-        this.nome = user.Nome;
-        this.foto = user.URLFoto;
-        this.permissao = user.Tipo;
-      }
-   })
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      this.hideSplashScreen();
       StatusBar.styleDefault();
-      Splashscreen.hide();
+
+      events.subscribe('user:changed', user => {
+        if (user !== undefined && user !== null) {
+          this.nome = user.Nome;
+          this.foto = user.URLFoto;
+          this.permissao = user.Tipo;
+        }
+      });
     });
   }
 
-  openPage(page) {
-    if (page == 'sair') {
-      this.facebookService.logout();
-      this.userService.deslogar();
+  hideSplashScreen() {
+    if (Splashscreen) {
+      setTimeout(() => {
+        Splashscreen.hide();
+      }, 100);
     }
+  }
 
+  openPage(page) {
+    this.nav.push(page);
     this.menu.close();
-    if (page == 'perfil') {
-      this.nav.push(this.perfil);
-    } else if (page == 'contato') {
-      this.nav.push(this.contato);
-    } else if (page == 'estrutura') {
-      this.nav.push(this.estrutura);
-    } else if (page == 'sobre') {
-      this.nav.push(this.sobre);
-    } else if (page == 'sair') {
-      this.nav.setRoot(this.login);
-    } else if (page == 'buscar') {
-      this.nav.push(this.buscar);
-    }
+  }
+
+  sair(){
+    this.facebookService.logout();
+    this.userService.deslogar();
   }
 }
