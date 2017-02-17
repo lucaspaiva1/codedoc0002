@@ -49,7 +49,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
-      Splashscreen.hide();
+      this.hideSplashScreen();
 
       events.subscribe('user:changed', user => {
         if (user !== undefined && user !== null) {
@@ -73,7 +73,7 @@ export class MyApp {
 
   }
 
-   hideSplashScreen() {
+  private hideSplashScreen() {
     if (Splashscreen) {
       setTimeout(() => {
         Splashscreen.hide();
@@ -86,7 +86,7 @@ export class MyApp {
     this.menu.close();
   }
 
-  sair(){
+  sair() {
     this.menu.close();
     this.facebookService.logout();
     this.userService.deslogar();
