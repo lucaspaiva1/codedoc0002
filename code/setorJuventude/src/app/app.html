@@ -6,7 +6,7 @@
     </ion-header>
     <ion-content>
         <ion-list>
-            <button ion-item (click)="openPage('perfil')">
+            <button ion-item (click)="openPage(perfil)">
                 <ion-avatar item-left>
                     <img [src]="foto">
                 </ion-avatar>
@@ -25,7 +25,7 @@
             <button ion-item (click)="openPage(sobre)" >
                 Sobre
             </button>
-            <button ion-item (click)="openPage(sair)" >
+            <button ion-item (click)="sair()" >
                 Sair
             </button>
 

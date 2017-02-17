@@ -22,7 +22,8 @@
       <ion-title>{{mes}}</ion-title>
   </ion-toolbar>
 
-  <calendar 
+
+  <!--calendar 
         [eventSource]="eventSource"
         [calendarMode]="calendar.mode"
         [currentDate]="calendar.currentDate"
@@ -32,7 +33,8 @@
         (onTitleChanged)="onViewTitleChanged($event)"
         (onTimeSelected)="onTimeSelected($event)"
         step="30">
-      </calendar>
+      </calendar-->
+
       <ion-fab right bottom *ngIf="permissao == 'a'" >
         <button ion-fab class="floating-button-adm" (click)="adicionar()"><ion-icon name="add"></ion-icon></button>
       </ion-fab>
