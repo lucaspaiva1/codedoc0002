@@ -907,12 +907,12 @@ export class MapaPage {
         });
 
 
-        //Add Polygons (Regiões)
+        //Add Polygons
         map.addPolygon({
           points: this.mirante,
-          strokeColor: '#AA00FF',
+          strokeColor: '#FFA54F',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#FFA54F'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -921,9 +921,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.boaNova,
-          strokeColor: '#AA00FF',
+          strokeColor: '#FFA54F',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#FFA54F'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -932,9 +932,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.manoelVitorino,
-          strokeColor: '#AA00FF',
+          strokeColor: '#FFA54F',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#FFA54F'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -943,9 +943,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.darioMeira,
-          strokeColor: '#AA00FF',
+          strokeColor: '#43CD80',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#43CD80'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -954,9 +954,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.itagiba,
-          strokeColor: '#AA00FF',
+          strokeColor: '#43CD80',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#43CD80'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -965,9 +965,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.itagi,
-          strokeColor: '#AA00FF',
+          strokeColor: '#43CD80',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#43CD80'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -976,9 +976,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.aiquara,
-          strokeColor: '#AA00FF',
+          strokeColor: '#43CD80',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#43CD80'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -987,9 +987,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.jitauna,
-          strokeColor: '#AA00FF',
+          strokeColor: '#43CD80',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#43CD80'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -998,9 +998,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.marcionilioSouza,
-          strokeColor: '#AA00FF',
+          strokeColor: '#87CEFA',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#87CEFA'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -1009,9 +1009,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.maracas,
-          strokeColor: '#AA00FF',
+          strokeColor: '#87CEFA',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#87CEFA'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -1020,9 +1020,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.lagedoDoTabocal,
-          strokeColor: '#AA00FF',
+          strokeColor: '#87CEFA',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#87CEFA'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -1031,9 +1031,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.lafaiateCoutinho,
-          strokeColor: '#AA00FF',
+          strokeColor: '#FFD700',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#FFD700'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -1053,9 +1053,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.apuarema,
-          strokeColor: '#AA00FF',
+          strokeColor: '#43CD80',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#43CD80'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -1064,9 +1064,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.jequie,
-          strokeColor: '#AA00FF',
+          strokeColor: '#FFD700',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#FFD700'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -1075,9 +1075,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.itirucu,
-          strokeColor: '#AA00FF',
+          strokeColor: '#87CEFA',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#87CEFA'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -1086,9 +1086,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.planaltino,
-          strokeColor: '#AA00FF',
+          strokeColor: '#87CEFA',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#87CEFA'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -1108,9 +1108,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.novaItarana,
-          strokeColor: '#AA00FF',
+          strokeColor: '#66cdaa',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#66cdaa'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
@@ -1119,9 +1119,9 @@ export class MapaPage {
         });
         map.addPolygon({
           points: this.irajuba,
-          strokeColor: '#AA00FF',
+          strokeColor: '#66cdaa',
           strokeWidth: 5,
-          fillColor: '#AA00FF'
+          fillColor: '#66cdaa'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
