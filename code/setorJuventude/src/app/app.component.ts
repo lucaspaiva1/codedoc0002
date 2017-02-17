@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav, Events } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-import { Push, PushToken, PushNotificationEvent } from '@ionic/cloud-angular';
+import { Push, PushToken } from '@ionic/cloud-angular';
 
 import { LoginPage } from '../pages/login/login/login';
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -38,8 +38,7 @@ export class MyApp {
     public menu: MenuController, 
     public facebookService: FacebookService, 
     public userService: UserService, 
-    public events: Events,
-    public mensagem :PushNotificationEvent
+    public events: Events
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -66,8 +65,6 @@ export class MyApp {
       .subscribe((msg) => {
         alert(msg.title + ': ' + msg.text);
       });
-
-    this.mensagem.message.text = "erw";
       
   }
 
