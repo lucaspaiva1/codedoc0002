@@ -11,12 +11,16 @@ import { SobrePage } from '../pages/sobre/sobre';
 import { FacebookService } from '../providers/facebook-service';
 import { UserService } from '../providers/user-service';
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios';
+<<<<<<< HEAD
 import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { MonthViewComponent } from 'ionic2-calendar/monthview';
 import { WeekViewComponent } from 'ionic2-calendar/weekview';
 import { DayViewComponent } from 'ionic2-calendar/dayview';
 
 
+=======
+import { LiturgiaPage } from '../pages/liturgia/liturgia';
+>>>>>>> 93513edd36946a2760b44af3c2d98780a3754881
 
 
 @Component({
@@ -30,6 +34,8 @@ export class MyApp {
   private sobre = SobrePage;
   private perfil = PerfilPage;
   private buscar = BuscarUsuariosPage;
+  private liturgia = LiturgiaPage;
+
   rootPage = LoginPage;
 
   private nome: string = 'Nome do Usuários';
@@ -39,9 +45,9 @@ export class MyApp {
   constructor(
     platform: Platform,
     public push: Push,
-    public menu: MenuController, 
-    public facebookService: FacebookService, 
-    public userService: UserService, 
+    public menu: MenuController,
+    public facebookService: FacebookService,
+    public userService: UserService,
     public events: Events
   ) {
     platform.ready().then(() => {
@@ -69,7 +75,7 @@ export class MyApp {
       .subscribe((msg) => {
         alert(msg.title + ': ' + msg.text);
       });
-      
+
   }
 
    hideSplashScreen() {
@@ -90,6 +96,6 @@ export class MyApp {
     this.facebookService.logout();
     this.userService.deslogar();
     this.nav.setRoot(LoginPage);
-    
+
   }
 }
