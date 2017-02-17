@@ -45,6 +45,7 @@ import { EstruturaPage } from '../pages/estrutura/estrutura';
 import { SobrePage } from '../pages/sobre/sobre';
 import { GerenciarUsuariosPage } from '../pages/gerenciar-usuarios/gerenciar-usuarios';
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios';
+import { LiturgiaPage } from '../pages/liturgia/liturgia';
 
 
 
@@ -91,8 +92,9 @@ const cloudSettings: CloudSettings = {
     EditarEventoPage,
     EditarGrupoPage,
     BuscaEventosPage,
-    MapaPage
-    
+    MapaPage,
+    LiturgiaPage
+
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -123,9 +125,10 @@ const cloudSettings: CloudSettings = {
     EditarEventoPage,
     EditarGrupoPage,
     BuscaEventosPage,
-    MapaPage
+    MapaPage,
+    LiturgiaPage
 
-    
+
   ],
   providers: [ Facebook, UsuariosService, DeletarGrupoService, ContaService, FacebookService, BuscaService, UserService, PublicacaoService, ComentarioService, EventoService, GrupoService, { provide: ErrorHandler, useClass: IonicErrorHandler }]
 })

@@ -11,8 +11,7 @@ import { SobrePage } from '../pages/sobre/sobre';
 import { FacebookService } from '../providers/facebook-service';
 import { UserService } from '../providers/user-service';
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios';
-
-
+import { LiturgiaPage } from '../pages/liturgia/liturgia';
 
 
 @Component({
@@ -26,6 +25,8 @@ export class MyApp {
   private sobre = SobrePage;
   private perfil = PerfilPage;
   private buscar = BuscarUsuariosPage;
+  private liturgia = LiturgiaPage;
+
   rootPage = LoginPage;
 
   private nome: string = 'Nome do Usuários';
@@ -35,9 +36,9 @@ export class MyApp {
   constructor(
     platform: Platform,
     public push: Push,
-    public menu: MenuController, 
-    public facebookService: FacebookService, 
-    public userService: UserService, 
+    public menu: MenuController,
+    public facebookService: FacebookService,
+    public userService: UserService,
     public events: Events
   ) {
     platform.ready().then(() => {
@@ -65,7 +66,7 @@ export class MyApp {
       .subscribe((msg) => {
         alert(msg.title + ': ' + msg.text);
       });
-      
+
   }
 
    hideSplashScreen() {
@@ -86,6 +87,6 @@ export class MyApp {
     this.facebookService.logout();
     this.userService.deslogar();
     this.nav.setRoot(LoginPage);
-    
+
   }
 }
