@@ -11,16 +11,11 @@ import { SobrePage } from '../pages/sobre/sobre';
 import { FacebookService } from '../providers/facebook-service';
 import { UserService } from '../providers/user-service';
 import { BuscarUsuariosPage } from '../pages/buscar-usuarios/buscar-usuarios';
-<<<<<<< HEAD
 import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { MonthViewComponent } from 'ionic2-calendar/monthview';
 import { WeekViewComponent } from 'ionic2-calendar/weekview';
 import { DayViewComponent } from 'ionic2-calendar/dayview';
-
-
-=======
 import { LiturgiaPage } from '../pages/liturgia/liturgia';
->>>>>>> 93513edd36946a2760b44af3c2d98780a3754881
 
 
 @Component({
