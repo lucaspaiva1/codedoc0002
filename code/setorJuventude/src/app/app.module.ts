@@ -3,6 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+import { NgCalendarModule  } from 'ionic2-calendar';
 
 //providers
 import { Facebook } from 'ionic-native';
@@ -98,6 +99,7 @@ const cloudSettings: CloudSettings = {
 
   ],
   imports: [
+    NgCalendarModule,
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings)
   ],
