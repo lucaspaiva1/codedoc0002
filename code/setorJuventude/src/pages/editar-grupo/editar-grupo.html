@@ -41,7 +41,7 @@
     <div *ngFor="let usuario of users">
         <ion-item *ngIf="usuario.selecionado">
                 <ion-avatar item-left>
-                    <img [src]="{{ usuario.URLFoto }}">
+                    <img [src]="usuario.URLFoto">
                 </ion-avatar>
                 <h2>{{usuario.Nome}}</h2>
                 <p>{{usuario.Email}}</p>
@@ -64,10 +64,10 @@
           <p style="color: black">{{usuario.Email}}</p>
         </ion-item>
       </ion-label>
-     
+
         <ion-toggle *ngIf="!usuario.selecionado"  disabled="{{ !editar }}" (ionChange)="adicionarUser(usuario)"></ion-toggle>
         <ion-toggle *ngIf="usuario.selecionado "  disabled="{{ !editar }}" checked="true" (ionChange)="adicionarUser(usuario)"></ion-toggle>
-      
+
     </ion-item>
   </ion-list>
 

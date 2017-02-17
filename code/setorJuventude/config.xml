@@ -3,9 +3,9 @@
   <name>Setor Juventude</name>
   <description>Aplicativo do Setor Juventude da Diocese de Jequié</description>
   <author email="contato@codeondemand.com.br" href="http://www.codeondemand.com.br/">CODE On Demand</author>
-  <content src="http://192.168.0.5/index.html"/>
+  <content src="index.html"/>
   <access origin="*"/>
-  <allow-navigation href="http://192.168.0.5:8100"/>
+  <allow-navigation href="*"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
   <allow-intent href="tel:*"/>
