@@ -30,7 +30,7 @@ export class CalendarioPage {
   private editarEvento = EditarEventoPage;
   private addEvento = AddEventoPage;
   private buscaEventos = BuscaEventosPage;
-  calendar;
+  private calendar;
   private eventSource = [];
   private isToday: boolean;
   private permissao = "c";
