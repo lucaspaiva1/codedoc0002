@@ -1,1 +1,2 @@
 ionic plugin add cordova-plugin-facebook4 --variable APP_ID="655354741315734" --variable APP_NAME="Setor Juventude"
+cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyA-cmEsikFT-qKjVLQKX97wfKXYMa3jm2c" --variable API_KEY_FOR_IOS="AIzaSyAgSL_cxxVRU0naXRSAvx5e8WgJIbUXeYg"
