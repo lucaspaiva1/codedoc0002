@@ -16,8 +16,8 @@
     </ion-item>
 
     <ion-item *ngIf="!editar">
-      <div style="font-size: 13px; color: LightGray; padding-top: 1px; padding-bottom: 9px">Nome</div>
-      <h2 style="color: gray">{{grupo.nome}}</h2>
+      <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Nome</div>
+      <h2 style="color: black">{{grupo.nome}}</h2>
     </ion-item>
   </ion-list>
 
@@ -39,19 +39,13 @@
     </ion-list-header>
 
     <div *ngFor="let usuario of users">
-      <ion-item *ngIf="usuario.selecionado">
-        <ion-label ion-item >
-            <ion-avatar item-left>
-              <img src="{{ usuario.URLFoto }}">
-            </ion-avatar>
-            <h2 class="colorBlack">{{usuario.Nome}}</h2>
-            <p class="colorBlack">{{usuario.Email}}</p>
-        </ion-label>
-      
-          <ion-toggle *ngIf="!usuario.selecionado"  disabled="{{ !editar }}" (ionChange)="adicionarUser(usuario)"></ion-toggle>
-          <ion-toggle *ngIf="usuario.selecionado"  disabled="{{ !editar }}" checked="true" (ionChange)="adicionarUser(usuario)"></ion-toggle>
-      
-      </ion-item>
+        <ion-item *ngIf="usuario.selecionado">
+                <ion-avatar item-left>
+                    <img [src]="{{ usuario.URLFoto }}">
+                </ion-avatar>
+                <h2>{{usuario.Nome}}</h2>
+                <p>{{usuario.Email}}</p>
+        </ion-item>
     </div>
   </ion-list>
 
@@ -66,8 +60,8 @@
           <ion-avatar item-left>
             <img src="{{ usuario.URLFoto }}">
           </ion-avatar>
-          <h2>{{usuario.Nome}}</h2>
-          <p>{{usuario.Email}}</p>
+          <h2 style="color: black">{{usuario.Nome}}</h2>
+          <p style="color: black">{{usuario.Email}}</p>
         </ion-item>
       </ion-label>
      
