@@ -41,7 +41,7 @@
     <div *ngFor="let usuario of users">
         <ion-item *ngIf="usuario.selecionado">
                 <ion-avatar item-left>
-                    <img [src]="usuario.URLFoto">
+                    <img src="{{ usuario.URLFoto }}">
                 </ion-avatar>
                 <h2>{{usuario.Nome}}</h2>
                 <p>{{usuario.Email}}</p>

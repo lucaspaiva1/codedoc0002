@@ -17,9 +17,9 @@ export class EditarGrupoPage {
   private editar = false;
   private users: any[] = [];
   private auxUsers: User[] = [];
-  private selecionados: number[] = [];
+  private selecionados: number[] = []; //ids dos usuarios selecionados no momento
   private permissao = "c";
-  private selecionadosAux: number[] = [];
+  private selecionadosAux: number[] = []; //ids de usuarios selecionados na hora do GET
 
   constructor(
     public navCtrl: NavController,
@@ -54,15 +54,17 @@ export class EditarGrupoPage {
     this.buscaService.usersAll().then(response => {
       this.users = response;
       this.auxUsers = response;
-      for (let usuario of this.users) {
+      for (let usuario of this.users) { //percorre a lista de usuarios
         for (let id of this.selecionados) {
-          if (usuario.id == id) {
-            usuario.selecionado = true;
-            let index = this.selecionadosAux.indexOf(usuario.id);
-            this.selecionadosAux.splice(index, 1);
+          if (usuario.IDUsuario == id) {
+            usuario.selecionado = true; //se o id do usuario for igual ao id selecionado, marca ele como true
+            let index = this.selecionadosAux.indexOf(usuario.IDUsuario);
+            this.selecionadosAux.splice(index, 1); //retira do selecionadosAux
           }
         }
       }
+      console.log(this.users);
+
     }).catch(() => this.showConfirm(1));
   }
 
@@ -118,7 +120,7 @@ export class EditarGrupoPage {
       });
 
       toast.present();
-    }); 
+    });
 
   }
 
