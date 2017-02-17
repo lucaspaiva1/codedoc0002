@@ -14,3 +14,22 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.background{ // plano de fundo Inicial
+  background-color: rgb(175, 176, 175);
+}
+.logo{ // Configuração de logomarca Imagem
+  text-align: center;
+}
+ion-navbar, ion-toolbar{
+  background-color: #FFA500
+}
+.zfix-header{
+  z-index: 800;
+}
+//Configuração de elementos de uso comum
+.floating-button button{
+  //COR DO BOTÃO
+}
+.floating-button-adm button{
+  //COR DO BOTÃO
+}
