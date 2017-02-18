@@ -45,7 +45,7 @@ export class AddGrupoPage {
     if(this.grupo.nome !== ''){
       this.grupo.ids = this.selecionados;
       this.grupoService.novoGrupo(this.grupo).then(res=>{
-        alert(res.message);
+        this.navCtrl.pop();
       });
     }
   }

@@ -18,6 +18,9 @@ export class ComentariosPage {
   private userPerm: string;
   private delID: number;
   private editID: number;
+  private loader = this.loadingController.create({
+    content: "Carregando.."
+  });
 
   constructor(public actionSheetCtrl: ActionSheetController,
     public platform: Platform,
@@ -29,13 +32,10 @@ export class ComentariosPage {
     public alertCtrl: AlertController,
     public userService: UserService) {
 
-    let loader = this.loadingController.create({
-      content: "Carregando.."
-    });
-    loader.present();
+    this.loader.present();
+
     this.postID = navParams.get('id');
     this.carregarComentarios();
-    loader.dismiss();
     userService.get().then(res => {
       this.userID = res.IDUsuario;
       this.userPerm = res.Tipo;
@@ -47,8 +47,9 @@ export class ComentariosPage {
       if (res.type == true) {
         this.comentarios = res.data;
       } else {
-        console.log("error");
+        this.showConfirm(3, res.message);
       }
+      this.loader.dismiss();
     });
   }
 
@@ -129,8 +130,10 @@ export class ComentariosPage {
           handler: () => {
             if (type === 1) {
               this.comentar();
-            } else {
+            } else if (type === 2) {
               this.deletar(this.delID);
+            } else {
+              this.carregarComentarios();
             }
           }
         }

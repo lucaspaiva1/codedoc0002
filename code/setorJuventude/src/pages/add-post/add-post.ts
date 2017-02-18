@@ -37,7 +37,7 @@ export class AddPostPage {
 
   private importarFoto() {
     Camera.getPicture({
-      quality: 50,
+      quality: 75,
       destinationType: Camera.DestinationType.DATA_URL,
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
       allowEdit: true,
@@ -54,7 +54,7 @@ export class AddPostPage {
 
   private tirarFoto() {
     Camera.getPicture({
-      quality: 50, //Picture quality in range 0-100. Default is 50
+      quality: 75, //Picture quality in range 0-100. Default is 50
       destinationType: Camera.DestinationType.DATA_URL,
       sourceType: Camera.PictureSourceType.CAMERA,
       allowEdit: true,
