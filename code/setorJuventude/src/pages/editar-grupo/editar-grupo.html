@@ -1,80 +1,80 @@
 <ion-header>
 
-  <ion-navbar class="zfix-header" color="laranja">
-    <ion-title>Editar Grupo</ion-title>
-  </ion-navbar>
+    <ion-navbar class="zfix-header" color="laranja">
+        <ion-title>Editar Grupo</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
 
-  <ion-list>
-    <ion-item *ngIf="editar">
-      <ion-label floating>Nome</ion-label>
-      <ion-input type="text" [(ngModel)]="grupo.nome"></ion-input>
-    </ion-item>
+    <ion-list>
+        <ion-item *ngIf="editar">
+            <ion-label floating>Nome</ion-label>
+            <ion-input type="text" [(ngModel)]="grupo.nome"></ion-input>
+        </ion-item>
 
-    <ion-item *ngIf="!editar">
-      <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Nome</div>
-      <h2 style="color: black">{{grupo.nome}}</h2>
-    </ion-item>
-  </ion-list>
-
-
-
-  <!--Botão para adicionar evento-->
-  <button *ngIf="editar" ion-button block (click)="salvar()">Salvar Edição</button>
-  <!--Botão para Cancelar evento-->
-  <button *ngIf="editar" ion-button block (click)="cancelar()">Cancelar Edição</button>
-  <!--Botão para Excluir evento-->
-  <button *ngIf="editar" ion-button block color="danger" (click)="excluir()">Deletar Evento</button>
+        <ion-item *ngIf="!editar">
+            <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Nome</div>
+            <h2 style="color: black">{{grupo.nome}}</h2>
+        </ion-item>
+    </ion-list>
 
 
-  <ion-searchbar *ngIf="editar" (ionInput)="getItems($event)"></ion-searchbar>
 
-  <ion-list no-lines *ngIf="!editar">
-    <ion-list-header>
-      Representantes:
-    </ion-list-header>
+    <!--Botão para adicionar evento-->
+    <button *ngIf="editar" ion-button block (click)="salvar()">Salvar Edição</button>
+    <!--Botão para Cancelar evento-->
+    <button *ngIf="editar" ion-button block (click)="cancelar()">Cancelar Edição</button>
+    <!--Botão para Excluir evento-->
+    <button *ngIf="editar" ion-button block color="danger" (click)="excluir()">Deletar Grupo</button>
 
-    <div *ngFor="let usuario of users">
-        <ion-item *ngIf="usuario.selecionado">
+
+    <ion-searchbar *ngIf="editar" (ionInput)="getItems($event)"></ion-searchbar>
+
+    <ion-list no-lines *ngIf="!editar">
+        <ion-list-header>
+            Representantes:
+        </ion-list-header>
+
+        <div *ngFor="let usuario of users">
+            <ion-item *ngIf="usuario.selecionado">
                 <ion-avatar item-left>
                     <img src="{{ usuario.URLFoto }}">
                 </ion-avatar>
                 <h2>{{usuario.Nome}}</h2>
                 <p>{{usuario.Email}}</p>
+            </ion-item>
+        </div>
+    </ion-list>
+
+    <ion-list *ngIf="editar">
+        <ion-list-header>
+            Selecione os representantes:
+        </ion-list-header>
+
+        <ion-item *ngFor="let usuario of users">
+            <ion-label>
+                <ion-item>
+                    <ion-avatar item-left>
+                        <img src="{{ usuario.URLFoto }}">
+                    </ion-avatar>
+                    <h2 style="color: black">{{usuario.Nome}}</h2>
+                    <p style="color: black">{{usuario.Email}}</p>
+                </ion-item>
+            </ion-label>
+
+            <ion-toggle *ngIf="!usuario.selecionado" disabled="{{ !editar }}" (ionChange)="adicionarUser(usuario)"></ion-toggle>
+            <ion-toggle *ngIf="usuario.selecionado " disabled="{{ !editar }}" checked="true" (ionChange)="adicionarUser(usuario)"></ion-toggle>
+
         </ion-item>
-    </div>
-  </ion-list>
+    </ion-list>
 
-  <ion-list *ngIf="editar">
-    <ion-list-header>
-      Selecione os representantes:
-    </ion-list-header>
-
-    <ion-item *ngFor="let usuario of users">
-      <ion-label>
-        <ion-item>
-          <ion-avatar item-left>
-            <img src="{{ usuario.URLFoto }}">
-          </ion-avatar>
-          <h2 style="color: black">{{usuario.Nome}}</h2>
-          <p style="color: black">{{usuario.Email}}</p>
-        </ion-item>
-      </ion-label>
-
-        <ion-toggle *ngIf="!usuario.selecionado"  disabled="{{ !editar }}" (ionChange)="adicionarUser(usuario)"></ion-toggle>
-        <ion-toggle *ngIf="usuario.selecionado "  disabled="{{ !editar }}" checked="true" (ionChange)="adicionarUser(usuario)"></ion-toggle>
-
-    </ion-item>
-  </ion-list>
-
-  <ion-fab *ngIf="!editar && permissao == 'a'" class="floating-button-adm" right bottom>
-    <button ion-fab (click)="toggleEditar()">
+    <ion-fab *ngIf="!editar && permissao == 'a'" class="floating-button-adm" right bottom>
+        <button ion-fab (click)="toggleEditar()">
      <ion-icon name="create"></ion-icon>
    </button>
-  </ion-fab>
+    </ion-fab>
 
 </ion-content>

@@ -19,7 +19,7 @@ export class BuscaPage {
   private mapsPage = MapaPage;
   private permissao = "c";
   loader: any = this.loadingController.create({
-    content: "Carregando Publicações"
+    content: "Carregando Grupos"
   });
 
   constructor(public navCtrl: NavController,

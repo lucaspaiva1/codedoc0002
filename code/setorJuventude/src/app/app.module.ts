@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -133,6 +133,6 @@ const cloudSettings: CloudSettings = {
 
 
   ],
-  providers: [ Facebook, UsuariosService, DeletarGrupoService, ContaService, FacebookService, BuscaService, UserService, PublicacaoService, ComentarioService, EventoService, GrupoService, { provide: ErrorHandler, useClass: IonicErrorHandler }]
+  providers: [ { provide: LOCALE_ID, useValue: 'pt-BR' }, Facebook, UsuariosService, DeletarGrupoService, ContaService, FacebookService, BuscaService, UserService, PublicacaoService, ComentarioService, EventoService, GrupoService, { provide: ErrorHandler, useClass: IonicErrorHandler }]
 })
 export class AppModule { }

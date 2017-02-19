@@ -6,43 +6,43 @@
 -->
 <ion-header>
 
-  <ion-navbar class="zfix-header" color="laranja"> 
-    <ion-title>Adicionar Grupo</ion-title>
-  </ion-navbar>
+    <ion-navbar class="zfix-header" color="laranja">
+        <ion-title>Adicionar Grupo</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-item>
-      <ion-label floating>Nome</ion-label>
-      <ion-input type="text" [(ngModel)]="grupo.nome"></ion-input>
-    </ion-item>
-  </ion-list>
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Nome</ion-label>
+            <ion-input type="text" [(ngModel)]="grupo.nome"></ion-input>
+        </ion-item>
+    </ion-list>
 
-  <!--Botão para adicionar evento-->
-  <button class="margem-botton" ion-button block (click)="salvar()">Salvar Evento</button>
+    <!--Botão para adicionar evento-->
+    <button class="margem-botton" ion-button block (click)="salvar()">Salvar Grupo</button>
 
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <ion-list>
-    <ion-list-header>
-      Selecione os representantes:
-    </ion-list-header>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-list>
+        <ion-list-header>
+            Selecione os representantes:
+        </ion-list-header>
 
-    <ion-item *ngFor="let usuario of users">
+        <ion-item *ngFor="let usuario of users">
 
-    <ion-label>
-      <ion-item>
-        <ion-avatar item-left>
-          <img [src]="usuario.URLFoto">
-        </ion-avatar>
-        <h2>{{usuario.Nome}}</h2>
-        <p>{{usuario.Email}}</p>
-      </ion-item>
-    </ion-label>
-    <ion-toggle (ionChange)="adicionarUser(usuario.IDUsuario)"></ion-toggle>
-  </ion-item>
-  </ion-list>
+            <ion-label>
+                <ion-item>
+                    <ion-avatar item-left>
+                        <img [src]="usuario.URLFoto">
+                    </ion-avatar>
+                    <h2>{{usuario.Nome}}</h2>
+                    <p>{{usuario.Email}}</p>
+                </ion-item>
+            </ion-label>
+            <ion-toggle (ionChange)="adicionarUser(usuario.IDUsuario)"></ion-toggle>
+        </ion-item>
+    </ion-list>
 
 </ion-content>
