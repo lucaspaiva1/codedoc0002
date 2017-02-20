@@ -3,20 +3,11 @@ import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { TelaPrincipalPage } from '../../tela-principal/tela-principal';
 import { LoginEmailPage } from '../login-email/login-email';
 import { CadastrarNovoUsuarioPage } from '../cadastrar-novo-usuario/cadastrar-novo-usuario';
-
-
-//providers
 import { FacebookService } from '../../../providers/facebook-service';
 import { UserService } from '../../../providers/user-service';
 
 import { User } from '../../../model/User';
 
-/*
-  Generated class for the Login page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -38,7 +29,7 @@ export class LoginPage {
     //verifica ser a pessoa esta conectada
     this.userService.get().then(response => {
       if (response.connected) {
-        this.navCtrl.setRoot(TelaPrincipalPage);
+        this.navCtrl.setRoot(TelaPrincipalPage);//entra direto sem perguntar nada
       }
     }
     );
@@ -50,13 +41,12 @@ export class LoginPage {
         if(response=="inativa"){
           alert("Sua conta está bloqueada ou banida");
         } else if (response.connected) {
-          this.userService.set(response);          
+          this.userService.set(response);
           this.navCtrl.setRoot(TelaPrincipalPage);
         } else {
           alert("erro");
         }
       });
-    } else if (tipo == "google") {// login com google
     }
   }
 

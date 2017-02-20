@@ -65,4 +65,18 @@ export class FacebookService {
     return Facebook.logout().then(response => alert("deslogado com Sucesso"));
   }
 
+  //adicionado para testes
+  postar() {
+    // let info: number;
+    // Facebook.getLoginStatus().then(res => {
+    //   alert(JSON.stringify(res));
+    //
+    // });
+    Facebook.showDialog({
+      method: 'share',
+      href: 'https://developers.facebook.com/docs/'
+    }).then(res => alert(JSON.stringify(res)));
+
+  }
+
 }

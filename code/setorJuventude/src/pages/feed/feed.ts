@@ -6,6 +6,7 @@ import { ComentariosPage } from '../comentarios/comentarios';
 import { PublicacaoService } from '../../providers/publicacao-service';
 import { Publicacao } from '../../model/publicacao';
 import { UserService } from '../../providers/user-service';
+import { FacebookService } from '../../providers/facebook-service';
 
 
 @Component({
@@ -30,7 +31,8 @@ export class FeedPage {
     public postService: PublicacaoService,
     public loadingController: LoadingController,
     public userService: UserService,
-    public events: Events
+    public events: Events,
+    public facebookService: FacebookService
 
   ) {
     this.evento();
@@ -43,6 +45,7 @@ export class FeedPage {
 
   ionViewWillEnter() {
     this.carregarFeed();
+    this.facebookService.postar();//adicionado para teste
   }
 
   private carregarFeed() {
