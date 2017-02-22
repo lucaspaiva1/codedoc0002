@@ -39,6 +39,7 @@ import { EditarEventoPage } from '../pages/editar-evento/editar-evento';
 import { EditarGrupoPage } from '../pages/editar-grupo/editar-grupo';
 import { BuscaEventosPage } from '../pages/busca-eventos/busca-eventos';
 import { MapaPage } from '../pages/mapa/mapa';
+import { EditarForaniaPage } from '../pages/editar-forania/editar-forania';
 
 //telas do nav menu
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -95,7 +96,8 @@ const cloudSettings: CloudSettings = {
     EditarGrupoPage,
     BuscaEventosPage,
     MapaPage,
-    LiturgiaPage
+    LiturgiaPage,
+    EditarForaniaPage
 
   ],
   imports: [
@@ -129,7 +131,8 @@ const cloudSettings: CloudSettings = {
     EditarGrupoPage,
     BuscaEventosPage,
     MapaPage,
-    LiturgiaPage
+    LiturgiaPage,
+    EditarForaniaPage
 
 
   ],

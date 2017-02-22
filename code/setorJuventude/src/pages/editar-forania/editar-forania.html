@@ -1,0 +1,73 @@
+<ion-header>
+
+    <ion-navbar class="zfix-header" color="laranja">
+        <ion-title>Forania</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+        <ion-item>
+            <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Nome</div>
+            <h2 style="color: black">Nome da Forania</h2>
+        </ion-item>
+    </ion-list>
+
+
+
+    <!--Botão para adicionar evento-->
+    <button *ngIf="editar" ion-button block (click)="salvar()">Salvar Edição</button>
+    <!--Botão para Cancelar evento-->
+    <button *ngIf="editar" ion-button block (click)="cancelar()">Cancelar Edição</button>
+
+
+    <ion-searchbar *ngIf="editar" (ionInput)="getItems($event)"></ion-searchbar>
+    <!--Lista de representantem quando o usuario não está editando -->
+    <ion-list no-lines *ngIf="!editar">
+        <ion-list-header>
+            Representantes:
+        </ion-list-header>
+
+        <div *ngFor="let usuario of users">
+            <ion-item *ngIf="usuario.selecionado">
+                <ion-avatar item-left>
+                    <img src="{{ usuario.URLFoto }}">
+                </ion-avatar>
+                <h2>{{usuario.Nome}}</h2>
+                <p>{{usuario.Email}}</p>
+            </ion-item>
+        </div>
+    </ion-list>
+    <!--Lista de representantem quando o usuario está editando -->
+    <ion-list *ngIf="editar">
+        <ion-list-header>
+            Selecione os representantes:
+        </ion-list-header>
+
+        <ion-item *ngFor="let usuario of users">
+            <ion-label>
+                <ion-item>
+                    <ion-avatar item-left>
+                        <img src="{{ usuario.URLFoto }}">
+                    </ion-avatar>
+                    <h2 style="color: black">{{usuario.Nome}}</h2>
+                    <p style="color: black">{{usuario.Email}}</p>
+                </ion-item>
+            </ion-label>
+
+            <ion-toggle *ngIf="!usuario.selecionado" disabled="{{ !editar }}" (ionChange)="adicionarUser(usuario)"></ion-toggle>
+            <ion-toggle *ngIf="usuario.selecionado " disabled="{{ !editar }}" checked="true" (ionChange)="adicionarUser(usuario)"></ion-toggle>
+
+        </ion-item>
+    </ion-list>
+
+    <ion-fab *ngIf="!editar && permissao == 'a'" class="floating-button-adm" right bottom>
+        <button ion-fab (click)="toggleEditar()">
+     <ion-icon name="create"></ion-icon>
+   </button>
+    </ion-fab>
+
+</ion-content>

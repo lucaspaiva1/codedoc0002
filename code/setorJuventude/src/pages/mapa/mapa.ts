@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { BuscaPage } from '../busca/busca';
 import { Geolocation, GoogleMap, GoogleMapsEvent, GoogleMapsLatLng, CameraPosition, GoogleMapsMarkerOptions, GoogleMapsMarker, GoogleMapsPolygon } from 'ionic-native';
-
+import { EditarForaniaPage } from '../editar-forania/editar-forania';
 /*
   Generated class for the Mapa page.
 
@@ -1168,7 +1168,7 @@ export class MapaPage {
 
   selecionar(cidade: string) {
     //funcão ao selecionar a cidade
-    alert(cidade);
+    this.navCtrl.push(EditarForaniaPage);
   }
 
   lista(){
