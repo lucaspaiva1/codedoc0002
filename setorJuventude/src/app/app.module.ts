@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { NgCalendarModule  } from 'ionic2-calendar';
 
 //providers
 import { Facebook } from 'ionic-native';
@@ -77,7 +78,7 @@ import { LiturgiaPage } from '../pages/liturgia/liturgia';
     EditarForaniaPage
   ],
   imports: [
-    //NgCalendarModule,
+    NgCalendarModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
