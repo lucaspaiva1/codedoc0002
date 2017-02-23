@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar  class="zfix-header" color="laranja">
+    <ion-title>Buscar Usuarios</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+    <ion-list [virtualScroll]="users" >
+      <ion-item *virtualItem="let user" (click)="abrirUsuario(user)">
+      <ion-avatar item-left>
+        <img [src]="user.URLFoto">
+      </ion-avatar>
+        <h2>{{user.Nome}}</h2>
+        <p>{{user.Email}}</p>
+      </ion-item>
+    </ion-list>
+
+</ion-content>

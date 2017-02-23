@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar color="laranja">
+    <ion-title>Cadastrar novo Usuário</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!--Campos de preenchimento para cadastro-->
+  <form [formGroup]="user" (ngSubmit)="cadastrar()">
+    <ion-item>
+      <ion-label floating >Nome Completo</ion-label>
+      <ion-input type="text" formControlName="nome" [(ngModel)]="userNovo.nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Data de Nascimento</ion-label>
+      <ion-datetime displayFormat="DD/MMM/YYYY" formControlName="nascimento" [(ngModel)]="userNovo.nascimento"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Gênero</ion-label>
+      <ion-select formControlName="genero" [(ngModel)]="userNovo.genero">
+        <ion-option value="m">Masculino</ion-option>
+        <ion-option value="f">Feminino</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" formControlName="email" [(ngModel)]="userNovo.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Senha</ion-label>
+      <ion-input type="password" formControlName="senha" [(ngModel)]="userNovo.senha"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Repetir Senha</ion-label>
+      <ion-input type="password" formControlName="repSenha"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" block class="submit-button">Cadastrar</button>
+  </form>
+</ion-content>

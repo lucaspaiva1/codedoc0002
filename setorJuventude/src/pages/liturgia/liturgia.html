@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-navbar class="zfix-header" color="laranja">
+        <ion-title>Liturgia Diária</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div *ngIf="loaded">
+        <h2>{{ liturgia.titulo_dia }}</h2>
+        <div class="cit_direita">{{ liturgia.cor }}</div>
+    </div>
+    <br><br>
+    <div id="conteudo">
+    </div>
+</ion-content>

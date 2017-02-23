@@ -1,0 +1,13 @@
+<ion-header class="z-fix">
+  <ion-navbar color="laranja">
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>Logo</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-tabs color="laranja">
+   <ion-tab color="laranja" tabIcon="book" tabTitle="Feed de Notícias" [root]="feed"></ion-tab>
+   <ion-tab color="laranja" tabIcon="calendar" tabTitle="Calendário" [root]="calendario"></ion-tab>
+   <ion-tab color="laranja" tabIcon="search" tabTitle="Buscar" [root]="buscar"></ion-tab>
+ </ion-tabs>
