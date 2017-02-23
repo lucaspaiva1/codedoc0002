@@ -3,6 +3,7 @@ import { NavController, ActionSheetController, ToastController, Platform, Loadin
 import { Publicacao } from '../../model/publicacao';
 import { PublicacaoService } from '../../providers/publicacao-service';
 import { Camera } from 'ionic-native';
+import { NotificacaoService } from '../../providers/notificacao-service';
 
 declare var cordova: any;
 
@@ -15,7 +16,14 @@ export class AddPostPage {
   private publicacao: Publicacao = new Publicacao();
   private loading: Loading;
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, public postService: PublicacaoService) {
+  constructor(
+    public navCtrl: NavController, 
+    public toastCtrl: ToastController, 
+    public platform: Platform, 
+    public loadingCtrl: LoadingController, 
+    public postService: PublicacaoService,
+    private notificacaoService : NotificacaoService
+    ) {
 
   }
 
@@ -26,6 +34,7 @@ export class AddPostPage {
     } else {
       this.postService.novaPublicacao(this.publicacao).then(res => {
         if (res.type == true) {
+          this.notificacaoService.push("Nova publicação");
           this.presentToast(res.message);
           this.navCtrl.pop();
         } else {
