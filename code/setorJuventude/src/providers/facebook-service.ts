@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Facebook } from 'ionic-native';
 import { User } from '../model/User';
+import { Publicacao } from '../model/publicacao';
 
-/*
-  Generated class for the FacebookService provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class FacebookService {
 
@@ -65,18 +61,35 @@ export class FacebookService {
     return Facebook.logout().then(response => alert("deslogado com Sucesso"));
   }
 
-  //adicionado para testes
-  postar() {
-    // let info: number;
-    // Facebook.getLoginStatus().then(res => {
+  postar(publicacao: Publicacao): Promise<any> {
+    // Facebook.getAccessToken().then(res=>{
     //   alert(JSON.stringify(res));
-    //
     // });
-    Facebook.showDialog({
-      method: 'share',
-      href: 'https://developers.facebook.com/docs/'
-    }).then(res => alert(JSON.stringify(res)));
 
+    return this.http
+      .post('http://www.codeondemand.com.br/facebook/post.php', JSON.stringify(publicacao), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractPost(res))
+      .catch(this.handleErrorMessage);
+
+  }
+
+  private extractPost(res: Response) {
+    let retorno = { type: false, message: '' };
+    let data = res.json();
+    alert(JSON.stringify(res));
+    if (data !== null) {
+      retorno.type = true;
+      retorno.message = 'Publicado com sucesso';
+    } else {
+      retorno.message = 'Ocorreu um erro!';
+    }
+    return retorno;
+  }
+
+  private handleErrorMessage(error: any) {
+    let retorno = { error: true, type: false, message: 'Falha na conexão' };
+    return retorno;
   }
 
 }

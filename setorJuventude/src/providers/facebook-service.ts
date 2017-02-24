@@ -1,16 +1,12 @@
+import { Headers, Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Facebook } from 'ionic-native';
+import { Publicacao } from '../model/publicacao';
+import { User } from '../model/User';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-import { Facebook } from 'ionic-native';
-import { User } from '../model/User';
 
-/*
-  Generated class for the FacebookService provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class FacebookService {
 
@@ -18,8 +14,8 @@ export class FacebookService {
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(public http: Http) {
-    //id do aplicativo: 655354741315734
-    Facebook.browserInit(655354741315734, "v2.8");
+    //id do aplicativo: 255509854899402
+    Facebook.browserInit(255509854899402, "v2.8");
   }
 
   logar(): Promise<any> {
