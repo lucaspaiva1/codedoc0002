@@ -3,7 +3,7 @@
 	//Apaga a imagem antiga
 		if(!empty($link)){
 			$nomeImagem = after_last('/', $link);
-			$diretorio = 'uploads/'.$nomeImagem;
+			$diretorio = 'postImages/'.$nomeImagem;
 			if(file_exists($diretorio)){		
 				unlink($diretorio);
 				//echo 'apagou';

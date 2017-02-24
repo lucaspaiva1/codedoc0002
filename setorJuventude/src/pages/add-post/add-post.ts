@@ -4,6 +4,7 @@ import { Publicacao } from '../../model/publicacao';
 import { PublicacaoService } from '../../providers/publicacao-service';
 import { Camera } from 'ionic-native';
 import { NotificacaoService } from '../../providers/notificacao-service';
+import { FacebookService } from '../../providers/facebook-service';
 
 declare var cordova: any;
 
@@ -17,12 +18,13 @@ export class AddPostPage {
   private loading: Loading;
 
   constructor(
-    public navCtrl: NavController, 
-    public toastCtrl: ToastController, 
-    public platform: Platform, 
-    public loadingCtrl: LoadingController, 
+    public navCtrl: NavController,
+    public toastCtrl: ToastController,
+    public platform: Platform,
+    public loadingCtrl: LoadingController,
     public postService: PublicacaoService,
-    private notificacaoService : NotificacaoService
+    private notificacaoService : NotificacaoService,
+    private facebookService: FacebookService
     ) {
 
   }
@@ -36,6 +38,8 @@ export class AddPostPage {
         if (res.type == true) {
           this.notificacaoService.push("Nova publicação");
           this.presentToast(res.message);
+          this.facebookService.postOnFeed(this.publicacao);
+          this.facebookService.postOnPage(this.publicacao);
           this.navCtrl.pop();
         } else {
           this.presentToast(res.message);

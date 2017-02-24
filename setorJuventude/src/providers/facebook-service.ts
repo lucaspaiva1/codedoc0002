@@ -61,18 +61,43 @@ export class FacebookService {
     return Facebook.logout().then(response => alert("deslogado com Sucesso"));
   }
 
-  //adicionado para testes
-  postar() {
-    // let info: number;
-    // Facebook.getLoginStatus().then(res => {
-    //   alert(JSON.stringify(res));
-    //
-    // });
-    Facebook.showDialog({
-      method: 'share',
-      href: 'https://developers.facebook.com/docs/'
-    }).then(res => alert(JSON.stringify(res)));
+  public postOnFeed(publicacao: Publicacao) {
+    Facebook.getLoginStatus().then(res => {
+      return this.http
+        .post('http://www.codeondemand.com.br/facebook/photoOnFeed.php', JSON.stringify({ publicacao: publicacao, token: res.authResponse.accessToken, id: res.authResponse.userID }), { headers: this.headers })
+        .toPromise()
+        .then(res => this.extractPost(res))
+        .catch(this.handleErrorMessage);
+    });
+  }
 
+  public postOnPage(publicacao: Publicacao) {
+    Facebook.getLoginStatus().then(res => {
+      return this.http
+        .post('http://www.codeondemand.com.br/facebook/photoOnPage.php', JSON.stringify({ publicacao: publicacao, token: res.authResponse.accessToken, id: res.authResponse.userID }), { headers: this.headers })
+        .toPromise()
+        .then(res => this.extractPost(res))
+        .catch(this.handleErrorMessage);
+    });
+  }
+
+  private extractPost(res: Response) {
+    let retorno = { type: false, message: '' };
+    let data = res.json();
+    //alert(JSON.stringify(res));
+    if (data !== null) {
+      retorno.type = true;
+      retorno.message = 'Publicado com sucesso';
+    } else {
+      retorno.message = 'Ocorreu um erro!';
+    }
+    return retorno;
+  }
+
+  private handleErrorMessage(error: any) {
+    //alert(JSON.stringify(error));
+    let retorno = { error: true, type: false, message: 'Falha na conexão' };
+    return retorno;
   }
 
 }
