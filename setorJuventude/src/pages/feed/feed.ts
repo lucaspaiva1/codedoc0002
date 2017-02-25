@@ -133,12 +133,14 @@ export class FeedPage {
             }
           }, {
             text: 'Editar',
+            icon: 'md-create',
             handler: () => {
               this.editar(publicacaoSelecionada.IDPublicacao);
             }
           }, {
             text: 'Cancel',
             role: 'cancel',
+            icon: 'md-trash',
             handler: () => {
               console.log('Cancel clicked');
             }
