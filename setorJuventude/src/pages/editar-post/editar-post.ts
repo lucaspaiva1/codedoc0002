@@ -44,8 +44,8 @@ export class EditarPostPage {
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
       allowEdit: true,
       encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 300,
-      targetHeight: 300,
+      targetWidth: 500,
+      targetHeight: 500,
       saveToPhotoAlbum: false
     }).then(imageData => {
       this.publicacao.LinkImagem = "data:image/jpeg;base64," + imageData;
@@ -61,8 +61,8 @@ export class EditarPostPage {
       sourceType: Camera.PictureSourceType.CAMERA,
       allowEdit: true,
       encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 300,
-      targetHeight: 300,
+      targetWidth: 500,
+      targetHeight: 500,
       saveToPhotoAlbum: true
     }).then(imageData => {
       this.publicacao.LinkImagem = "data:image/jpeg;base64," + imageData;
