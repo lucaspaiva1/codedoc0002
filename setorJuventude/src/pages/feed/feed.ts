@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, Events, AlertController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Events, AlertController, ActionSheetController } from 'ionic-angular';
 import { AddPostPage } from '../add-post/add-post';
 import { EditarPostPage } from '../editar-post/editar-post';
 import { ComentariosPage } from '../comentarios/comentarios';
@@ -32,7 +32,8 @@ export class FeedPage {
     public loadingController: LoadingController,
     public userService: UserService,
     public events: Events,
-    public facebookService: FacebookService
+    public facebookService: FacebookService,
+    public actionSheetCtrl: ActionSheetController
 
   ) {
     this.evento();
@@ -117,6 +118,35 @@ export class FeedPage {
     this.userService.get().then(res => {
       this.events.publish('user:changed', res);
     });
+  }
+
+  acoes(publicacaoSelecionada : Publicacao) {
+    if (this.permissao == 'a') {
+      let actionSheet = this.actionSheetCtrl.create({
+        title: publicacaoSelecionada.Titulo,
+        buttons: [
+          {
+            text: 'Deletar',
+            role: 'destructive',
+            handler: () => {
+              this.deletar(publicacaoSelecionada.IDPublicacao);
+            }
+          }, {
+            text: 'Editar',
+            handler: () => {
+              this.editar(publicacaoSelecionada.IDPublicacao);
+            }
+          }, {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          }
+        ]
+      });
+      actionSheet.present();
+    }
   }
 
 }

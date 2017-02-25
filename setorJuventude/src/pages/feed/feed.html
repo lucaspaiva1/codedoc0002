@@ -26,7 +26,7 @@
   </ion-refresher>
 
   <ion-list no-lines [virtualScroll]="publicacoes">
-    <ion-item-sliding *virtualItem="let publicacao">
+    <ion-item *virtualItem="let publicacao" (press)="acoes(publicacao)">
       <!--item-->
       <ion-item text-wrap>
         <ion-card>
@@ -53,16 +53,7 @@
           </ion-row>
         </ion-card>
       </ion-item>
-      <!--sliding options-->
-      <ion-item-options *ngIf="permissao == 'a'" side="right">
-        <button ion-button icon-left (click)="editar(publicacao.IDPublicacao)"><ion-icon name="create"></ion-icon>Editar</button>
-        <button ion-button icon-left color="danger" (click)="deletar(publicacao.IDPublicacao)"><ion-icon name="trash"></ion-icon>Deletar</button>
-      </ion-item-options>
-
-      <ion-item-options *ngIf="permissao != 'a'" side="right">
-      </ion-item-options>
-
-    </ion-item-sliding>
+    </ion-item>
   </ion-list>
 
   <ion-fab right bottom *ngIf="permissao == 'a'">
