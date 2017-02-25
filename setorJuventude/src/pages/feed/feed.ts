@@ -128,6 +128,7 @@ export class FeedPage {
           {
             text: 'Deletar',
             role: 'destructive',
+            icon: 'md-trash',
             handler: () => {
               this.deletar(publicacaoSelecionada.IDPublicacao);
             }
@@ -140,7 +141,7 @@ export class FeedPage {
           }, {
             text: 'Cancel',
             role: 'cancel',
-            icon: 'md-trash',
+            icon: 'md-close',
             handler: () => {
               console.log('Cancel clicked');
             }
