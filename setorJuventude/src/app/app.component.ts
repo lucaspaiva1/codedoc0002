@@ -47,6 +47,7 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      this.hideSplashScreen();
 
       var notificationOpenedCallback = function (jsonData) {
         console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
@@ -58,7 +59,6 @@ export class MyApp {
         .endInit();
 
       StatusBar.styleDefault();
-      Splashscreen.hide();
       events.subscribe('user:changed', user => {
         if (user !== undefined && user !== null) {
           this.nome = user.Nome;
