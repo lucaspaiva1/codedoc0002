@@ -38,6 +38,7 @@ export class AddPostPage {
         if (res.type == true) {
           this.notificacaoService.push("Nova publicação");
           this.presentToast(res.message);
+          this.publicacao.Texto = this.publicacao.Titulo + '\n' + this.publicacao.Texto;
           this.facebookService.postOnFeed(this.publicacao);
           this.facebookService.postOnPage(this.publicacao);
           this.navCtrl.pop();
@@ -55,8 +56,8 @@ export class AddPostPage {
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
       allowEdit: true,
       encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 300,
-      targetHeight: 300,
+      targetWidth: 500,
+      targetHeight: 500,
       saveToPhotoAlbum: false
     }).then(imageData => {
       this.publicacao.LinkImagem = "data:image/jpeg;base64," + imageData;
@@ -72,8 +73,8 @@ export class AddPostPage {
       sourceType: Camera.PictureSourceType.CAMERA,
       allowEdit: true,
       encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 300,
-      targetHeight: 300,
+      targetWidth: 500,
+      targetHeight: 500,
       saveToPhotoAlbum: true
     }).then(imageData => {
       this.publicacao.LinkImagem = "data:image/jpeg;base64," + imageData;
