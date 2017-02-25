@@ -25,7 +25,8 @@ export class NotificacaoService {
       "included_segments": ["All"],
       "headings":{ "en": "Setor Juventude" },
       "data": { "foo": "bar" },
-      "contents": { "en": mensagem }
+      "contents": { "en": mensagem },
+      "large_icon":"http://www.dsoutlet.com.br/igrejaApi/imagens/logo.jpeg"
     }), { headers: this.headers }).toPromise().then(res=>alert(res)).catch(error=>alert("erro ao enviar notificações"));
   }
 
