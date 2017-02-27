@@ -15,7 +15,7 @@
 		
 		$numrow = $result->num_rows;
 		
-		if ($num_rows !== 1){
+		if ($num_rows != 1){
 			echo json_encode(false);
 		} else {
 			$dados = $result->fetch_assoc();

@@ -25,35 +25,53 @@
       <file leaf-file-name="conta.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conta.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
+            <state relative-caret-position="1683">
+              <caret line="99" column="29" selection-start-line="99" selection-start-column="29" selection-end-line="99" selection-end-column="29" />
               <folding>
-                <marker date="1487123945339" expanded="true" signature="350:415" placeholder="SELECT * FRO... usuario" />
-                <marker date="1487123945339" expanded="true" signature="723:779" placeholder="UPDATE usuar... " />
-                <marker date="1487123945339" expanded="true" signature="1026:1070" placeholder="SELECT * FRO... usuario" />
-                <marker date="1487123945339" expanded="true" signature="1450:1518" placeholder="UPDATE usuar... " />
-                <marker date="1487123945339" expanded="true" signature="2242:2392" placeholder="INSERT INTO usuario... " />
-                <marker date="1487123945339" expanded="true" signature="2447:2491" placeholder="SELECT * FRO... usuario" />
+                <marker date="1487825885331" expanded="true" signature="260:1881" placeholder="..." />
+                <marker date="1487825885331" expanded="true" signature="350:415" placeholder="SELECT * FRO... usuario" />
+                <marker date="1487825885331" expanded="true" signature="574:988" placeholder="..." />
+                <marker date="1487825885331" expanded="true" signature="644:895" placeholder="..." />
+                <marker date="1487825885331" expanded="true" signature="723:779" placeholder="UPDATE usuar... " />
+                <marker date="1487825885331" expanded="true" signature="901:967" placeholder="..." />
+                <marker date="1487825885331" expanded="true" signature="996:1876" placeholder="..." />
+                <marker date="1487825885331" expanded="true" signature="1026:1070" placeholder="SELECT * FRO... usuario" />
+                <marker date="1487825885331" expanded="true" signature="1209:1774" placeholder="..." />
+                <marker date="1487825885331" expanded="true" signature="1344:1663" placeholder="..." />
+                <marker date="1487825885331" expanded="true" signature="1450:1518" placeholder="UPDATE usuar... " />
+                <marker date="1487825885331" expanded="true" signature="1669:1751" placeholder="..." />
+                <marker date="1487825885331" expanded="true" signature="1780:1858" placeholder="..." />
+                <marker date="1487825885331" expanded="true" signature="1913:2875" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editarPerfil.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="editarPerfil.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/editarPerfil.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="643">
+            <state relative-caret-position="799">
               <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
               <folding>
-                <marker date="1487132194789" expanded="true" signature="268:312" placeholder="SELECT * FRO... usuario" />
-                <marker date="1487132194789" expanded="true" signature="408:463" placeholder="SELECT * FRO... usuario" />
-                <marker date="1487132194789" expanded="true" signature="408:475" placeholder="SELECT * FRO... usuario" />
-                <marker date="1487132194789" expanded="true" signature="791:931" placeholder="UPDATE usuar... " />
-                <marker date="1487132194789" expanded="true" signature="960:1118" placeholder="UPDATE usuar... " />
-                <marker date="1487132194789" expanded="true" signature="1245:1290" placeholder="SELECT * FRO... usuario" />
-                <marker date="1487132194789" expanded="true" signature="1616:1756" placeholder="UPDATE usuar... " />
-                <marker date="1487132194789" expanded="true" signature="1786:1944" placeholder="UPDATE usuar... " />
+                <marker date="1487825885385" expanded="true" signature="268:312" placeholder="SELECT * FRO... usuario" />
+                <marker date="1487825885385" expanded="true" signature="408:463" placeholder="SELECT * FRO... usuario" />
+                <marker date="1487825885385" expanded="true" signature="408:475" placeholder="SELECT * FRO... usuario" />
+                <marker date="1487825885385" expanded="true" signature="791:931" placeholder="UPDATE usuar... " />
+                <marker date="1487825885385" expanded="true" signature="960:1118" placeholder="UPDATE usuar... " />
+                <marker date="1487825885385" expanded="true" signature="1245:1290" placeholder="SELECT * FRO... usuario" />
+                <marker date="1487825885385" expanded="true" signature="1616:1756" placeholder="UPDATE usuar... " />
+                <marker date="1487825885385" expanded="true" signature="1786:1944" placeholder="UPDATE usuar... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="estrutura.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/estrutura.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -64,7 +82,7 @@
             <state relative-caret-position="153">
               <caret line="9" column="86" selection-start-line="9" selection-start-column="80" selection-end-line="9" selection-end-column="86" />
               <folding>
-                <marker date="1487123434624" expanded="true" signature="159:256" placeholder="SELECT IDUsu... usuario" />
+                <marker date="1487825885312" expanded="true" signature="159:256" placeholder="SELECT IDUsu... usuario" />
               </folding>
             </state>
           </provider>
@@ -77,6 +95,8 @@
       <list>
         <option value="$PROJECT_DIR$/busca.php" />
         <option value="$PROJECT_DIR$/editarPerfil.php" />
+        <option value="$PROJECT_DIR$/estrutura.php" />
+        <option value="$PROJECT_DIR$/esqueci.php" />
       </list>
     </option>
   </component>
@@ -90,10 +110,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
+    <option name="x" value="2391" />
     <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="width" value="1818" />
+    <option name="height" value="1093" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -120,6 +140,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -141,7 +162,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -162,17 +182,18 @@
       <updated>1487110993511</updated>
       <workItem from="1487110994713" duration="2173000" />
       <workItem from="1487126478030" duration="1105000" />
+      <workItem from="1488157772886" duration="4539000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3278000" />
+    <option name="totallyTimeSpent" value="7817000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="2391" y="-9" width="1818" height="1093" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.234375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2338889" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -209,42 +230,40 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/conta.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1479">
+          <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
           <folding>
-            <marker date="1487123945339" expanded="true" signature="350:415" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487123945339" expanded="true" signature="723:779" placeholder="UPDATE usuar... " />
-            <marker date="1487123945339" expanded="true" signature="1026:1070" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487123945339" expanded="true" signature="1450:1518" placeholder="UPDATE usuar... " />
-            <marker date="1487123945339" expanded="true" signature="2242:2392" placeholder="INSERT INTO usuario... " />
-            <marker date="1487123945339" expanded="true" signature="2447:2491" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885331" expanded="true" signature="260:1881" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="350:415" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885331" expanded="true" signature="574:988" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="644:895" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="723:779" placeholder="UPDATE usuar... " />
+            <marker date="1487825885331" expanded="true" signature="901:967" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="996:1876" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1026:1070" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885331" expanded="true" signature="1209:1774" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1344:1663" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1450:1518" placeholder="UPDATE usuar... " />
+            <marker date="1487825885331" expanded="true" signature="1669:1751" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1780:1858" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1913:2875" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/editarPerfil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" column="65" selection-start-line="49" selection-start-column="65" selection-end-line="49" selection-end-column="65" />
-          <folding>
-            <marker date="1487132194789" expanded="true" signature="268:312" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487132194789" expanded="true" signature="408:463" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487132194789" expanded="true" signature="408:475" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487132194789" expanded="true" signature="791:931" placeholder="UPDATE usuar... " />
-            <marker date="1487132194789" expanded="true" signature="960:1118" placeholder="UPDATE usuar... " />
-            <marker date="1487132194789" expanded="true" signature="1245:1290" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487132194789" expanded="true" signature="1616:1756" placeholder="UPDATE usuar... " />
-            <marker date="1487132194789" expanded="true" signature="1786:1944" placeholder="UPDATE usuar... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/busca.php">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1487123434624" expanded="true" signature="159:256" placeholder="SELECT IDUsu... usuario" />
+            <marker date="1487825885385" expanded="true" signature="268:312" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885385" expanded="true" signature="408:463" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885385" expanded="true" signature="408:475" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885385" expanded="true" signature="791:931" placeholder="UPDATE usuar... " />
+            <marker date="1487825885385" expanded="true" signature="960:1118" placeholder="UPDATE usuar... " />
+            <marker date="1487825885385" expanded="true" signature="1245:1290" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885385" expanded="true" signature="1616:1756" placeholder="UPDATE usuar... " />
+            <marker date="1487825885385" expanded="true" signature="1786:1944" placeholder="UPDATE usuar... " />
           </folding>
         </state>
       </provider>
@@ -254,40 +273,144 @@
         <state relative-caret-position="153">
           <caret line="9" column="86" selection-start-line="9" selection-start-column="80" selection-end-line="9" selection-end-column="86" />
           <folding>
-            <marker date="1487123434624" expanded="true" signature="159:256" placeholder="SELECT IDUsu... usuario" />
+            <marker date="1487825885312" expanded="true" signature="159:256" placeholder="SELECT IDUsu... usuario" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/conta.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1487123945339" expanded="true" signature="350:415" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487123945339" expanded="true" signature="723:779" placeholder="UPDATE usuar... " />
-            <marker date="1487123945339" expanded="true" signature="1026:1070" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487123945339" expanded="true" signature="1450:1518" placeholder="UPDATE usuar... " />
-            <marker date="1487123945339" expanded="true" signature="2242:2392" placeholder="INSERT INTO usuario... " />
-            <marker date="1487123945339" expanded="true" signature="2447:2491" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885331" expanded="true" signature="260:1881" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="350:415" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885331" expanded="true" signature="574:988" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="644:895" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="723:779" placeholder="UPDATE usuar... " />
+            <marker date="1487825885331" expanded="true" signature="901:967" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="996:1876" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1026:1070" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885331" expanded="true" signature="1209:1774" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1344:1663" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1450:1518" placeholder="UPDATE usuar... " />
+            <marker date="1487825885331" expanded="true" signature="1669:1751" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1780:1858" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1913:2875" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/editarPerfil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
+        <state relative-caret-position="833">
+          <caret line="49" column="65" selection-start-line="49" selection-start-column="65" selection-end-line="49" selection-end-column="65" />
+          <folding>
+            <marker date="1487825885385" expanded="true" signature="268:312" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885385" expanded="true" signature="408:463" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885385" expanded="true" signature="408:475" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885385" expanded="true" signature="791:931" placeholder="UPDATE usuar... " />
+            <marker date="1487825885385" expanded="true" signature="960:1118" placeholder="UPDATE usuar... " />
+            <marker date="1487825885385" expanded="true" signature="1245:1290" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885385" expanded="true" signature="1616:1756" placeholder="UPDATE usuar... " />
+            <marker date="1487825885385" expanded="true" signature="1786:1944" placeholder="UPDATE usuar... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/busca.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1487825885312" expanded="true" signature="159:256" placeholder="SELECT IDUsu... usuario" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conta.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1683">
+          <caret line="99" column="29" selection-start-line="99" selection-start-column="29" selection-end-line="99" selection-end-column="29" />
+          <folding>
+            <marker date="1487825885331" expanded="true" signature="260:1881" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="350:415" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885331" expanded="true" signature="574:988" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="644:895" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="723:779" placeholder="UPDATE usuar... " />
+            <marker date="1487825885331" expanded="true" signature="901:967" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="996:1876" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1026:1070" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885331" expanded="true" signature="1209:1774" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1344:1663" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1450:1518" placeholder="UPDATE usuar... " />
+            <marker date="1487825885331" expanded="true" signature="1669:1751" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1780:1858" placeholder="..." />
+            <marker date="1487825885331" expanded="true" signature="1913:2875" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/editarPerfil.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
           <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
           <folding>
-            <marker date="1487132194789" expanded="true" signature="268:312" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487132194789" expanded="true" signature="408:463" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487132194789" expanded="true" signature="408:475" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487132194789" expanded="true" signature="791:931" placeholder="UPDATE usuar... " />
-            <marker date="1487132194789" expanded="true" signature="960:1118" placeholder="UPDATE usuar... " />
-            <marker date="1487132194789" expanded="true" signature="1245:1290" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487132194789" expanded="true" signature="1616:1756" placeholder="UPDATE usuar... " />
-            <marker date="1487132194789" expanded="true" signature="1786:1944" placeholder="UPDATE usuar... " />
+            <marker date="1487825885385" expanded="true" signature="268:312" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885385" expanded="true" signature="408:463" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885385" expanded="true" signature="408:475" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885385" expanded="true" signature="791:931" placeholder="UPDATE usuar... " />
+            <marker date="1487825885385" expanded="true" signature="960:1118" placeholder="UPDATE usuar... " />
+            <marker date="1487825885385" expanded="true" signature="1245:1290" placeholder="SELECT * FRO... usuario" />
+            <marker date="1487825885385" expanded="true" signature="1616:1756" placeholder="UPDATE usuar... " />
+            <marker date="1487825885385" expanded="true" signature="1786:1944" placeholder="UPDATE usuar... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/busca.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="86" selection-start-line="9" selection-start-column="80" selection-end-line="9" selection-end-column="86" />
+          <folding>
+            <marker date="1487825885312" expanded="true" signature="159:256" placeholder="SELECT IDUsu... usuario" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/esqueci.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-400">
+          <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+          <folding>
+            <marker date="1488161465703" expanded="true" signature="201:245" placeholder="SELECT * FRO... usuario" />
+            <marker date="1488161465703" expanded="true" signature="563:2697" placeholder="..." />
+            <marker date="1488161465703" expanded="true" signature="574:1659" placeholder="..." />
+            <marker date="1488161465703" expanded="true" signature="680:1647" placeholder="..." />
+            <marker date="1488161465703" expanded="true" signature="702:940" placeholder="{...}" />
+            <marker date="1488161465703" expanded="true" signature="959:1248" placeholder="{...}" />
+            <marker date="1488161465703" expanded="true" signature="1267:1351" placeholder="{...}" />
+            <marker date="1488161465703" expanded="true" signature="1371:1631" placeholder="{...}" />
+            <marker date="1488161465703" expanded="false" signature="1678:1690" placeholder="..." />
+            <marker date="1488161465703" expanded="true" signature="1691:2685" placeholder="..." />
+            <marker date="1488161465703" expanded="true" signature="1723:1802" placeholder="..." />
+            <marker date="1488161465703" expanded="true" signature="1829:2458" placeholder="..." />
+            <marker date="1488161465703" expanded="true" signature="2070:2237" placeholder="..." />
+            <marker date="1488161465703" expanded="false" signature="2098:2116" placeholder="..." />
+            <marker date="1488161465703" expanded="false" signature="2182:2201" placeholder="..." />
+            <marker date="1488161465703" expanded="false" signature="2282:2296" placeholder="..." />
+            <marker date="1488161465703" expanded="false" signature="2356:2371" placeholder="..." />
+            <marker date="1488161465703" expanded="false" signature="2478:2546" placeholder="..." />
+            <marker date="1488161465703" expanded="true" signature="2547:2673" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estrutura.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
