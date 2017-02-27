@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ToastController} from 'ionic-angular';
+import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { SenhaService } from '../../../providers/senha-service';
 
@@ -18,13 +18,13 @@ export class EsqueciSenhaPage {
   private email: FormGroup;
 
   constructor(
-    private toastCtrl: ToastController, 
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    private formBuilder: FormBuilder, 
+    private toastCtrl: ToastController,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private formBuilder: FormBuilder,
     public alertCtrl: AlertController,
     private esqueciSenhaService: SenhaService
-    ) {
+  ) {
     //Configurando objeto user com campos para validação
     this.email = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
@@ -63,19 +63,23 @@ export class EsqueciSenhaPage {
     return false;
   }
 
-  enviar(){
+  enviar() {
     if (this.validate()) {
       // process the data
-      this.esqueciSenhaService.esqueciSenha(this.email.get('email').value).then(res=>{
-        alert(res);
+      this.esqueciSenhaService.esqueciSenha(this.email.get('email').value).then(res => {
+        if (res == true) {
+          let toast = this.toastCtrl.create({
+            message: 'Email foi enviado',
+            duration: 2000
+          });
+          toast.present();
+          this.navCtrl.pop();
+        }else{
+          alert("Email não encontrado")
+        }
       }
       )
-      let toast = this.toastCtrl.create({
-        message: 'Email foi enviado',
-        duration: 2000
-      });
-      toast.present();
-      this.navCtrl.pop();
+
     }
   }
 }

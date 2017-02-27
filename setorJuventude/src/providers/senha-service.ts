@@ -17,7 +17,7 @@ export class SenhaService {
     console.log('Hello UserService Provider');
   }
 
-  esqueciSenha(email : string):Promise<boolean[]>{
+  esqueciSenha(email : string):Promise<boolean>{
     console.log(email);
     return this.http.get(this.link + email).toPromise().then(response=>response.json());
   }
