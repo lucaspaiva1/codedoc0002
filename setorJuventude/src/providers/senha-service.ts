@@ -18,7 +18,6 @@ export class SenhaService {
   }
 
   esqueciSenha(email : string):Promise<boolean>{
-    console.log(email);
     return this.http.get(this.link + email).toPromise().then(response=>response.json());
   }
 

@@ -16,7 +16,6 @@ import { DeletarGrupoService } from '../../providers/deletar-grupo-service';
 export class BuscaPage {
 
   private grupos: Grupo[] = [];
-  private mapsPage = MapaPage;
   private permissao = "c";
   loader: any = this.loadingController.create({
     content: "Carregando Grupos"
@@ -82,7 +81,7 @@ export class BuscaPage {
   }
 
   mapa() {
-    this.navCtrl.push(this.mapsPage);
+    this.navCtrl.setRoot(MapaPage);
   }
 
   private showConfirm(type: number, message: string) {
