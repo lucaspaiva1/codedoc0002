@@ -13,6 +13,9 @@
                 <h2>{{nome}}</h2>
                 <p>Meu Perfil</p>
             </button>
+            <button ion-item (click)="openPage(telaPrincipal)">
+                Home
+            </button>
             <button *ngIf="permissao=='a'" ion-item (click)="openPage(buscar)">
                 Buscar Usuário
             </button>

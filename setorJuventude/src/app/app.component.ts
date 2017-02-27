@@ -15,6 +15,7 @@ import { MonthViewComponent } from 'ionic2-calendar/monthview';
 import { WeekViewComponent } from 'ionic2-calendar/weekview';
 import { DayViewComponent } from 'ionic2-calendar/dayview';
 import { LiturgiaPage } from '../pages/liturgia/liturgia';
+import { TelaPrincipalPage } from '../pages/tela-principal/tela-principal';
 
 
 @Component({
@@ -29,6 +30,7 @@ export class MyApp {
   private perfil = PerfilPage;
   private buscar = BuscarUsuariosPage;
   private liturgia = LiturgiaPage;
+  private telaPrincipal = TelaPrincipalPage;
 
   rootPage = LoginPage;
 
@@ -77,7 +79,7 @@ export class MyApp {
   }
 
   openPage(page) {
-    this.nav.push(page);
+    this.nav.setRoot(page);
     this.menu.close();
   }
 
