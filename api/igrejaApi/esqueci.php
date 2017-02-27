@@ -15,12 +15,16 @@
 		
 		$numrow = $result->num_rows;
 		
+<<<<<<< HEAD
 		if ($num_rows != 1){
+=======
+		if ($numrow !== 1){
+>>>>>>> 1e19e9f95d3621bf87db3d4eb0dc1a4bba63d19a
 			echo json_encode(false);
 		} else {
 			$dados = $result->fetch_assoc();
-			$nome  = $dados->Nome;
-			$senha = $dados->Senha;
+			$nome  = $dados['Nome'];
+			$senha = $dados['Senha'];
 			$assunto = "Setor Juventude - RECUPERAR SENHA";
 			
 			$mensagem = "<!DOCTYPE html>
