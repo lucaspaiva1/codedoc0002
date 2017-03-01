@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
-import { FeedPage } from '../feed/feed';
+import { FacebookService } from '../../providers/facebook-service';
+import { UserService } from '../../providers/user-service';
 import { CalendarioPage } from '../calendario/calendario';
+import { LoginPage } from '../login/login/login';
 import { BuscaPage } from '../busca/busca';
+import { FeedPage } from '../feed/feed';
 
-/*
-  Generated class for the TelaPrincipal page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-tela-principal',
   templateUrl: 'tela-principal.html'
@@ -20,12 +17,9 @@ export class TelaPrincipalPage {
   calendario = CalendarioPage;
   buscar = BuscaPage;
 
-  constructor(public navCtrl: NavController, menu: MenuController) {
-    menu.enable(true);
-  }
+  constructor(public navCtrl: NavController,
+    public facebookService: FacebookService,
+    public userService: UserService) {
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TelaPrincipalPage');
   }
-
 }

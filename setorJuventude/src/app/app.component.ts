@@ -32,7 +32,7 @@ export class MyApp {
   private liturgia = LiturgiaPage;
   private telaPrincipal = TelaPrincipalPage;
 
-  rootPage = LoginPage;
+  private rootPage = LoginPage;
 
   private nome: string = 'Nome do Usuários';
   private foto: string = '';
@@ -49,9 +49,11 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.hideSplashScreen();
+      setTimeout(() => {
+        Splashscreen.hide();
+      }, 100);
 
-      var notificationOpenedCallback = function (jsonData) {
+      var notificationOpenedCallback = function(jsonData) {
         console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
       };
 
@@ -61,6 +63,7 @@ export class MyApp {
         .endInit();
 
       StatusBar.styleDefault();
+
       events.subscribe('user:changed', user => {
         if (user !== undefined && user !== null) {
           this.nome = user.Nome;
@@ -70,25 +73,17 @@ export class MyApp {
       });
     });
   }
-  private hideSplashScreen() {
-    if (Splashscreen) {
-      setTimeout(() => {
-        Splashscreen.hide();
-      }, 100);
-    }
-  }
 
-  openPage(page) {
+  private openPage(page) {
     this.nav.setRoot(page);
     this.menu.close();
   }
 
-  sair() {
+  private sair() {
     this.menu.close();
     this.facebookService.logout();
     this.userService.deslogar();
     this.nav.setRoot(LoginPage);
-
   }
 
 }
