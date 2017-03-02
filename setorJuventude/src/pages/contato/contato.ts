@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ContatoService } from '../../providers/contato-service';
+import { Administrador } from '../../model/administradores';
+
 
 /*
   Generated class for the Contato page.
@@ -13,10 +16,22 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ContatoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+    private gestao: Administrador[] = [];
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public contatoService: ContatoService
+    ) {
+      this.contatoService.gestaoAll().then(res=>{
+        this.gestao = res;
+      }).catch(()=>alert("Erro ao se comunicar ocm o servidor"));
+
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContatoPage');
   }
+
 
 }

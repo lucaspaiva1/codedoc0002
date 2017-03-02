@@ -6,8 +6,6 @@ import { ComentariosPage } from '../comentarios/comentarios';
 import { PublicacaoService } from '../../providers/publicacao-service';
 import { Publicacao } from '../../model/publicacao';
 import { UserService } from '../../providers/user-service';
-import { FacebookService } from '../../providers/facebook-service';
-
 
 @Component({
   selector: 'page-feed',
@@ -32,21 +30,25 @@ export class FeedPage {
     public loadingController: LoadingController,
     public userService: UserService,
     public events: Events,
-    public facebookService: FacebookService,
     public actionSheetCtrl: ActionSheetController
 
   ) {
+
+    events.subscribe('tipo:changed', tipo => {
+        this.permissao = tipo;
+    });
+
     this.evento();
     this.loader.present();
 
-    this.userService.get().then(res => {
-      this.permissao = res.Tipo;
-    });
+
+    // this.userService.get().then(user=>{
+    //   this.permissao = user.Tipo;
+    // });
   }
 
   ionViewWillEnter() {
     this.carregarFeed();
-    //this.facebookService.postOnPage(new Publicacao());//adicionado para teste
   }
 
   private carregarFeed() {
@@ -120,7 +122,7 @@ export class FeedPage {
     });
   }
 
-  acoes(publicacaoSelecionada : Publicacao) {
+  private acoes(publicacaoSelecionada: Publicacao) {
     if (this.permissao == 'a') {
       let actionSheet = this.actionSheetCtrl.create({
         title: publicacaoSelecionada.Titulo,

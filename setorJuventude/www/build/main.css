@@ -23580,18 +23580,11 @@ ion-navbar, ion-toolbar {
 
 .zfix-header {
   z-index: 800;
+  text-align: center;
 }
 
 .margem-botton {
   margin-bottom: 20px;
-}
-
-.botao-duplo-l {
-  margin-right: 5px;
-}
-
-.botao-duplo-r {
-  margin-left: 5px;
 }
 
 .calendarToolbar ion-title {
@@ -23741,7 +23734,7 @@ ion-navbar, ion-toolbar {
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;
   align-self: center;
-  height: 97%;
+  height: 100%;
 }
 
 .perfil-pic {

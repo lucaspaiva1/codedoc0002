@@ -6,10 +6,12 @@
 -->
 <ion-header>
 
-  <ion-navbar color="laranja">
+  <ion-navbar class="zfix-header" color="laranja">
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
     <ion-title>Estrutura</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -17,20 +19,16 @@
   <!--Imagem do usuario-->
 
   <div padding>
-    <h1 class="titulo">Setor Juventude Diocesano</h1>
-    <h2 class="titulo">Estrutura</h2>
+    <h3 class="titulo">Setor Juventude Diocesano</h3>
   </div>
-  <div padding>
-    <p class="mensage">Dom José Ruy – Bispo diocesano</p>
-    <p class="mensage">Diác. Paulo Marcos – Assessor Diocesano</p>
-    <p class="mensage">Pe. Leandro Silva- Conselheiro</p>
-    <p class="mensage">Deise Bastos- Tesoureira</p>
-    <p class="mensage">Tainan Queiroz- 1ª Secretário</p>
-    <p class="mensage">Lucielle Marinho – 2ª Secretária</p>
-    <p class="mensage">Maila Aguiá – Coordenadora de Mídia</p>
-    <p class="mensage">Marinara – Coordenadora de Mídia</p>
-    <p class="mensage">Selma de Oliveira- Responsável pela Formação</p>
-    <p class="mensage">Maila Aguiá- Coordenadora dos Representantes das Foranias</p>
-    <p class="mensage">Henrrique Barreto – Coordenador dos Movimentos Juvenis</p>
-  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let pessoa of administradores">
+      <ion-avatar item-left>
+        <img [src]="pessoa.Foto">
+      </ion-avatar>
+      <h2 style="padding-top: 2px">{{pessoa.Nome}}</h2>
+      <p>{{pessoa.Oficio}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>

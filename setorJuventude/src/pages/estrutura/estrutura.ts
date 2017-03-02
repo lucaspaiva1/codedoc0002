@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Administrador } from '../../model/administradores';
+import { EstruturaService } from '../../providers/estrutura-service';
 
 /*
   Generated class for the Estrutura page.
@@ -13,7 +15,19 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class EstruturaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  private administradores: Administrador[] = [];
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private estrutraService : EstruturaService
+    ) { 
+
+      this.estrutraService.administradoresAll().then(res=>{
+        this.administradores = res;
+      }).catch(()=>alert("Erro ao se comunicar ocm o servidor"));
+
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EstruturaPage');

@@ -14,9 +14,7 @@ import { DeletarGrupoService } from '../../providers/deletar-grupo-service';
   templateUrl: 'busca.html'
 })
 export class BuscaPage {
-  private exibicaoMapa: boolean = false //boleano que define se o modo de exibição é do mapa oou da lista de grupos
   private grupos: Grupo[] = [];
-  private mapsPage = MapaPage;
   private permissao = "c";
   loader: any = this.loadingController.create({
     content: "Carregando Grupos"
@@ -82,7 +80,7 @@ export class BuscaPage {
   }
 
   mapa() {
-    this.navCtrl.push(this.mapsPage);
+    this.navCtrl.setRoot(MapaPage);
   }
 
   private showConfirm(type: number, message: string) {

@@ -58,10 +58,10 @@ export class FacebookService {
   }
 
   logout(): Promise<any> {
-    return Facebook.logout().then(response => alert("deslogado com Sucesso"));
+    return Facebook.logout();
   }
 
-  public postOnFeed(publicacao: Publicacao) {
+  public photoOnFeed(publicacao: Publicacao) {
     Facebook.getLoginStatus().then(res => {
       return this.http
         .post('http://www.codeondemand.com.br/facebook/photoOnFeed.php', JSON.stringify({ publicacao: publicacao, token: res.authResponse.accessToken, id: res.authResponse.userID }), { headers: this.headers })
@@ -71,7 +71,7 @@ export class FacebookService {
     });
   }
 
-  public postOnPage(publicacao: Publicacao) {
+  public photoOnPage(publicacao: Publicacao) {
     Facebook.getLoginStatus().then(res => {
       return this.http
         .post('http://www.codeondemand.com.br/facebook/photoOnPage.php', JSON.stringify({ publicacao: publicacao, token: res.authResponse.accessToken, id: res.authResponse.userID }), { headers: this.headers })
@@ -81,10 +81,30 @@ export class FacebookService {
     });
   }
 
+  public postOnFeed(publicacao: Publicacao) {
+    Facebook.getLoginStatus().then(res => {
+      return this.http
+        .post('http://www.codeondemand.com.br/facebook/postOnFeed.php', JSON.stringify({ publicacao: publicacao, token: res.authResponse.accessToken }), { headers: this.headers })
+        .toPromise()
+        .then(res => this.extractPost(res))
+        .catch(this.handleErrorMessage);
+    });
+  }
+
+  public postOnPage(publicacao: Publicacao) {
+    Facebook.getLoginStatus().then(res => {
+      return this.http
+        .post('http://www.codeondemand.com.br/facebook/postOnPage.php', JSON.stringify({ publicacao: publicacao, token: res.authResponse.accessToken }), { headers: this.headers })
+        .toPromise()
+        .then(res => this.extractPost(res))
+        .catch(this.handleErrorMessage);
+    });
+  }
+
   private extractPost(res: Response) {
     let retorno = { type: false, message: '' };
     let data = res.json();
-    //alert(JSON.stringify(res));
+    //alert(JSON.stringify(data));
     if (data !== null) {
       retorno.type = true;
       retorno.message = 'Publicado com sucesso';
@@ -95,7 +115,7 @@ export class FacebookService {
   }
 
   private handleErrorMessage(error: any) {
-    //alert(JSON.stringify(error));
+    //alert(JSON.stringify(error.json()));
     let retorno = { error: true, type: false, message: 'Falha na conexão' };
     return retorno;
   }

@@ -1172,7 +1172,7 @@ export class MapaPage {
   }
 
   lista(){
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(BuscaPage);
   }
 
 }

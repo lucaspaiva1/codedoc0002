@@ -4,19 +4,14 @@
     <button ion-button menuToggle icon-only>
       <ion-icon name='menu'></ion-icon>
     </button>
-    <ion-title>Representantes</ion-title>
+    <ion-title>Grupos</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<!-- Tela a ser exibida quando a exibição por mapa está ativada-->
-<page-mapa *ngIf="exibicaoMapa"></page-mapa>
+<ion-content>
 
-
-<!-- Tela a ser exibida quando a exibição por mapa não está ativada-->
-<ion-content padding *ngIf="!exibicaoMapa">
-
-  <ion-list no-lines>
+  <ion-list>
 
   <ion-item-sliding *ngFor="let grupo of grupos">
     <button ion-item (click)="abrirGrupo(grupo)">
@@ -34,9 +29,6 @@
 </ion-list>
   <ion-fab right bottom *ngIf="permissao == 'a'" >
     <button ion-fab class="floating-button-adm" (click)="adicionarGupo()" ><ion-icon name="add"></ion-icon></button>
-  </ion-fab>
-  <ion-fab left bottom >
-    <button ion-fab class="floating-button" (click)="mapa()"><ion-icon name="map"></ion-icon></button>
   </ion-fab>
 </ion-content>
 
