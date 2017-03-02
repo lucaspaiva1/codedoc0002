@@ -105,4 +105,20 @@ export class BuscaPage {
     });
     confirm.present();
   }
+
+  getItems(ev: any){
+    //reinicializar itens
+    this.carregarGrupos();
+
+    // recuperar a entrada na barra de busca
+    let val = ev.target.value;
+
+    // Filtrar valores
+    if (val && val.trim() != '') {
+      this.grupos = this.grupos.filter((item) => {
+        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+
+  }
 }

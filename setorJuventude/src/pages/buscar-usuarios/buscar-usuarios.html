@@ -3,14 +3,14 @@
     <button ion-button menuToggle icon-only>
       <ion-icon name='menu'></ion-icon>
     </button>
-    <ion-title>Buscar Usuarios</ion-title>
+    <ion-title>Buscar Usuários</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Nome do Usuário"></ion-searchbar>
 
     <ion-list [virtualScroll]="users" >
       <ion-item *virtualItem="let user" (click)="abrirUsuario(user)">
