@@ -4,13 +4,17 @@
     <button ion-button menuToggle icon-only>
       <ion-icon name='menu'></ion-icon>
     </button>
-    <ion-title>Lista de Grupos</ion-title>
+    <ion-title>Representantes</ion-title>
   </ion-navbar>
 
 </ion-header>
 
+<!-- Tela a ser exibida quando a exibição por mapa está ativada-->
+<page-mapa *ngIf="exibicaoMapa"></page-mapa>
 
-<ion-content padding>
+
+<!-- Tela a ser exibida quando a exibição por mapa não está ativada-->
+<ion-content padding *ngIf="!exibicaoMapa">
 
   <ion-list no-lines>
 
@@ -35,3 +39,5 @@
     <button ion-fab class="floating-button" (click)="mapa()"><ion-icon name="map"></ion-icon></button>
   </ion-fab>
 </ion-content>
+
+
