@@ -17,7 +17,7 @@
   </ion-refresher>
 
   <ion-list no-lines [virtualScroll]="publicacoes">
-    <ion-item style="padding: 0px;" *virtualItem="let publicacao">
+    <ion-item class="cardItem" *virtualItem="let publicacao">
       <!--item-->
       <ion-card style="width:100%;" (press)="acoes(publicacao)">
         <div>

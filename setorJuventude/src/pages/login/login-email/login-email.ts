@@ -5,7 +5,7 @@ import { EsqueciSenhaPage } from '../esqueci-senha/esqueci-senha'
 import { TelaPrincipalPage } from '../../tela-principal/tela-principal';
 import { ContaService } from '../../../providers/conta-service';
 import { UserService } from '../../../providers/user-service';
-
+import { StatusBar } from 'ionic-native';
 
 @Component({
   selector: 'page-login-email',
@@ -32,6 +32,10 @@ export class LoginEmailPage {
       email: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       senha: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
     });
+  }
+  ionViewDidEnter(){
+    StatusBar.overlaysWebView(true);
+    StatusBar.show();
   }
 
   ionViewDidLoad() {

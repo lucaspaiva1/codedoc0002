@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController, ToastController } from 'ioni
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '../../../model/User';
 import { ContaService } from '../../../providers/conta-service';
+import { StatusBar } from 'ionic-native';
 
 /*
   Generated class for the CadastarNovoUsuario page.
@@ -26,6 +27,8 @@ export class CadastrarNovoUsuarioPage {
     public alertCtrl: AlertController,
     private contaService: ContaService
   ) {
+    
+    
     //Configurando objeto user com campos para validação
     this.user = this.formBuilder.group({
       nome: ['', Validators.compose([Validators.required])],
@@ -35,6 +38,10 @@ export class CadastrarNovoUsuarioPage {
       senha: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       repSenha: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
     });
+  }
+  ionViewDidEnter(){
+    StatusBar.overlaysWebView(true);
+    StatusBar.show();
   }
 
   ionViewDidLoad() {
