@@ -79,7 +79,7 @@ export class CalendarioPage {
 
   onViewTitleChanged = (title: string) => { // atualiza o título
     let data = title.split(' '); 
-    this.mes = data[0] + ', ' + data[1];
+    this.mes = data[0] + ' - ' + data[1];
   };
 
   onTimeSelected(ev) {
