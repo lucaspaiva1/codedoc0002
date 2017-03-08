@@ -5,6 +5,7 @@ import { LoginEmailPage } from '../login-email/login-email';
 import { CadastrarNovoUsuarioPage } from '../cadastrar-novo-usuario/cadastrar-novo-usuario';
 import { FacebookService } from '../../../providers/facebook-service';
 import { UserService } from '../../../providers/user-service';
+import { StatusBar } from 'ionic-native';
 
 @Component({
   selector: 'page-login',
@@ -41,6 +42,12 @@ export class LoginPage {
         });
       }
     });
+  }
+
+  ionViewWillEnter(){
+    StatusBar.overlaysWebView(true);
+    StatusBar.backgroundColorByHexString('#FF6600'); // mudando a cor da barra de ferramentas
+    StatusBar.hide();
   }
 
   logar(tipo) { //verifica a modalidade de login escolhida

@@ -118,6 +118,8 @@ export class BuscaPage {
       this.grupos = this.grupos.filter((item) => {
         return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
+    }else{
+      this.carregarGrupos();
     }
 
   }

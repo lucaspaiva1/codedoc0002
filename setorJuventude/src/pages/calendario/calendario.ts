@@ -77,8 +77,9 @@ export class CalendarioPage {
     this.navCtrl.push(this.editarEvento, { id: event.id });
   }
 
-  onViewTitleChanged = (title: string) => {
-    this.mes = title; // atualiza o título
+  onViewTitleChanged = (title: string) => { // atualiza o título
+    let data = title.split(' '); 
+    this.mes = data[0] + ' - ' + data[1];
   };
 
   onTimeSelected(ev) {

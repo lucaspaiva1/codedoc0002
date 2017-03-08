@@ -23650,6 +23650,11 @@ ion-navbar, ion-toolbar {
   box-shadow: 5px;
 }
 
+.cardItem {
+  padding: 0px;
+  padding-bottom: -10px;
+}
+
 .cit_direita_italico {
   font-style: italic;
   text-align: right;
