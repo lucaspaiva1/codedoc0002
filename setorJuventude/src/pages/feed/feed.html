@@ -8,6 +8,7 @@
   </ion-navbar>
 
 </ion-header>
+
 <ion-content>
 
   <ion-refresher (ionRefresh)="doRefresh($event)">
@@ -16,7 +17,7 @@
   </ion-refresher>
 
   <ion-list no-lines [virtualScroll]="publicacoes">
-    <ion-item style="padding: 0px;" *virtualItem="let publicacao">
+    <ion-item class="cardItem" *virtualItem="let publicacao">
       <!--item-->
       <ion-card style="width:100%;" (press)="acoes(publicacao)">
         <div>
@@ -43,8 +44,7 @@
       </ion-card>
     </ion-item>
   </ion-list>
-
-  <ion-fab right bottom >
+  <ion-fab right bottom *ngIf="permissao=='a'">
     <button ion-fab class="floating-button-adm" (click)="adicionarPost()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 </ion-content>

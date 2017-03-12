@@ -1,0 +1,5 @@
+1. Click Login with Facebook on the Login Page.
+2. Accept the "publish_action" permission.
+2. Click the button located on the lower right side of the screen of the Home Page.
+3. Fill all the fields and choose share on facebook.
+4. Click on "publicar" button.

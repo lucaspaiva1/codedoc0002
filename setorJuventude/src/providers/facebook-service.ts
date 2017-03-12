@@ -58,7 +58,7 @@ export class FacebookService {
   }
 
   logout(): Promise<any> {
-    return Facebook.logout().then(response => alert("deslogado com Sucesso"));
+    return Facebook.logout();
   }
 
   public photoOnFeed(publicacao: Publicacao) {

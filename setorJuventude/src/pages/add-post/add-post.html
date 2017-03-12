@@ -47,6 +47,17 @@
     </ion-item>
 
     <ion-item>
+      <ion-label>
+        <ion-row>
+          <ion-col width-10><ion-icon style="padding-right: 10px" name="logo-facebook"></ion-icon></ion-col>
+          <ion-col width-90>Página</ion-col>
+        </ion-row>
+      </ion-label>
+      <ion-toggle [(ngModel)]="page"></ion-toggle>
+    </ion-item>
+
+
+    <ion-item>
       <!--Botão para adicionar publicação-->
       <button ion-button block small (click)="publicar()">Publicar</button>
     </ion-item>

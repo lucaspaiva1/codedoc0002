@@ -1,37 +1,33 @@
-<ion-header >
+<ion-header>
 
   <ion-navbar class="zfix-header" color="laranja">
     <button ion-button menuToggle icon-only>
       <ion-icon name='menu'></ion-icon>
     </button>
-    <ion-title>Lista de Grupos</ion-title>
+    <ion-title>Grupos</ion-title>
   </ion-navbar>
 
 </ion-header>
 
+<ion-content>
 
-<ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Nome do Grupo"></ion-searchbar>
 
-  <ion-list no-lines>
-
-  <ion-item-sliding *ngFor="let grupo of grupos">
-    <button ion-item (click)="abrirGrupo(grupo)">
+  <ion-list>
+    <ion-item-sliding *ngFor="let grupo of grupos">
+      <button ion-item (click)="abrirGrupo(grupo)">
       {{ grupo.nome }}
     </button>
 
-    <!--sliding options-->
-    <ion-item-options side="right" *ngIf="permissao == 'a'">
-      <button ion-button icon-left color="danger" (click)="deletar(grupo)"><ion-icon name="trash"></ion-icon>Deletar</button>
-    </ion-item-options>
-    <ion-item-options side="right" *ngIf="permissao != 'a'">
-    </ion-item-options>
-  </ion-item-sliding>
-
-</ion-list>
-  <ion-fab right bottom *ngIf="permissao == 'a'" >
-    <button ion-fab class="floating-button-adm" (click)="adicionarGupo()" ><ion-icon name="add"></ion-icon></button>
-  </ion-fab>
-  <ion-fab left bottom >
-    <button ion-fab class="floating-button" (click)="mapa()"><ion-icon name="map"></ion-icon></button>
+      <!--sliding options-->
+      <ion-item-options side="right" *ngIf="permissao == 'a'">
+        <button ion-button icon-left color="danger" (click)="deletar(grupo)"><ion-icon name="trash"></ion-icon>Deletar</button>
+      </ion-item-options>
+      <ion-item-options side="right" *ngIf="permissao != 'a'">
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab right bottom *ngIf="permissao == 'a'">
+    <button ion-fab class="floating-button-adm" (click)="adicionarGupo()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 </ion-content>

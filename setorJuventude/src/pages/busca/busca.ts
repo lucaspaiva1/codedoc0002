@@ -14,7 +14,6 @@ import { DeletarGrupoService } from '../../providers/deletar-grupo-service';
   templateUrl: 'busca.html'
 })
 export class BuscaPage {
-
   private grupos: Grupo[] = [];
   private permissao = "c";
   loader: any = this.loadingController.create({
@@ -105,5 +104,23 @@ export class BuscaPage {
       ]
     });
     confirm.present();
+  }
+
+  getItems(ev: any){
+    //reinicializar itens
+    this.carregarGrupos();
+
+    // recuperar a entrada na barra de busca
+    let val = ev.target.value;
+
+    // Filtrar valores
+    if (val && val.trim() != '') {
+      this.grupos = this.grupos.filter((item) => {
+        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }else{
+      this.carregarGrupos();
+    }
+
   }
 }
