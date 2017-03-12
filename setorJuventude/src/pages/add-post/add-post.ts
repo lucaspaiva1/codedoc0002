@@ -16,6 +16,8 @@ export class AddPostPage {
 
   private publicacao: Publicacao = new Publicacao();
   private loading: Loading;
+  private feed: boolean = false;
+  private page: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -23,24 +25,38 @@ export class AddPostPage {
     public platform: Platform,
     public loadingCtrl: LoadingController,
     public postService: PublicacaoService,
-    private notificacaoService : NotificacaoService,
+    private notificacaoService: NotificacaoService,
     private facebookService: FacebookService
-    ) {
+  ) {
 
   }
 
-  private adicionar() {
+  private publicar() {
     //obrigatorio preencher data limite da publicacao
     if (this.publicacao.TempoPermanencia == null) {
       this.presentToast('Preencha a data limite!');
+    } else if (this.publicacao.Titulo == '') {
+      this.presentToast('Preencha o Título!');
     } else {
       this.postService.novaPublicacao(this.publicacao).then(res => {
         if (res.type == true) {
           this.notificacaoService.push("Nova publicação");
           this.presentToast(res.message);
-          this.publicacao.Texto = this.publicacao.Titulo + '\n' + this.publicacao.Texto;
-          this.facebookService.postOnFeed(this.publicacao);
-          this.facebookService.postOnPage(this.publicacao);
+          this.publicacao.Texto = this.publicacao.Titulo + '\n' + this.publicacao.Texto; //vinculando o titulo com o texto
+          if (this.feed) {
+            if (this.publicacao.LinkImagem == '') {
+              this.facebookService.postOnFeed(this.publicacao);
+            } else {
+              this.facebookService.photoOnFeed(this.publicacao);
+            }
+          }
+          if (this.page) {
+            if (this.publicacao.LinkImagem == '') {
+              this.facebookService.postOnPage(this.publicacao);
+            } else {
+              this.facebookService.photoOnPage(this.publicacao);
+            }
+          }
           this.navCtrl.pop();
         } else {
           this.presentToast(res.message);

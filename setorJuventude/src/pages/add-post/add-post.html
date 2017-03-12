@@ -1,39 +1,55 @@
 <ion-header>
-  <ion-navbar  class="zfix-header" color="laranja">
+  <ion-navbar class="zfix-header" color="laranja">
     <ion-title>Criar Publicação</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
-  <!--Campos de preenchimento para criação de uma publicação (
-        -> apenas o titulo é obrigatório
-  )-->
-  <ion-item>
-    <ion-label floating>Título</ion-label>
-    <ion-input type="text" [(ngModel)]="publicacao.Titulo"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label floating>Texto</ion-label>
-    <ion-input type="text" [(ngModel)]="publicacao.Texto"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label floating>Data Limite</ion-label>
-    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="publicacao.TempoPermanencia"></ion-datetime>
-  </ion-item>
-  <ion-item>
-    <ion-label>Permitir comentários</ion-label>
-    <ion-toggle [(ngModel)]="publicacao.Comentario"></ion-toggle>
-  </ion-item>
-  <ion-item>
-    <img *ngIf="publicacao.LinkImagem !== ''" [src]="publicacao.LinkImagem" style="width: 100%;" />
-  </ion-item>
-  <ion-item>
-    <ion-row>
-      <button ion-button block class="botao-duplo-l" (click)="importarFoto()">Importar</button>
-      <button ion-button block class="botao-duplo-r" (click)="tirarFoto()">Tirar Foto</button>
-    </ion-row>
-  </ion-item>
-  <!--Botão para adicionar publicação-->
-  <button ion-button block (click)="adicionar()">Adicionar</button>
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Título</ion-label>
+      <ion-input type="text" [(ngModel)]="publicacao.Titulo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Texto</ion-label>
+      <ion-input type="text" [(ngModel)]="publicacao.Texto"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Data Limite</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="publicacao.TempoPermanencia"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Permitir Comentários</ion-label>
+      <ion-toggle [(ngModel)]="publicacao.Comentario"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <img *ngIf="publicacao.LinkImagem !== ''" [src]="publicacao.LinkImagem" style="width: 100%;" />
+      <ion-row>
+        <ion-col width-50><button ion-button block small (click)="tirarFoto()">Câmera</button></ion-col>
+        <ion-col width-50><button ion-button block small (click)="importarFoto()">Biblioteca</button></ion-col>
+      </ion-row>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-row>
+          <ion-col width-10><ion-icon style="padding-rigth: 10px" name="logo-facebook"></ion-icon></ion-col>
+          <ion-col width-90>Feed</ion-col>
+        </ion-row>
+      </ion-label>
+      <ion-toggle [(ngModel)]="feed"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <!--Botão para adicionar publicação-->
+      <button ion-button block small (click)="publicar()">Publicar</button>
+    </ion-item>
+
+  </ion-list>
 </ion-content>

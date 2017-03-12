@@ -46,7 +46,6 @@ export class FeedPage {
 
   ionViewWillEnter() {
     this.carregarFeed();
-    //this.facebookService.postOnPage(new Publicacao());//adicionado para teste
   }
 
   private carregarFeed() {
