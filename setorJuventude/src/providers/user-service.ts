@@ -1,9 +1,10 @@
-import { NativeStorage } from 'ionic-native';
+
 import { Injectable } from '@angular/core';
 import { Events } from 'ionic-angular';
 import { Headers, Http, Response } from '@angular/http';
 import { User } from '../model/User';
 import 'rxjs/add/operator/toPromise';
+import { Storage } from '@ionic/storage';
 
 
 @Injectable()
@@ -11,7 +12,7 @@ export class UserService {
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
-  constructor(public http: Http, public events: Events) {
+  constructor(public http: Http, public events: Events, public storage: Storage) {
   }
 
   public atualizarUsuario(id: number): Promise<any> {
@@ -37,7 +38,7 @@ export class UserService {
 
   public set(user: User) {
     this.events.publish('user:changed', user);
-    NativeStorage.setItem('usuarioAtual', user)
+    this.storage.set('usuarioAtual', user)
       .then(
       () => {
         this.events.publish('user:changed', user);
@@ -47,7 +48,7 @@ export class UserService {
   }
 
   public get(): Promise<User> {
-    return NativeStorage.getItem('usuarioAtual')
+    return this.storage.get('usuarioAtual')
       .then(
       data => data,
       error => {
@@ -57,7 +58,7 @@ export class UserService {
   }
 
   public deslogar() {
-    return NativeStorage.remove('usuarioAtual').then(response => {
+    return this.storage.remove('usuarioAtual').then(response => {
       console.log("deslogado");
     });
   }

@@ -893,7 +893,8 @@ export class MapaPage {
 
       // move the camera
       map.moveCamera({
-        target: new GoogleMapsLatLng(-13.862530, -40.082864),
+        //target: new GoogleMapsLatLng(-13.862530, -40.082864),
+        target: new GoogleMapsLatLng(this._latitude, this._longitude),
         zoom: 8,
         tilt: 30
       }).then(() => {

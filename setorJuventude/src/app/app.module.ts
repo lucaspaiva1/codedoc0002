@@ -19,6 +19,7 @@ import { NotificacaoService } from '../providers/notificacao-service';
 import { EstruturaService } from '../providers/estrutura-service';
 import { SenhaService } from '../providers/senha-service';
 import { ContatoService } from '../providers/contato-service';
+import { Storage } from '@ionic/storage';
 
 //Login
 import { LoginPage } from '../pages/login/login/login';
@@ -113,6 +114,6 @@ import { LiturgiaPage } from '../pages/liturgia/liturgia';
     LiturgiaPage,
     EditarForaniaPage
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' },NotificacaoService, ContatoService, EstruturaService, SenhaService, Facebook, UsuariosService, DeletarGrupoService, ContaService, FacebookService, BuscaService, UserService, PublicacaoService, ComentarioService, EventoService, GrupoService, { provide: ErrorHandler, useClass: IonicErrorHandler }]
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' },NotificacaoService, Storage, ContatoService, EstruturaService, SenhaService, Facebook, UsuariosService, DeletarGrupoService, ContaService, FacebookService, BuscaService, UserService, PublicacaoService, ComentarioService, EventoService, GrupoService, { provide: ErrorHandler, useClass: IonicErrorHandler }]
 })
 export class AppModule { }
