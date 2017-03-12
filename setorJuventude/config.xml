@@ -6,6 +6,7 @@
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
+    <allow-navigation href="http://192.168.0.5:8100" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -64,6 +65,7 @@
         <variable name="APP_ID" value="255509854899402" />
         <variable name="APP_NAME" value="Setor Juventude" />
     </plugin>
-    <icon src="resources\android\icon\drawable-xhdpi-icon.png" />
     <plugin name="cordova-plugin-statusbar" spec="~2.2.1" />
+    <icon src="resources\android\icon\drawable-xhdpi-icon.png" />
+    <plugin name="onesignal-cordova-plugin" spec="~2.0.11" />
 </widget>

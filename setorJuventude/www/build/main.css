@@ -23693,7 +23693,10 @@ ion-navbar, ion-toolbar {
 }
 
 .footer-login {
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  background-image: linear-gradient(to bottom, transparent 15%, white);
 }
 
 .login-button-div {
@@ -23702,6 +23705,11 @@ ion-navbar, ion-toolbar {
 
 .login-button-div button {
   padding: 20px;
+}
+
+.aux-button-div {
+  margin: 0px;
+  padding: 0px;
 }
 
 .google-button {
@@ -23713,7 +23721,7 @@ ion-navbar, ion-toolbar {
 .facebook-button {
   background-color: #3B5998;
   font-family: 'Roboto';
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   left: 3px;
 }
 
@@ -23721,7 +23729,12 @@ ion-navbar, ion-toolbar {
   text-align: center;
   border-color: none;
   font-family: 'Roboto';
-  color: #fcfcfc;
+  color: black;
+}
+
+.background {
+  background-image: url("../imagem/login-b.jpg");
+  background-size: 100%;
 }
 
 .submit-button {

@@ -1,8 +1,5 @@
 <!--Conteudo da tela com logo-->
 <ion-content class="background">
-  <h2 class="logo">LOGO</h2>
-  <p class="logo">Texto de boas vindas</p>
-
   <!--Footer para manter o campo de login na parte inferior da tela-->
   <ion-footer class="footer-login">
 
@@ -15,7 +12,7 @@
     </div>
 
     <div>
-      <ion-row>
+      <ion-row class="aux-button-div">
         <button ion-button clear block text-capitalize class="aux-button" [navPush]="loginEmail" >Entrar com Email</button>
         <button ion-button clear block text-capitalize class="aux-button" [navPush]="cadastrarNovoUser">Cadastrar</button>
       </ion-row>
