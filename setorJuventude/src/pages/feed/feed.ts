@@ -34,8 +34,11 @@ export class FeedPage {
 
   ) {
 
-    events.subscribe('tipo:changed', tipo => {
+    /*events.subscribe('tipo:changed', tipo => {
         this.permissao = tipo;
+    });*/
+    this.userService.get().then(res => {
+      this.permissao = res.Tipo;
     });
 
     this.evento();
