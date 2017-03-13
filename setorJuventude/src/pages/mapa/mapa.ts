@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { BuscaPage } from '../busca/busca';
-import { Geolocation, GoogleMap, GoogleMapsEvent, GoogleMapsLatLng, CameraPosition, GoogleMapsMarkerOptions, GoogleMapsMarker, GoogleMapsPolygon } from 'ionic-native';
+import { GoogleMap, GoogleMapsEvent, GoogleMapsLatLng, CameraPosition, GoogleMapsMarkerOptions, GoogleMapsMarker, GoogleMapsPolygon } from 'ionic-native';
 import { EditarForaniaPage } from '../editar-forania/editar-forania';
 /*
   Generated class for the Mapa page.
@@ -885,16 +885,9 @@ export class MapaPage {
     // when the map is ready
     map.one(GoogleMapsEvent.MAP_READY).then(() => {
 
-      //Codigo para retornar a posição atual do celular
-      Geolocation.getCurrentPosition().then(pos => {
-        this._latitude = pos.coords.latitude;
-        this._longitude = pos.coords.longitude;
-      })
-
       // move the camera
       map.moveCamera({
-        //target: new GoogleMapsLatLng(-13.862530, -40.082864),
-        target: new GoogleMapsLatLng(this._latitude, this._longitude),
+        target: new GoogleMapsLatLng(-13.862530, -40.082864),
         zoom: 8,
         tilt: 30
       }).then(() => {
@@ -1164,7 +1157,6 @@ export class MapaPage {
         });
       });
     });
-
   }
 
   selecionar(cidade: string) {

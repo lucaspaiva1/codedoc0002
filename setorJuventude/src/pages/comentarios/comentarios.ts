@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, ActionSheetController, ToastController, AlertController, Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Content, NavController, NavParams, LoadingController, ActionSheetController, ToastController, AlertController, Platform } from 'ionic-angular';
 
 import { ComentarioService } from '../../providers/comentario-service';
 import { Comentario } from '../../model/comentario';
@@ -10,7 +10,7 @@ import { UserService } from '../../providers/user-service';
   templateUrl: 'comentarios.html'
 })
 export class ComentariosPage {
-
+  @ViewChild(Content) content: Content;
   private postID: number;
   private comentarios: Comentario[] = [];
   private novoComentario: Comentario = new Comentario();
@@ -41,7 +41,6 @@ export class ComentariosPage {
       this.userPerm = res.Tipo;
     });
   }
-
   private carregarComentarios() {
     this.comentService.getComentarios(this.postID).then(res => {
       if (res.type == true) {
@@ -50,9 +49,18 @@ export class ComentariosPage {
         this.showConfirm(3, res.message);
       }
       this.loader.dismiss();
+      this.scrollBottom();
     });
   }
-
+  ionViewDidEnter() {
+    this.content.resize();
+    this.content.scrollToBottom();
+  }
+  
+  private scrollBottom(){
+    this.content.resize();
+    this.content.scrollToBottom();
+  }
   private comentar() {
     if (this.novoComentario.Texto != '') {
       this.novoComentario.Publicacao_IDPublicacao = this.postID;
@@ -66,6 +74,7 @@ export class ComentariosPage {
         }
       });
     }
+    this.scrollBottom();
   }
 
   private deletar(id: number) {

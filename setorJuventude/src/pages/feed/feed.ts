@@ -144,7 +144,7 @@ export class FeedPage {
               this.editar(publicacaoSelecionada.IDPublicacao);
             }
           }, {
-            text: 'Cancel',
+            text: 'Cancelar',
             role: 'cancel',
             icon: 'md-close',
             handler: () => {

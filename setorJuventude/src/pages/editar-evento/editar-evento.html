@@ -15,21 +15,40 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item>
+    <ion-item *ngIf="editar">
       <ion-label floating >Título</ion-label>
-      <ion-input type="text" [(ngModel)]="evento.Titulo" disabled="{{ !editar }}"></ion-input>
+      <ion-input type="text" [(ngModel)]="evento.Titulo"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label floating >Descrição</ion-label>
-      <ion-input type="text" [(ngModel)]="evento.Descricao" disabled="{{ !editar }}"></ion-input>
+    <ion-item *ngIf="!editar">
+      <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Título</div>
+      <h2 color="dark">{{evento.Titulo}}</h2>
     </ion-item>
-    <ion-item>
-      <ion-label floating >Início</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="evento.DataInicio" disabled="{{ !editar }}"></ion-datetime>
+
+    <ion-item *ngIf="editar">
+      <ion-label floating>Descrição</ion-label>
+      <ion-input type="text" [(ngModel)]="evento.Descricao"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label floating >Término</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="evento.DataTermino" disabled="{{ !editar }}"></ion-datetime>
+    <ion-item *ngIf="!editar">
+      <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Descrição</div>
+      <h2 color="dark">{{evento.Descricao}}</h2>
+    </ion-item>
+
+    <ion-item *ngIf="editar">
+      <ion-label floating>Início</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="evento.DataInicio"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="!editar">
+      <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Início</div>
+      <h2 color="dark">{{evento.DataInicio}}</h2>
+    </ion-item>
+
+    <ion-item *ngIf="editar">
+      <ion-label floating>Término</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="evento.DataTermino"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="!editar">
+      <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Término</div>
+      <h2 color="dark">{{evento.DataTermino}}</h2>
     </ion-item>
 
     <ion-item *ngIf="evento.EventoDiario && !editar">
@@ -42,13 +61,21 @@
     </ion-item>
 
     <!--Caso não seja dia inteiro, escolher horários-->
-    <ion-item *ngIf="!Allday && !evento.EventoDiario">
-      <ion-label floating >Horário de início</ion-label>
-      <ion-datetime displayFormat="HH:mm" [(ngModel)]="evento.HoraInicio" disabled="{{ !editar }}"></ion-datetime>
+    <ion-item *ngIf="!Allday && !evento.EventoDiario && editar">
+      <ion-label floating>Horário de início</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="evento.HoraInicio"></ion-datetime>
     </ion-item>
-    <ion-item *ngIf="!Allday && !evento.EventoDiario">
+    <ion-item *ngIf="!editar">
+      <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Horário de início</div>
+      <h2 color="dark">{{evento.HoraInicio}}</h2>
+    </ion-item>
+    <ion-item *ngIf="!Allday && !evento.EventoDiario && editar">
       <ion-label floating >Horário de término</ion-label>
-      <ion-datetime displayFormat="HH:mm" [(ngModel)]="evento.HoraTermino" disabled="{{ !editar }}"></ion-datetime>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="evento.HoraTermino"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="!editar">
+      <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Horário de término</div>
+      <h2 color="dark">{{evento.HoraTermino}}</h2>
     </ion-item>
   </ion-list>
   <!--Botão para adicionar evento-->
