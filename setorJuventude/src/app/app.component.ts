@@ -16,7 +16,7 @@ import { WeekViewComponent } from 'ionic2-calendar/weekview';
 import { DayViewComponent } from 'ionic2-calendar/dayview';
 import { LiturgiaPage } from '../pages/liturgia/liturgia';
 import { TelaPrincipalPage } from '../pages/tela-principal/tela-principal';
-
+import { EditarForaniaPage } from '../pages/editar-forania/editar-forania';
 
 @Component({
   templateUrl: 'app.html'
@@ -32,7 +32,7 @@ export class MyApp {
   private liturgia = LiturgiaPage;
   private telaPrincipal = TelaPrincipalPage;
 
-  private rootPage = LoginPage;
+  private rootPage = EditarForaniaPage;
 
   private nome: string = 'Nome do Usuários';
   private foto: string = '';

@@ -1169,7 +1169,7 @@ export class MapaPage {
 
   selecionar(cidade: string) {
     //funcão ao selecionar a cidade
-    this.navCtrl.push(EditarForaniaPage);
+    this.navCtrl.push(EditarForaniaPage, {nomeCidade: cidade});
   }
 
   lista(){

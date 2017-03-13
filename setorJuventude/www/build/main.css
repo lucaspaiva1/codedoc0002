@@ -23580,10 +23580,7 @@ ion-navbar, ion-toolbar {
 
 .zfix-header {
   z-index: 800;
-<<<<<<< HEAD
-=======
   text-align: center;
->>>>>>> a22ecdd7fedcffde85ad5ea1e4721551d5d5674d
 }
 
 .margem-botton {
@@ -23653,14 +23650,11 @@ ion-navbar, ion-toolbar {
   box-shadow: 5px;
 }
 
-<<<<<<< HEAD
-=======
 .cardItem {
   padding: 0px;
   padding-bottom: -10px;
 }
 
->>>>>>> a22ecdd7fedcffde85ad5ea1e4721551d5d5674d
 .cit_direita_italico {
   font-style: italic;
   text-align: right;
@@ -23699,14 +23693,10 @@ ion-navbar, ion-toolbar {
 }
 
 .footer-login {
-<<<<<<< HEAD
-  padding: 20px;
-=======
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 10px;
   background-image: linear-gradient(to bottom, transparent 15%, white);
->>>>>>> a22ecdd7fedcffde85ad5ea1e4721551d5d5674d
 }
 
 .login-button-div {
@@ -23717,14 +23707,11 @@ ion-navbar, ion-toolbar {
   padding: 20px;
 }
 
-<<<<<<< HEAD
-=======
 .aux-button-div {
   margin: 0px;
   padding: 0px;
 }
 
->>>>>>> a22ecdd7fedcffde85ad5ea1e4721551d5d5674d
 .google-button {
   background-color: #EA4335;
   font-family: 'Roboto';
@@ -23734,11 +23721,7 @@ ion-navbar, ion-toolbar {
 .facebook-button {
   background-color: #3B5998;
   font-family: 'Roboto';
-<<<<<<< HEAD
-  margin-bottom: 10px;
-=======
   margin-bottom: 15px;
->>>>>>> a22ecdd7fedcffde85ad5ea1e4721551d5d5674d
   left: 3px;
 }
 
@@ -23746,16 +23729,12 @@ ion-navbar, ion-toolbar {
   text-align: center;
   border-color: none;
   font-family: 'Roboto';
-<<<<<<< HEAD
-  color: #fcfcfc;
-=======
   color: black;
 }
 
 .background {
   background-image: url("../imagem/login-b.jpg");
   background-size: 100%;
->>>>>>> a22ecdd7fedcffde85ad5ea1e4721551d5d5674d
 }
 
 .submit-button {
@@ -23773,11 +23752,7 @@ ion-navbar, ion-toolbar {
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;
   align-self: center;
-<<<<<<< HEAD
-  height: 97%;
-=======
   height: 100%;
->>>>>>> a22ecdd7fedcffde85ad5ea1e4721551d5d5674d
 }
 
 .perfil-pic {

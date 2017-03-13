@@ -12,7 +12,7 @@
     <ion-list>
         <ion-item>
             <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Nome</div>
-            <h2 style="color: black">Nome da Forania</h2>
+            <h2 style="color: black">{{nomeCidade}}</h2>
         </ion-item>
     </ion-list>
 
@@ -64,7 +64,7 @@
         </ion-item>
     </ion-list>
 
-    <ion-fab *ngIf="!editar && permissao == 'a'" class="floating-button-adm" right bottom>
+    <ion-fab class="floating-button-adm" right bottom>
         <button ion-fab (click)="toggleEditar()">
      <ion-icon name="create"></ion-icon>
    </button>
