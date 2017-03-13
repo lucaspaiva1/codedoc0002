@@ -6,12 +6,6 @@ import { Regioes } from '../../model/regioes';
 import { BuscaService } from '../../providers/busca-service';
 
 
-/*
-  Generated class for the EditarForania page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-editar-forania',
   templateUrl: 'editar-forania.html'
@@ -61,7 +55,6 @@ export class EditarForaniaPage {
           }
         }
       }
-      console.log(this.users);
 
     }).catch(() => alert("Erro ao se comunicar com o servidor"));
   }
@@ -107,19 +100,18 @@ export class EditarForaniaPage {
     let regiao = new Regioes();
     regiao.nome = this.nomeCidade
     regiao.ids = this.selecionados;
-    alert(JSON.stringify(regiao));
     this.regicaoService.editGrupo(regiao).then(res => {
-      alert(JSON.stringify(res.json()));
-      if (res == true) {
+      if (!res.error) {
         this.toggleEditar();
-        let toast = this.toastCtrl.create({
-          message: "alteracao efetuada com sucesso",
-          duration: 2000,
-          position: 'bottom'
-        });
-
-        toast.present();
       }
+
+      let toast = this.toastCtrl.create({
+        message: res.message,
+        duration: 2000,
+        position: 'bottom'
+      });
+
+      toast.present();
 
     });
 

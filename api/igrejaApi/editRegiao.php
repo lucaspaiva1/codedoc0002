@@ -12,11 +12,12 @@
 	if (isset($postdata)){
 		$request = json_decode($postdata);
 		
-        $nome    = $request->nome;  
-		$usersID = $request->ids;
+		$regiao  = $request->regiao;
+        $nome    = $regiao->nome;
+		$usersID = $regiao->ids;
 		
-        $nome = utf8_decode($nome);
-
+		$nome = utf8_decode($nome);
+		
 		$sql = "SELECT * FROM regiao WHERE nome = '$nome'";
 		
 		$result = $con->query($sql);
