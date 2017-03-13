@@ -9,6 +9,7 @@
     if (isset($_GET['nome'])){
         if ($_GET["nome"] != ""){
             $nome  = $_GET['nome'];
+            $nome = utf8_decode($nome);
             $sql = "SELECT * FROM regiao WHERE nome = '$nome'";
             $result = $con->query($sql);
 
