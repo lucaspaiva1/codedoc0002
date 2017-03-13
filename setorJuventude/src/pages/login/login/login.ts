@@ -15,6 +15,7 @@ export class LoginPage {
 
   loginEmail = LoginEmailPage;
   cadastrarNovoUser = CadastrarNovoUsuarioPage;
+  private logando: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -52,6 +53,7 @@ export class LoginPage {
 
   logar(tipo) { //verifica a modalidade de login escolhida
     if (tipo == "facebook") {// login com facebook
+      this.logando = true;
       this.facebookService.logar().then(response => {
         if (response == "inativa") {
           alert("Sua conta está bloqueada ou banida");
@@ -60,9 +62,10 @@ export class LoginPage {
           this.userService.set(response);
           this.navCtrl.setRoot(TelaPrincipalPage, { id: response.IDUsuario });
         } else {
+          this.logando = false;
           alert("erro");
         }
-      });
+      }).catch(()=>this.logando = false);
     }
   }
 

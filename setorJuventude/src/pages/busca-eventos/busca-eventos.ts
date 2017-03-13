@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoadingController, NavController, NavParams } from 'ionic-angular';
 import { EventoService } from '../../providers/evento-service';
 import { Evento } from '../../model/evento';
+import { EditarEventoPage } from '../editar-evento/editar-evento';
 
 /*
   Generated class for the BuscaEventos page.
@@ -56,8 +57,9 @@ export class BuscaEventosPage {
     }
   }
 
-  abrirEvento(evento){
+  abrirEvento(evento: Evento){
     //direcionar para o face
+    this.navCtrl.push(EditarEventoPage, {id : evento.IDEvento});
     
   }
 

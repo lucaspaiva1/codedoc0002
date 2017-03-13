@@ -23753,6 +23753,7 @@ ion-navbar, ion-toolbar {
   -ms-grid-row-align: center;
   align-self: center;
   height: 100%;
+<<<<<<< HEAD
 }
 
 .center-content {
@@ -23762,6 +23763,8 @@ ion-navbar, ion-toolbar {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
+=======
+>>>>>>> 7e5618822e984f36ef9622368c8dede6250c4aa4
 }
 
 .perfil-pic {
