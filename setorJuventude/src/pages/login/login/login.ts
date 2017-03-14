@@ -46,6 +46,7 @@ export class LoginPage {
   }
 
   ionViewWillEnter(){
+    
     StatusBar.overlaysWebView(true);
     StatusBar.backgroundColorByHexString('#FF6600'); // mudando a cor da barra de ferramentas
     StatusBar.hide();
