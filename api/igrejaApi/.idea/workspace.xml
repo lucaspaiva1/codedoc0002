@@ -69,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contato.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="contato.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/contato.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="64" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
+            <state relative-caret-position="136">
+              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -120,7 +120,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="listaGrupo.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="listaGrupo.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/listaGrupo.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
@@ -128,6 +128,18 @@
               <folding>
                 <marker date="1487825885421" expanded="true" signature="170:189" placeholder="SELECT * FRO... grupo" />
                 <marker date="1487825885421" expanded="true" signature="365:433" placeholder="SELECT usuar... representagrupo" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listaRegiao.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/listaRegiao.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+              <folding>
+                <marker date="1489534513925" expanded="true" signature="268:309" placeholder="SELECT * FRO... regiao" />
               </folding>
             </state>
           </provider>
@@ -154,8 +166,9 @@
         <option value="$PROJECT_DIR$/editarPerfil.php" />
         <option value="$PROJECT_DIR$/estrutura.php" />
         <option value="$PROJECT_DIR$/esqueci.php" />
-        <option value="$PROJECT_DIR$/contato.php" />
         <option value="$PROJECT_DIR$/../../../Vereador/api/logar.php" />
+        <option value="$PROJECT_DIR$/listaRegiao.php" />
+        <option value="$PROJECT_DIR$/contato.php" />
       </list>
     </option>
   </component>
@@ -199,7 +212,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -221,6 +233,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -248,18 +261,19 @@
       <workItem from="1488563631045" duration="891000" />
       <workItem from="1489362449108" duration="23000" />
       <workItem from="1489363699486" duration="74000" />
-      <workItem from="1489365917137" duration="596000" />
+      <workItem from="1489365917137" duration="632000" />
+      <workItem from="1489534752949" duration="200000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12787000" />
+    <option name="totallyTimeSpent" value="13023000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24895833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24895833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -294,23 +308,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/editarPerfil.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
-          <folding>
-            <marker date="1487825885385" expanded="true" signature="268:312" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487825885385" expanded="true" signature="408:463" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487825885385" expanded="true" signature="408:475" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487825885385" expanded="true" signature="791:931" placeholder="UPDATE usuar... " />
-            <marker date="1487825885385" expanded="true" signature="960:1118" placeholder="UPDATE usuar... " />
-            <marker date="1487825885385" expanded="true" signature="1245:1290" placeholder="SELECT * FRO... usuario" />
-            <marker date="1487825885385" expanded="true" signature="1616:1756" placeholder="UPDATE usuar... " />
-            <marker date="1487825885385" expanded="true" signature="1786:1944" placeholder="UPDATE usuar... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/estrutura.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -819,14 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/contato.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="64" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/editarPerfil.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
@@ -910,6 +899,24 @@
             <marker date="1487825885421" expanded="true" signature="170:189" placeholder="SELECT * FRO... grupo" />
             <marker date="1487825885421" expanded="true" signature="365:433" placeholder="SELECT usuar... representagrupo" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/listaRegiao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+          <folding>
+            <marker date="1489534513925" expanded="true" signature="268:309" placeholder="SELECT * FRO... regiao" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contato.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
