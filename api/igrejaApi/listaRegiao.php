@@ -15,7 +15,7 @@
 
             $num = $result->num_rows;
 
-            if ($num !== 1 && $nome != ''){
+            if ($num !== 1){
                 $sql = "INSERT INTO regiao (nome) VALUES ('$nome')";
                 $con->query($sql);
                 
@@ -25,7 +25,7 @@
                 $id = $dados['ID'];
 
                 $sql = "SELECT usuario_IDUsuario FROM representaregiao WHERE regiao_ID = '$id'";
-                $resul = $con->query($sql);
+                $result = $con->query($sql);
 
                 while($row=$result->fetch_assoc()){
                     $vetor[] = $row['usuario_IDUsuario'];

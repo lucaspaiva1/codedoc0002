@@ -26,13 +26,10 @@ export class EditarForaniaPage {
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public regicaoService: RegiaoService) {
-    this.nomeCidade = this.navParams.get('nomeCidade');
+    //this.nomeCidade = this.navParams.get('nomeCidade');
+    this.nomeCidade = "Brejões";
     this.carregarUsuarios();
     this.carregarSelecionados();
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EditarForaniaPage');
   }
 
   private carregarSelecionados() {
