@@ -6,6 +6,7 @@ import { ComentariosPage } from '../comentarios/comentarios';
 import { PublicacaoService } from '../../providers/publicacao-service';
 import { Publicacao } from '../../model/publicacao';
 import { UserService } from '../../providers/user-service';
+import { StatusBar } from 'ionic-native';
 
 @Component({
   selector: 'page-feed',
@@ -33,7 +34,7 @@ export class FeedPage {
     public actionSheetCtrl: ActionSheetController
 
   ) {
-
+    StatusBar.show();
     /*events.subscribe('tipo:changed', tipo => {
         this.permissao = tipo;
     });*/
