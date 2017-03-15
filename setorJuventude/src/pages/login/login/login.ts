@@ -29,6 +29,7 @@ export class LoginPage {
         this.userService.atualizarUsuario(response.IDUsuario).then(res => {
           if (!res.error && res.user !== null) {
             if (res.user.Banida == 0) {
+              StatusBar.show();
               this.navCtrl.setRoot(TelaPrincipalPage);//entra direto sem perguntar nada
               res.user.connected = true;
               this.events.publish('tipo:changed', res.user.Tipo);
