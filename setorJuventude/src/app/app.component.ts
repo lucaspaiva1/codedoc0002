@@ -32,7 +32,7 @@ export class MyApp {
   private liturgia = LiturgiaPage;
   private telaPrincipal = TelaPrincipalPage;
 
-  private rootPage = this.sobre;
+  private rootPage = LoginPage;
 
   private nome: string = 'Nome do Usuários';
   private foto: string = '';
