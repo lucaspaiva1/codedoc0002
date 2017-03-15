@@ -27,7 +27,7 @@ export class NotificacaoService {
       "data": { "foo": "bar" },
       "contents": { "en": mensagem },
       "large_icon":"http://www.dsoutlet.com.br/igrejaApi/imagens/logo.jpeg"
-    }), { headers: this.headers }).toPromise().then(res=>alert(res)).catch(error=>alert("erro ao enviar notificações"));
+    }), { headers: this.headers }).toPromise().then(res=>res.json()).catch(error=>alert("erro ao enviar notificações"));
   }
 
 }
