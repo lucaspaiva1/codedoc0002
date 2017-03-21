@@ -14,7 +14,6 @@ export class SenhaService {
   private link:string="http://dsoutlet.com.br/igrejaApi/esqueci.php?email=";
 
   constructor(public http: Http) {
-    console.log('Hello UserService Provider');
   }
 
   esqueciSenha(email : string):Promise<boolean>{

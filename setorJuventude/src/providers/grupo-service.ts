@@ -51,7 +51,6 @@ export class GrupoService {
   private extractGetGrupo(res: Response) {
     let retorno = { type: false, data: {}, message: '' };
     let data = res.json();
-    console.log(data);
     if (data == null) {
       retorno.data = {};
       retorno.message = 'Grupo não existente';
@@ -114,7 +113,6 @@ export class GrupoService {
   }
 
   private handleErrorMessage(error: any) {
-    console.log(error);
     let retorno = { error: true, type: false, message: 'Falha na conexão' };
     return retorno;
   }

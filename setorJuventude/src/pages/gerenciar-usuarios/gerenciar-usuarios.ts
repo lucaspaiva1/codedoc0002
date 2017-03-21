@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController, ToastController } from 'ionic-angular';
+import { NavParams, ActionSheetController, ToastController } from 'ionic-angular';
 import { UsuariosService } from '../../providers/usuarios-service';
 import { User } from '../../model/User';
-/*
-  Generated class for the GerenciarUsuarios page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-gerenciar-usuarios',
   templateUrl: 'gerenciar-usuarios.html'
@@ -20,21 +15,14 @@ export class GerenciarUsuariosPage {
 
   constructor(
     public actionSheetCtrl: ActionSheetController,
-    public navCtrl: NavController,
     public navParams: NavParams,
     private usuariosService: UsuariosService,
     public toastCtrl: ToastController,
   ) {
     this.userSelecionado = navParams.get('usuarioSelecionado');
-    console.log(this.userSelecionado);
-
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GerenciarUsuariosPage');
-  }
-
-  escolherOpcoes() {
+  private escolherOpcoes() {
     if (this.userSelecionado.Tipo == 'a') {
       this.mensage = "Retirar status Administrador";
     } else {
@@ -49,7 +37,7 @@ export class GerenciarUsuariosPage {
     this.opcoes();
   }
 
-  opcoes() {
+  private opcoes() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Opções',
       buttons: [
@@ -61,7 +49,7 @@ export class GerenciarUsuariosPage {
               if (res[1]) {
                 this.userSelecionado.Banida = res[0];
                 this.presentToast("Operação realizada com sucesso");
-            
+
               }
             });
           }
@@ -97,13 +85,5 @@ export class GerenciarUsuariosPage {
       position: 'top'
     });
     toast.present();
-  }
-
-  deletar() {
-
-  }
-
-  alterarStatus() {
-
   }
 }

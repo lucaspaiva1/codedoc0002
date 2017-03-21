@@ -1,16 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { GerenciarUsuariosPage } from '../gerenciar-usuarios/gerenciar-usuarios';
-
 import { BuscaService } from '../../providers/busca-service';
 import { User } from '../../model/User';
 
-/*
-  Generated class for the BuscarUsuarios page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-buscar-usuarios',
   templateUrl: 'buscar-usuarios.html'
@@ -18,12 +11,10 @@ import { User } from '../../model/User';
 export class BuscarUsuariosPage {
 
   private users: User[] = [];
-  private auxUsers:User[] = [];
-
+  private auxUsers: User[] = [];
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams,
     public buscaService: BuscaService
   ) {
     this.buscaService.usersAll().then(response => {
@@ -32,15 +23,11 @@ export class BuscarUsuariosPage {
     });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BuscarUsuariosPage');
-  }
-
-  initializeUsers() {
+  private initializeUsers() {
     this.users = this.auxUsers;
   }
 
-  getItems(ev: any) {
+  private getItems(ev: any) {
     // Reset items back to all of the items
     this.initializeUsers();
 
@@ -55,7 +42,7 @@ export class BuscarUsuariosPage {
     }
   }
 
-  abrirUsuario(user: User) {
+  private abrirUsuario(user: User) {
     this.navCtrl.push(GerenciarUsuariosPage, { usuarioSelecionado: user });
   }
 }

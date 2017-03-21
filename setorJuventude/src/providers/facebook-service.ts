@@ -6,7 +6,6 @@ import { User } from '../model/User';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
-
 @Injectable()
 export class FacebookService {
 
@@ -28,28 +27,36 @@ export class FacebookService {
       this.apiVincular(response, "vincular", id)).catch(this.erro);
   }
 
-  erro() {
-    alert("erro ao tentar se conectar com o servidor");
+  erro(error) {
+    //alert(JSON.stringify(error));
   }
 
   api(response, type): Promise<any> {
     let userID = response.authResponse.userID;
+
+    /*adiciona publish_actions ao usuario*/
+    Facebook.login(["publish_actions"]).then(response => {
+    }).catch(this.erro);
+
     return Facebook.api('/' + response.authResponse.userID + '?fields=id,name,gender,email,picture', []).then(result =>
 
       this.http.post(this.linkLogin, JSON.stringify({ type, userID, result }), { headers: this.headers })
         .toPromise()
-        .then(res => res.json()
-        )
+        .then(res => res.json())
     );
   }
 
   apiVincular(response, type, id): Promise<User> {
     let userID = response.authResponse.userID;
+
+    /*adiciona publish_actions ao usuario*/
+    Facebook.login(["publish_actions"]).then(response => {
+    }).catch(this.erro);
+
     return Facebook.api('/' + response.authResponse.userID + '?fields=id,name,gender,email,picture', []).then(result =>
       this.http.post(this.linkLogin, JSON.stringify({ type, id, userID, result }), { headers: this.headers })
         .toPromise()
-        .then(res => res.json()
-        )
+        .then(res => res.json())
     );
   }
 
@@ -104,7 +111,6 @@ export class FacebookService {
   private extractPost(res: Response) {
     let retorno = { type: false, message: '' };
     let data = res.json();
-    //alert(JSON.stringify(data));
     if (data !== null) {
       retorno.type = true;
       retorno.message = 'Publicado com sucesso';
@@ -115,7 +121,6 @@ export class FacebookService {
   }
 
   private handleErrorMessage(error: any) {
-    //alert(JSON.stringify(error.json()));
     let retorno = { error: true, type: false, message: 'Falha na conexão' };
     return retorno;
   }

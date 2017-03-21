@@ -42,9 +42,7 @@ export class UserService {
       .then(
       () => {
         this.events.publish('user:changed', user);
-      },
-      error => alert('Erro ao carregar dados')
-      );
+      });
   }
 
   public get(): Promise<User> {
@@ -59,7 +57,6 @@ export class UserService {
 
   public deslogar() {
     return this.storage.remove('usuarioAtual').then(response => {
-      console.log("deslogado");
     });
   }
 

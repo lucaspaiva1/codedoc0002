@@ -11,7 +11,6 @@ export class BuscaService {
   private link:string="http://dsoutlet.com.br/igrejaApi/busca.php?usersAll";
 
   constructor(public http: Http) {
-    console.log('Hello UserService Provider');
   }
 
   usersAll():Promise<User[]>{

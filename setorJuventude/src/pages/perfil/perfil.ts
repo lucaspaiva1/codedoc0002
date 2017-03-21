@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController, NavParams, AlertController, Platform, ToastController, LoadingController, Loading } from 'ionic-angular';
-import { Events } from 'ionic-angular';
+import { ActionSheetController, AlertController, ToastController, LoadingController, Loading } from 'ionic-angular';
 import { Camera } from 'ionic-native';
 import { User } from '../../model/User';
 import { FacebookService } from '../../providers/facebook-service';
 import { UserService } from '../../providers/user-service';
 import { ContaService } from '../../providers/conta-service';
-
-declare var cordova: any;
-
 
 @Component({
   selector: 'page-perfil',
@@ -26,16 +22,12 @@ export class PerfilPage {
 
   constructor(
     private toastCtrl: ToastController,
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public platform: Platform,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public userService: UserService,
     public facebookService: FacebookService,
     public contaService: ContaService,
     public actionSheetCtrl: ActionSheetController,
-    public events: Events
   ) {
 
     this.userService.get().then(response => {
@@ -50,7 +42,7 @@ export class PerfilPage {
         this.userService.set(response);
         alert("Conta do Facebook vinculada com Sucesso")
       } else {
-        alert("erro");
+        alert("Falha na operação");
       }
     });
   }
@@ -176,8 +168,6 @@ export class PerfilPage {
       saveToPhotoAlbum: false
     }).then(imageData => {
       this.user.URLFoto = "data:image/jpeg;base64," + imageData;
-    }, error => {
-      alert("ERROR -> " + JSON.stringify(error));
     });
   }
 
@@ -193,8 +183,6 @@ export class PerfilPage {
       saveToPhotoAlbum: true
     }).then(imageData => {
       this.user.URLFoto = "data:image/jpeg;base64," + imageData;
-    }, error => {
-      alert("ERROR -> " + JSON.stringify(error));
     });
   }
 

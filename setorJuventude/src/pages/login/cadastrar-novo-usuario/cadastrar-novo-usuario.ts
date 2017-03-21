@@ -1,16 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { NavController, AlertController, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '../../../model/User';
 import { ContaService } from '../../../providers/conta-service';
 import { StatusBar } from 'ionic-native';
 
-/*
-  Generated class for the CadastarNovoUsuario page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-cadastrar-novo-usuario',
   templateUrl: 'cadastrar-novo-usuario.html'
@@ -22,13 +16,11 @@ export class CadastrarNovoUsuarioPage {
   constructor(
     private toastCtrl: ToastController,
     public navCtrl: NavController,
-    public navParams: NavParams,
     private formBuilder: FormBuilder,
     public alertCtrl: AlertController,
-    private contaService: ContaService
-  ) {
-    
-    
+    private contaService: ContaService) {
+
+
     //Configurando objeto user com campos para validação
     this.user = this.formBuilder.group({
       nome: ['', Validators.compose([Validators.required])],
@@ -39,13 +31,10 @@ export class CadastrarNovoUsuarioPage {
       repSenha: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
     });
   }
-  ionViewDidEnter(){
+
+  ionViewDidEnter() {
     StatusBar.overlaysWebView(true);
     StatusBar.show();
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CadastrarNovoUsuarioPage');
   }
 
   validate(): boolean {
@@ -110,8 +99,8 @@ export class CadastrarNovoUsuarioPage {
     return false;
   }
 
-  senhas():boolean{
-    if(this.user.get('senha').value == this.user.get('repSenha').value){
+  senhas(): boolean {
+    if (this.user.get('senha').value == this.user.get('repSenha').value) {
       return true;
     } else {
       alert("Senhas estão diferentes");
@@ -126,7 +115,6 @@ export class CadastrarNovoUsuarioPage {
       // process the data
       this.contaService.cadastrar("cadastro", this.user.get('nome').value, this.user.get('nascimento').value, this.user.get('genero').value, this.user.get('email').value, this.user.get('senha').value)
         .then(res => {
-          console.log(res);
           if (res) {
             let toast = this.toastCtrl.create({
               message: 'Usuário cadastrado',

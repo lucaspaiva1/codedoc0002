@@ -3,12 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { BuscaPage } from '../busca/busca';
 import { GoogleMap, GoogleMapsEvent, GoogleMapsLatLng, CameraPosition, GoogleMapsMarkerOptions, GoogleMapsMarker, GoogleMapsPolygon } from 'ionic-native';
 import { EditarForaniaPage } from '../editar-forania/editar-forania';
-/*
-  Generated class for the Mapa page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 
 @Component({
   selector: 'page-mapa',
@@ -869,11 +863,7 @@ export class MapaPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MapaPage');
-  }
-
+  
   // Load map only after view is initialize
   ngAfterViewInit() {
     this.loadMap();

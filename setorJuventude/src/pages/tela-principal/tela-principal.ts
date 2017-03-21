@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
 import { FacebookService } from '../../providers/facebook-service';
 import { UserService } from '../../providers/user-service';
 import { CalendarioPage } from '../calendario/calendario';
@@ -21,13 +20,13 @@ export class TelaPrincipalPage {
   buscar = BuscaPage;
   mapa = MapaPage;
 
-  constructor(public navCtrl: NavController, public facebookService: FacebookService, public userService: UserService) {
+  constructor(public facebookService: FacebookService, public userService: UserService) {
 
   }
-  
+
   ionViewDidEnter(){
     StatusBar.overlaysWebView(true);
     StatusBar.show();
   }
-  
+
 }

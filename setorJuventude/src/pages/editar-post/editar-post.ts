@@ -20,8 +20,8 @@ export class EditarPostPage {
     this.postService.getPublicacao(id).then(res => {
       if (res.type == true) {
         this.publicacao = res.data;
-      }else{
-        alert(res.message);
+      } else {
+        this.presentToast(res.message);
         this.navCtrl.pop();
       }
     });
@@ -32,7 +32,7 @@ export class EditarPostPage {
       if (res.type == true) {
         this.navCtrl.pop();
       } else {
-        console.log(res.message);
+        this.presentToast(res.message);
       }
     });
   }
@@ -49,8 +49,6 @@ export class EditarPostPage {
       saveToPhotoAlbum: false
     }).then(imageData => {
       this.publicacao.LinkImagem = "data:image/jpeg;base64," + imageData;
-    }, error => {
-      alert("ERROR -> " + JSON.stringify(error));
     });
   }
 
@@ -66,8 +64,6 @@ export class EditarPostPage {
       saveToPhotoAlbum: true
     }).then(imageData => {
       this.publicacao.LinkImagem = "data:image/jpeg;base64," + imageData;
-    }, error => {
-      alert("ERROR -> " + JSON.stringify(error));
     });
   }
 

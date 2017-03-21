@@ -2,12 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import { Publicacao } from '../model/publicacao';
 import 'rxjs/add/operator/toPromise';
-/*
-  Generated class for the User provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class PublicacaoService {
 
