@@ -39,7 +39,7 @@
 		$numrow = $result->num_rows;
 		
 		if($numrow !== 1){
-			echo json_encode(false);
+			echo json_encode($linkImagem);
 		}else{
 			//apagando no banco de dados
 			$sql = "delete from publicacao where TempoPermanencia <= CURRENT_DATE;";
