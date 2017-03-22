@@ -1142,7 +1142,7 @@ export class MapaPage {
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
-              this.selecionar('Brejões');
+              this.selecionar('Brejões,teste1,teste2');
             });
         });
       });

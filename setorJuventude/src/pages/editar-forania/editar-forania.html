@@ -11,8 +11,8 @@
 
     <ion-list>
         <ion-item>
-            <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Nome</div>
-            <h2 style="color: black">{{nomeCidade}}</h2>
+            <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Cidades:</div>
+            <h2 *ngFor="let cidade of nomeCidade" style="color: black">cidade</h2>
         </ion-item>
     </ion-list>
 
