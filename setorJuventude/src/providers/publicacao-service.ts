@@ -43,7 +43,6 @@ export class PublicacaoService {
   }
 
   novaPublicacao(publicacao: Publicacao): Promise<any> {
-    alert(JSON.stringify(publicacao));
     return this.http
       .post('http://www.dsoutlet.com.br/igrejaApi/addPublicacao.php', JSON.stringify(publicacao), { headers: this.headers })
       .toPromise()
@@ -103,7 +102,6 @@ export class PublicacaoService {
   private extractNewData(res: Response) {
     let retorno = { type: false, message: '' };
     let data = res.json();
-    alert(JSON.stringify(data));
     if (data === true) {
       retorno.type = true;
       retorno.message = 'Publicação Realizada';
