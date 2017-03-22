@@ -22,6 +22,9 @@ import { ContatoService } from '../providers/contato-service';
 import { RegiaoService } from '../providers/regiao-service';
 import { Storage } from '@ionic/storage';
 
+//directives
+import { Autoresize } from '../components/autoresize/autoresize';
+
 //Login
 import { LoginPage } from '../pages/login/login/login';
 import { EsqueciSenhaPage } from '../pages/login/esqueci-senha/esqueci-senha';
@@ -80,7 +83,8 @@ import { LiturgiaPage } from '../pages/liturgia/liturgia';
     BuscaEventosPage,
     MapaPage,
     LiturgiaPage,
-    EditarForaniaPage
+    EditarForaniaPage,
+    Autoresize
   ],
   imports: [
     NgCalendarModule,

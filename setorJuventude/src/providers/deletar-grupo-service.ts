@@ -4,12 +4,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/toPromise';
 
-/*
-  Generated class for the DeletarGrupoService provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class DeletarGrupoService {
 
@@ -17,7 +11,6 @@ export class DeletarGrupoService {
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(public http: Http) {
-    console.log('Hello DeletarGrupoService Provider');
   }
 
   public deletar(id: number): Promise<boolean> {

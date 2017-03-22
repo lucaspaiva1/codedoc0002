@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder } from '@angular/forms';
 import { EsqueciSenhaPage } from '../esqueci-senha/esqueci-senha'
 import { TelaPrincipalPage } from '../../tela-principal/tela-principal';
@@ -20,7 +20,6 @@ export class LoginEmailPage {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams,
     private formBuilder: FormBuilder,
     public alertCtrl: AlertController,
     public contaService: ContaService,
@@ -33,13 +32,9 @@ export class LoginEmailPage {
       senha: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
     });
   }
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     StatusBar.overlaysWebView(true);
     StatusBar.show();
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginEmailPage');
   }
 
   validate(): boolean {
@@ -91,11 +86,8 @@ export class LoginEmailPage {
           if (response.connected) {
             this.userService.set(response);
             this.navCtrl.setRoot(TelaPrincipalPage);
-          } else {
-            alert("erro");
           }
         }
-
       });
     }
   }

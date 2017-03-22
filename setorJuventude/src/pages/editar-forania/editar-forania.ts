@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { RegiaoService } from '../../providers/regiao-service';
 import { User } from '../../model/User';
 import { Regioes } from '../../model/regioes';
@@ -23,6 +23,7 @@ export class EditarForaniaPage {
   constructor(
     public navCtrl: NavController,
     public buscaService: BuscaService,
+    public alertCtrl: AlertController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public regicaoService: RegiaoService) {
@@ -34,7 +35,10 @@ export class EditarForaniaPage {
   private carregarSelecionados() {
     this.regicaoService.getRegiao(this.nomeCidade).then(res => {
       this.selecionados = res;
-    }).catch(() => alert("Erro ao se comunicar com o servidor"));
+    }).catch(() => {
+      this.showConfirm(1);
+      this.carregarSelecionados();
+    });
   }
 
   private carregarUsuarios() {
@@ -51,7 +55,10 @@ export class EditarForaniaPage {
         }
       }
 
-    }).catch(() => alert("Erro ao se comunicar com o servidor"));
+    }).catch(() => {
+      this.showConfirm(2);
+      this.carregarUsuarios();
+    });
   }
 
   private adicionarUser(usuario: User) {
@@ -91,7 +98,7 @@ export class EditarForaniaPage {
     this.editar = !this.editar;
   }
 
-  salvar() {
+  private salvar() {
     let regiao = new Regioes();
     regiao.nome = this.nomeCidade
     regiao.ids = this.selecionados;
@@ -112,8 +119,31 @@ export class EditarForaniaPage {
 
   }
 
-  cancelar() {
+  private cancelar() {
     this.navCtrl.popToRoot();
+  }
+
+  private showConfirm(type: number) {
+    let confirm = this.alertCtrl.create({
+      title: 'Falha na conexão',
+      message: 'Tentar Novamente ?',
+      buttons: [
+        {
+          text: 'Cancelar'
+        },
+        {
+          text: 'Ok',
+          handler: () => {
+            if (type == 1) {
+              this.carregarSelecionados();
+            } else if (type == 2) {
+              this.carregarUsuarios();
+            }
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { BuscaService } from '../../providers/busca-service';
 import { GrupoService } from '../../providers/grupo-service';
 import { Grupo } from '../../model/grupo';
@@ -18,7 +18,6 @@ export class AddGrupoPage {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams,
     public buscaService: BuscaService,
     public grupoService: GrupoService) {
 

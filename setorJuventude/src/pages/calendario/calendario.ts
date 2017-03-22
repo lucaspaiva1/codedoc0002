@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { NavController, NavParams, LoadingController, ActionSheetController, } from 'ionic-angular';
+import { NavController, LoadingController, ActionSheetController, } from 'ionic-angular';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { AddEventoPage } from '../add-evento/add-evento';
 import { EditarEventoPage } from '../editar-evento/editar-evento';
@@ -12,13 +12,6 @@ import { MonthViewComponent } from 'ionic2-calendar/monthview';
 import { WeekViewComponent } from 'ionic2-calendar/weekview';
 import { DayViewComponent } from 'ionic2-calendar/dayview';
 
-
-/*
-  Generated class for the Calendario page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-calendario',
   templateUrl: 'calendario.html'
@@ -42,15 +35,13 @@ export class CalendarioPage {
   });
 
 
-  constructor(
-    public actionSheetCtrl: ActionSheetController,
+  constructor(public actionSheetCtrl: ActionSheetController,
     public loadingController: LoadingController,
     public calendarMd: NgCalendarModule,
     public navCtrl: NavController,
     public userService: UserService,
-    public navParams: NavParams,
-    public eventoService: EventoService
-  ) {
+    public eventoService: EventoService) {
+
     this.loader.present();
     this.calendar = {
       mode: 'month',
@@ -64,6 +55,7 @@ export class CalendarioPage {
   ionViewWillEnter() {
     this.getEventos();
   }
+
   // funções do calendario
   onCurrentDateChanged(event: Date) {
     this.calendar.currentDate = event;
@@ -78,7 +70,7 @@ export class CalendarioPage {
   }
 
   onViewTitleChanged = (title: string) => { // atualiza o título
-    let data = title.split(' '); 
+    let data = title.split(' ');
     this.mes = data[0] + ' - ' + data[1];
   };
 
@@ -88,14 +80,10 @@ export class CalendarioPage {
 
   private getEventos() {
     this.eventoService.getEventos().then(res => {
-
       if (res.type == true) {
         this.eventos = res.data;
-
         let events = [];
-
         for (let evento of this.eventos) {
-
           events.push({
             id: evento.IDEvento,
             title: evento.Titulo,
@@ -104,17 +92,10 @@ export class CalendarioPage {
             allDay: evento.EventoDiario
           });
         }
-
         this.eventSource = events;
-
-      }
-      else {
-        console.log("error");
       }
       this.loader.dismiss();
-
     });
-
   }
 
   private adicionar() {

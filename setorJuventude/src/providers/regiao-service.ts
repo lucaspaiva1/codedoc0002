@@ -3,7 +3,6 @@ import { Http, Headers, Response } from '@angular/http';
 import { Regioes } from '../model/regioes';
 import 'rxjs/add/operator/toPromise';
 
-
 @Injectable()
 export class RegiaoService {
 

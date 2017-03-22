@@ -47,7 +47,6 @@ export class LoginPage {
   }
 
   ionViewWillEnter(){
-    
     StatusBar.overlaysWebView(true);
     StatusBar.backgroundColorByHexString('#FF6600'); // mudando a cor da barra de ferramentas
     StatusBar.hide();
@@ -65,7 +64,6 @@ export class LoginPage {
           this.navCtrl.setRoot(TelaPrincipalPage, { id: response.IDUsuario });
         } else {
           this.logando = false;
-          alert("erro");
         }
       }).catch(()=>this.logando = false);
     }

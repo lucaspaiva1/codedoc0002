@@ -3,7 +3,6 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { User } from '../model/User';
 
-
 @Injectable()
 export class ContaService {
 
@@ -11,7 +10,6 @@ export class ContaService {
 
   constructor(public http: Http) {
   }
-
 
   logar(type, email, senha): Promise<any> {
 
@@ -23,7 +21,7 @@ export class ContaService {
   cadastrar(type: String, Nome: String, Nascimento, Genero: String, Email: String, Senha: String): Promise<boolean> {
     return this.http.post('http://dsoutlet.com.br/igrejaApi/conta.php', JSON.stringify({ type, Nome, Nascimento, Genero, Email, Senha }), this.headers)
       .toPromise()
-      .then(res => res.json(), error => alert("erro no cadastro"))
+      .then(res => res.json(), error => alert("Erro no cadastro"))
       .catch(err => {
         alert("Erro ao se comunicar com servidor, tente novamente mais tarde");
       });
@@ -33,9 +31,9 @@ export class ContaService {
 
     return this.http.post('http://dsoutlet.com.br/igrejaApi/editarPerfil.php', JSON.stringify(usuario), this.headers)
       .toPromise()
-      .then(res => res.json(), error => alert("erro ao editar dados"))
+      .then(res => res.json(), error => alert("Erro ao editar dados"))
       .catch(err => {
-        alert(err);
+        //alert(err);
       });
   }
 }

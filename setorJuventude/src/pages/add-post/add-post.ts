@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
+import { NavController, ActionSheetController, ToastController, LoadingController, Loading } from 'ionic-angular';
 import { Publicacao } from '../../model/publicacao';
 import { PublicacaoService } from '../../providers/publicacao-service';
 import { Camera } from 'ionic-native';
@@ -22,8 +22,6 @@ export class AddPostPage {
   constructor(
     public navCtrl: NavController,
     public toastCtrl: ToastController,
-    public platform: Platform,
-    public loadingCtrl: LoadingController,
     public postService: PublicacaoService,
     private notificacaoService: NotificacaoService,
     private facebookService: FacebookService
@@ -43,6 +41,8 @@ export class AddPostPage {
           this.notificacaoService.push("Nova publicação");
           this.presentToast(res.message);
           this.publicacao.Texto = this.publicacao.Titulo + '\n' + this.publicacao.Texto; //vinculando o titulo com o texto
+
+          /*publica no feed do usuario se a opcao for marcada*/
           if (this.feed) {
             if (this.publicacao.LinkImagem == '') {
               this.facebookService.postOnFeed(this.publicacao);
@@ -50,6 +50,8 @@ export class AddPostPage {
               this.facebookService.photoOnFeed(this.publicacao);
             }
           }
+
+          /*publica na pagina do setor como sendo o usuario se a opcao for marcada*/
           if (this.page) {
             if (this.publicacao.LinkImagem == '') {
               this.facebookService.postOnPage(this.publicacao);
@@ -77,8 +79,6 @@ export class AddPostPage {
       saveToPhotoAlbum: false
     }).then(imageData => {
       this.publicacao.LinkImagem = "data:image/jpeg;base64," + imageData;
-    }, error => {
-      alert("ERROR -> " + JSON.stringify(error));
     });
   }
 
@@ -94,8 +94,6 @@ export class AddPostPage {
       saveToPhotoAlbum: true
     }).then(imageData => {
       this.publicacao.LinkImagem = "data:image/jpeg;base64," + imageData;
-    }, error => {
-      alert("ERROR -> " + JSON.stringify(error));
     });
   }
 

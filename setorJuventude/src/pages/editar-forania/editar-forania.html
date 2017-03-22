@@ -64,7 +64,7 @@
         </ion-item>
     </ion-list>
 
-    <ion-fab *ngIf="!editar" class="floating-button-adm" right bottom>
+    <ion-fab *ngIf="!editar && permissao=='a'" class="floating-button-adm" right bottom>
         <button ion-fab (click)="toggleEditar()">
      <ion-icon name="create"></ion-icon>
    </button>

@@ -15,7 +15,7 @@
 
     <ion-item>
       <ion-label floating>Texto</ion-label>
-      <ion-input type="text" [(ngModel)]="publicacao.Texto"></ion-input>
+      <ion-textarea autoresize type="text" [(ngModel)]="publicacao.Texto"></ion-textarea>
     </ion-item>
 
     <ion-item>
@@ -40,7 +40,7 @@
       <ion-label>
         <ion-row>
           <ion-col width-10><ion-icon style="padding-rigth: 10px" name="logo-facebook"></ion-icon></ion-col>
-          <ion-col width-90>Feed</ion-col>
+          <ion-col width-90>Linha do Tempo</ion-col>
         </ion-row>
       </ion-label>
       <ion-toggle [(ngModel)]="feed"></ion-toggle>
@@ -50,7 +50,7 @@
       <ion-label>
         <ion-row>
           <ion-col width-10><ion-icon style="padding-right: 10px" name="logo-facebook"></ion-icon></ion-col>
-          <ion-col width-90>Página</ion-col>
+          <ion-col width-90>Página Setor Juventude</ion-col>
         </ion-row>
       </ion-label>
       <ion-toggle [(ngModel)]="page"></ion-toggle>

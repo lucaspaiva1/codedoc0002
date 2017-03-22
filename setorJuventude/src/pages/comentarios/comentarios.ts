@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Content, NavController, NavParams, LoadingController, ActionSheetController, ToastController, AlertController, Platform } from 'ionic-angular';
-
+import { Content, NavParams, LoadingController, ActionSheetController, ToastController, AlertController, Platform } from 'ionic-angular';
 import { ComentarioService } from '../../providers/comentario-service';
 import { Comentario } from '../../model/comentario';
 import { UserService } from '../../providers/user-service';
@@ -10,6 +9,7 @@ import { UserService } from '../../providers/user-service';
   templateUrl: 'comentarios.html'
 })
 export class ComentariosPage {
+
   @ViewChild(Content) content: Content;
   private postID: number;
   private comentarios: Comentario[] = [];
@@ -24,7 +24,6 @@ export class ComentariosPage {
 
   constructor(public actionSheetCtrl: ActionSheetController,
     public platform: Platform,
-    public navCtrl: NavController,
     public navParams: NavParams,
     public comentService: ComentarioService,
     public loadingController: LoadingController,
@@ -56,7 +55,7 @@ export class ComentariosPage {
     this.content.resize();
     this.content.scrollToBottom();
   }
-  
+
   private scrollBottom(){
     this.content.resize();
     this.content.scrollToBottom();

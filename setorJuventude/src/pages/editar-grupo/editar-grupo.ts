@@ -63,8 +63,6 @@ export class EditarGrupoPage {
           }
         }
       }
-      console.log(this.users);
-
     }).catch(() => this.showConfirm(1));
   }
 
@@ -108,7 +106,6 @@ export class EditarGrupoPage {
   salvar() {
     this.grupo.ids = this.selecionados;
     let ids = this.grupo.ids;
-    alert(JSON.stringify(ids));
     this.grupoService.editGrupo(this.grupo).then(res => {
       if (res.type == true) {
         this.toggleEditar();
@@ -129,9 +126,8 @@ export class EditarGrupoPage {
   }
 
   excluir() {
-    this.deleteService.deletar(this.grupo.ID).then(res=>{
-       if (res == true) {
-
+    this.deleteService.deletar(this.grupo.ID).then(res => {
+      if (res == true) {
         let toast = this.toastCtrl.create({
           message: 'Deletado com sucesso',
           duration: 2000,
@@ -141,7 +137,12 @@ export class EditarGrupoPage {
         toast.present();
         this.navCtrl.popToRoot();
       } else {
-        alert("não foi possivel remover");
+        let toast = this.toastCtrl.create({
+          message: 'Não foi possível remover',
+          duration: 2000,
+          position: 'top'
+        });
+        toast.present();
       }
     });
   }

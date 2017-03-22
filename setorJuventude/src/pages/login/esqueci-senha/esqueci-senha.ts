@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { NavController, AlertController, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { SenhaService } from '../../../providers/senha-service';
 
-/*
-  Generated class for the EsqueciSenha page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-esqueci-senha',
   templateUrl: 'esqueci-senha.html'
@@ -20,7 +14,6 @@ export class EsqueciSenhaPage {
   constructor(
     private toastCtrl: ToastController,
     public navCtrl: NavController,
-    public navParams: NavParams,
     private formBuilder: FormBuilder,
     public alertCtrl: AlertController,
     private esqueciSenhaService: SenhaService
@@ -29,10 +22,6 @@ export class EsqueciSenhaPage {
     this.email = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
     });
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EsqueciSenhaPage');
   }
 
   validate(): boolean {
@@ -74,8 +63,8 @@ export class EsqueciSenhaPage {
           });
           toast.present();
           this.navCtrl.pop();
-        }else{
-          alert("Email não encontrado")
+        } else {
+          alert("Email não encontrado");
         }
       }
       )

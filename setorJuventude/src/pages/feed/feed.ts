@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, Events, AlertController, ActionSheetController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Events, AlertController, ActionSheetController, ToastController } from 'ionic-angular';
 import { AddPostPage } from '../add-post/add-post';
 import { EditarPostPage } from '../editar-post/editar-post';
 import { ComentariosPage } from '../comentarios/comentarios';
@@ -28,6 +28,7 @@ export class FeedPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public postService: PublicacaoService,
+    public toastCtrl: ToastController,
     public loadingController: LoadingController,
     public userService: UserService,
     public events: Events,
@@ -60,7 +61,6 @@ export class FeedPage {
       if (res.type == true) {
         this.publicacoes = res.data;
       } else {
-        console.log("error");
         this.showConfirm();
       }
       this.loader.dismiss();
@@ -100,11 +100,17 @@ export class FeedPage {
   private deletar(id: number) {
     this.postService.deletePublicacao(id).then(res => {
       if (res.type == true) {
-        console.log(res.message);
         this.carregarFeed();
-      } else {
-        console.log(res.message);
       }
+
+      let toast = this.toastCtrl.create({
+        message: res.message,
+        duration: 2000,
+        position: 'top'
+      });
+
+      toast.present();
+
     });
   }
 
@@ -149,7 +155,6 @@ export class FeedPage {
             role: 'cancel',
             icon: 'md-close',
             handler: () => {
-              console.log('Cancel clicked');
             }
           }
         ]

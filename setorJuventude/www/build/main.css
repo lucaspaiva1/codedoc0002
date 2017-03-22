@@ -23587,6 +23587,14 @@ ion-navbar, ion-toolbar {
   margin-bottom: 20px;
 }
 
+ion-textarea {
+  resize: vertical;
+}
+
+textarea {
+  resize: vertical;
+}
+
 .calendarToolbar ion-title {
   text-align: center;
   font-style: roboto;

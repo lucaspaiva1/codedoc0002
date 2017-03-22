@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
+import { NavController, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { AddGrupoPage } from '../add-grupo/add-grupo';
 import { EditarGrupoPage } from '../editar-grupo/editar-grupo';
 import { GrupoService } from '../../providers/grupo-service';
@@ -14,14 +14,14 @@ import { DeletarGrupoService } from '../../providers/deletar-grupo-service';
   templateUrl: 'busca.html'
 })
 export class BuscaPage {
+
   private grupos: Grupo[] = [];
   private permissao = "c";
-  loader: any = this.loadingController.create({
+  private loader: any = this.loadingController.create({
     content: "Carregando Grupos"
   });
 
   constructor(public navCtrl: NavController,
-    public navParams: NavParams,
     public grupoService: GrupoService,
     public loadingController: LoadingController,
     public userService: UserService,
@@ -70,13 +70,17 @@ export class BuscaPage {
           duration: 2000,
           position: 'top'
         });
-
         toast.present();
       } else {
-        alert("não foi possivel remover");
+        let toast = this.toastCtrl.create({
+          message: 'Não foi possível remover',
+          duration: 2000,
+          position: 'top'
+        });
+        toast.present();
       }
     });
-    
+
   }
 
   mapa() {
@@ -106,7 +110,7 @@ export class BuscaPage {
     confirm.present();
   }
 
-  getItems(ev: any){
+  getItems(ev: any) {
     //reinicializar itens
     this.carregarGrupos();
 
@@ -118,7 +122,7 @@ export class BuscaPage {
       this.grupos = this.grupos.filter((item) => {
         return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
-    }else{
+    } else {
       this.carregarGrupos();
     }
 

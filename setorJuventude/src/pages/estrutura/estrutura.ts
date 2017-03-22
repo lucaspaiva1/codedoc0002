@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 import { Administrador } from '../../model/administradores';
 import { EstruturaService } from '../../providers/estrutura-service';
 
-/*
-  Generated class for the Estrutura page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-estrutura',
   templateUrl: 'estrutura.html'
@@ -17,20 +11,33 @@ export class EstruturaPage {
 
   private administradores: Administrador[] = [];
 
-  constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams,
-    private estrutraService : EstruturaService
-    ) { 
+  constructor(public alertCtrl: AlertController, private estrutraService: EstruturaService) {
+    this.carregarUsuarios();
+  }
 
-      this.estrutraService.administradoresAll().then(res=>{
-        this.administradores = res;
-      }).catch(()=>alert("Erro ao se comunicar ocm o servidor"));
+  private carregarUsuarios() {
+    this.estrutraService.administradoresAll().then(res => {
+      this.administradores = res;
+    }).catch(() => this.showConfirm);
+  }
 
-    }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EstruturaPage');
+  private showConfirm(type: number) {
+    let confirm = this.alertCtrl.create({
+      title: 'Falha na conexão',
+      message: 'Tentar Novamente ?',
+      buttons: [
+        {
+          text: 'Cancelar'
+        },
+        {
+          text: 'Ok',
+          handler: () => {
+            this.carregarUsuarios();
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
 }

@@ -4,19 +4,12 @@ import 'rxjs/add/operator/map';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-/*
-  Generated class for the NotificacaoService provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class NotificacaoService {
 
   private headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8', 'Authorization': 'Basic Y2RkNmU0ZDAtYmFiOC00NzRkLWE1NmUtNTZkNTFkMGJjZTg0' });
 
   constructor(public http: Http) {
-    console.log('Hello NotificacaoService Provider');
   }
 
   push(mensagem) {
