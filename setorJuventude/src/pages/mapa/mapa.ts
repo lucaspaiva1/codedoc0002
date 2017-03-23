@@ -882,14 +882,6 @@ export class MapaPage {
         tilt: 30
       }).then(() => {
 
-        //add a marker
-        map.addMarker({
-          position: new GoogleMapsLatLng(this._latitude, this._longitude),
-          title: 'Você está aqui!'
-        }).then((marker: GoogleMapsMarker) => {
-          marker.showInfoWindow();
-        });
-
 
         //Add Polygons
         map.addPolygon({
@@ -1142,7 +1134,7 @@ export class MapaPage {
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
-              this.selecionar('Brejões,teste1,teste2');
+              this.selecionar('Brejões');
             });
         });
       });

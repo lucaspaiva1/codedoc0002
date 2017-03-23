@@ -5,6 +5,7 @@ import { PublicacaoService } from '../../providers/publicacao-service';
 import { Camera } from 'ionic-native';
 import { NotificacaoService } from '../../providers/notificacao-service';
 import { FacebookService } from '../../providers/facebook-service';
+import { UserService } from '../../providers/user-service';
 
 declare var cordova: any;
 
@@ -18,15 +19,19 @@ export class AddPostPage {
   private loading: Loading;
   private feed: boolean = false;
   private page: boolean = false;
+  private myID;
 
   constructor(
     public navCtrl: NavController,
     public toastCtrl: ToastController,
+    public storage: UserService,
     public postService: PublicacaoService,
     private notificacaoService: NotificacaoService,
     private facebookService: FacebookService
   ) {
-
+    this.storage.get().then(res => {
+      this.myID = res.IDUsuario;
+    });
   }
 
   private publicar() {
@@ -36,6 +41,9 @@ export class AddPostPage {
     } else if (this.publicacao.Titulo == '') {
       this.presentToast('Preencha o Título!');
     } else {
+
+      this.publicacao.Usuario_IDUsuario = this.myID;
+
       this.postService.novaPublicacao(this.publicacao).then(res => {
         if (res.type == true) {
           this.notificacaoService.push("Nova publicação");
@@ -74,8 +82,6 @@ export class AddPostPage {
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
       allowEdit: true,
       encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 500,
-      targetHeight: 500,
       saveToPhotoAlbum: false
     }).then(imageData => {
       this.publicacao.LinkImagem = "data:image/jpeg;base64," + imageData;
@@ -89,8 +95,6 @@ export class AddPostPage {
       sourceType: Camera.PictureSourceType.CAMERA,
       allowEdit: true,
       encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 500,
-      targetHeight: 500,
       saveToPhotoAlbum: true
     }).then(imageData => {
       this.publicacao.LinkImagem = "data:image/jpeg;base64," + imageData;
