@@ -23672,8 +23672,12 @@ textarea {
 }
 
 .cardItem {
-  padding: 0px;
-  padding-bottom: -10px;
+  padding: 0 0 -10px;
+}
+
+.semPost {
+  text-align: center;
+  color: gray;
 }
 
 .cit_direita_italico {

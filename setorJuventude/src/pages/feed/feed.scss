@@ -1,14 +1,17 @@
-page-feed {
+page-feed {}
 
-}
-.no-border{
+.no-border {}
 
+.shaddow {
+  border: 1px;
+  box-shadow: 5px;
 }
-.shaddow{
-    border: 1px;
-    box-shadow: 5px;
+
+.cardItem {
+  padding: 0 0 -10px;
 }
-.cardItem{
-    padding: 0px;
-    padding-bottom: -10px;
+
+.semPost {
+  text-align: center;
+  color: gray;
 }

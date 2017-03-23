@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { RegiaoService } from '../../providers/regiao-service';
+import { UserService } from '../../providers/user-service';
 import { User } from '../../model/User';
 import { Regioes } from '../../model/regioes';
 import { BuscaService } from '../../providers/busca-service';
@@ -25,14 +26,21 @@ export class EditarForaniaPage {
     public navCtrl: NavController,
     public buscaService: BuscaService,
     public alertCtrl: AlertController,
+    public userService: UserService,
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public regicaoService: RegiaoService) {
-    let dados = this.navParams.get('nomeForania').split(",");
-    this.nomeForania = dados[0];
-    this.nomeCidades = dados.splice(1, 1);
-    this.carregarUsuarios();
-    this.carregarSelecionados();
+      let dados = this.navParams.get('nomeForania').split(",");
+      this.nomeForania = dados[0];
+      dados.shift();
+      this.nomeCidades = dados;
+
+      this.userService.get().then(user=>{
+        this.permissao = user.Tipo;
+      });
+
+      this.carregarUsuarios();
+      this.carregarSelecionados();
   }
 
   private carregarSelecionados() {

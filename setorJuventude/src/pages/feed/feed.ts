@@ -19,9 +19,7 @@ export class FeedPage {
   private editarPost = EditarPostPage;
   private comentarios = ComentariosPage;
   private permissao = "c";
-  loader: any = this.loadingController.create({
-    content: "Carregando Publicações"
-  });
+
 
   constructor(
     public alertCtrl: AlertController,
@@ -36,20 +34,11 @@ export class FeedPage {
 
   ) {
     StatusBar.show();
-    /*events.subscribe('tipo:changed', tipo => {
-        this.permissao = tipo;
-    });*/
     this.userService.get().then(res => {
       this.permissao = res.Tipo;
     });
 
     this.evento();
-    this.loader.present();
-
-
-    // this.userService.get().then(user=>{
-    //   this.permissao = user.Tipo;
-    // });
   }
 
   ionViewWillEnter() {
@@ -57,13 +46,20 @@ export class FeedPage {
   }
 
   private carregarFeed() {
+
+    let loader = this.loadingController.create({
+      content: "Carregando Publicações"
+    });
+
+    loader.present();
+
     this.postService.getPublicacoes().then(res => {
+      loader.dismiss();
       if (res.type == true) {
         this.publicacoes = res.data;
       } else {
         this.showConfirm();
       }
-      this.loader.dismiss();
     });
   }
 
@@ -91,10 +87,14 @@ export class FeedPage {
   }
 
   private doRefresh(refresher) {
-    this.carregarFeed();
-    setTimeout(() => {
+    this.postService.getPublicacoes().then(res => {
       refresher.complete();
-    }, 2000);
+      if (res.type == true) {
+        this.publicacoes = res.data;
+      } else {
+        this.showConfirm();
+      }
+    });
   }
 
   private deletar(id: number) {

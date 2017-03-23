@@ -186,7 +186,7 @@ export class MapaPage {
     new GoogleMapsLatLng(-13.8674136, -40.5800629),
     new GoogleMapsLatLng(-13.8674136, -40.5649567),
     new GoogleMapsLatLng(-13.8654137, -40.5560303),
-    new GoogleMapsLatLng(-13.864747, -405.464172),
+    new GoogleMapsLatLng(-13.864747, -40.5464172),
     new GoogleMapsLatLng(-13.8580806, -40.5402374),
     new GoogleMapsLatLng(-13.864747, -40.5251312),
     new GoogleMapsLatLng(-13.8794127, -40.5251312),
@@ -578,68 +578,68 @@ export class MapaPage {
         //Add Polygons
         map.addPolygon({
           points: this.nossaSenhoraDaConceição,
-          strokeColor: '#FFA54F',
+          strokeColor: '#43CD80',
           strokeWidth: 5,
-          fillColor: '#FFA54F'
+          fillColor: '#43CD80'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
-              this.selecionar('Nª Senhora da Conceição,Brejões, Nova Itarana,Irajuba,Km 100');
+              this.selecionar('Nª Senhora da Conceição,Brejões,Nova Itarana,Irajuba,Km 100');
             });
         });
         map.addPolygon({
           points: this.nossaSenhoraAuxiliadora,
-          strokeColor: '#FFA54F',
+          strokeColor: '#A020F0',
           strokeWidth: 5,
-          fillColor: '#FFA54F'
+          fillColor: '#A020F0'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
-              this.selecionar('Nª Senhora Auxiliadora');
+              this.selecionar('Nª Senhora Auxiliadora,Santa Inês,Cravolândia,Itaquara,Jaguaquara');
             });
         });
         map.addPolygon({
           points: this.nossaSenhoraDasGracas,
-          strokeColor: '#FFA54F',
+          strokeColor: '#1C86EE',
           strokeWidth: 5,
-          fillColor: '#FFA54F'
+          fillColor: '#1C86EE'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
-              this.selecionar('Nª Senhora Das Gracas');
+              this.selecionar('Nª Senhora Das Gracas,Maracás,Lagedo do Tabocal,Itituçú,Planaltino,Marcionilio Souza');
             });
         });
         map.addPolygon({
           points: this.nossaSenhoraDaBoaNova,
-          strokeColor: '#43CD80',
+          strokeColor: '#FF8C69',
           strokeWidth: 5,
-          fillColor: '#43CD80'
+          fillColor: '#FF8C69'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
-              this.selecionar('Nª Senhora da BoaNova');
+              this.selecionar('Nª Senhora da BoaNova,Manoel Vitorino,Mirante,Boa Nova,Valentim');
             });
         });
         map.addPolygon({
           points: this.saoJose,
-          strokeColor: '#43CD80',
+          strokeColor: '#2E8B57',
           strokeWidth: 5,
-          fillColor: '#43CD80'
+          fillColor: '#2E8B57'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
-              this.selecionar('Sao Jose');
+              this.selecionar('Sao Jose,Aiquara,Itagi,Apuarema,Itagibá,Dario Meira,Jitaúna');
             });
         });
         map.addPolygon({
           points: this.santoAntônio,
-          strokeColor: '#43CD80',
+          strokeColor: '#FFFF00',
           strokeWidth: 5,
-          fillColor: '#43CD80'
+          fillColor: '#FFFF00'
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
-              this.selecionar('Santo Antônio e Nª Senhora das Graças');
+              this.selecionar('Santo Antônio e Nª Senhora das Graças,Jequié,Lafaiate Coutinho,São Roque');
             });
         });
         

@@ -21,9 +21,14 @@
 		$Local			    = $request->Local;
 		$Usuario_IDUsuario  = $request->Usuario_IDUsuario;
 		$EventoDiario		= $request->EventoDiario;
-		
-		$DataInicio = $DataInicio. " ". $HoraInicio;
-		$DataTermino = $DataTermino. " ". $HoraTermino;
+
+		if($HoraInicio !== null){
+            $DataInicio = $DataInicio. " ". $HoraInicio;
+            $DataTermino = $DataTermino. " ". $HoraTermino;
+		}else{
+            $DataInicio = $DataInicio. " 00:00:00";
+            $DataTermino = $DataTermino. " 00:00:00";
+		}
 		
 		if($EventoDiario == false){
 			$EventoDiario = 0;
@@ -34,7 +39,7 @@
 		if($Titulo !== ""){
 			$sql = "INSERT INTO evento (DataInicio, DataTermino, Titulo, Descricao, Local, Usuario_IDUsuario, EventoDiario) VALUES ('$DataInicio', '$DataTermino', '$Titulo', '$Descricao', '$Local', '$Usuario_IDUsuario', '$EventoDiario')";
 			$con->query($sql);
-			echo json_encode(true);	
+			echo json_encode(true);
 		}
 		
 	}

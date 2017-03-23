@@ -34,6 +34,15 @@
     </ion-item>
 
     <ion-item *ngIf="editar">
+      <ion-label floating>Local</ion-label>
+      <ion-input type="text" [(ngModel)]="evento.Local"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!editar">
+      <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Local</div>
+      <h2 color="dark">{{evento.Local}}</h2>
+    </ion-item>
+
+    <ion-item *ngIf="editar">
       <ion-label floating>Início</ion-label>
       <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="evento.DataInicio"></ion-datetime>
     </ion-item>

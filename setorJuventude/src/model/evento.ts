@@ -8,7 +8,7 @@ export class Evento{
   public Titulo: string;
   public Descricao: string;
   public Local: string;
-  public Usuario_IDUsuario: number = 1;
+  public Usuario_IDUsuario: number;
   public EventoDiario: boolean = false;
 
   constructor(){
