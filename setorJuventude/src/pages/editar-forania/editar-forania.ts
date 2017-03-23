@@ -12,7 +12,8 @@ import { BuscaService } from '../../providers/busca-service';
 })
 export class EditarForaniaPage {
   private editar = false;
-  private nomeCidade: string[];
+  private nomeCidades: string[];
+  private nomeForania: string;
   private users: any[] = [];
   private auxUsers: User[] = [];
   private selecionados: number[] = []; //ids dos usuarios selecionados no momento
@@ -27,13 +28,15 @@ export class EditarForaniaPage {
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public regicaoService: RegiaoService) {
-    this.nomeCidade = this.navParams.get('nomeCidade').split(",");
+    let dados = this.navParams.get('nomeForania').split(",");
+    this.nomeForania = dados[0];
+    this.nomeCidades = dados.splice(1, 1);
     this.carregarUsuarios();
     this.carregarSelecionados();
   }
 
   private carregarSelecionados() {
-    this.regicaoService.getRegiao(this.nomeCidade[0]).then(res => { // utilizar apenas o nome da primeira cidade para adicionar e para buscar
+    this.regicaoService.getRegiao(this.nomeForania).then(res => { // utilizar apenas o nome da forania adicionar e para buscar
       this.selecionados = res;
     }).catch(() => {
       this.showConfirm(1);
@@ -100,7 +103,7 @@ export class EditarForaniaPage {
 
   private salvar() {
     let regiao = new Regioes();
-    regiao.nome = this.nomeCidade[0]; // utilizar apenas o nome da primeira cidade para adicionar e para buscar
+    regiao.nome = this.nomeForania; // utilizar apenas o nome da forania para adicionar e para buscar
     regiao.ids = this.selecionados;
     this.regicaoService.editGrupo(regiao).then(res => {
       if (!res.error) {

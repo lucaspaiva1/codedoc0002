@@ -23628,6 +23628,11 @@ textarea {
   margin-bottom: 20px;
 }
 
+.title {
+  color: black;
+  text-align: center;
+}
+
 .margem-botton {
   margin-bottom: 20px;
 }
