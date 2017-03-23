@@ -16,6 +16,10 @@
     </ion-refresher-content>
   </ion-refresher>
 
+  <ion-item>
+    <h3 *ngIf="publicacoes.length == 0" class="semPost">Ainda não existem publicações</h3>
+  </ion-item>
+
   <ion-list no-lines [virtualScroll]="publicacoes">
     <ion-item class="cardItem" *virtualItem="let publicacao">
       <!--item-->

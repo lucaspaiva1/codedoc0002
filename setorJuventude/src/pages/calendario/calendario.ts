@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { NavController, LoadingController, ActionSheetController, } from 'ionic-angular';
+import { NavController, LoadingController, ActionSheetController, AlertController} from 'ionic-angular';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { AddEventoPage } from '../add-evento/add-evento';
 import { EditarEventoPage } from '../editar-evento/editar-evento';
@@ -30,26 +30,25 @@ export class CalendarioPage {
   private mes: string = 'Dezembro'; //titulo
   data = new Date();
   cont: number = 4;
-  loader = this.loadingController.create({
-    content: "Carregando eventos"
-  });
 
 
   constructor(public actionSheetCtrl: ActionSheetController,
     public loadingController: LoadingController,
     public calendarMd: NgCalendarModule,
     public navCtrl: NavController,
+    public alertCtrl: AlertController,
     public userService: UserService,
     public eventoService: EventoService) {
 
-    this.loader.present();
     this.calendar = {
       mode: 'month',
       currentDate: new Date()
     };
+
     this.userService.get().then(res => {
       this.permissao = res.Tipo;
     });
+
   }
 
   ionViewWillEnter() {
@@ -79,6 +78,13 @@ export class CalendarioPage {
   }
 
   private getEventos() {
+
+    let loader = this.loadingController.create({
+      content: "Carregando eventos"
+    });
+
+    loader.present();
+
     this.eventoService.getEventos().then(res => {
       if (res.type == true) {
         this.eventos = res.data;
@@ -94,7 +100,7 @@ export class CalendarioPage {
         }
         this.eventSource = events;
       }
-      this.loader.dismiss();
+      loader.dismiss();
     });
   }
 
@@ -102,7 +108,26 @@ export class CalendarioPage {
     this.navCtrl.push(this.addEvento);
   }
 
-  buscar() {
+  private buscar() {
     this.navCtrl.push(this.buscaEventos);
+  }
+
+  private showConfirm() {
+    let confirm = this.alertCtrl.create({
+      title: 'Falha na conexão',
+      message: 'Tentar Novamente ?',
+      buttons: [
+        {
+          text: 'Cancelar'
+        },
+        {
+          text: 'Ok',
+          handler: () => {
+            this.getEventos();
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { EventoService } from '../../providers/evento-service';
+import { UserService } from '../../providers/user-service';
 import { Evento } from '../../model/evento';
 
 
@@ -19,12 +20,16 @@ export class AddEventoPage {
   private Allday: boolean = false;
   private HoraInicio = null;
   private HoraFim = null;
+  private myID;
 
-  constructor(public navCtrl: NavController, public eventoService: EventoService) {
-
+  constructor(private navCtrl: NavController, private eventoService: EventoService, private userService: UserService) {
+    this.userService.get().then(res=>{
+      this.myID = res.IDUsuario;
+    });
   }
 
-  adicionar(){
+  private adicionar(){
+    this.evento.Usuario_IDUsuario = this.myID;
     this.eventoService.addEvento(this.evento).then(res=>{
       if(res.type == true){
         this.navCtrl.pop();
