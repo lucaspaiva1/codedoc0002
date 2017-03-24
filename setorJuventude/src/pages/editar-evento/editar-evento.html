@@ -66,7 +66,7 @@
 
     <ion-item *ngIf="editar">
       <ion-label>Dia Inteiro</ion-label>
-      <ion-toggle [checked]="evento.EventoDiario" [(ngModel)]="evento.EventoDiario" disabled="{{ !editar }}"></ion-toggle>
+      <ion-toggle [checked]="evento.EventoDiario" [(ngModel)]="evento.EventoDiario" disabled="{{!editar}}"></ion-toggle>
     </ion-item>
 
     <!--Caso não seja dia inteiro, escolher horários-->
@@ -74,7 +74,7 @@
       <ion-label floating>Horário de início</ion-label>
       <ion-datetime displayFormat="HH:mm" [(ngModel)]="evento.HoraInicio"></ion-datetime>
     </ion-item>
-    <ion-item *ngIf="!editar">
+    <ion-item *ngIf="evento.EventoDiario && !editar">
       <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Horário de início</div>
       <h2 color="dark">{{evento.HoraInicio}}</h2>
     </ion-item>
@@ -82,7 +82,7 @@
       <ion-label floating >Horário de término</ion-label>
       <ion-datetime displayFormat="HH:mm" [(ngModel)]="evento.HoraTermino"></ion-datetime>
     </ion-item>
-    <ion-item *ngIf="!editar">
+    <ion-item *ngIf="evento.EventoDiario && !editar">
       <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Horário de término</div>
       <h2 color="dark">{{evento.HoraTermino}}</h2>
     </ion-item>
