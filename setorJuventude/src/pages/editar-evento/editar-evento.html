@@ -94,7 +94,7 @@
   <!--Botão para Excluir evento-->
   <button *ngIf="editar" ion-button block color="danger" (click)="excluir()">Deletar Evento</button>
 
-  <ion-fab *ngIf="!editar" class="floating-button-adm" right bottom>
+  <ion-fab *ngIf="!editar && permissao=='a'" class="floating-button-adm" right bottom>
    <button ion-fab (click)="habEditar()">
      <ion-icon name="create"></ion-icon>
    </button>
