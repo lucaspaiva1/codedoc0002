@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, ToastController, AlertController } from 'ionic-angular';
+import { NavController, LoadingController, ToastController, AlertController, ActionSheetController } from 'ionic-angular';
 import { AddGrupoPage } from '../add-grupo/add-grupo';
 import { EditarGrupoPage } from '../editar-grupo/editar-grupo';
 import { GrupoService } from '../../providers/grupo-service';
@@ -16,12 +16,15 @@ import { DeletarGrupoService } from '../../providers/deletar-grupo-service';
 export class BuscaPage {
 
   private grupos: Grupo[] = [];
+  private gruposaux: Grupo[] = [];
   private permissao = "c";
   private loader: any = this.loadingController.create({
     content: "Carregando Grupos"
   });
 
-  constructor(public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
+    public actionSheetCtrl: ActionSheetController,
     public grupoService: GrupoService,
     public loadingController: LoadingController,
     public userService: UserService,
@@ -48,8 +51,13 @@ export class BuscaPage {
         this.showConfirm(1, res.message);
       } else {
         this.grupos = res.data;
+        this.gruposaux = this.grupos;
       }
     });
+  }
+
+  private inicializar(){
+    this.grupos = this.gruposaux;
   }
 
   adicionarGupo() {
@@ -58,6 +66,31 @@ export class BuscaPage {
 
   abrirGrupo(grupo: Grupo) {
     this.navCtrl.push(EditarGrupoPage, { grupo: grupo });
+  }
+
+  option(grupo: Grupo) {
+    if (this.permissao == "a") {
+      let actionSheet = this.actionSheetCtrl.create({
+        title: grupo.nome,
+        buttons: [
+          {
+            text: 'Deletar',
+            role: 'destructive',
+            icon: 'trash',
+            handler: () => {
+              this.deletar(grupo);
+            }
+          }, {
+            text: 'Cancel',
+            role: 'cancel',
+            icon: 'close',
+            handler: () => {
+            }
+          }
+        ]
+      });
+      actionSheet.present();
+    }
   }
 
   deletar(grupo: Grupo) {
@@ -112,7 +145,7 @@ export class BuscaPage {
 
   getItems(ev: any) {
     //reinicializar itens
-    this.carregarGrupos();
+    this.inicializar();
 
     // recuperar a entrada na barra de busca
     let val = ev.target.value;
@@ -122,8 +155,6 @@ export class BuscaPage {
       this.grupos = this.grupos.filter((item) => {
         return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
-    } else {
-      this.carregarGrupos();
     }
 
   }

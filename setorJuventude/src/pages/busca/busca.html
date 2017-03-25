@@ -14,18 +14,9 @@
   <ion-searchbar (ionInput)="getItems($event)" placeholder="Nome do Grupo"></ion-searchbar>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let grupo of grupos">
-      <button ion-item (click)="abrirGrupo(grupo)">
+    <ion-item *ngFor="let grupo of grupos" (click)="abrirGrupo(grupo)" (press)="option(grupo)">
       {{ grupo.nome }}
-    </button>
-
-      <!--sliding options-->
-      <ion-item-options side="right" *ngIf="permissao == 'a'">
-        <button ion-button icon-left color="danger" (click)="deletar(grupo)"><ion-icon name="trash"></ion-icon>Deletar</button>
-      </ion-item-options>
-      <ion-item-options side="right" *ngIf="permissao != 'a'">
-      </ion-item-options>
-    </ion-item-sliding>
+    </ion-item>
   </ion-list>
   <ion-fab right bottom *ngIf="permissao == 'a'">
     <button ion-fab class="floating-button-adm" (click)="adicionarGupo()"><ion-icon name="add"></ion-icon></button>

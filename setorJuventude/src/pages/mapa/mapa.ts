@@ -584,7 +584,7 @@ export class MapaPage {
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
-              this.selecionar('Nª Senhora da Conceição,Brejões,Nova Itarana,Irajuba,Km 100');
+              this.selecionar('Nossa Senhora da Conceição,Brejões,Nova Itarana,Irajuba,Km 100');
             });
         });
         map.addPolygon({
@@ -595,7 +595,7 @@ export class MapaPage {
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
-              this.selecionar('Nª Senhora Auxiliadora,Santa Inês,Cravolândia,Itaquara,Jaguaquara');
+              this.selecionar('Nossa Senhora Auxiliadora,Santa Inês,Cravolândia,Itaquara,Jaguaquara');
             });
         });
         map.addPolygon({
@@ -606,7 +606,7 @@ export class MapaPage {
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
-              this.selecionar('Nª Senhora Das Gracas,Maracás,Lagedo do Tabocal,Itituçú,Planaltino,Marcionilio Souza');
+              this.selecionar('Nossa Senhora Das Graças,Maracás,Lagedo do Tabocal,Itituçú,Planaltino,Marcionilio Souza');
             });
         });
         map.addPolygon({
@@ -617,7 +617,7 @@ export class MapaPage {
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
-              this.selecionar('Nª Senhora da BoaNova,Manoel Vitorino,Mirante,Boa Nova,Valentim');
+              this.selecionar('Nossa Senhora da Boa Nova,Manoel Vitorino,Mirante,Boa Nova,Valentim');
             });
         });
         map.addPolygon({
@@ -628,7 +628,7 @@ export class MapaPage {
         }).then((polygon: GoogleMapsPolygon) => {
           polygon.addEventListener(GoogleMapsEvent.OVERLAY_CLICK).subscribe(
             () => {
-              this.selecionar('Sao Jose,Aiquara,Itagi,Apuarema,Itagibá,Dario Meira,Jitaúna');
+              this.selecionar('São José,Aiquara,Itagi,Apuarema,Itagibá,Dario Meira,Jitaúna');
             });
         });
         map.addPolygon({
