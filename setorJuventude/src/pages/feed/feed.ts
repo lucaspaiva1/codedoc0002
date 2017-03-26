@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, Events, AlertController, ActionSheetController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Events, AlertController, ActionSheetController, ToastController, MenuController } from 'ionic-angular';
 import { AddPostPage } from '../add-post/add-post';
 import { EditarPostPage } from '../editar-post/editar-post';
 import { ComentariosPage } from '../comentarios/comentarios';
@@ -7,6 +7,7 @@ import { PublicacaoService } from '../../providers/publicacao-service';
 import { Publicacao } from '../../model/publicacao';
 import { UserService } from '../../providers/user-service';
 import { StatusBar } from 'ionic-native';
+import { LoginPage } from '../login/login/login';
 
 @Component({
   selector: 'page-feed',
@@ -30,12 +31,17 @@ export class FeedPage {
     public loadingController: LoadingController,
     public userService: UserService,
     public events: Events,
+    private menu : MenuController,
     public actionSheetCtrl: ActionSheetController
 
   ) {
+    this.menu.enable(true);
     StatusBar.show();
     this.userService.get().then(res => {
       this.permissao = res.Tipo;
+      if(res.IDUsuario == undefined || res.IDUsuario == null || res.IDUsuario == 0){
+        this.navCtrl.setRoot(LoginPage);
+      }
     });
 
     this.evento();

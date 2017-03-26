@@ -36,9 +36,9 @@ export class UserService {
     return retorno;
   }
 
-  public set(user: User) {
+  public set(user: User): Promise<any> {
     this.events.publish('user:changed', user);
-    this.storage.set('usuarioAtual', user)
+    return this.storage.set('usuarioAtual', user)
       .then(
       () => {
         this.events.publish('user:changed', user);
