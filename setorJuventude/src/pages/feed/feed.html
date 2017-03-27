@@ -16,27 +16,22 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-item>
-    <h3 *ngIf="publicacoes.length == 0" class="semPost">Ainda não existem publicações</h3>
+  <ion-item *ngIf="publicacoes.length == 0">
+    <h3 class="semPost">Ainda não existem publicações</h3>
   </ion-item>
 
-  <ion-list no-lines [virtualScroll]="publicacoes">
-    <ion-item class="cardItem" *virtualItem="let publicacao">
       <!--item-->
-      <ion-card style="width:100%;" (press)="acoes(publicacao)">
+      <ion-card *ngFor="let publicacao of publicacoes" (press)="acoes(publicacao)">
         <div>
           <img *ngIf="publicacao.LinkImagem != ''" src="{{publicacao.LinkImagem}}">
         </div>
         <ion-card-content>
 
-          <ion-item *ngIf="publicacao.Titulo != ''" text-wrap>
-            <ion-card-title>{{ publicacao.Titulo }} </ion-card-title>
-          </ion-item>
-
-          <ion-item text-wrap *ngIf="publicacao.Texto != ''">
-            {{ publicacao.Texto }}
-          </ion-item>
+          <ion-card-title *ngIf="publicacao.Titulo != ''">{{ publicacao.Titulo }} </ion-card-title>
+          <p *ngIf="publicacao.Texto != ''">{{ publicacao.Texto }}</p>
+          
         </ion-card-content>
+
         <ion-row *ngIf="publicacao.Comentario == true">
           <ion-col>
             <button ion-button icon-left clear small (click)="abrirComentarios(publicacao.IDPublicacao)">
@@ -46,8 +41,8 @@
           </ion-col>
         </ion-row>
       </ion-card>
-    </ion-item>
-  </ion-list>
+
+
   <ion-fab right bottom *ngIf="permissao=='a'">
     <button ion-fab class="floating-button-adm" (click)="adicionarPost()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { EventoService } from '../../providers/evento-service';
+import { UserService } from '../../providers/user-service';
 import { Evento } from '../../model/evento';
 
 @Component({
@@ -12,8 +13,10 @@ export class EditarEventoPage {
   private evento: Evento = new Evento();
   teste: boolean = true;
   private editar: boolean = false;
+  private permissao = "c";
 
   constructor(public navCtrl: NavController,
+    public userService: UserService,
     public toastCtrl: ToastController,
     public navParams: NavParams,
     public eventoService: EventoService) {
@@ -26,6 +29,10 @@ export class EditarEventoPage {
         this.navCtrl.pop();
       }
     });
+
+    this.userService.get().then(user=>{
+        this.permissao = user.Tipo;
+      });
 
   }
 

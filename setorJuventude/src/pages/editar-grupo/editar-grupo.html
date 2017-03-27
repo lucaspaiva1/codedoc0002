@@ -21,7 +21,11 @@
         </ion-item>
     </ion-list>
 
+    <!--Botão para solicitar participação-->
+    <button *ngIf="!editar && participa == true" ion-button block color="danger" (click)="participar()">Sair do grupo</button>
 
+    <!--Botão para solicitar participação-->
+    <button *ngIf="!editar && participa == false" ion-button block (click)="participar()">Participar do grupo</button>
 
     <!--Botão para adicionar evento-->
     <button *ngIf="editar" ion-button block (click)="salvar()">Salvar Edição</button>
@@ -33,12 +37,30 @@
 
     <ion-searchbar *ngIf="editar" (ionInput)="getItems($event)"></ion-searchbar>
 
+    <!-- Lista de representantes do grupo -->
     <ion-list no-lines *ngIf="!editar">
         <ion-list-header>
             Representantes:
         </ion-list-header>
 
         <div *ngFor="let usuario of users">
+            <ion-item *ngIf="usuario.selecionado">
+                <ion-avatar item-left>
+                    <img src="{{ usuario.URLFoto }}">
+                </ion-avatar>
+                <h2>{{usuario.Nome}}</h2>
+                <p>{{usuario.Email}}</p>
+            </ion-item>
+        </div>
+    </ion-list>
+
+    <!-- Lista de membros do grupo -->
+    <ion-list no-lines *ngIf="!editar">
+        <ion-list-header>
+            Membros:
+        </ion-list-header>
+
+        <div *ngFor="let usuario of members">
             <ion-item *ngIf="usuario.selecionado">
                 <ion-avatar item-left>
                     <img src="{{ usuario.URLFoto }}">

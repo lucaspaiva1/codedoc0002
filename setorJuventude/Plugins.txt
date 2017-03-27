@@ -1,3 +1,6 @@
 ionic plugin add cordova-plugin-facebook4 --variable APP_ID="255509854899402" --variable APP_NAME="Setor Juventude"
 ionic plugin add onesignal-cordova-plugin
 cordova plugin add cordova-plugin-googlemaps@1.3.9 --variable API_KEY_FOR_ANDROID="AIzaSyA-cmEsikFT-qKjVLQKX97wfKXYMa3jm2c" --variable API_KEY_FOR_IOS="AIzaSyAgSL_cxxVRU0naXRSAvx5e8WgJIbUXeYg"
+ionic plugin add cordova-sqlite-storage
+npm install --save @ionic-native/sqlite
+ionic plugin add cordova-plugin-camera

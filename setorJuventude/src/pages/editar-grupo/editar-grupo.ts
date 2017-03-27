@@ -14,12 +14,14 @@ import { DeletarGrupoService } from '../../providers/deletar-grupo-service';
 })
 export class EditarGrupoPage {
   private grupo: Grupo = new Grupo();
+  private participa: boolean = false;
   private editar = false;
   private users: any[] = [];
   private auxUsers: User[] = [];
   private selecionados: number[] = []; //ids dos usuarios selecionados no momento
   private permissao = "c";
   private selecionadosAux: number[] = []; //ids de usuarios selecionados na hora do GET
+  private members: any[] = [];
 
   constructor(
     public navCtrl: NavController,
@@ -168,5 +170,9 @@ export class EditarGrupoPage {
       ]
     });
     confirm.present();
+  }
+
+  participar(){
+
   }
 }

@@ -48,7 +48,7 @@
     </ion-item>
     <ion-item *ngIf="!editar">
       <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Início</div>
-      <h2 color="dark">{{evento.DataInicio}}</h2>
+      <h2 color="dark">{{evento.DataInicio|date:'dd/MM/yyyy'}}</h2>
     </ion-item>
 
     <ion-item *ngIf="editar">
@@ -57,7 +57,7 @@
     </ion-item>
     <ion-item *ngIf="!editar">
       <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Término</div>
-      <h2 color="dark">{{evento.DataTermino}}</h2>
+      <h2 color="dark">{{evento.DataTermino|date:'dd/MM/yyyy'}}</h2>
     </ion-item>
 
     <ion-item *ngIf="evento.EventoDiario && !editar">
@@ -66,23 +66,23 @@
 
     <ion-item *ngIf="editar">
       <ion-label>Dia Inteiro</ion-label>
-      <ion-toggle [checked]="evento.EventoDiario" [(ngModel)]="evento.EventoDiario" disabled="{{ !editar }}"></ion-toggle>
+      <ion-toggle [checked]="evento.EventoDiario" [(ngModel)]="evento.EventoDiario" disabled="{{!editar}}"></ion-toggle>
     </ion-item>
 
     <!--Caso não seja dia inteiro, escolher horários-->
     <ion-item *ngIf="!Allday && !evento.EventoDiario && editar">
-      <ion-label floating>Horário de início</ion-label>
+      <ion-label floating>Hora de início</ion-label>
       <ion-datetime displayFormat="HH:mm" [(ngModel)]="evento.HoraInicio"></ion-datetime>
     </ion-item>
-    <ion-item *ngIf="!editar">
+    <ion-item *ngIf="!evento.EventoDiario && !editar">
       <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Horário de início</div>
       <h2 color="dark">{{evento.HoraInicio}}</h2>
     </ion-item>
     <ion-item *ngIf="!Allday && !evento.EventoDiario && editar">
-      <ion-label floating >Horário de término</ion-label>
+      <ion-label floating >Hora de término</ion-label>
       <ion-datetime displayFormat="HH:mm" [(ngModel)]="evento.HoraTermino"></ion-datetime>
     </ion-item>
-    <ion-item *ngIf="!editar">
+    <ion-item *ngIf="!evento.EventoDiario && !editar">
       <div style="font-size: 13px; color: black; padding-top: 1px; padding-bottom: 9px">Horário de término</div>
       <h2 color="dark">{{evento.HoraTermino}}</h2>
     </ion-item>
@@ -94,7 +94,7 @@
   <!--Botão para Excluir evento-->
   <button *ngIf="editar" ion-button block color="danger" (click)="excluir()">Deletar Evento</button>
 
-  <ion-fab *ngIf="!editar" class="floating-button-adm" right bottom>
+  <ion-fab *ngIf="!editar && permissao=='a'" class="floating-button-adm" right bottom>
    <button ion-fab (click)="habEditar()">
      <ion-icon name="create"></ion-icon>
    </button>

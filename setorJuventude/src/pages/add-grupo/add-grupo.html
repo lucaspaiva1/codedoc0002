@@ -21,11 +21,11 @@
         </ion-item>
     </ion-list>
 
-    <!--Botão para adicionar evento-->
+    <!--Botão para adicionar gruop-->
     <button class="margem-botton" ion-button block (click)="salvar()">Salvar Grupo</button>
 
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-    <ion-list>
+    <ion-searchbar *ngIf="permissao == 'a'" (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-list *ngIf="permissao == 'a'">
         <ion-list-header>
             Selecione os representantes:
         </ion-list-header>

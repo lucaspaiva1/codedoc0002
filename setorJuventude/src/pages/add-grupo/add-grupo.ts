@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { BuscaService } from '../../providers/busca-service';
 import { GrupoService } from '../../providers/grupo-service';
 import { Grupo } from '../../model/grupo';
+import { UserService } from '../../providers/user-service';
 import { User } from '../../model/user';
 
 @Component({
@@ -15,13 +16,20 @@ export class AddGrupoPage {
   private auxUsers: User[] = [];
   private selecionados: number[] = [];
   private grupo: Grupo = new Grupo();
+  private permissao = "c";
 
   constructor(
     public navCtrl: NavController,
     public buscaService: BuscaService,
-    public grupoService: GrupoService) {
+    public grupoService: GrupoService,
+    public userService: UserService) {
 
-    this.carregarUsuarios();
+    this.userService.get().then(res => {
+      this.permissao = res.Tipo;
+      if(this.permissao = 'a'){
+        this.carregarUsuarios();
+      }
+    });
   }
 
   private carregarUsuarios() {

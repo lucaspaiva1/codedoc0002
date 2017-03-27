@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Events } from 'ionic-angular';
+import { NavController, Events, MenuController } from 'ionic-angular';
 import { TelaPrincipalPage } from '../../tela-principal/tela-principal';
 import { LoginEmailPage } from '../login-email/login-email';
 import { CadastrarNovoUsuarioPage } from '../cadastrar-novo-usuario/cadastrar-novo-usuario';
@@ -21,8 +21,10 @@ export class LoginPage {
     public navCtrl: NavController,
     public facebookService: FacebookService,
     public userService: UserService,
-    public events: Events
+    public events: Events,
+    private menu : MenuController
   ) {
+    this.menu.enable(false);
     //verifica ser a pessoa esta conectada
     this.userService.get().then(response => {
       if (response.connected) {
@@ -60,8 +62,9 @@ export class LoginPage {
           alert("Sua conta está bloqueada ou banida");
           this.facebookService.logout();
         } else if (response.connected) {
-          this.userService.set(response);
-          this.navCtrl.setRoot(TelaPrincipalPage, { id: response.IDUsuario });
+          this.userService.set(response).then(res=>{
+            this.navCtrl.setRoot(TelaPrincipalPage, { id: response.IDUsuario });
+          });
         } else {
           this.logando = false;
         }

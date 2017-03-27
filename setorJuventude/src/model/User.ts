@@ -1,7 +1,7 @@
 //import { Generos } from './genero';
 
 export class User {
-  public IDUsuario: number;
+  public IDUsuario: number = 0;
   public Nome: string;
   public Sexo: string;
   public Senha: string;
