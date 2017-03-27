@@ -15,7 +15,7 @@
 		$userID  = $request->IDUsuario;
 		$groupID = $request->IDGrupo;
 
-    $sql = "SELECT * FROM grupo WHERE ID = '$groupID'";
+    $sql = "SELECT * FROM membroGrupo WHERE IDUsuario = '$userID' AND IDGrupo = '$groupID'";
     $result = $con->query($sql);
 
     $num = $result->num_rows;
@@ -23,7 +23,8 @@
     if ($num !== 1){
       echo json_encode(false);
     } else {
-      $sql = "INSERT INTO membroGrupo (IDUsuario, IDGrupo) VALUES ('$userID', '$groupID')";
+
+      $sql = "DELETE FROM membroGrupo WHERE IDUsuario = '$userID' AND IDGrupo = '$groupID'";
       $con->query($sql);
       echo json_encode(true);
     }
