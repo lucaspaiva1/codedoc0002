@@ -21,6 +21,7 @@ import { SenhaService } from '../providers/senha-service';
 import { ContatoService } from '../providers/contato-service';
 import { RegiaoService } from '../providers/regiao-service';
 import { Storage } from '@ionic/storage';
+import { MembroService } from '../providers/membro-service';
 
 //directives
 import { Autoresize } from '../components/autoresize/autoresize';
@@ -119,6 +120,6 @@ import { LiturgiaPage } from '../pages/liturgia/liturgia';
     LiturgiaPage,
     EditarForaniaPage
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }, RegiaoService, NotificacaoService, Storage, ContatoService, EstruturaService, SenhaService, Facebook, UsuariosService, DeletarGrupoService, ContaService, FacebookService, BuscaService, UserService, PublicacaoService, ComentarioService, EventoService, GrupoService, { provide: ErrorHandler, useClass: IonicErrorHandler }]
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }, RegiaoService, MembroService, NotificacaoService, Storage, ContatoService, EstruturaService, SenhaService, Facebook, UsuariosService, DeletarGrupoService, ContaService, FacebookService, BuscaService, UserService, PublicacaoService, ComentarioService, EventoService, GrupoService, { provide: ErrorHandler, useClass: IonicErrorHandler }]
 })
 export class AppModule { }
