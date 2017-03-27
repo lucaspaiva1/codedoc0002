@@ -12,6 +12,7 @@ export class BuscarUsuariosPage {
 
   private users: User[] = [];
   private auxUsers: User[] = [];
+  private usuariosTotal: number = 0;
 
   constructor(
     public navCtrl: NavController,
@@ -20,6 +21,7 @@ export class BuscarUsuariosPage {
     this.buscaService.usersAll().then(response => {
       this.users = response;
       this.auxUsers = response;
+      this.usuariosTotal = response.length;
     });
   }
 

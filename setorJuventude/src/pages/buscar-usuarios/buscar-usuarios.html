@@ -10,6 +10,8 @@
 
 
 <ion-content padding>
+  <p class="info">Total de usuários: {{usuariosTotal}}</p>
+
   <ion-searchbar (ionInput)="getItems($event)" placeholder="Nome do Usuário"></ion-searchbar>
 
     <ion-list [virtualScroll]="users" >

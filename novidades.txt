@@ -1,0 +1,7 @@
+
+Nova versão 1.1.0
+
+- Liberação para todos criarem grupos !!!!
+- Agora você pode participar dos grupos, apenas abra o grupo e clique em PARTICIPAR DO GRUPO !!!
+- Contador de usuarios (para administardores)
+- Correção de erros
