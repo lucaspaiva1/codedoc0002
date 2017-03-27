@@ -34,6 +34,6 @@
       <ion-label floating>Repetir Senha</ion-label>
       <ion-input type="password" formControlName="repSenha"></ion-input>
     </ion-item>
-    <button ion-button type="submit" block class="submit-button">Cadastrar</button>
+    <button ion-button type="submit" block class="submit-button" [disabled] = "bloquearBotao">Cadastrar</button>
   </form>
 </ion-content>

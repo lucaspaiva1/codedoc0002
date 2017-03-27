@@ -12,6 +12,7 @@ import { StatusBar } from 'ionic-native';
 export class CadastrarNovoUsuarioPage {
   private user: FormGroup;
   private userNovo: User = new User();
+  private bloquearBotao: boolean = false;
 
   constructor(
     private toastCtrl: ToastController,
@@ -110,26 +111,29 @@ export class CadastrarNovoUsuarioPage {
   }
 
   cadastrar() {
-    if (this.validate() && this.senhas()) {
 
-      // process the data
-      this.contaService.cadastrar("cadastro", this.user.get('nome').value, this.user.get('nascimento').value, this.user.get('genero').value, this.user.get('email').value, this.user.get('senha').value)
-        .then(res => {
-          if (res) {
-            let toast = this.toastCtrl.create({
-              message: 'Usuário cadastrado',
-              duration: 3000
-            });
-            toast.present();
-            this.navCtrl.pop();
-          } else {
-            let toast = this.toastCtrl.create({
-              message: 'Cadastro não efetuado',
-              duration: 3000
-            });
-            toast.present();
-          }
-        });
+    if (this.validate() && this.senhas()) {
+      this.bloquearBotao = true;
+
+        // process the data
+        this.contaService.cadastrar("cadastro", this.user.get('nome').value, this.user.get('nascimento').value, this.user.get('genero').value, this.user.get('email').value, this.user.get('senha').value)
+          .then(res => {
+            if (res) {
+              let toast = this.toastCtrl.create({
+                message: 'Usuário cadastrado',
+                duration: 3000
+              });
+              toast.present();
+              this.navCtrl.pop();
+            } else {
+              this.bloquearBotao = false;
+              let toast = this.toastCtrl.create({
+                message: 'Cadastro não efetuado',
+                duration: 3000
+              });
+              toast.present();
+            }
+          });
 
     }
   }
