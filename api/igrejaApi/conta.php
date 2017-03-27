@@ -79,10 +79,11 @@
 			
 			$sql = "SELECT * FROM usuario WHERE Email = '$email'";
 			$result = $con->query($sql);
+
 			$numrow = $result->num_rows;
 			
 			
-			if ($num_rows !== 1 && $email != ''){
+			if ($numrow !== 1 && $email != ''){
 			
 				$sql= "INSERT INTO usuario (Nome, Nascimento, Sexo, URLFoto, Tipo, Email, Senha) VALUES ('$nome', '$nascimento', '$genero', '$foto', 'c', '$email', '$senha')";
 				$con->query($sql);
