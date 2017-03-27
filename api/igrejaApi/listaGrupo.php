@@ -29,7 +29,7 @@
 			$membros = array();
 			$dentro = false;
 
-			$sql = "SELECT * FROM membroGrupo WHERE grupo_ID = '$groupID'";
+			$sql = "SELECT * FROM membroGrupo WHERE IDGrupo = '$groupID'";
 			$result = $con->query($sql);
 
 			while ($row=$result->fetch_assoc()){
