@@ -41,8 +41,8 @@ export class GrupoService {
     return retorno;
   }
 
-  getGrupo(id: number): Promise<any> {
-    return this.http.get('http://www.dsoutlet.com.br/igrejaApi/listaGrupo.php?id=' + id)
+  getGrupo(id: number, user: number): Promise<any> {
+    return this.http.get('http://www.dsoutlet.com.br/igrejaApi/listaGrupo.php?id=' + id + "&user=" + user)
       .toPromise()
       .then(response => this.extractGetGrupo(response))
       .catch(this.handleErrorMessage);

@@ -1,3 +1,4 @@
+import { Grupo } from './../../model/grupo';
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { BuscaService } from '../../providers/busca-service';
@@ -14,14 +15,17 @@ import { DeletarGrupoService } from '../../providers/deletar-grupo-service';
 })
 export class EditarGrupoPage {
   private grupo: Grupo = new Grupo();
-  private participa: boolean = false;
+
   private editar = false;
   private users: any[] = [];
   private auxUsers: User[] = [];
   private selecionados: number[] = []; //ids dos usuarios selecionados no momento
   private permissao = "c";
   private selecionadosAux: number[] = []; //ids de usuarios selecionados na hora do GET
+
   private members: any[] = [];
+  private participa: boolean = false;
+  private userID: number;
 
   constructor(
     public navCtrl: NavController,
@@ -38,14 +42,18 @@ export class EditarGrupoPage {
 
     this.userService.get().then(res => {
       this.permissao = res.Tipo;
+      this.userID = res.IDUsuario;
     });
   }
 
   private carregarSelecionados() {
-    this.grupoService.getGrupo(this.grupo.ID).then(res => {
+    this.grupoService.getGrupo(this.grupo.ID, this.userID).then(res => {
       if (res.type == true) {
-        this.selecionados = res.data;
-        this.selecionadosAux.concat(res.data);
+        this.selecionados = res.data[0]; //lista de representantes selecionados
+        this.members = res.data[1]; // lista de membros do Grupo
+        this.participa = res.data[2]; // booleano indicando se o usuario faz parte ou não do grupo
+        
+        this.selecionadosAux.concat(res.data[0]);
         this.carregarUsuarios();
       }
 
