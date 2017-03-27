@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { BuscaService } from '../../providers/busca-service';
 import { GrupoService } from '../../providers/grupo-service';
-import { Grupo } from '../../model/grupo';
 import { User } from '../../model/User';
 import { UserService } from '../../providers/user-service';
 import { DeletarGrupoService } from '../../providers/deletar-grupo-service';
@@ -52,7 +51,7 @@ export class EditarGrupoPage {
         this.selecionados = res.data[0]; //lista de representantes selecionados
         this.members = res.data[1]; // lista de membros do Grupo
         this.participa = res.data[2]; // booleano indicando se o usuario faz parte ou não do grupo
-        
+
         this.selecionadosAux.concat(res.data[0]);
         this.carregarUsuarios();
       }
