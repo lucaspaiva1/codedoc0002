@@ -64,7 +64,7 @@
       <file leaf-file-name="addEvento.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/addEvento.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
+            <state relative-caret-position="84">
               <caret line="37" column="8" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
               <folding>
                 <marker date="1490278472823" expanded="true" signature="964:1180" ph="INSERT INTO evento... " />
@@ -205,16 +205,16 @@
       <workItem from="1489363699486" duration="74000" />
       <workItem from="1489365917137" duration="632000" />
       <workItem from="1489534752949" duration="200000" />
-      <workItem from="1490276790665" duration="1691000" />
+      <workItem from="1490276790665" duration="2282000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14714000" />
+    <option name="totallyTimeSpent" value="15305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="828" y="520" width="1099" height="527" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21975993" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -634,7 +634,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/addEvento.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
+        <state relative-caret-position="84">
           <caret line="37" column="8" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
           <folding>
             <marker date="1490278472823" expanded="true" signature="964:1180" ph="INSERT INTO evento... " />
