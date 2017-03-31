@@ -23591,6 +23591,12 @@ textarea {
   resize: vertical;
 }
 
+.info {
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+
 .calendarToolbar ion-title {
   text-align: center;
   font-style: roboto;
@@ -23754,7 +23760,7 @@ textarea {
 }
 
 .background {
-  background-image: url("../imagem/login-b.jpg");
+  background-image: url("../imagem/Login.jpg");
   background-size: 100%;
 }
 
@@ -23769,6 +23775,7 @@ textarea {
 }
 
 .mapa {
+  z-index: 0;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;
