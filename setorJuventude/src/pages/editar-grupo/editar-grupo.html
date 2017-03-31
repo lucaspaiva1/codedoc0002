@@ -22,10 +22,10 @@
     </ion-list>
 
     <!--Botão para solicitar participação-->
-    <button *ngIf="!editar && participa == true" ion-button block color="danger" (click)="participar()">Sair do grupo</button>
+    <button *ngIf="!editar && participa" ion-button block color="danger" [disabled] = "bloqueiaTroca" (click)="participar()">Sair do grupo</button>
 
     <!--Botão para solicitar participação-->
-    <button *ngIf="!editar && participa == false" ion-button block (click)="participar()">Participar do grupo</button>
+    <button *ngIf="!editar && !participa" ion-button block [disabled] = "bloqueiaTroca" (click)="participar()">Participar do grupo</button>
 
     <!--Botão para adicionar evento-->
     <button *ngIf="editar" ion-button block (click)="salvar()">Salvar Edição</button>
@@ -60,15 +60,13 @@
             Membros:
         </ion-list-header>
 
-        <div *ngFor="let usuario of members">
-            <ion-item *ngIf="usuario.selecionado">
-                <ion-avatar item-left>
-                    <img src="{{ usuario.URLFoto }}">
-                </ion-avatar>
-                <h2>{{usuario.Nome}}</h2>
-                <p>{{usuario.Email}}</p>
-            </ion-item>
-        </div>
+        <ion-item *ngFor="let usuario of members">
+            <ion-avatar item-left>
+                <img src="{{ usuario.URLFoto }}">
+            </ion-avatar>
+            <h2>{{usuario.Nome}}</h2>
+            <p>{{usuario.Email}}</p>
+        </ion-item>
     </ion-list>
 
     <ion-list *ngIf="editar">
@@ -78,7 +76,7 @@
 
         <ion-item *ngFor="let usuario of users">
             <ion-label>
-                <ion-item>
+                <ion-item>  
                     <ion-avatar item-left>
                         <img src="{{ usuario.URLFoto }}">
                     </ion-avatar>

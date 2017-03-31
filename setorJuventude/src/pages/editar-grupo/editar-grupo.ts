@@ -1,11 +1,13 @@
 import { Grupo } from './../../model/grupo';
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ToastController, LoadingController } from 'ionic-angular';
 import { BuscaService } from '../../providers/busca-service';
 import { GrupoService } from '../../providers/grupo-service';
 import { User } from '../../model/User';
 import { UserService } from '../../providers/user-service';
 import { DeletarGrupoService } from '../../providers/deletar-grupo-service';
+import { MembroService } from '../../providers/membro-service';
+
 
 
 @Component({
@@ -18,17 +20,21 @@ export class EditarGrupoPage {
   private editar = false;
   private users: any[] = [];
   private auxUsers: User[] = [];
-  private selecionados: number[] = []; //ids dos usuarios selecionados no momento
+  private selecionados: number[] = []; //ids dos usuarios selecionados no momentoz
   private permissao = "c";
   private selecionadosAux: number[] = []; //ids de usuarios selecionados na hora do GET
-
-  private members: any[] = [];
+  private meuUser: User;
+  private members: User[] = [];
   private participa: boolean = false;
   private userID: number;
+  private loader;
+  private bloqueiaTroca: boolean = false;
 
   constructor(
     public navCtrl: NavController,
+    public membroService: MembroService,
     public navParams: NavParams,
+    public loadingController: LoadingController,
     public buscaService: BuscaService,
     public grupoService: GrupoService,
     public userService: UserService,
@@ -36,10 +42,17 @@ export class EditarGrupoPage {
     public alertCtrl: AlertController,
     private deleteService: DeletarGrupoService
   ) {
-    this.grupo = navParams.get('grupo');
-    this.carregarSelecionados();
 
+    this.loader = this.loadingController.create({
+      content: "Carregando Publicações"
+    });
+
+    this.loader.present();
+
+    this.grupo = navParams.get('grupo');
+    this.carregarUsuarios();
     this.userService.get().then(res => {
+      this.meuUser = res;
       this.permissao = res.Tipo;
       this.userID = res.IDUsuario;
     });
@@ -49,13 +62,18 @@ export class EditarGrupoPage {
     this.grupoService.getGrupo(this.grupo.ID, this.userID).then(res => {
       if (res.type == true) {
         this.selecionados = res.data[0]; //lista de representantes selecionados
-        this.members = res.data[1]; // lista de membros do Grupo
+        let membros = res.data[1]; // lista de membros do Grupo
         this.participa = res.data[2]; // booleano indicando se o usuario faz parte ou não do grupo
+        for (let idAtual of membros) {
+          for (let userAtual of this.auxUsers) {
+            if (userAtual.IDUsuario == idAtual) {
+              this.members.push(userAtual);
+            }
+          }
+        }
 
-        this.selecionadosAux.concat(res.data[0]);
-        this.carregarUsuarios();
       }
-
+      this.loader.dismiss();
     }).catch(() => this.showConfirm(1));
   }
 
@@ -72,6 +90,7 @@ export class EditarGrupoPage {
           }
         }
       }
+      this.carregarSelecionados();
     }).catch(() => this.showConfirm(1));
   }
 
@@ -179,7 +198,25 @@ export class EditarGrupoPage {
     confirm.present();
   }
 
-  participar(){
-
+  participar() {
+    this.bloqueiaTroca = true;
+    if (this.participa) {
+      this.membroService.sairGrupo(this.userID, this.grupo.ID).then(troca => {
+        if (troca) {
+          this.participa = false;
+          let index = this.members.indexOf(this.meuUser);
+          this.members.splice(index, 1); //retira do selecionadosAux
+        }
+        this.bloqueiaTroca = false;
+      }).catch(() => this.bloqueiaTroca = false);
+    } else {
+      this.membroService.entrarGrupo(this.userID, this.grupo.ID).then(troca => {
+        if (troca) {
+          this.participa = true;
+          this.members.push(this.meuUser);
+        }
+        this.bloqueiaTroca = false;
+      }).catch(() => this.bloqueiaTroca = false);
+    }
   }
 }

@@ -96,7 +96,7 @@ export class ComentariosPage {
   }
 
   private presentActionSheet(comentario: Comentario) {
-    if (this.userID == comentario.Usuario_IDUsuario || this.userPerm === 'Administrador') {
+    if (this.userID == comentario.Usuario_IDUsuario || this.userPerm == 'a') {
       let actionSheet = this.actionSheetCtrl.create({
         buttons: [
           {
