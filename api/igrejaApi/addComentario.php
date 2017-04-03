@@ -19,6 +19,8 @@
 		$sql = "INSERT INTO comentario (Texto, Usuario_IDUsuario, Publicacao_IDPublicacao) VALUES ('$texto', '$usuarioID', '$postID')";
 		$con->query($sql);
 					
-		echo json_encode(true);		
+		echo json_encode(true);
+		
+		$con->close();
 	}
 ?>

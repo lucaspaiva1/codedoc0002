@@ -40,6 +40,8 @@
 		}
 	}
 	
+	$con->close();
+	
 	//funcoes para separar string
 	function after_last ($this, $inthat)
     {

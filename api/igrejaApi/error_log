@@ -1,0 +1,183 @@
+[31-Mar-2017 21:32:52 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 11
+[31-Mar-2017 21:32:52 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 17
+[31-Mar-2017 21:32:59 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 11
+[31-Mar-2017 21:32:59 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 16
+[31-Mar-2017 21:32:59 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 21
+[31-Mar-2017 21:32:59 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 26
+[31-Mar-2017 21:32:59 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 31
+[31-Mar-2017 21:32:59 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 36
+[31-Mar-2017 21:32:59 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 41
+[31-Mar-2017 21:32:59 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 46
+[31-Mar-2017 21:32:59 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 51
+[31-Mar-2017 21:32:59 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 56
+[31-Mar-2017 21:32:59 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 61
+[31-Mar-2017 21:43:48 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[31-Mar-2017 21:44:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 11
+[31-Mar-2017 21:44:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 17
+[31-Mar-2017 21:44:56 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[31-Mar-2017 21:45:05 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[31-Mar-2017 21:45:38 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 11
+[31-Mar-2017 21:45:38 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 17
+[31-Mar-2017 22:26:56 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 11
+[31-Mar-2017 22:26:56 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 17
+[31-Mar-2017 22:27:04 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 11
+[31-Mar-2017 22:27:04 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 16
+[31-Mar-2017 22:27:04 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 21
+[31-Mar-2017 22:27:04 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 26
+[31-Mar-2017 22:27:04 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 31
+[31-Mar-2017 22:27:04 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 36
+[31-Mar-2017 22:27:04 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 41
+[31-Mar-2017 22:27:04 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 46
+[31-Mar-2017 22:27:04 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 51
+[31-Mar-2017 22:27:04 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 56
+[31-Mar-2017 22:27:04 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 61
+[01-Apr-2017 03:23:31 UTC] PHP Warning:  explode() expects parameter 2 to be string, object given in /home/dsoutlet/public_html/igrejaApi/salvaImagem.php on line 6
+[01-Apr-2017 03:35:23 UTC] PHP Warning:  explode() expects parameter 2 to be string, object given in /home/dsoutlet/public_html/igrejaApi/salvaImagem.php on line 6
+[01-Apr-2017 03:38:37 UTC] PHP Warning:  explode() expects parameter 2 to be string, object given in /home/dsoutlet/public_html/igrejaApi/salvaImagem.php on line 6
+[01-Apr-2017 00:38:37 America/Bahia] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home/dsoutlet/public_html/igrejaApi/addPublicacao.php on line 37
+[01-Apr-2017 03:39:10 UTC] PHP Warning:  explode() expects parameter 2 to be string, object given in /home/dsoutlet/public_html/igrejaApi/salvaImagem.php on line 6
+[01-Apr-2017 00:39:10 America/Bahia] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home/dsoutlet/public_html/igrejaApi/addPublicacao.php on line 37
+[01-Apr-2017 04:02:03 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 11
+[01-Apr-2017 04:02:03 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 17
+[01-Apr-2017 04:02:06 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 11
+[01-Apr-2017 04:02:06 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 16
+[01-Apr-2017 04:02:06 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 21
+[01-Apr-2017 04:02:06 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 26
+[01-Apr-2017 04:02:06 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 31
+[01-Apr-2017 04:02:06 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 36
+[01-Apr-2017 04:02:06 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 41
+[01-Apr-2017 04:02:06 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 46
+[01-Apr-2017 04:02:06 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 51
+[01-Apr-2017 04:02:06 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 56
+[01-Apr-2017 04:02:06 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 61
+[01-Apr-2017 04:02:09 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 11
+[01-Apr-2017 04:02:09 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 17
+[01-Apr-2017 04:02:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 11
+[01-Apr-2017 04:02:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 16
+[01-Apr-2017 04:02:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 21
+[01-Apr-2017 04:02:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 26
+[01-Apr-2017 04:02:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 31
+[01-Apr-2017 04:02:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 36
+[01-Apr-2017 04:02:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 41
+[01-Apr-2017 04:02:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 46
+[01-Apr-2017 04:02:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 51
+[01-Apr-2017 04:02:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 56
+[01-Apr-2017 04:02:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 61
+[01-Apr-2017 12:34:09 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[01-Apr-2017 13:20:12 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[01-Apr-2017 13:34:12 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[01-Apr-2017 13:34:16 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[01-Apr-2017 13:34:26 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[01-Apr-2017 13:58:34 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 11
+[01-Apr-2017 13:58:34 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 16
+[01-Apr-2017 13:58:34 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 21
+[01-Apr-2017 13:58:34 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 26
+[01-Apr-2017 13:58:34 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 31
+[01-Apr-2017 13:58:34 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 36
+[01-Apr-2017 13:58:34 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 41
+[01-Apr-2017 13:58:34 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 46
+[01-Apr-2017 13:58:34 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 51
+[01-Apr-2017 13:58:34 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 56
+[01-Apr-2017 13:58:34 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 61
+[01-Apr-2017 13:58:52 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[01-Apr-2017 13:58:58 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[01-Apr-2017 13:59:04 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[01-Apr-2017 16:22:05 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 11
+[01-Apr-2017 16:22:05 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 16
+[01-Apr-2017 16:22:05 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 21
+[01-Apr-2017 16:22:05 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 26
+[01-Apr-2017 16:22:05 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 31
+[01-Apr-2017 16:22:05 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 36
+[01-Apr-2017 16:22:05 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 41
+[01-Apr-2017 16:22:05 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 46
+[01-Apr-2017 16:22:05 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 51
+[01-Apr-2017 16:22:05 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 56
+[01-Apr-2017 16:22:05 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 61
+[01-Apr-2017 16:38:11 UTC] PHP Notice:  Undefined offset: 1 in /home/dsoutlet/public_html/igrejaApi/salvaImagem.php on line 8
+[01-Apr-2017 17:36:20 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[01-Apr-2017 17:36:31 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[01-Apr-2017 17:44:31 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[01-Apr-2017 17:44:35 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[01-Apr-2017 17:44:41 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[01-Apr-2017 17:44:47 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[01-Apr-2017 17:46:30 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 11
+[01-Apr-2017 17:46:30 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 17
+[01-Apr-2017 19:18:49 UTC] PHP Notice:  Undefined offset: 1 in /home/dsoutlet/public_html/igrejaApi/salvaImagem.php on line 8
+[01-Apr-2017 20:39:50 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 11
+[01-Apr-2017 20:39:50 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 16
+[01-Apr-2017 20:39:50 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 21
+[01-Apr-2017 20:39:50 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 26
+[01-Apr-2017 20:39:50 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 31
+[01-Apr-2017 20:39:50 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 36
+[01-Apr-2017 20:39:50 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 41
+[01-Apr-2017 20:39:50 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 46
+[01-Apr-2017 20:39:50 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 51
+[01-Apr-2017 20:39:50 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 56
+[01-Apr-2017 20:39:50 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 61
+[01-Apr-2017 23:14:53 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 11
+[01-Apr-2017 23:14:53 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 16
+[01-Apr-2017 23:14:53 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 21
+[01-Apr-2017 23:14:53 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 26
+[01-Apr-2017 23:14:53 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 31
+[01-Apr-2017 23:14:53 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 36
+[01-Apr-2017 23:14:53 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 41
+[01-Apr-2017 23:14:53 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 46
+[01-Apr-2017 23:14:53 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 51
+[01-Apr-2017 23:14:53 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 56
+[01-Apr-2017 23:14:53 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 61
+[01-Apr-2017 23:15:40 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 11
+[01-Apr-2017 23:15:40 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 17
+[01-Apr-2017 23:15:56 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 11
+[01-Apr-2017 23:15:56 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 16
+[01-Apr-2017 23:15:56 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 21
+[01-Apr-2017 23:15:56 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 26
+[01-Apr-2017 23:15:56 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 31
+[01-Apr-2017 23:15:56 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 36
+[01-Apr-2017 23:15:56 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 41
+[01-Apr-2017 23:15:56 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 46
+[01-Apr-2017 23:15:56 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 51
+[01-Apr-2017 23:15:56 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 56
+[01-Apr-2017 23:15:56 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 61
+[02-Apr-2017 00:10:03 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[02-Apr-2017 00:10:08 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[02-Apr-2017 12:53:12 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[02-Apr-2017 12:53:17 UTC] PHP Notice:  Undefined index: user in /home/dsoutlet/public_html/igrejaApi/listaGrupo.php on line 20
+[02-Apr-2017 12:53:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 11
+[02-Apr-2017 12:53:29 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 17
+[02-Apr-2017 14:53:54 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 11
+[02-Apr-2017 14:53:54 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 16
+[02-Apr-2017 14:53:54 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 21
+[02-Apr-2017 14:53:54 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 26
+[02-Apr-2017 14:53:54 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 31
+[02-Apr-2017 14:53:54 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 36
+[02-Apr-2017 14:53:54 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 41
+[02-Apr-2017 14:53:54 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 46
+[02-Apr-2017 14:53:54 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 51
+[02-Apr-2017 14:53:54 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 56
+[02-Apr-2017 14:53:54 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 61
+[02-Apr-2017 15:55:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 11
+[02-Apr-2017 15:55:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 16
+[02-Apr-2017 15:55:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 21
+[02-Apr-2017 15:55:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 26
+[02-Apr-2017 15:55:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 31
+[02-Apr-2017 15:55:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 36
+[02-Apr-2017 15:55:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 41
+[02-Apr-2017 15:55:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 46
+[02-Apr-2017 15:55:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 51
+[02-Apr-2017 15:55:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 56
+[02-Apr-2017 15:55:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 61
+[02-Apr-2017 15:57:26 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 11
+[02-Apr-2017 15:57:26 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 17
+[03-Apr-2017 11:46:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 11
+[03-Apr-2017 11:46:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 16
+[03-Apr-2017 11:46:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 21
+[03-Apr-2017 11:46:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 26
+[03-Apr-2017 11:46:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 31
+[03-Apr-2017 11:46:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 36
+[03-Apr-2017 11:46:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 41
+[03-Apr-2017 11:46:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 46
+[03-Apr-2017 11:46:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 51
+[03-Apr-2017 11:46:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 56
+[03-Apr-2017 11:46:51 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/estrutura.php on line 61
+[03-Apr-2017 11:47:37 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 11
+[03-Apr-2017 11:47:37 UTC] PHP Warning:  Creating default object from empty value in /home/dsoutlet/public_html/igrejaApi/contato.php on line 17

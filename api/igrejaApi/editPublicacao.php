@@ -1,6 +1,7 @@
 <?php
 	include 'mySQL.php';
 	require 'mySQL.php';
+	include 'salvaImagem.php';
 ?>
 
 <?php
@@ -18,6 +19,10 @@
 		$linkImagem    	  = $request->LinkImagem;
 		$titulo    		  = $request->Titulo;
 		$texto			  = $request->Texto;
+		
+		$arquivo = 'postImages/'.time().'.jpeg'; //nome do arquivo
+		$url = 'http://www.dsoutlet.com.br/igrejaApi/'.$arquivo; //diretório
+		base64_to_jpeg($linkImagem, $arquivo);
 
 		if($comentario == true){
 			$comentario = 's';
@@ -32,7 +37,7 @@
 		if($numrow !== 1){
 			echo json_encode(false);
 		}else{
-			$sql = "UPDATE publicacao SET TempoPermanencia = '$tempoPermanencia', Comentario = '$comentario', LinkImagem = '$linkImagem', Titulo = '$titulo', Texto = '$texto' WHERE IDPublicacao = '$IDPublicacao'";
+			$sql = "UPDATE publicacao SET TempoPermanencia = '$tempoPermanencia', Comentario = '$comentario', LinkImagem = '$url', Titulo = '$titulo', Texto = '$texto' WHERE IDPublicacao = '$IDPublicacao'";
 			$con->query($sql);
 			echo json_encode(true);
 		}
