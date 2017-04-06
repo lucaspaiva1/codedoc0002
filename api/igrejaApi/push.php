@@ -4,7 +4,9 @@
     $content = array("en" => $msg);
     $fields = array('app_id' => 'ed50823a-df07-46a0-95c9-534351e78b0f',
                     'included_segments' => array('All'),
+                    'headings' => array("en" => "Setor Juventude"),
                     'data' => array("foo" => "bar"),
+                    'large_icon' => "http://www.dsoutlet.com.br/igrejaApi/imagens/logo.jpeg",
                     'contents' => $content,
                     'android_group' => 'setor',
                     'android_group_message' => array("en" => "Você tem $[notif_count] novas notificações"));
