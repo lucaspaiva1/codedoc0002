@@ -3,6 +3,7 @@ include 'mySQL.php';
 require 'mySQL.php';
 ?>
 
+<<<<<<< HEAD
 <?php
 $vetor   = array();
 $the_request = &$_GET;
@@ -24,6 +25,29 @@ if (isset($_GET["email"]) && $_GET["email"] != ""){
 		$assunto = "Setor Juventude - RECUPERAR SENHA";
 
 		$mensagem = "<!DOCTYPE html>
+=======
+<?php 
+	$vetor   = array();
+	$the_request = &$_GET;
+	
+	if (isset($_GET["email"]) && $_GET["email"] != ""){
+		$email = $_GET["email"];
+		
+		$sql = "SELECT * FROM usuario WHERE Email = '$email'";
+		$result = $con->query($sql);
+		
+		$numrow = $result->num_rows;
+		
+		if ($numrow !== 1){
+			echo json_encode(false);
+		} else {
+			$dados = $result->fetch_assoc();
+			$nome  = $dados['Nome'];
+			$senha = $dados['Senha'];
+			$assunto = "Setor Juventude - RECUPERAR SENHA";
+			
+			$mensagem = "<!DOCTYPE html>
+>>>>>>> d68b1d14a2f08a6d72e1973e4187708cc3424acf
 				<html>
 				<head>
 				    <meta charset='utf-8'>

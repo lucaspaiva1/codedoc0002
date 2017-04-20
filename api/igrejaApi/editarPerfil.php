@@ -1,6 +1,7 @@
 <?php
 	include 'mySQL.php';
 	require 'mySQL.php';
+	include 'salvaImagem.php';
 ?>
 <?php
 	
@@ -27,11 +28,15 @@
 				$genero = $request->Sexo;
 				$foto = $request->URLFoto;
 				$nascimento = $request->Nascimento;
+				
+				$arquivo = 'postImages/'.time().'.jpeg'; //nome do arquivo
+				$url = 'http://www.dsoutlet.com.br/igrejaApi/'.$arquivo; //diretório
+				base64_to_jpeg($foto, $arquivo);
 
 				if ($senha == ""){
-					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
+					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Sexo = '$genero', URLFoto = '$url' WHERE IDUsuario = '$id'";
 				} else {
-					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Senha = '$senha', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
+					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Senha = '$senha', Sexo = '$genero', URLFoto = '$url' WHERE IDUsuario = '$id'";
 				}
 
 				$con->query($sql);
@@ -51,12 +56,16 @@
 				$genero = $request->Sexo;
 				$foto = $request->URLFoto;
 				$nascimento = $request->Nascimento;
+				
+				$arquivo = 'postImages/'.time().'.jpeg'; //nome do arquivo
+				$url = 'http://www.dsoutlet.com.br/igrejaApi/'.$arquivo; //diretório
+				base64_to_jpeg($foto, $arquivo);
 
 				if ($senha == ""){
-					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
+					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Sexo = '$genero', URLFoto = '$url' WHERE IDUsuario = '$id'";
 
 				} else {
-					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Senha = '$senha', Sexo = '$genero', URLFoto = '$foto' WHERE IDUsuario = '$id'";
+					$sql = "UPDATE usuario SET Nome = '$nome', Nascimento = '$nascimento', Email = '$email', Senha = '$senha', Sexo = '$genero', URLFoto = '$url' WHERE IDUsuario = '$id'";
 				}
 
 				$con->query($sql);

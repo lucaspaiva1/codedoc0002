@@ -1,6 +1,7 @@
 <?php
 	include 'mySQL.php';
 	require 'mySQL.php';
+	include 'salvaImagem.php';
 ?>
 
 <?php
@@ -18,7 +19,11 @@
 		$titulo    		  = $request->Titulo;
 		$texto			  = $request->Texto;
 		$usuarioID		  = $request->Usuario_IDUsuario;
-
+		
+		$arquivo = 'postImages/'.time().'.jpeg'; //nome do arquivo
+		$url = 'http://www.dsoutlet.com.br/igrejaApi/'.$arquivo; //diretório
+		base64_to_jpeg($linkImagem, $arquivo);
+		
 		if($comentario == true){
 			$comentario = 's';
 		}else{
@@ -29,7 +34,7 @@
 		$dataPublicacao = date('Y-m-d H:i:s');
 		
 		
-		$sql = "INSERT INTO publicacao (DataPublicacao, TempoPermanencia, Comentario, LinkImagem, Titulo, Texto, Usuario_IDUsuario) VALUES ('$dataPublicacao', '$tempoPermanencia', '$comentario', '$linkImagem', '$titulo', '$texto', '$usuarioID')";
+		$sql = "INSERT INTO publicacao (DataPublicacao, TempoPermanencia, Comentario, LinkImagem, Titulo, Texto, Usuario_IDUsuario) VALUES ('$dataPublicacao', '$tempoPermanencia', '$comentario', '$url', '$titulo', '$texto', '$usuarioID')";
 		$con->query($sql);
 					
 			

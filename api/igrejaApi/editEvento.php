@@ -45,4 +45,6 @@
 			echo json_encode(true);
 		}
 	}
+	
+	$con->close();
 ?>
