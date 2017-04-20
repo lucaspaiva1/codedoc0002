@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav, Events } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
 import { LoginPage } from '../pages/login/login/login';
 import { PerfilPage } from '../pages/perfil/perfil';
+import { FeedPage } from '../pages/feed/feed';
 import { ContatoPage } from '../pages/contato/contato';
 import { EstruturaPage } from '../pages/estrutura/estrutura';
 import { SobrePage } from '../pages/sobre/sobre';
@@ -32,7 +32,7 @@ export class MyApp {
   private liturgia = LiturgiaPage;
   private telaPrincipal = TelaPrincipalPage;
 
-  private rootPage = LoginPage;
+  private rootPage;
 
   private nome: string = 'Nome do Usuários';
   private foto: string = '';
@@ -44,8 +44,31 @@ export class MyApp {
     public menu: MenuController,
     public facebookService: FacebookService,
     public userService: UserService,
+
     public events: Events
   ) {
+
+    //verifica ser a pessoa esta conectada
+    this.userService.get().then(response => {
+      if (response.connected) {
+        this.userService.atualizarUsuario(response.IDUsuario).then(res => {
+          if (!res.error && res.user !== null) {
+            if (res.user.Banida == 0) {
+              StatusBar.show();
+              res.user.connected = true;
+              this.events.publish('user:changed', res.user.Tipo);
+              this.userService.set(res.user).then(() => this.nav.setRoot(TelaPrincipalPage));
+            } else {
+              this.nav.setRoot(LoginPage);
+              alert("Sua conta está bloqueada ou banida");
+              this.userService.deslogar();
+              this.facebookService.logout();
+            }
+          }
+        });
+      }
+    });
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

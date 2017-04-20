@@ -59,7 +59,7 @@
 
     <ion-item>
       <!--Botão para adicionar publicação-->
-      <button ion-button block small (click)="publicar()">Publicar</button>
+      <button ion-button block small (click)="publicar()" [disabled]="botaoDesativado">Publicar</button>
     </ion-item>
 
   </ion-list>

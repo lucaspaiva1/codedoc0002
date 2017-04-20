@@ -68,40 +68,44 @@ export class FacebookService {
     return Facebook.logout();
   }
 
+  /*posta uma foto no feed do atual usuário do app*/
   public photoOnFeed(publicacao: Publicacao) {
     Facebook.getLoginStatus().then(res => {
       return this.http
-        .post('http://www.codeondemand.com.br/facebook/photoOnFeed.php', JSON.stringify({ publicacao: publicacao, token: res.authResponse.accessToken, id: res.authResponse.userID }), { headers: this.headers })
+        .post('http://www.dsoutlet.com.br/igrejaApi/photoOnFeed.php', JSON.stringify({ publicacao: publicacao, token: res.authResponse.accessToken, id: res.authResponse.userID }), { headers: this.headers })
         .toPromise()
         .then(res => this.extractPost(res))
         .catch(this.handleErrorMessage);
     });
   }
 
+  /*posta uma foto no feed da página do facebook do setor juventude*/
   public photoOnPage(publicacao: Publicacao) {
     Facebook.getLoginStatus().then(res => {
       return this.http
-        .post('http://www.codeondemand.com.br/facebook/photoOnPage.php', JSON.stringify({ publicacao: publicacao, token: res.authResponse.accessToken, id: res.authResponse.userID }), { headers: this.headers })
+        .post('http://www.dsoutlet.com.br/igrejaApi/photoAsPage.php', JSON.stringify({ publicacao: publicacao, token: res.authResponse.accessToken, id: res.authResponse.userID }), { headers: this.headers })
         .toPromise()
         .then(res => this.extractPost(res))
         .catch(this.handleErrorMessage);
     });
   }
 
+  /*posta uma mensagem no feed do atual usuário do app*/
   public postOnFeed(publicacao: Publicacao) {
     Facebook.getLoginStatus().then(res => {
       return this.http
-        .post('http://www.codeondemand.com.br/facebook/postOnFeed.php', JSON.stringify({ publicacao: publicacao, token: res.authResponse.accessToken }), { headers: this.headers })
+        .post('http://www.dsoutlet.com.br/igrejaApi/postOnFeed.php', JSON.stringify({ publicacao: publicacao, token: res.authResponse.accessToken }), { headers: this.headers })
         .toPromise()
         .then(res => this.extractPost(res))
         .catch(this.handleErrorMessage);
     });
   }
 
+  /*posta uma mensagem no feed da página do facebook do setor juventude*/
   public postOnPage(publicacao: Publicacao) {
     Facebook.getLoginStatus().then(res => {
       return this.http
-        .post('http://www.codeondemand.com.br/facebook/postOnPage.php', JSON.stringify({ publicacao: publicacao, token: res.authResponse.accessToken }), { headers: this.headers })
+        .post('http://www.dsoutlet.com.br/igrejaApi/postAsPage.php', JSON.stringify({ publicacao: publicacao, token: res.authResponse.accessToken, id: res.authResponse.userID }), { headers: this.headers })
         .toPromise()
         .then(res => this.extractPost(res))
         .catch(this.handleErrorMessage);
@@ -111,6 +115,7 @@ export class FacebookService {
   private extractPost(res: Response) {
     let retorno = { type: false, message: '' };
     let data = res.json();
+    alert(JSON.stringify(data));
     if (data !== null) {
       retorno.type = true;
       retorno.message = 'Publicado com sucesso';
@@ -121,6 +126,7 @@ export class FacebookService {
   }
 
   private handleErrorMessage(error: any) {
+    alert(JSON.stringify(error));
     let retorno = { error: true, type: false, message: 'Falha na conexão' };
     return retorno;
   }

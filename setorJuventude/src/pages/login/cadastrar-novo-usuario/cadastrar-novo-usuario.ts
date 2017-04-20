@@ -25,8 +25,6 @@ export class CadastrarNovoUsuarioPage {
     //Configurando objeto user com campos para validação
     this.user = this.formBuilder.group({
       nome: ['', Validators.compose([Validators.required])],
-      nascimento: ['', Validators.compose([Validators.required])],
-      genero: ['', Validators.compose([Validators.required])],
       email: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       senha: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       repSenha: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
@@ -77,18 +75,6 @@ export class CadastrarNovoUsuarioPage {
         errorMsg = 'Informe seu nome';
       }
     }
-    control = this.user.controls['nascimento'];
-    if (!control.valid) {
-      if (control.errors['required']) {
-        errorMsg = 'Informe sua data de nascimento';
-      }
-    }
-    control = this.user.controls['genero'];
-    if (!control.valid) {
-      if (control.errors['required']) {
-        errorMsg = 'Informe seu gênero';
-      }
-    }
 
     let alert = this.alertCtrl.create({
       title: 'Erro!',
@@ -116,7 +102,7 @@ export class CadastrarNovoUsuarioPage {
       this.bloquearBotao = true;
 
         // process the data
-        this.contaService.cadastrar("cadastro", this.user.get('nome').value, this.user.get('nascimento').value, this.user.get('genero').value, this.user.get('email').value, this.user.get('senha').value)
+        this.contaService.cadastrar("cadastro", this.user.get('nome').value, '2015-05-03', 'm', this.user.get('email').value, this.user.get('senha').value)
           .then(res => {
             if (res) {
               let toast = this.toastCtrl.create({

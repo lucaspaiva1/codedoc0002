@@ -19,6 +19,7 @@ export class AddPostPage {
   private loading: Loading;
   private feed: boolean = false;
   private page: boolean = false;
+  private botaoDesativado = false;
   private myID;
 
   constructor(
@@ -36,28 +37,32 @@ export class AddPostPage {
 
   private publicar() {
     //obrigatorio preencher data limite da publicacao
-    if (this.publicacao.TempoPermanencia == null) {
-      this.presentToast('Preencha a data limite!');
-    } else if (this.publicacao.Titulo == '') {
-      this.presentToast('Preencha o Título!');
-    } else {
+    // if (this.publicacao.TempoPermanencia == null) {
+    //   this.presentToast('Preencha a data limite!');
+    // } else if (this.publicacao.Titulo == '') {
+    //   this.presentToast('Preencha o Título!');
+    // } else {
+    //
+    //   this.publicacao.Usuario_IDUsuario = this.myID;
 
-      this.publicacao.Usuario_IDUsuario = this.myID;
+    this.botaoDesativado = true;
 
-      this.postService.novaPublicacao(this.publicacao).then(res => {
-        if (res.type == true) {
-          this.notificacaoService.push("Nova publicação");
-          this.presentToast(res.message);
-          this.publicacao.Texto = this.publicacao.Titulo + '\n' + this.publicacao.Texto; //vinculando o titulo com o texto
+    //   this.postService.novaPublicacao(this.publicacao).then(res => {
+    this.botaoDesativado = false;
 
-          /*publica no feed do usuario se a opcao for marcada*/
-          if (this.feed) {
-            if (this.publicacao.LinkImagem == '') {
-              this.facebookService.postOnFeed(this.publicacao);
-            } else {
-              this.facebookService.photoOnFeed(this.publicacao);
-            }
-          }
+    //     if (res.type == true) {
+    //       this.notificacaoService.push("Nova publicação");
+    //       this.presentToast(res.message);
+    //       this.publicacao.Texto = this.publicacao.Titulo + '\n' + this.publicacao.Texto; //vinculando o titulo com o texto
+
+          // /*publica no feed do usuario se a opcao for marcada*/
+          // if (this.feed) {
+          //   if (this.publicacao.LinkImagem == '') {
+          //     this.facebookService.postOnFeed(this.publicacao);
+          //   } else {
+          //     this.facebookService.photoOnFeed(this.publicacao);
+          //   }
+          // }
 
           /*publica na pagina do setor como sendo o usuario se a opcao for marcada*/
           if (this.page) {
@@ -67,12 +72,12 @@ export class AddPostPage {
               this.facebookService.photoOnPage(this.publicacao);
             }
           }
-          this.navCtrl.pop();
-        } else {
-          this.presentToast(res.message);
-        }
-      });
-    }
+    //       this.navCtrl.pop();
+    //     } else {
+    //       this.presentToast(res.message);
+    //     }
+    //   });
+    // }
   }
 
   private importarFoto() {

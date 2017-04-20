@@ -39,19 +39,6 @@
           <ion-input type="text" name="nome" [(ngModel)]="user.Nome"></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-label floating>Data de Nascimento</ion-label>
-          <ion-datetime displayFormat="DD/MMM/YYYY" [disabled]="!editar" name="nascimento" [(ngModel)]="user.Nascimento"></ion-datetime>
-        </ion-item>
-
-        <ion-item>
-          <ion-label floating>Gênero</ion-label>
-          <ion-select [disabled]="!editar" name="genero" [(ngModel)]="user.Sexo">
-            <ion-option value="m">Masculino</ion-option>
-            <ion-option value="f">Feminino</ion-option>
-          </ion-select>
-        </ion-item>
-
         <ion-item *ngIf="!editar">
           <div style="font-size: 13px; color: LightGray; padding-top: 1px; padding-bottom: 9px">Email</div>
           <h2 style="color: gray">{{user.Email}}</h2>

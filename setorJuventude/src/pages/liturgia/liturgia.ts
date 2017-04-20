@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'page-liturgia',
@@ -14,11 +14,22 @@ export class LiturgiaPage {
   private conteudo: string = '';
   private loaded: boolean = false;
 
-  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public http: Http) {
+  constructor(public alertCtrl: AlertController,
+    public navCtrl: NavController,
+    public http: Http,
+    public loadingController: LoadingController
+  ) {
     this.carregarLiturgia();
   }
 
   private carregarLiturgia() {
+
+    let loader = this.loadingController.create({
+      content: "Carregando Liturgia"
+    });
+
+    loader.present();
+
     this.getLiturgia().then(res => {
       if (res.error == false) { //verifica se houve erro
         this.liturgia = res.data;
@@ -36,8 +47,6 @@ export class LiturgiaPage {
           }
           i++;
         };
-        //console.log(this.liturgia);
-        //console.log((this.conteudo));
 
         document.getElementById("conteudo").innerHTML = this.conteudo; //insere o conteudo da liturgia no HTML da pagina
 
@@ -45,6 +54,9 @@ export class LiturgiaPage {
       } else {
         this.showConfirm(); //caso ocorra um erro.
       }
+
+      loader.dismiss();
+
     });
   }
 

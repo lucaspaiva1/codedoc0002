@@ -9,6 +9,12 @@
     <ion-refresher-content refreshingSpinner="circles">
     </ion-refresher-content>
   </ion-refresher>
+
+  <ion-item *ngIf="comentarios.length == 0">
+    <h3 class="semPost">Nenhum Comentário</h3>
+    <h2 class="semPost">Seja o Primeiro!</h2>
+  </ion-item>
+
   <ion-card *ngFor="let comentario of comentarios" (press)="presentActionSheet(comentario)">
     <ion-item>
       <ion-avatar item-left>

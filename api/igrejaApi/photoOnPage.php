@@ -30,7 +30,7 @@ if (isset($postdata)) {
     //salvando imagem no servidor
     $nome = 'postImages/' . time() . 'page.jpeg'; //nome da foto
     $foto = $publicacao->LinkImagem; //base64 recebido do front-end
-    $url = 'http://www.codeondemand.com.br/facebook/' . $nome; //url da foto
+    $url = 'http://www.dsoutlet.com.br/igrejaApi/' . $nome; //url da foto
 
     base64_to_jpeg($foto, $nome);
 

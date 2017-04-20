@@ -37,21 +37,9 @@
             <h2 *ngIf="userSelecionado.Banida == '0'">Ativa</h2>
             <h2 *ngIf="userSelecionado.Banida == '1'">Banida</h2>
         </ion-item>
-
         <ion-item>
             <ion-label floating>Nome Completo</ion-label>
             <ion-input type="text" disabled [(ngModel)]="userSelecionado.Nome"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label floating>Data de Nascimento</ion-label>
-            <ion-datetime displayFormat="DD/MMM/YYYY" disabled [(ngModel)]="userSelecionado.Nascimento"></ion-datetime>
-        </ion-item>
-        <ion-item>
-            <ion-label floating>Gênero</ion-label>
-            <ion-select disabled [(ngModel)]="userSelecionado.Sexo">
-                <ion-option value="m">Masculino</ion-option>
-                <ion-option value="f">Feminino</ion-option>
-            </ion-select>
         </ion-item>
         <ion-item>
             <ion-label floating>Email</ion-label>

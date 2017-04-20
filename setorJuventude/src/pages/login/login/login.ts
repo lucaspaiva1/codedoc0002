@@ -25,27 +25,7 @@ export class LoginPage {
     private menu : MenuController
   ) {
     this.menu.enable(false);
-    //verifica ser a pessoa esta conectada
-    this.userService.get().then(response => {
-      if (response.connected) {
-        this.userService.atualizarUsuario(response.IDUsuario).then(res => {
-          if (!res.error && res.user !== null) {
-            if (res.user.Banida == 0) {
-              StatusBar.show();
-              this.navCtrl.setRoot(TelaPrincipalPage);//entra direto sem perguntar nada
-              res.user.connected = true;
-              this.events.publish('tipo:changed', res.user.Tipo);
-              this.userService.set(res.user);
-            } else {
-              this.navCtrl.setRoot(LoginPage);
-              alert("Sua conta está bloqueada ou banida");
-              this.userService.deslogar();
-              this.facebookService.logout();
-            }
-          }
-        });
-      }
-    });
+    
   }
 
   ionViewWillEnter(){
