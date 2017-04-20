@@ -1,33 +1,29 @@
 <?php
-	include 'mySQL.php';
-	require 'mySQL.php';
+include 'mySQL.php';
+require 'mySQL.php';
 ?>
 
-<?php 
-	$vetor   = array();
-	$the_request = &$_GET;
-	
-	if (isset($_GET["email"]) && $_GET["email"] != ""){
-		$email = $_GET["email"];
-		
-		$sql = "SELECT * FROM usuario WHERE Email = '$email'";
-		$result = $con->query($sql);
-		
-		$numrow = $result->num_rows;
-		
-<<<<<<< HEAD
-		if ($num_rows != 1){
-=======
-		if ($numrow !== 1){
->>>>>>> 1e19e9f95d3621bf87db3d4eb0dc1a4bba63d19a
-			echo json_encode(false);
-		} else {
-			$dados = $result->fetch_assoc();
-			$nome  = $dados['Nome'];
-			$senha = $dados['Senha'];
-			$assunto = "Setor Juventude - RECUPERAR SENHA";
-			
-			$mensagem = "<!DOCTYPE html>
+<?php
+$vetor   = array();
+$the_request = &$_GET;
+
+if (isset($_GET["email"]) && $_GET["email"] != ""){
+	$email = $_GET["email"];
+
+	$sql = "SELECT * FROM usuario WHERE Email = '$email'";
+	$result = $con->query($sql);
+
+	$numrow = $result->num_rows;
+
+	if ($numrow !== 1){
+		echo json_encode(false);
+	} else {
+		$dados = $result->fetch_assoc();
+		$nome  = $dados['Nome'];
+		$senha = $dados['Senha'];
+		$assunto = "Setor Juventude - RECUPERAR SENHA";
+
+		$mensagem = "<!DOCTYPE html>
 				<html>
 				<head>
 				    <meta charset='utf-8'>
@@ -87,15 +83,15 @@
 				    </p>
 				</body>
 				</html>";
-			
-			$header = "MIME-Version: 1.0\n";
-			$header .= "Content-type: text/html; charset=UTF-8 charset=iso-8859-1\n";
-			$header .= "FROM: nao-responda@setorjuventude.com\n";
-			
-			mail($email, $assunto, $mensagem, $header);
-			echo json_encode(true);
-		}
+
+		$header = "MIME-Version: 1.0\n";
+		$header .= "Content-type: text/html; charset=UTF-8 charset=iso-8859-1\n";
+		$header .= "FROM: nao-responda@setorjuventude.com\n";
+
+		mail($email, $assunto, $mensagem, $header);
+		echo json_encode(true);
 	}
-	
-	$con->close();
+}
+
+$con->close();
 ?>
