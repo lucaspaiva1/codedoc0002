@@ -115,7 +115,6 @@ export class FacebookService {
   private extractPost(res: Response) {
     let retorno = { type: false, message: '' };
     let data = res.json();
-    alert(JSON.stringify(data));
     if (data !== null) {
       retorno.type = true;
       retorno.message = 'Publicado com sucesso';

@@ -63,7 +63,6 @@ export class AddPostPage {
           //     this.facebookService.photoOnFeed(this.publicacao);
           //   }
           // }
-
           /*publica na pagina do setor como sendo o usuario se a opcao for marcada*/
           if (this.page) {
             if (this.publicacao.LinkImagem == '') {

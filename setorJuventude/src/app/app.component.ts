@@ -50,7 +50,7 @@ export class MyApp {
 
     //verifica ser a pessoa esta conectada
     this.userService.get().then(response => {
-      if (response.connected) {
+      if (response) {
         this.userService.atualizarUsuario(response.IDUsuario).then(res => {
           if (!res.error && res.user !== null) {
             if (res.user.Banida == 0) {
@@ -66,6 +66,8 @@ export class MyApp {
             }
           }
         });
+      } else {
+        this.nav.setRoot(LoginPage);
       }
     });
 

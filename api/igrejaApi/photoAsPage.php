@@ -77,7 +77,7 @@ if (isset($postdata)) {
     //reposta do facebook
     $graphNode = $response->getGraphNode();
 
-    echo json_encode('Post ID: ' . $graphNode['id']);
+    echo json_encode($graphNode);
 
     //funcao para apagar a imagem
     apagarImagem($url);
