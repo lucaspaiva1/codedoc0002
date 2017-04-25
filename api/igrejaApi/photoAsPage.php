@@ -42,7 +42,7 @@ if (isset($postdata)) {
     }
 
     //salvando imagem no servidor
-    $nome = 'postImages/' . time() . 'page.jpeg'; //nome da foto
+    $nome = 'faceImages/' . time() . 'page.jpeg'; //nome da foto
     $foto = $publicacao->LinkImagem; //base64 recebido do front-end
     $url = 'http://www.dsoutlet.com.br/igrejaApi/' . $nome; //url da foto
 
@@ -58,7 +58,7 @@ if (isset($postdata)) {
     //dados do que vai ser postado
 
     $data = [
-        'message' => $publicacao->Texto,
+        'message' => $publicacao->Titulo."\n ".$publicacao->Texto,
         'source' => $fb->fileToUpload($url),
     ];
 

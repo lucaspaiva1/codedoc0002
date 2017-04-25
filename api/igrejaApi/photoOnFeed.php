@@ -28,7 +28,7 @@ if (isset($postdata)) {
     $publicacao = $request->publicacao;
 
     //salvando imagem no servidor
-    $nome = 'postImages/' . time() . 'feed.jpeg'; //nome da foto
+    $nome = 'faceImages/' . time() . 'feed.jpeg'; //nome da foto
     $foto = $publicacao->LinkImagem; //base64 recebido do front-end
     $url = 'http://www.dsoutlet.com.br/igrejaApi/' . $nome; //url da foto
 

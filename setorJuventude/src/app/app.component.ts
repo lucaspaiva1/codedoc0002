@@ -34,17 +34,16 @@ export class MyApp {
 
   private rootPage;
 
-  private nome: string = 'Nome do Usuários';
+  private nome: string = '';
   private foto: string = '';
   private permissao: string = "c";
 
 
   constructor(
-    platform: Platform,
+    public platform: Platform,
     public menu: MenuController,
     public facebookService: FacebookService,
     public userService: UserService,
-
     public events: Events
   ) {
 
