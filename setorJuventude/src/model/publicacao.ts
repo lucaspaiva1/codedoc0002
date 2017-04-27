@@ -1,7 +1,7 @@
 export class Publicacao {
 
   public IDPublicacao: number;
-  public TempoPermanencia: Date;
+  public TempoPermanencia: string;
   public Comentario: boolean = false;
   public LinkImagem: string  = "";
   public Titulo: string = "";
