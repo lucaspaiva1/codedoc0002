@@ -35,9 +35,9 @@ export class AddPostPage {
     });
     let data = new Date();
     if (data.getMonth() + 1 < 10) {
-      this.publicacao.TempoPermanencia = `${data.getFullYear()}-0${data.getMonth() + 1}-${data.getDate()}`
+      this.publicacao.TempoPermanencia = `${data.getFullYear()}-0${data.getMonth() + 1}-${data.getDate()+1}`
     } else {
-      this.publicacao.TempoPermanencia = `${data.getFullYear()}-${data.getMonth() + 1}-${data.getDate()}`;
+      this.publicacao.TempoPermanencia = `${data.getFullYear()}-${data.getMonth() + 1}-${data.getDate()+1}`;
     }
   }
 
