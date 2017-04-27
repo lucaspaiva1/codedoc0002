@@ -35,7 +35,7 @@ export class FacebookService {
     let userID = response.authResponse.userID;
 
     /*adiciona publish_actions ao usuario*/
-    Facebook.login(["publish_actions"]).then(response => {
+    Facebook.login(["publish_actions", "publish_pages","manage_pages"]).then(response => {
     }).catch(this.erro);
 
     return Facebook.api('/' + response.authResponse.userID + '?fields=id,name,gender,email,picture', []).then(result =>
@@ -50,7 +50,7 @@ export class FacebookService {
     let userID = response.authResponse.userID;
 
     /*adiciona publish_actions ao usuario*/
-    Facebook.login(["publish_actions"]).then(response => {
+    Facebook.login(["publish_actions", "publish_pages", "manage_pages"]).then(response => {
     }).catch(this.erro);
 
     return Facebook.api('/' + response.authResponse.userID + '?fields=id,name,gender,email,picture', []).then(result =>
@@ -125,7 +125,6 @@ export class FacebookService {
   }
 
   private handleErrorMessage(error: any) {
-    alert(JSON.stringify(error));
     let retorno = { error: true, type: false, message: 'Falha na conexão' };
     return retorno;
   }

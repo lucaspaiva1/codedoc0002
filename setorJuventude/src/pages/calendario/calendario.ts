@@ -80,7 +80,8 @@ export class CalendarioPage {
   private getEventos() {
 
     let loader = this.loadingController.create({
-      content: "Carregando eventos"
+      content: "Carregando eventos",
+      duration: 5000
     });
 
     loader.present();

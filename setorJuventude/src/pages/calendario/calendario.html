@@ -19,12 +19,15 @@
 <ion-content padding>
   <!--Barra superior do calendário-->
   <ion-toolbar class="calendarToolbar" color="laranja">
-      <ion-title>{{mes}}</ion-title>
+      <ion-title class="titulo">{{mes}}</ion-title>
   </ion-toolbar>
 
 
 
-<calendar 
+<calendar
+        allDayLabel="Dia Inteiro"
+        noEventsLabel="Sem Eventos"
+        formatDayHeader="E"
         [eventSource]="eventSource"
         [calendarMode]="calendar.mode"
         [currentDate]="calendar.currentDate"

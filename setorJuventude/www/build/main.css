@@ -4770,10 +4770,6 @@ textarea::-webkit-input-placeholder {
   padding-left: 2px;
 }
 
-textarea::-moz-placeholder {
-  padding-left: 2px;
-}
-
 textarea:-ms-input-placeholder {
   padding-left: 2px;
 }
@@ -23599,6 +23595,11 @@ textarea {
   margin: 0px;
   padding: 0px;
   text-align: center;
+}
+
+page-calendario .titulo {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
 .calendarToolbar ion-title {

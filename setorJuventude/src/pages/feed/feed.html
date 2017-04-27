@@ -22,8 +22,8 @@
 
       <!--item-->
       <ion-card *ngFor="let publicacao of publicacoes" (press)="acoes(publicacao)">
-        <div>
-          <img *ngIf="publicacao.LinkImagem != ''" src="{{publicacao.LinkImagem}}">
+        <div  *ngIf="publicacao.LinkImagem != ''">
+          <img src="{{publicacao.LinkImagem}}">
         </div>
         <ion-card-content>
 

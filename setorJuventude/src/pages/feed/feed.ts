@@ -31,7 +31,7 @@ export class FeedPage {
     public loadingController: LoadingController,
     public userService: UserService,
     public events: Events,
-    private menu : MenuController,
+    private menu: MenuController,
     public actionSheetCtrl: ActionSheetController
 
   ) {
@@ -39,7 +39,7 @@ export class FeedPage {
     StatusBar.show();
     this.userService.get().then(res => {
       this.permissao = res.Tipo;
-      if(res.IDUsuario == undefined || res.IDUsuario == null || res.IDUsuario == 0){
+      if (res.IDUsuario == undefined || res.IDUsuario == null || res.IDUsuario == 0) {
         this.navCtrl.setRoot(LoginPage);
       }
     });
@@ -54,7 +54,8 @@ export class FeedPage {
   private carregarFeed() {
 
     let loader = this.loadingController.create({
-      content: "Carregando Publicações"
+      content: "Carregando Publicações",
+      duration: 5000
     });
 
     loader.present();
