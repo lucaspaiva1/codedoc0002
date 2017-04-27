@@ -25,7 +25,8 @@ export class LiturgiaPage {
   private carregarLiturgia() {
 
     let loader = this.loadingController.create({
-      content: "Carregando Liturgia"
+      content: "Carregando Liturgia",
+      duration: 5000
     });
 
     loader.present();
